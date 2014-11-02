@@ -762,6 +762,8 @@
                 </string>
                 <string name="com_facebook_choose_friends" >Choose Friends
                 </string>
+                <string name="facebook_app_id" >1509757109265761
+                </string>
                 <string name="com_facebook_requesterror_reconnect" >Please log into this app again to reconnect your Facebook account.
                 </string>
                 <string name="com_facebook_requesterror_web_login" >Your Facebook account is locked. Please log into www.facebook.com to continue.
