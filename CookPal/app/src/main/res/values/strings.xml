@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CookPal</string>
+    <string name="APP_NAME">CookPal</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="APP_ID">1509757109265761</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_started">To get started, log in using Facebook</string>
+    <string name="title_activity_account">AccountActivity</string>
+    <string name="title_activity_test">testActivity</string>
+    <string name="settings">Settings</string>
 
 </resources>
