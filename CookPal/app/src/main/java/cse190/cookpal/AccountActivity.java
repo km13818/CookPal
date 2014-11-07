@@ -5,20 +5,41 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
+
+import com.facebook.HttpMethod;
+import com.facebook.Request;
+import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphUser;
+
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.os.StrictMode.*;
 
 public class AccountActivity extends FragmentActivity implements SelectionFragment.OnFragmentInteractionListener{
 
@@ -36,6 +57,10 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+
+        ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
 
@@ -93,6 +118,31 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
         uiHelper.onActivityResult(requestCode, resultCode, data);
     }
 
+    /*@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        uiHelper.onActivityResult(requestCode, resultCode, data);
+        Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+        if (Session.getActiveSession().isOpened()) {
+            // Request user data and show the results
+            Request.newMeRequest(Session.getActiveSession(), new Request.GraphUserCallback() {
+
+                @Override
+                public void onCompleted(GraphUser user, Response response) {
+                    // TODO Auto-generated method stub
+                    if (user != null) {
+                        // Display the parsed user info
+                        Log.e("AccountActivity", "Response : " + response);
+                        Log.e("AccountActivity", "UserID : " + user.getId());
+                        Log.e("AccountActivity", "User FirstName : " + user.getFirstName());
+
+                    }
+                }
+
+            });
+        }
+    }*/
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -149,6 +199,40 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
         if (session != null && session.isOpened()) {
             // if the session is already open,
             // try to show the selection fragment
+            // Request user data and show the results
+            Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
+
+                @Override
+                public void onCompleted(GraphUser user, Response response) {
+                    if (user != null) {
+                        // Display the parsed user info
+                        Log.e("Accountactivity", "Response : " + response);
+                        Log.e("Accountactivity", "UserID : " + user.getId());
+                        Log.e("Accountactivity", "User Name : " + user.getName());
+                        String url = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/dbaccess.jsp";
+                        DefaultHttpClient httpclient = new DefaultHttpClient();
+                        HttpPost httppost = new HttpPost(url);
+
+
+                        List<NameValuePair> postParameters = new ArrayList<NameValuePair>(2);
+                        postParameters.add(new BasicNameValuePair("username", user.getName()));
+                        postParameters.add(new BasicNameValuePair("fb_id", user.getId()));
+
+                        try {
+                            httppost.setEntity(new UrlEncodedFormEntity(postParameters));
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            HttpResponse httpResponse = httpclient.execute(httppost);
+                            Log.e("accountActivity", "SUCCESS");
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+                    }
+                }
+            });
             showFragment(SELECTION, false);
         } else {
             // otherwise present the splash screen
@@ -187,19 +271,9 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
         return false;
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_account, container, false);
-            return rootView;
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_account, container, false);
+        return rootView;
     }
 }

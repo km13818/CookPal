@@ -10,6 +10,7 @@
         <activity
             android:name=".AccountActivity"
             android:label="@string/title_activity_account"
+            android:theme="@android:style/Theme.NoTitleBar">
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
 
