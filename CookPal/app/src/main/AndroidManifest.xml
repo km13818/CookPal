@@ -10,10 +10,9 @@
         <activity
             android:name=".AccountActivity"
             android:label="@string/title_activity_account"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@android:style/Theme.NoTitleBar" >
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
-
         <activity
             android:name="com.facebook.LoginActivity"
             android:label="facebook"
@@ -26,11 +25,18 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/APP_ID" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity
+            android:name=".TestJSON"
+            android:label="@string/title_activity_test_json" >
+        </activity>
+        <activity
+            android:name=".RestFulWebservice"
+            android:label="@string/title_activity_rest_ful_webservice" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />

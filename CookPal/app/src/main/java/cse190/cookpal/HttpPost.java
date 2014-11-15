@@ -1,7 +1,6 @@
 package cse190.cookpal;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.facebook.Request;
 import com.facebook.Response;
