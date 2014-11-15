@@ -46,6 +46,8 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
     private boolean isResumed = false;
     private UiLifecycleHelper uiHelper;
     private MenuItem settings;
+    public static String fb_id;
+    //public SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -200,9 +202,6 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
                 public void onCompleted(GraphUser user, Response response) {
                     if (user != null) {
                         // Display the parsed user info
-                        Log.e("Accountactivity", "Response : " + response);
-                        Log.e("Accountactivity", "UserID : " + user.getId());
-                        Log.e("Accountactivity", "User Name : " + user.getName());
                         String url = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/dbaccess.jsp";
                         DefaultHttpClient httpclient = new DefaultHttpClient();
                         HttpPost httppost = new HttpPost(url);
@@ -224,6 +223,11 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
                         } catch (IOException e) {
                                 e.printStackTrace();
                         }
+
+                        // save fb_id as a global var
+                        setFbId(user.getId());
+                        Intent intent= new Intent(AccountActivity.this, HomePage.class);
+                        startActivity(intent);
                     }
                 }
             });
@@ -233,6 +237,14 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
             // and ask the person to login.
             showFragment(SPLASH, false);
         }
+    }
+
+    public static String getFbId(){
+        return fb_id;
+    }
+
+    public void setFbId(String id){
+        fb_id = id;
     }
 
     private Session.StatusCallback callback =

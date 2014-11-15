@@ -36,6 +36,11 @@ public class AddRecipeActivity extends Activity {
                 ViewGroup group = (ViewGroup)findViewById(R.id.instructionsLayout);
                 int count = group.getChildCount();
                 Log.d("count=", String.valueOf(count));
+
+                // Get fb_id from AccountActivity
+                String fb_id = AccountActivity.getFbId();
+                Log.e("AddRecipeActivity","fb_id: "+fb_id);
+
                 for(int i = 0;  i<count; i++ ) {
                     //instructionLayout has many horizontal linearlayout as children, who each have children containing EditText
                     View horizontalView = group.getChildAt(i);

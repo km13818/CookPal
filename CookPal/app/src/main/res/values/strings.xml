@@ -12,5 +12,8 @@
     <string name="settings">Settings</string>
     <string name="title_activity_test_json">TestJSON</string>
     <string name="title_activity_rest_ful_webservice">RestFulWebservice</string>
+    <string name="title_activity_add_recipe">AddRecipe</string>
+    <string name="confirm_create_recipe_button">Create this recipe</string>
+    <string name="title_activity_home_page">HomePage</string>
 
 </resources>
