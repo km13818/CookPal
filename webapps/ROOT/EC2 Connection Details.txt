@@ -1,0 +1,12 @@
+Host/DNS:
+ec2-54-69-39-93.us-west-2.compute.amazonaws.com
+
+Use Port 8080
+User: ec2-user
+
+SQLDB: TCP/IP over SSH
+DBname: CookPal
+SQL user: root
+password: none
+Hostname: 127.0.0.1
+Port: 3306
