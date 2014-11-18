@@ -226,7 +226,7 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
 
                         // save fb_id as a global var
                         setFbId(user.getId());
-                        Intent intent= new Intent(AccountActivity.this, HomePage.class);
+                        Intent intent= new Intent(AccountActivity.this, RecipeList.class);
                         startActivity(intent);
                     }
                 }

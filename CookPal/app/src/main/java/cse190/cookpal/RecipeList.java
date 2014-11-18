@@ -24,7 +24,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.util.ArrayList;
 
 
-public class RecipeList extends Activity {
+public class RecipeList extends BaseDrawerActivity {
     private static final String TAG = "RecipeList";
     ArrayList<String> recipeLists = new ArrayList<String>();
     ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();

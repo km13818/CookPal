@@ -135,15 +135,12 @@ public class BaseDrawerActivity extends Activity {
         Bundle args = new Bundle();
         switch (position) {
             case 0:
-                intent = new Intent(this, MainActivity.class);
+                intent = new Intent(this, RecipeList.class);
                 break;
             case 1:
-                intent = new Intent(this, CookbookActivity.class);
-                break;
-            case 2:
                 intent = new Intent(this, AssistantActivity.class);
                 break;
-            case 3:
+            case 2:
                 intent = new Intent(this, SettingsActivity.class);
                 break;
             default:
