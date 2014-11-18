@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="cse190.cookpal.Layout" >
+    tools:context="cse190.cookpal.MainActivity" >
 
     <item android:id="@+id/action_add"
         android:title="Add"

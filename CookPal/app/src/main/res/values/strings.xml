@@ -3,31 +3,16 @@
 
     <string name="app_name">CookPal</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_layout">Layout</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_activity_cookbook">Cookbook</string>
+    <string name="title_activity_assistant">Assistant</string>
+    <string name="title_activity_settings">Settings</string>
 
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
 
-    <!-- nav drawer menu items -->
-    <string-array name="nav_drawer_items">
-        <item>Overview</item>
-        <item>Grocery List</item>
-        <item>Cookbook</item>
-        <item>Assist</item>
-        <item>Settings</item>
-    </string-array>
-
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
-    <array name="nav_drawer_icons">
-        <!--<item>@drawable/ic_overview</item>
-        <item>@drawable/ic_grocery_list</item>
-        <item>@drawable/ic_cookbook</item>
-        <item>@drawable/ic_assist</item>
-        <item>@drawable/ic_settings</item>-->
-    </array>
-
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+
 
 </resources>

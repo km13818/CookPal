@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class Layout extends Activity {
+public class MainActivity extends Activity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -32,7 +32,7 @@ public class Layout extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_layout);
+        setContentView(R.layout.activity_main);
 
         // Initializing
         dataList = new ArrayList<DrawerItem>();
@@ -44,11 +44,10 @@ public class Layout extends Activity {
                 GravityCompat.START);
 
         // Add Drawer Item to dataList
-        dataList.add(new DrawerItem("Overview", R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem("Grocery List", R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem("Cookbook", R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem("Assist", R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem("Settings", R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.title_activity_main), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.title_activity_cookbook), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.title_activity_assistant), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.title_activity_settings), R.drawable.ic_action_settings));
 
         adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
                 dataList);
@@ -61,18 +60,15 @@ public class Layout extends Activity {
         getActionBar().setHomeButtonEnabled(true);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.drawable.ic_drawer, R.string.drawer_open,
-                R.string.drawer_close) {
+                R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu(); // creates call to
-                // onPrepareOptionsMenu()
+                invalidateOptionsMenu();
             }
 
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu(); // creates call to
-                // onPrepareOptionsMenu()
+                invalidateOptionsMenu();
             }
         };
 
@@ -91,100 +87,37 @@ public class Layout extends Activity {
         return true;
     }
 
-    public void SelectItem(int possition) {
+    public void SelectItem(int position) {
 
         Fragment fragment = null;
         Bundle args = new Bundle();
-        switch (possition) {
+        switch (position) {
             case 0:
                 fragment = new Fragment1();
-                args.putString(Fragment1.ITEM_NAME, dataList.get(possition)
+                args.putString(Fragment1.ITEM_NAME, dataList.get(position)
                         .getItemName());
-                args.putInt(Fragment1.IMAGE_RESOURCE_ID, dataList.get(possition)
+                args.putInt(Fragment1.IMAGE_RESOURCE_ID, dataList.get(position)
                         .getImgResID());
                 break;
             case 1:
                 fragment = new Fragment2();
-                args.putString(Fragment2.ITEM_NAME, dataList.get(possition)
+                args.putString(Fragment2.ITEM_NAME, dataList.get(position)
                         .getItemName());
-                args.putInt(Fragment2.IMAGE_RESOURCE_ID, dataList.get(possition)
+                args.putInt(Fragment2.IMAGE_RESOURCE_ID, dataList.get(position)
                         .getImgResID());
                 break;
             case 2:
                 fragment = new Fragment3();
-                args.putString(Fragment3.ITEM_NAME, dataList.get(possition)
+                args.putString(Fragment3.ITEM_NAME, dataList.get(position)
                         .getItemName());
-                args.putInt(Fragment3.IMAGE_RESOURCE_ID, dataList.get(possition)
+                args.putInt(Fragment3.IMAGE_RESOURCE_ID, dataList.get(position)
                         .getImgResID());
                 break;
             case 3:
                 fragment = new Fragment1();
-                args.putString(Fragment1.ITEM_NAME, dataList.get(possition)
+                args.putString(Fragment1.ITEM_NAME, dataList.get(position)
                         .getItemName());
-                args.putInt(Fragment1.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 4:
-                fragment = new Fragment2();
-                args.putString(Fragment2.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment2.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 5:
-                fragment = new Fragment3();
-                args.putString(Fragment3.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment3.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 6:
-                fragment = new Fragment1();
-                args.putString(Fragment1.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment1.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 7:
-                fragment = new Fragment2();
-                args.putString(Fragment2.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment2.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 8:
-                fragment = new Fragment3();
-                args.putString(Fragment3.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment3.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 9:
-                fragment = new Fragment1();
-                args.putString(Fragment1.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment1.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 10:
-                fragment = new Fragment2();
-                args.putString(Fragment2.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment2.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 11:
-                fragment = new Fragment3();
-                args.putString(Fragment3.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment3.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 12:
-                fragment = new Fragment1();
-                args.putString(Fragment1.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(Fragment1.IMAGE_RESOURCE_ID, dataList.get(possition)
+                args.putInt(Fragment1.IMAGE_RESOURCE_ID, dataList.get(position)
                         .getImgResID());
                 break;
             default:
@@ -196,8 +129,8 @@ public class Layout extends Activity {
         frgManager.beginTransaction().replace(R.id.content_frame, fragment)
                 .commit();
 
-        mDrawerList.setItemChecked(possition, true);
-        setTitle(dataList.get(possition).getItemName());
+        mDrawerList.setItemChecked(position, true);
+        setTitle(dataList.get(position).getItemName());
         mDrawerLayout.closeDrawer(mDrawerList);
 
     }
