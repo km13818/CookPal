@@ -29,6 +29,11 @@ public class BaseDrawerActivity extends Activity {
 
     List<DrawerItem> dataList;
 
+    private static final int DRAWER_COOKBOOK = 0;
+    private static final int DRAWER_ASSISTANT = 1;
+    private static final int DRAWER_SETTINGS = 2;
+    private static final int DRAWER_LOGOUT = 3;
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -78,10 +83,10 @@ public class BaseDrawerActivity extends Activity {
                 GravityCompat.START);
 
         // Add Drawer Item to dataList
-        dataList.add(new DrawerItem(getString(R.string.title_activity_main), R.drawable.ic_action_settings));
         dataList.add(new DrawerItem(getString(R.string.title_activity_cookbook), R.drawable.ic_action_settings));
         dataList.add(new DrawerItem(getString(R.string.title_activity_assistant), R.drawable.ic_action_settings));
         dataList.add(new DrawerItem(getString(R.string.title_activity_settings), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.title_activity_logout), R.drawable.ic_action_settings));
 
         adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
                 dataList);
@@ -90,8 +95,8 @@ public class BaseDrawerActivity extends Activity {
 
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-        //getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
@@ -131,17 +136,27 @@ public class BaseDrawerActivity extends Activity {
 
     public void SelectItem(int position) {
         Intent intent = null;
-        //Fragment fragment = null;
-        Bundle args = new Bundle();
         switch (position) {
-            case 0:
+            case DRAWER_COOKBOOK:
+                if (this instanceof RecipeList) {
+                    break;
+                }
                 intent = new Intent(this, RecipeList.class);
                 break;
-            case 1:
+            case DRAWER_ASSISTANT:
+                if (this instanceof AssistantActivity) {
+                    break;
+                }
                 intent = new Intent(this, AssistantActivity.class);
                 break;
-            case 2:
+            case DRAWER_SETTINGS:
+                if (this instanceof SettingsActivity) {
+                    break;
+                }
                 intent = new Intent(this, SettingsActivity.class);
+                break;
+            case DRAWER_LOGOUT:
+                intent = new Intent(this, AccountActivity.class);
                 break;
             default:
                 break;

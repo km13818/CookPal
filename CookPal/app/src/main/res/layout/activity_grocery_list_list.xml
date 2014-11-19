@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,6 +14,7 @@
         android:id="@+id/recipeListView"
         android:layout_weight="1"
         android:layout_below="@+id/groceryListListTitle"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="54dp" />
 
@@ -24,7 +25,7 @@
         android:id="@+id/addGroceryListButton"
         android:clickable="true"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/recipeListView" />
+        android:layout_alignRight="@+id/recipeListView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,6 +44,78 @@
         android:id="@+id/deleteGroceryListButton"
         android:clickable="true"
         android:layout_above="@+id/groceryListListTitle"
+        android:layout_toLeftOf="@+id/addGroceryListButton"
         android:layout_toStartOf="@+id/addGroceryListButton" />
 
-</RelativeLayout>
+</RelativeLayout>-->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GroceryList">
+
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="#ffff"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recipeListView"
+            android:layout_weight="1"
+            android:layout_below="@+id/groceryListListTitle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="54dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/addGroceryListButton"
+            android:clickable="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/recipeListView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="My Recipes"
+            android:id="@+id/groceryListListTitle"
+            android:gravity="center"
+            android:layout_below="@+id/addGroceryListButton"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/deleteGroceryListButton"
+            android:clickable="true"
+            android:layout_above="@+id/groceryListListTitle"
+            android:layout_toLeftOf="@+id/addGroceryListButton"
+            android:layout_toStartOf="@+id/addGroceryListButton" />
+
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
+

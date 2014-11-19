@@ -6,6 +6,7 @@
     <string name="title_activity_cookbook">Cookbook</string>
     <string name="title_activity_assistant">Assistant</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_logout">Logout</string>
 
     <string name="action_settings">Settings</string>
 

@@ -51,6 +51,7 @@ public class RecipeList extends BaseDrawerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_grocery_list_list);
 
         //TODO: populate recipeLists using db
 
@@ -63,7 +64,7 @@ public class RecipeList extends BaseDrawerActivity {
       //  System.out.println("isnewthingnull: " + (getIntent().getStringExtra("RECIPE_NAME") ==null));
         //Log.d(TAG, "is new thing null: " + (getIntent().getStringExtra("RECIPE_NAME") ==null));
        // recipeLists.add(getIntent().getStringExtra("RECIPE_NAME"));
-        setContentView(R.layout.activity_grocery_list_list);
+
         populateListView();
         ImageButton deleteGroceryListButton = (ImageButton)findViewById(R.id.deleteGroceryListButton);
     /*    deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
