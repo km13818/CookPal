@@ -46,14 +46,14 @@ public class AddRecipeActivity extends Activity {
                 Intent intent = new Intent(AddRecipeActivity.this, RecipeList.class);
                 intent.putExtra("RECIPE_NAME",recipeName);
 
-                //TODO: INSERT RECIPE
+                //INSERT RECIPE
                 //recipe: id, account_id, cookbook_type, name,
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
                 insertRecipeParams.put("name", recipeName);
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
-                makeHttpPost(insertRecipeParams);
+               // HttpUtil.makeHttpPost(insertRecipeParams);
 
-/*
+
                 //recipe_ingredient: id,account_id,recipe_id, name, quantity
                 //recipe_instruction: id,account_id,recipe_id, description, time, title
 
@@ -61,13 +61,6 @@ public class AddRecipeActivity extends Activity {
                 ViewGroup group = (ViewGroup)findViewById(R.id.instructionsLayout);
                 int instructionLayoutChildrenCount = group.getChildCount();
                 Log.d("count=", String.valueOf(instructionLayoutChildrenCount));
-
-                // Get fb_id from AccountActivity
-                String fb_id = AccountActivity.getFbId();
-                Log.e("AddRecipeActivity","fb_id: "+fb_id);
-
-
-
 
                 for(int i = 0;  i<instructionLayoutChildrenCount; i++ ) {
                     //instructionLayout has many horizontal linearlayout as children, who each have children containing EditText
@@ -90,7 +83,7 @@ public class AddRecipeActivity extends Activity {
                         insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
                         insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
 
-                        makeHttpPost(insertRecipeInstructionParams);
+                  //      HttpUtil.makeHttpPost(insertRecipeInstructionParams);
 
                     }
                 } //end for
@@ -110,15 +103,15 @@ public class AddRecipeActivity extends Activity {
                         EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.getChildAt(3);
                         Log.d("AddRecipeActivity", "ingred: " + ingredientEditText.getText().toString() + " quantity: " + ingredientQuantityEditText.getText().toString());
                         //TODO: INSERT INGREDIENT
-                        HashMap<String,String> ingredientParams = new HashMap<String,String>();
-                        ingredientParams.put("name", recipeName);
-                        ingredientParams.put("fb_id", AccountActivity.getFbId());
-                        ingredientParams.put("ingredient", ingredientEditText.getText().toString());
-                        ingredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
-                      //  makeHttpPost(insertRecipeInstructionParams);
+                        HashMap<String,String> insertIngredientParams = new HashMap<String,String>();
+                        insertIngredientParams.put("name", recipeName);
+                        insertIngredientParams.put("fb_id", AccountActivity.getFbId());
+                        insertIngredientParams.put("ingredient", ingredientEditText.getText().toString());
+                        insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
+                    //    HttpUtil.makeHttpPost(insertIngredientParams);
                     }
                 } //end for
-                startActivity(intent); */
+                startActivity(intent);
             }  //end onclick
         }); //end confirmaddbutton onclicklistener
 
@@ -191,36 +184,7 @@ Log.e("addrecipeactivity", "asdfajsdlkfjqoweifjqowiefjqoweifj");
         });
     }//end on create
 
-    //recipe: id, account_id, cookbook_type, name, description
-    //recipe_ingredient: id,account_id,recipe_id, name, quantity
-    //recipe_instruction: id,account_id,recipe_id, description, time, title
-    public HttpResponse makeHttpPost(HashMap<String, String> params) {
-                String url = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp";
-                DefaultHttpClient httpclient = new DefaultHttpClient();
-                org.apache.http.client.methods.HttpPost httppost = new org.apache.http.client.methods.HttpPost(url);
 
-
-                List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-                for (String keyString : params.keySet()) {
-                    postParameters.add(new BasicNameValuePair(keyString, params.get(keyString)));
-                    Log.d("addrecipe httppost", "key: " + keyString + " value: " + params.get(keyString) );
-                }
-
-                try {
-                    httppost.setEntity(new UrlEncodedFormEntity(postParameters));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    HttpResponse httpResponse = httpclient.execute(httppost);
-                    Log.e("AddRecipeActivity", "SUCCESS");
-                    return httpResponse;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return null;
-                }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

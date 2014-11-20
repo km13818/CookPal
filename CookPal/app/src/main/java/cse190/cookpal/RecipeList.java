@@ -17,11 +17,13 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class RecipeList extends Activity {
@@ -53,6 +55,9 @@ public class RecipeList extends Activity {
         super.onCreate(savedInstanceState);
 
         //TODO: populate recipeLists using db
+        HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
+        recipeListRetrievalParams.put("fb_id",AccountActivity.getFbId());
+       // HttpResponse recipeListRetrievalResponse = HttpUtil.makeHttpPost(recipeListRetrievalParams);
 
         if(getIntent().getStringExtra("RECIPE_NAME") != null) {
             String newRecipe = new String(getIntent().getStringExtra("RECIPE_NAME").toString());
