@@ -51,6 +51,7 @@ public class AddRecipeActivity extends Activity {
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
                 insertRecipeParams.put("name", recipeName);
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
+                insertRecipeParams.put("filter", "insert_recipe");
                // HttpUtil.makeHttpPost(insertRecipeParams);
 
 
@@ -82,7 +83,7 @@ public class AddRecipeActivity extends Activity {
                         insertRecipeInstructionParams.put("instruction", instructionEditText.getText().toString());
                         insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
                         insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
-
+                        insertRecipeInstructionParams.put("filter", "insert_instruction");
                   //      HttpUtil.makeHttpPost(insertRecipeInstructionParams);
 
                     }
@@ -108,6 +109,7 @@ public class AddRecipeActivity extends Activity {
                         insertIngredientParams.put("fb_id", AccountActivity.getFbId());
                         insertIngredientParams.put("ingredient", ingredientEditText.getText().toString());
                         insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
+                        insertIngredientParams.put("filter", "insert_ingredient");
                     //    HttpUtil.makeHttpPost(insertIngredientParams);
                     }
                 } //end for

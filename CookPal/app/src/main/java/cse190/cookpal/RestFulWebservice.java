@@ -42,7 +42,7 @@ public class RestFulWebservice extends Activity {
             public void onClick(View arg0) {
 
                 // WebServer Request URL
-                String serverURL = "http://androidexample.com/media/webservice/JsonReturn.php";
+                String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/user.json";
 
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new LongOperation().execute(serverURL);
@@ -171,7 +171,7 @@ public class RestFulWebservice extends Activity {
 
                     /***** Returns the value mapped by name if it exists and is a JSONArray. ***/
                     /*******  Returns null otherwise.  *******/
-                    JSONArray jsonMainNode = jsonResponse.optJSONArray("Android");
+                    JSONArray jsonMainNode = jsonResponse.optJSONArray("user");
 
                     /*********** Process each JSON Node ************/
 
@@ -184,13 +184,11 @@ public class RestFulWebservice extends Activity {
 
                         /******* Fetch node values **********/
                         String name       = jsonChildNode.optString("name").toString();
-                        String number     = jsonChildNode.optString("number").toString();
-                        String date_added = jsonChildNode.optString("date_added").toString();
+                        String number     = jsonChildNode.optString("fb_id").toString();
 
 
                         OutputData += " Name           : "+ name +" "
-                                + "Number      : "+ number +" "
-                                + "Time                : "+ date_added +" "
+                                + "fb_id         : "+ number +" "
                                 +"--------------------------------------------------";
 
 
