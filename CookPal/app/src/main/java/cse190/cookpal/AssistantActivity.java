@@ -6,19 +6,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class HomePage extends Activity {
+public class AssistantActivity extends BaseDrawerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_assistant);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_page, menu);
+        getMenuInflater().inflate(R.menu.assistant, menu);
         return true;
     }
 

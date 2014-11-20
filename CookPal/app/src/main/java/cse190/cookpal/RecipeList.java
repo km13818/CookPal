@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class RecipeList extends Activity {
+public class RecipeList extends BaseDrawerActivity {
     private static final String TAG = "RecipeList";
     ArrayList<String> recipeLists = new ArrayList<String>();
     ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
@@ -53,6 +53,7 @@ public class RecipeList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_grocery_list_list);
 
         //TODO: populate recipeLists using db
         HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
@@ -68,7 +69,7 @@ public class RecipeList extends Activity {
       //  System.out.println("isnewthingnull: " + (getIntent().getStringExtra("RECIPE_NAME") ==null));
         //Log.d(TAG, "is new thing null: " + (getIntent().getStringExtra("RECIPE_NAME") ==null));
        // recipeLists.add(getIntent().getStringExtra("RECIPE_NAME"));
-        setContentView(R.layout.activity_grocery_list_list);
+
         populateListView();
         ImageButton deleteGroceryListButton = (ImageButton)findViewById(R.id.deleteGroceryListButton);
     /*    deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
