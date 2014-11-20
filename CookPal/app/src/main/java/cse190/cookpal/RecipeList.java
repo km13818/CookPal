@@ -117,7 +117,7 @@ public class RecipeList extends Activity {
                     if(checkBoxes.get(i).isChecked() && recipeLists.contains(checkBoxes.get(i).getText())) {
 
                         //test code
-                        //TODO: DELETE FROM DB
+                        //TODO: DELETE FROM DB ->onrestart()
 
                         recipeLists.remove(checkBoxes.get(i).getText());
 
