@@ -1,13 +1,10 @@
 package cse190.cookpal;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.ActionBar;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,6 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.facebook.Session;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseDrawerActivity extends Activity {
 
@@ -156,6 +158,11 @@ public class BaseDrawerActivity extends Activity {
                 intent = new Intent(this, SettingsActivity.class);
                 break;
             case DRAWER_LOGOUT:
+                if (Session.getActiveSession() != null) {
+                    Session.getActiveSession().closeAndClearTokenInformation();
+                }
+
+                Session.setActiveSession(null);
                 intent = new Intent(this, AccountActivity.class);
                 break;
             default:

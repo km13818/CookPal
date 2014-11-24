@@ -42,7 +42,7 @@ public class RestFulWebservice extends Activity {
             public void onClick(View arg0) {
 
                 // WebServer Request URL
-                String serverURL = "http://androidexample.com/media/webservice/JsonReturn.php";
+                String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/user.json";
 
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new LongOperation().execute(serverURL);

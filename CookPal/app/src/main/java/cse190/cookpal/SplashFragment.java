@@ -1,13 +1,20 @@
 package cse190.cookpal;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.facebook.Session;
+import com.facebook.SessionState;
+
+import java.util.List;
 
 
 /**
@@ -28,6 +35,7 @@ public class SplashFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button signup;
 
 //    private OnFragmentInteractionListener mListener;
 
@@ -59,6 +67,7 @@ public class SplashFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -66,7 +75,44 @@ public class SplashFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.splash,
                 container, false);
+        signup = (Button) view.findViewById(R.id.signup_button);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                openFacebookSession();
+            }
+        });
         return view;
+    }
+
+    private void openFacebookSession(){
+        Session.openActiveSession(getActivity(), true, new Session.StatusCallback() {
+            @Override
+            public void call(Session session, SessionState state, Exception exception) {
+                if (exception != null) {
+                    Log.d("Facebook", exception.getMessage());
+                }
+                Log.d("Facebook", "Session State: " + session.getState());
+                // you can make request to the /me API or do other stuff like post, etc. here
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Session.getActiveSession().onActivityResult(this.getActivity(), requestCode, resultCode, data);
+    }
+
+    private static Session openActiveSession(Activity activity, boolean allowLoginUI, List permissions, Session.StatusCallback callback) {
+        Session.OpenRequest openRequest = new Session.OpenRequest(activity).setPermissions(permissions).setCallback(callback);
+        Session session = new Session.Builder(activity).build();
+        if (SessionState.CREATED_TOKEN_LOADED.equals(session.getState()) || allowLoginUI) {
+            Session.setActiveSession(session);
+            session.openForRead(openRequest);
+            return session;
+        }
+        return null;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
