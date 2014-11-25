@@ -175,6 +175,7 @@ public class BaseDrawerActivity extends Activity {
 
         mDrawerList.setItemChecked(position, true);
         setTitle(dataList.get(position).getItemName());
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
         mDrawerLayout.closeDrawer(mDrawerList);
 
     }
