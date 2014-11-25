@@ -27,8 +27,4 @@
             android:background="@drawable/com_facebook_picker_default_separator_color"
             />
 </LinearLayout>
-<<<<<<< HEAD
 <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_search_box.xml -->
-=======
-<!-- From: file:/C:/Users/Kevin%20Ma/Desktop/CookPal/CookPal/facebook/res/layout/com_facebook_picker_search_box.xml -->
->>>>>>> fce08c2790b70aba726c4dda6a99741a39010db0

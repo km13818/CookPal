@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,14 +12,10 @@ import android.widget.TextView;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,13 +25,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RestFulWebservice extends Activity {
     /** Called when the activity is first created. */
@@ -54,12 +45,7 @@ public class RestFulWebservice extends Activity {
             public void onClick(View arg0) {
 
                 // WebServer Request URL
-<<<<<<< HEAD
-                String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/user.json";
-
-=======
                 String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/dbaccess.jsp";
->>>>>>> fce08c2790b70aba726c4dda6a99741a39010db0
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new LongOperation().execute(serverURL);
             }
