@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:orientation="vertical"
         android:layout_marginTop="0dp"
-        android:background="?android:attr/activatedBackgroundIndicator"
+        android:background="@android:color/transparent"
     >
 
         <RelativeLayout
