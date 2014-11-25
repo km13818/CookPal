@@ -4,29 +4,41 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RestFulWebservice extends Activity {
-
-
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,8 +54,12 @@ public class RestFulWebservice extends Activity {
             public void onClick(View arg0) {
 
                 // WebServer Request URL
+<<<<<<< HEAD
                 String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/user.json";
 
+=======
+                String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/dbaccess.jsp";
+>>>>>>> fce08c2790b70aba726c4dda6a99741a39010db0
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new LongOperation().execute(serverURL);
             }
@@ -92,8 +108,8 @@ public class RestFulWebservice extends Activity {
         protected Void doInBackground(String... urls) {
 
             /************ Make Post Call To Web Server ***********/
-            BufferedReader reader=null;
-
+            BufferedReader reader = null;
+            InputStream is = null;
             // Send data
             try
             {
@@ -102,16 +118,19 @@ public class RestFulWebservice extends Activity {
                 URL url = new URL(urls[0]);
 
                 // Send POST data request
+                HttpGet httppost = new HttpGet(url.toString()+"?fb_id=10204925045306752");
+                httppost.setHeader(HTTP.CONTENT_TYPE, "application/json");
+                HttpResponse response = Client.execute(httppost);
+                StatusLine status = response.getStatusLine();
+                if (status.getStatusCode() != 200) {
+                    throw new IOException("Invalid response from server [" + status.toString() + "]");
+                }
 
-                URLConnection conn = url.openConnection();
-                conn.setDoOutput(true);
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write( data );
-                wr.flush();
-
+                HttpEntity entity = response.getEntity();
+                is = entity.getContent();
                 // Get the server response
 
-                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                reader = new BufferedReader(new InputStreamReader(is));
                 StringBuilder sb = new StringBuilder();
                 String line = null;
 
@@ -133,7 +152,7 @@ public class RestFulWebservice extends Activity {
             {
                 try
                 {
-
+                    is.close();
                     reader.close();
                 }
 
@@ -171,7 +190,7 @@ public class RestFulWebservice extends Activity {
 
                     /***** Returns the value mapped by name if it exists and is a JSONArray. ***/
                     /*******  Returns null otherwise.  *******/
-                    JSONArray jsonMainNode = jsonResponse.optJSONArray("Android");
+                    JSONArray jsonMainNode = jsonResponse.optJSONArray("user");
 
                     /*********** Process each JSON Node ************/
 
@@ -184,13 +203,11 @@ public class RestFulWebservice extends Activity {
 
                         /******* Fetch node values **********/
                         String name       = jsonChildNode.optString("name").toString();
-                        String number     = jsonChildNode.optString("number").toString();
-                        String date_added = jsonChildNode.optString("date_added").toString();
+                        String number     = jsonChildNode.optString("fb_id").toString();
 
 
                         OutputData += " Name           : "+ name +" "
-                                + "Number      : "+ number +" "
-                                + "Time                : "+ date_added +" "
+                                + "fb_id         : "+ number +" "
                                 +"--------------------------------------------------";
 
 

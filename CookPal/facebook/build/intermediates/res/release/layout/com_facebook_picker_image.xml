@@ -22,4 +22,8 @@
     android:layout_height="50dip"
     android:layout_gravity="center_vertical"
     android:src="@drawable/com_facebook_profile_default_icon" />
+<<<<<<< HEAD
 <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_image.xml -->
+=======
+<!-- From: file:/C:/Users/Kevin%20Ma/Desktop/CookPal/CookPal/facebook/res/layout/com_facebook_picker_image.xml -->
+>>>>>>> fce08c2790b70aba726c4dda6a99741a39010db0

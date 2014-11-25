@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -34,6 +35,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class RecipeList extends BaseDrawerActivity {
@@ -66,6 +68,9 @@ public class RecipeList extends BaseDrawerActivity {
         setContentView(R.layout.activity_grocery_list_list);
 
         //TODO: populate recipeLists using db
+        HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
+        recipeListRetrievalParams.put("fb_id",AccountActivity.getFbId());
+       // HttpResponse recipeListRetrievalResponse = HttpUtil.makeHttpPost(recipeListRetrievalParams);
 
         if(getIntent().getStringExtra("RECIPE_NAME") != null) {
             String newRecipe = new String(getIntent().getStringExtra("RECIPE_NAME").toString());
@@ -305,7 +310,7 @@ public class RecipeList extends BaseDrawerActivity {
                     if(checkBoxes.get(i).isChecked() && recipeLists.contains(checkBoxes.get(i).getText())) {
 
                         //test code
-                        //TODO: DELETE FROM DB
+                        //TODO: DELETE FROM DB ->onrestart()
 
                         recipeLists.remove(checkBoxes.get(i).getText());
 

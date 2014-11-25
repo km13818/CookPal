@@ -24,4 +24,8 @@
     <item android:state_focused="true"                                                             android:drawable="@drawable/com_facebook_picker_list_focused" />
     <item                                                                                          android:drawable="@android:color/transparent" />
 </selector>
+<<<<<<< HEAD
 <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_item_background.xml -->
+=======
+<!-- From: file:/C:/Users/Kevin%20Ma/Desktop/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_item_background.xml -->
+>>>>>>> fce08c2790b70aba726c4dda6a99741a39010db0
