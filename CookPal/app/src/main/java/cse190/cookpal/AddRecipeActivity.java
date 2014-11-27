@@ -52,7 +52,7 @@ public class AddRecipeActivity extends Activity {
                 insertRecipeParams.put("name", recipeName);
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
-               // HttpUtil.makeHttpPost(insertRecipeParams);
+                HttpUtil.makeHttpPost(insertRecipeParams);
 
 
                 //recipe_ingredient: id,account_id,recipe_id, name, quantity
@@ -63,6 +63,7 @@ public class AddRecipeActivity extends Activity {
                 int instructionLayoutChildrenCount = group.getChildCount();
                 Log.d("count=", String.valueOf(instructionLayoutChildrenCount));
 
+                //loop through and insert instructions
                 for(int i = 0;  i<instructionLayoutChildrenCount; i++ ) {
                     //instructionLayout has many horizontal linearlayout as children, who each have children containing EditText
                     View horizontalView = group.getChildAt(i);
@@ -84,7 +85,7 @@ public class AddRecipeActivity extends Activity {
                         insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
                         insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
                         insertRecipeInstructionParams.put("filter", "insert_instruction");
-                  //      HttpUtil.makeHttpPost(insertRecipeInstructionParams);
+                        HttpUtil.makeHttpPost(insertRecipeInstructionParams);
 
                     }
                 } //end for
@@ -92,6 +93,7 @@ public class AddRecipeActivity extends Activity {
                 ViewGroup addIngredientsLayoutGroup = (ViewGroup)findViewById(R.id.addIngredientsLayout);
                 int ingredientsLayoutChildrenCount = addIngredientsLayoutGroup.getChildCount();
 
+                //loop through and insert ingredients
                 for(int i = 0; i < ingredientsLayoutChildrenCount; i++) {
                     //ingredientsLayout has many horizontal linearlayout as children, who each have children containing EditText
                     View horizontalView = addIngredientsLayoutGroup.getChildAt(i);
@@ -110,7 +112,7 @@ public class AddRecipeActivity extends Activity {
                         insertIngredientParams.put("ingredient", ingredientEditText.getText().toString());
                         insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
                         insertIngredientParams.put("filter", "insert_ingredient");
-                    //    HttpUtil.makeHttpPost(insertIngredientParams);
+                        HttpUtil.makeHttpPost(insertIngredientParams);
                     }
                 } //end for
                 startActivity(intent);
