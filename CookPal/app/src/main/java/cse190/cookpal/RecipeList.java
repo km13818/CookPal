@@ -60,7 +60,8 @@ public class RecipeList extends BaseDrawerActivity {
 
         //TODO: populate recipeLists using db
         // WebServer Request URL
-        String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/user.json"; //fix this
+        String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?fb_id=" +
+                AccountActivity.getFbId();
         //new LongOperation().execute(serverRecipeListRequestURL);
 
         if(getIntent().getStringExtra("RECIPE_NAME") != null) {

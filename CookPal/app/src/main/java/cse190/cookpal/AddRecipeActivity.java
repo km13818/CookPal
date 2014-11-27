@@ -49,9 +49,10 @@ public class AddRecipeActivity extends Activity {
                 //INSERT RECIPE
                 //recipe: id, account_id, cookbook_type, name,
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
-                insertRecipeParams.put("name", recipeName);
+                insertRecipeParams.put("r_name", recipeName);
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
+                insertRecipeParams.put("cookbook_type", "private");
                 HttpUtil.makeHttpPost(insertRecipeParams);
 
 
@@ -72,6 +73,7 @@ public class AddRecipeActivity extends Activity {
                         //loop throuhg view's children to find EditTexts
                         int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
                         ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                        TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
                         EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
                         EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
                         EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
@@ -84,7 +86,9 @@ public class AddRecipeActivity extends Activity {
                         insertRecipeInstructionParams.put("instruction", instructionEditText.getText().toString());
                         insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
                         insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
+                        insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
                         insertRecipeInstructionParams.put("filter", "insert_instruction");
+
                         HttpUtil.makeHttpPost(insertRecipeInstructionParams);
 
                     }
@@ -109,7 +113,7 @@ public class AddRecipeActivity extends Activity {
                         HashMap<String,String> insertIngredientParams = new HashMap<String,String>();
                         insertIngredientParams.put("name", recipeName);
                         insertIngredientParams.put("fb_id", AccountActivity.getFbId());
-                        insertIngredientParams.put("ingredient", ingredientEditText.getText().toString());
+                        insertIngredientParams.put("ingr_name", ingredientEditText.getText().toString());
                         insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
                         insertIngredientParams.put("filter", "insert_ingredient");
                         HttpUtil.makeHttpPost(insertIngredientParams);

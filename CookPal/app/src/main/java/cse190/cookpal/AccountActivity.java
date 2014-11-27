@@ -202,7 +202,7 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
                 public void onCompleted(GraphUser user, Response response) {
                     if (user != null) {
                         // Display the parsed user info
-                        String url = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/dbaccess.jsp";
+                        String url = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/login_handler.jsp";
                         DefaultHttpClient httpclient = new DefaultHttpClient();
                         HttpPost httppost = new HttpPost(url);
 
