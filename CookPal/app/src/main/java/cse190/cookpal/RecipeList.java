@@ -1,5 +1,7 @@
 package cse190.cookpal;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,16 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,13 +28,11 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 
 public class RecipeList extends BaseDrawerActivity {
@@ -60,18 +59,19 @@ public class RecipeList extends BaseDrawerActivity {
 
         //TODO: populate recipeLists using db
         // WebServer Request URL
-        String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?fb_id=" +
+        String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
                 AccountActivity.getFbId();
-        //new LongOperation().execute(serverRecipeListRequestURL);
+        // http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?fb_id=10204925045306752&filter=select_recipes
+        new LongOperation().execute(serverRecipeListRequestURL);
 
-        if(getIntent().getStringExtra("RECIPE_NAME") != null) {
+       /* if(getIntent().getStringExtra("RECIPE_NAME") != null) {
             String newRecipe = new String(getIntent().getStringExtra("RECIPE_NAME").toString());
             Log.d(TAG, newRecipe + " added....");
             recipeLists.add(newRecipe);
-        }
+        }*/
 
         //TODO: pass in recipeLists array list here from db
-         populateListView();
+        // populateListView();
 
         ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
         addGroceryListButton.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +182,112 @@ public class RecipeList extends BaseDrawerActivity {
 
     /////////////////////////////////////////////Start JSON Retrieval code///////////////
     //TODO: refactor into util class
+    private class LongOperation  extends AsyncTask<String, Void, Void> {
 
+        // Required initialization
+
+        private final HttpClient Client = new DefaultHttpClient();
+        private String jsonReturnString;
+        private String jsonRetrievalErrorString = null;
+        private ProgressDialog Dialog = new ProgressDialog(RecipeList.this);
+        String data = "";
+
+        protected void onPreExecute() {
+            //Start Progress Dialog (Message)
+            recipeLists = new ArrayList<String>();
+        Log.d("recipelist", "onPreExecute.....");
+            Dialog.setMessage("Please wait..");
+            Dialog.show();
+        }
+
+        // Call after onPreExecute method
+        protected Void doInBackground(String... urls) {
+            Log.d("recipelist", "do in background.....");
+            /************ Make Post Call To Web Server ***********/
+            BufferedReader reader = null;
+
+            // Send data
+            try {
+
+                // Defined URL  where to send data
+                URL url = new URL(urls[0]);
+
+                // Send POST data request
+
+                URLConnection conn = url.openConnection();
+
+                // Get the server response
+
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while ((line = reader.readLine()) != null) {
+                    // Append server response in string
+                    sb.append(line + "");
+                }
+
+                // Append Server Response To jsonReturnString String
+                jsonReturnString = sb.toString();
+            } catch (Exception ex) {
+                jsonRetrievalErrorString = ex.getMessage();
+            } finally {
+                try {
+
+                    reader.close();
+                } catch (Exception ex) {
+                }
+            }
+
+            /*****************************************************/
+            return null;
+        }
+
+        protected void onPostExecute(Void unused) {
+            Log.d("recipelist", "onpostexecute.....");
+            // Close progress dialog
+            Dialog.dismiss();
+
+            //error
+            if (jsonRetrievalErrorString != null) {
+                Log.d("recipelist", "error.....: " + jsonRetrievalErrorString);
+                Context context = getApplicationContext();
+                CharSequence text = "Error retrieving recipes";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else {
+                /****************** Start Parse Response JSON Data *************/
+                Log.d("recipeList activity", "json return string: " + jsonReturnString);
+                JSONObject jsonResponse;
+//{"Kevin Ma's recipes:":[{"cookbook status":"0","recipe name":"recipeasdf"},{"cookbook status":"private","recipe name":"r"},{"cookbook status":"private","recipe name":"asdf1"},{"cookbook status":"private","recipe name":"fqwfe"}]}
+                try {
+
+                    /****** Creates a new JSONObject with name/value mappings from the JSON string. ********/
+                    jsonResponse = new JSONObject(jsonReturnString);
+
+                    Iterator jsonKeysIterator = jsonResponse.keys();
+
+                    while(jsonKeysIterator.hasNext()) {
+                        String key = jsonKeysIterator.next().toString();
+                        JSONArray recipeArray = (JSONArray) jsonResponse.get(key);
+                        for (int i = 0; i < recipeArray.length(); i++) {
+                            String recipeName = ((JSONObject)recipeArray.get(i)).get("recipe name").toString();
+
+                            Log.d("recipeList activity", "recipeName from db: " + recipeName);
+                            recipeLists.add(recipeName);
+                        }
+                    }
+                    populateListView();
+                    /****************** End Parse Response JSON Data *************/
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
     ///////////////////////////////////////////END JSON RETRIEVAL ///////////////////////////////////////////
 }

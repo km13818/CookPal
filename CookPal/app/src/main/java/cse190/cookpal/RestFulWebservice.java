@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -59,14 +60,14 @@ public class RestFulWebservice extends Activity {
         // Required initialization
 
         private final HttpClient Client = new DefaultHttpClient();
-        private String Content;
+        private String jsonReturnString;
         private String Error = null;
         private ProgressDialog Dialog = new ProgressDialog(RestFulWebservice.this);
         String data ="";
         TextView uiUpdate = (TextView) findViewById(R.id.output);
         TextView jsonParsed = (TextView) findViewById(R.id.jsonParsed);
         int sizeData = 0;
-        EditText serverText = (EditText) findViewById(R.id.serverText);
+    //    EditText serverText = (EditText) findViewById(R.id.serverText);
 
 
         protected void onPreExecute() {
@@ -77,14 +78,15 @@ public class RestFulWebservice extends Activity {
             Dialog.setMessage("Please wait..");
             Dialog.show();
 
-            try{
+         /*   try{
                 // Set Request parameter
                 data +="&" + URLEncoder.encode("data", "UTF-8") + "="+serverText.getText();
+                Log.d("restfulwebservice", "testing data: " + data);
 
             } catch (UnsupportedEncodingException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-            }
+            }*/
 
         }
 
@@ -104,11 +106,6 @@ public class RestFulWebservice extends Activity {
                 // Send POST data request
 
                 URLConnection conn = url.openConnection();
-                conn.setDoOutput(true);
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write( data );
-                wr.flush();
-
                 // Get the server response
 
                 reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -122,8 +119,8 @@ public class RestFulWebservice extends Activity {
                     sb.append(line + "");
                 }
 
-                // Append Server Response To Content String
-                Content = sb.toString();
+                // Append Server Response To jsonReturnString String
+                jsonReturnString = sb.toString();
             }
             catch(Exception ex)
             {
@@ -133,7 +130,6 @@ public class RestFulWebservice extends Activity {
             {
                 try
                 {
-
                     reader.close();
                 }
 
@@ -157,7 +153,7 @@ public class RestFulWebservice extends Activity {
             } else {
 
                 // Show Response Json On Screen (activity)
-                uiUpdate.setText( Content );
+                uiUpdate.setText(jsonReturnString);
 
                 /****************** Start Parse Response JSON Data *************/
 
@@ -167,31 +163,20 @@ public class RestFulWebservice extends Activity {
                 try {
 
                     /****** Creates a new JSONObject with name/value mappings from the JSON string. ********/
-                    jsonResponse = new JSONObject(Content);
+                    jsonResponse = new JSONObject(jsonReturnString);
 
                     /***** Returns the value mapped by name if it exists and is a JSONArray. ***/
                     /*******  Returns null otherwise.  *******/
-                    JSONArray jsonMainNode = jsonResponse.optJSONArray("user");
+                    JSONArray jsonArr = jsonResponse.optJSONArray("user");
 
                     /*********** Process each JSON Node ************/
 
-                    int lengthJsonArr = jsonMainNode.length();
+                    int lengthJsonArr = jsonArr.length();
 
                     for(int i=0; i < lengthJsonArr; i++)
                     {
-                        /****** Get Object for each JSON node.***********/
-                        JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
-
-                        /******* Fetch node values **********/
-                        String name       = jsonChildNode.optString("name").toString();
-                        String number     = jsonChildNode.optString("fb_id").toString();
-
-
-                        OutputData += " Name           : "+ name +" "
-                                + "fb_id         : "+ number +" "
-                                +"--------------------------------------------------";
-
-
+                        Object jsonChildNode = jsonArr.get(i);
+                        OutputData += jsonChildNode.toString();
                     }
                     /****************** End Parse Response JSON Data *************/
 
@@ -203,11 +188,7 @@ public class RestFulWebservice extends Activity {
 
                     e.printStackTrace();
                 }
-
-
             }
         }
-
     }
-
 }
