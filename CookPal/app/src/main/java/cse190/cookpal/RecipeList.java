@@ -3,8 +3,10 @@ package cse190.cookpal;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -27,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -39,38 +43,73 @@ public class RecipeList extends BaseDrawerActivity {
     private static final String TAG = "RecipeList";
 
     //TODO: potentially refactor. not sure if it's a good idea to have data structures as global vars in activity
-    ArrayList<String> recipeLists = new ArrayList<String>();
+    ArrayList<String> recipeList = new ArrayList<String>();
     ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
     LinearLayout thisLayout;
     PopupWindow deleteConfirmWindow;
     Button deleteConfirmButton;
     TextView deleteConfirmText;
     ImageButton deleteGroceryListButton;
+    String recipeWhosePictureWasTaken;
+    ImageView currRecipeImageView;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("recipelist", "onactivityresult");
+        if(requestCode == 0) {
+            if(data.getExtras() != null) {
+                Bitmap recipeImageBitMap = (Bitmap) data.getExtras().get("data");
+                Log.d("recipelist", "recipe image taken: " + recipeImageBitMap);
+
+                ByteArrayOutputStream imageBaos = new ByteArrayOutputStream();
+                recipeImageBitMap.compress(Bitmap.CompressFormat.JPEG,100, imageBaos );
+
+
+                currRecipeImageView.setImageBitmap(recipeImageBitMap);
+                Log.d("recipelist", "recipewhosepicturewastaken: "  + recipeWhosePictureWasTaken);
+                HashMap<String,String> insertImageParams = new HashMap<String,String>();
+                insertImageParams.put("r_name", recipeWhosePictureWasTaken);
+                insertImageParams.put("fb_id", AccountActivity.getFbId());
+                insertImageParams.put("image", new String(imageBaos.toByteArray()));
+                insertImageParams.put("filter", "add_image");
+                HttpUtil.makeHttpPost(insertImageParams);
+            }
+            else
+            {
+                Log.d("recipeist", "no picture was taken");
+            }
+        }
+
+    }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+    @Override
     protected void onRestart() {
-    //    setContentView(R.layout.activity_grocery_list_list);
+        Log.d("recipelist", "recipelist onrestart");
         populateListView();
+        super.onRestart();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grocery_list_list);
+        setContentView(R.layout.activity_recipe_list);
 
-        //TODO: populate recipeLists using db
+        //TODO: populate recipeList using db
         // WebServer Request URL
         String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
                 AccountActivity.getFbId();
-        // http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?fb_id=10204925045306752&filter=select_recipes
         new LongOperation().execute(serverRecipeListRequestURL);
 
-       /* if(getIntent().getStringExtra("RECIPE_NAME") != null) {
-            String newRecipe = new String(getIntent().getStringExtra("RECIPE_NAME").toString());
-            Log.d(TAG, newRecipe + " added....");
-            recipeLists.add(newRecipe);
-        }*/
 
-        //TODO: pass in recipeLists array list here from db
+
+        //TODO: pass in recipeList array list here from db
         // populateListView();
 
         ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
@@ -97,32 +136,23 @@ public class RecipeList extends BaseDrawerActivity {
             @Override
             public void onClick(View v) {
                 ListView recipeList = (ListView) findViewById(R.id.recipeListView);
-                /*
-                //getCheckedItemPositions not working right
-                SparseBooleanArray checked = groceryListList.getCheckedItemPositions();
 
-                int test1 = groceryListList.getAdapter().getCount();
-                for(int i = 0; i < groceryListList.getAdapter().getCount(); i++) {
-                    if(checked.get(i)) {
-                        recipeLists[i] = "deleted";
-                        onRestart();
-                    }
-                }*/
+                //TODO: instead of having global variable of checkboxes, just findElementById (more organized)
                 //checkBoxes has all checkboxes + junk at end. very very hacky
                 for(int i = 0; i < checkBoxes.size(); i++) {
                     String recipeName = (String)checkBoxes.get(i).getText();
                     Log.d(TAG, recipeName);
 
-                    if(checkBoxes.get(i).isChecked() && recipeLists.contains(checkBoxes.get(i).getText())) {
+                    if(checkBoxes.get(i).isChecked() && RecipeList.this.recipeList.contains(checkBoxes.get(i).getText())) {
 
                         //test code
-                        //TODO: DELETE FROM DB ->onrestart()
+                        //TODO: test DELETE FROM DB ->onrestart()
                         HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
                         deleteRecipeParams.put("name", recipeName);
                         deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
                         deleteRecipeParams.put("filter", "delete_recipe");
                         HttpUtil.makeHttpPost(deleteRecipeParams);
-                        recipeLists.remove(checkBoxes.get(i).getText());
+                        RecipeList.this.recipeList.remove(checkBoxes.get(i).getText());
                         checkBoxes.remove(i);
 
                     }
@@ -156,26 +186,40 @@ public class RecipeList extends BaseDrawerActivity {
         ListView list = (ListView) findViewById(R.id.recipeListView);
         list.setAdapter(recipeListAdapter);
 
-        //TODO: populate recipeLists arraylist from DB
-
     }
 
     private class RecipeListAdapter extends ArrayAdapter<String> {
         public RecipeListAdapter() {
-            super(RecipeList.this, R.layout.grocery_list, recipeLists);
+            super(RecipeList.this, R.layout.recipe_listview_entry, recipeList);
         }
 
         public RecipeListAdapter(ArrayList<String> recipeLists) {
-            super(RecipeList.this, R.layout.grocery_list, recipeLists);
+            super(RecipeList.this, R.layout.recipe_listview_entry, recipeLists);
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if(convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.grocery_list, parent, false);
+                convertView = getLayoutInflater().inflate(R.layout.recipe_listview_entry, parent, false);
             }
-            CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.groceryListView);
-            currCheckBox.setText(recipeLists.get(position));
+            final View thisConvertView = convertView;
+            final String recipeName = recipeList.get(position);
+            CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
+            currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
+            Button currAddPictureButton = (Button)convertView.findViewById(R.id.addPictureButton);
+            currAddPictureButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    recipeWhosePictureWasTaken = recipeName;
+                    currRecipeImageView = (ImageView) thisConvertView.findViewById(R.id.recipeEntryImageView);
+                    startActivityForResult(cameraIntent, 0);
+
+                }
+            });
+
+
             return convertView;
         }
     }
@@ -193,9 +237,9 @@ public class RecipeList extends BaseDrawerActivity {
         String data = "";
 
         protected void onPreExecute() {
+            Log.d("recipelist", "onPreExecute.....");
             //Start Progress Dialog (Message)
-            recipeLists = new ArrayList<String>();
-        Log.d("recipelist", "onPreExecute.....");
+            recipeList = new ArrayList<String>();
             Dialog.setMessage("Please wait..");
             Dialog.show();
         }
@@ -277,7 +321,7 @@ public class RecipeList extends BaseDrawerActivity {
                             String recipeName = ((JSONObject)recipeArray.get(i)).get("recipe name").toString();
 
                             Log.d("recipeList activity", "recipeName from db: " + recipeName);
-                            recipeLists.add(recipeName);
+                            recipeList.add(recipeName);
                         }
                     }
                     populateListView();
@@ -290,4 +334,5 @@ public class RecipeList extends BaseDrawerActivity {
         }
     }
     ///////////////////////////////////////////END JSON RETRIEVAL ///////////////////////////////////////////
+
 }
