@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name=".RecipeList"
-            android:label="@string/APP_NAME" >
+            android:label="@string/title_activity_cookbook" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

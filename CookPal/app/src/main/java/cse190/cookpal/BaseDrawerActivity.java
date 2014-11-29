@@ -86,10 +86,10 @@ public class BaseDrawerActivity extends Activity {
                 GravityCompat.START);
 
         // Add Drawer Item to dataList
-        dataList.add(new DrawerItem(getString(R.string.title_activity_cookbook), R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(getString(R.string.title_activity_assistant), R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(getString(R.string.title_activity_settings), R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(getString(R.string.title_activity_logout), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_cookbook), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_assistant), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_settings), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_logout), R.drawable.ic_action_settings));
 
         adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
                 dataList);
@@ -104,12 +104,10 @@ public class BaseDrawerActivity extends Activity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             public void onDrawerClosed(View view) {
-                getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu();
             }
 
             public void onDrawerOpened(View drawerView) {
-                getActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu();
             }
         };
@@ -189,7 +187,6 @@ public class BaseDrawerActivity extends Activity {
         }
 
         mDrawerList.setItemChecked(position, true);
-        setTitle(dataList.get(position).getItemName());
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
         mDrawerLayout.closeDrawer(mDrawerList);
 
