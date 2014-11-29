@@ -8,36 +8,23 @@
     </head>
     <body>
       
-		<h1 align="center"><img src="cookpal.png" align="center"></img></h1>
+		<h1 align="center">COOKPAL DB TESTER</h1>
       <br>
       <div class="row">
-         <div class="large-3 columns">
+         <div class="large-12 columns text-center">
             <fieldset>
-               <legend>Nagivation</legend>
-         	<ul class="side-nav">
-               <li><a href="#">Retrieve Grocery List</a></li>
-               <li><a href="#">Retrieve Recipes</a></li>
-               <li><a href="http://google.com">Go to Google</a></li>
-            </ul>
-            </fieldset>
-         </div>
-         <div class="large-9 columns text-center">
-         <fieldset>
-          <legend>Find Account</legend>
-         <h2></h2>
-
-             <form method="POST" action="dbaccess.jsp">
-            <div class="small-4 columns">             
-               Name: <input type="text" value="" name="username"/>
+             <legend>Search by Filter</legend>
+                <form method="POST" action="request_handler.jsp">
+               <div class="small-7 columns">
+                  User Account<input type="text" value="" name="fb_id"/>
+                  Recipe Name<input type="text" value="" name="r_name">      
+                  FILTER <input type="text" value="" name="filter"/>
+               </div>
+               <div class="small-5 columns">
+                  <input type="submit" value="GO!" class="large secondary button expand"/>
+               </div>
+               </form>         
             </div>
-            <div class="small-5 columns">
-               Facebook ID (16 digits): <input type="text" value="" name="fb_id"/>
-            </div>
-            <div class="small-3 columns">
-               <input type="submit" value="GO!" class="small secondary button"/>
-            </div>
-            </form>         
-         </div>
       </div>
     </body>
     <script>
