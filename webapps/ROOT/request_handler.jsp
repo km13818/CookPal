@@ -8,7 +8,8 @@
    response.setContentType("application/json");
 
    //response field declarations: the login id is mandatory for all activities 
-
+   InputStream recipeImage = request.getInputStream();
+   
    //filter and ACC_ID
    String handleFilter = request.getParameter("filter");
    String accId = request.getParameter("fb_id"); 	
@@ -17,7 +18,6 @@
    String recipeCBType = request.getParameter("cookbook_type");
    String recipeName = request.getParameter("r_name");
    String recipeId = request.getParameter("recipe_id");
-   String recipeImageEncoded = request.getParameter("images");
 
    //RECIPE INSTRUCTIONS FIELDS
    String recipeInstruction = request.getParameter("instruction");
@@ -62,13 +62,14 @@
       //actions
       //a new recipe wants to be added to the DB
       if(handleFilter.equals("insert_recipe")) {
-         query = "INSERT INTO recipe (name, account_id, cookbook_type, image) VALUES (?, ?, ?, ?)";
+         query = "INSERT INTO recipe (name, account_id, cookbook_type) VALUES (?, ?, ?)";
          pstmt = conn.prepareStatement(query);     
+         
+         byte[] decoded = Base64.decodeBase64(recipeImageEncoded);
          conn.setAutoCommit(false);       
          pstmt.setString(1, recipeName);
          pstmt.setString(2, accId);
          pstmt.setString(3, recipeCBType);
-         pstmt.setString(4, recipeImageEncoded);
          pstmt.executeUpdate(); 
          conn.commit();
          conn.setAutoCommit(true);         
@@ -91,8 +92,20 @@
          out.flush();
       }
       // deletes recipes with name for a certain user id
+      // causes a cascading deletion that removes all corresponding ingredients and instructions
       else if(handleFilter.equals("delete_recipe")) { 
-         query = "DELETE FROM recipes WHERE account_id = ? AND name = ?";
+         
+         query = "DELETE FROM recipe WHERE account_id = ? AND name = ?";
+         pstmt = conn.prepareStatement(query);   
+         
+         conn.setAutoCommit(false);
+         pstmt.setString(1, accId);
+         pstmt.setString(2, recipeName);
+         pstmt.executeUpdate(); 
+         conn.commit();
+         conn.setAutoCommit(true);        
+
+         query = "DELETE FROM recipe_ingredient WHERE account_id = ? AND recipe_name = ?";
          pstmt = conn.prepareStatement(query);   
          
          conn.setAutoCommit(false);
@@ -101,6 +114,31 @@
          pstmt.executeUpdate(); 
          conn.commit();
          conn.setAutoCommit(true);         
+         
+         query = "DELETE FROM recipe_instruction WHERE account_id = ? AND recipe_name = ?";
+         pstmt = conn.prepareStatement(query);   
+         
+         conn.setAutoCommit(false);
+         pstmt.setString(1, accId);
+         pstmt.setString(2, recipeName);
+         pstmt.executeUpdate(); 
+         conn.commit();
+         conn.setAutoCommit(true);                  
+         
+      }
+      // adds an image to a recipe
+      else if(handleFilter.equals("add_image")) {
+         query = "UPDATE recipe SET image = ? WHERE account_id = ? AND name = ?";
+         pstmt = conn.prepareStatement(query);   
+         
+         conn.setAutoCommit(false);
+         pstmt.setBlob(1, recipeImage);
+         pstmt.setString(2, accId);
+         pstmt.setString(3, recipeName);
+         pstmt.executeUpdate(); 
+         conn.commit();
+         conn.setAutoCommit(true);   
+      
       }
       // inserts an ingredient to the corresponding recipe
       else if(handleFilter.equals("insert_ingredient")) {

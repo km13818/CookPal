@@ -2,32 +2,83 @@
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <title>Team Cookpal HomePage</title>
+        <title>Team Cookpal DB Tester</title>
         <link rel="stylesheet" href="css/foundation.css">
         <script src="js/vendor/custom.modernizr.js"></script>        
     </head>
     <body>
       
-		<h1 align="center">COOKPAL DB TESTER</h1>
-      <br>
+		<h1 align="center">CookPal Database Tester</h1>
+      <br>   
       <div class="row">
          <div class="large-12 columns text-center">
             <fieldset>
-             <legend>Search by Filter</legend>
-                <form method="POST" action="request_handler.jsp">
-               <div class="small-7 columns">
-                  User Account<input type="text" value="" name="fb_id"/>
-                  Recipe Name<input type="text" value="" name="r_name">      
-                  FILTER <input type="text" value="" name="filter"/>
+             <legend>Perform Table Options (Only Selects Working)</legend>
+               <form method="POST" action="dbaccess.jsp">
+               <div class="row">
+                  <div class="large-6 columns">
+                    <label>Operation</label>
+                    <input type="text" id="op" value="" name="operation">
+                  </div>
+                  <div class="large-6 columns">
+                    <label>Table Name</label>
+                    <input type="text" id="tbl" value="" name="table">
+                  </div>
                </div>
-               <div class="small-5 columns">
-                  <input type="submit" value="GO!" class="large secondary button expand"/>
+               <div class="row">              
+                  <div class="large-6 columns">
+                      <label>Where cond1.col</label>
+                        <input type="text" id="cond1col" value="" name="col1">
+                      <label>Where cond2.col</label>
+                        <input type="text" id="cond2col" value="" name="col2">  
+                  </div>
+                  <div class="large-6 columns">
+                      <label>Where cond1.val</label>
+                        <input type="text" id="cond1val" value="" name="col1v">
+                      <label>Where cond2.val</label>
+                        <input type="text" id="cond2val" value="" name="col2v">  
+                  </div>               
                </div>
-               </form>         
+               <div class="row">
+                  <div class="large-12 columns">
+                     <input type="submit" value="Submit" class="button">
+                  </div>
+               </div>   
+               </form>   
+            </fieldset>      
+         </div>
+         <div class="row">
+            <div class="large-12 columns">
+            <div class="large-6 columns">
+            <fieldset>
+            <button onclick="myQuery()" class="secondary button">Preview Query</button>
+            <p>
+               <b id="op-name"></b> * FROM <b id="table-name"></b> WHERE
+               <b id="c1col"></b> = "<b id="c1var"></b>" AND
+               <b id="c2col"></b> = "<b id="c2var"></b>"  
+            </p>
+            </fieldset>
             </div>
+            </div>
+         </div>
       </div>
     </body>
     <script>
+         function myQuery() {
+            var op = document.getElementById("op").value;
+            var tb = document.getElementById("tbl").value;
+            var c1c = document.getElementById("cond1col").value;
+            var c1v = document.getElementById("cond1val").value;
+            var c2c = document.getElementById("cond2col").value;
+            var c2v = document.getElementById("cond2val").value;            
+            document.getElementById("op-name").innerHTML = op;
+            document.getElementById("table-name").innerHTML = tb;
+            document.getElementById("c1col").innerHTML = c1c;   
+            document.getElementById("c1var").innerHTML = c1v;     
+            document.getElementById("c2col").innerHTML = c2c;      
+            document.getElementById("c2var").innerHTML = c2v;                                    
+         }
+    
         document.write('<script src=/js/vendor/'
         + ('__proto__' in {} ? 'zepto' : 'jquery')
         + '.js><\/script>');
