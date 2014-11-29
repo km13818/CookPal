@@ -1,112 +1,119 @@
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<body>
+<html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <title>DB Access</title>
+        <title>Team Cookpal DB Tables!</title>
         <link rel="stylesheet" href="css/foundation.css">
-        <script src="js/vendor/custom.modernizr.js"></script>
+        <script src="js/vendor/custom.modernizr.js"></script>        
     </head>
     <body>
-<%@page import="java.sql.*"%>
-<%@page import="java.util.*"%>
-
-<%
-    String username = request.getParameter("username");
-    String fb_id = request.getParameter("fb_id");
-
-    %>
+    
     <div class="row">
-      <h5><%=request.getParameter("username")%></h5>
-      <h5><%=request.getParameter("fb_id")%></h5>    
-    </div>
-    <%
-    
-    Connection conn = null;
-	 PreparedStatement pstmt = null;
-    PreparedStatement pstmt2 = null;
-    ResultSet rs = null;
-    ResultSet rs2 = null;
-    
-    boolean isInDB = false;
-    
-    if(username == null || fb_id == null) {
-      %>
-      <!-- if no input is passed in (should never happen) -->
-      <div class="row">
-            <div class="large-12 large-centered columns text-center">
-                <div data-alert class="alert-box alert">
-                    <a href="index.html">An error occured. Go back.</a>
-                </div>
-            </div>      
-        </div>
-      <%
-    }
-    else {
-    try {
-      Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookPal", "root", "");
-      Statement stmt = conn.createStatement();
-		
-      //check if the account is already in the database
+      <h3>Here's your table...</h3>
+      <div class="large 8-columns">
+<%@page import="java.sql.*"%>
+<%@page import="java.io.*"%>
+<%
+   String op = request.getParameter("operation");
+   String tbl = request.getParameter("table");
+   String c1c = request.getParameter("col1");
+   String c2c = request.getParameter("col2");
+   String c1v = request.getParameter("col1v");
+   String c2v = request.getParameter("col2v");
    
-      String findQuery = "SELECT * FROM account WHERE fb_id = ?";
-      pstmt = conn.prepareStatement(findQuery);      
-      pstmt.setString(1, fb_id);
-      rs = pstmt.executeQuery();
-		while(rs.next()) {
-         //if there is a match for fb id,
-         if(rs.getString("fb_id").equals(fb_id))  {
-            %><h1>Hello <%=rs.getString("username")%>! Welcome Back!</h1><%
-            isInDB = true;
-            break;
-         }
-      }
-      
-      if(!isInDB) {
-         String newAcc = "INSERT INTO account (username, fb_id) VALUES (?, ?)";
-         pstmt2 = conn.prepareStatement(newAcc);
-         conn.setAutoCommit(false); 
-         pstmt2.setString(1, username);
-         pstmt2.setString(2, fb_id);
-         pstmt2.executeUpdate();
-         
-         conn.commit();
-         conn.setAutoCommit(true);
-         
-            %><h1>Hello new user!</h1><%
-      }
-    }
-    catch (NullPointerException e) {
-		%><h1>oops! Something went wrong!</h1><%
-    }
-    finally {
-        // Release resources in a finally block in reverse-order of
-        // their creation
+   String query = ""; 
+   int condCount = 2;
+   Connection conn = null;
+   PreparedStatement pstmt = null;
+   ResultSet rs = null;
+    		
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		  conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CookPal", "root", "");
+		  Statement stmt = conn.createStatement();
+        //remove the where clause
+        if(c1c.equals("") || c1v.equals("")) {
+         condCount--;
+        }
+        if(c2c.equals("") || c2v.equals("")) {
+         condCount--;
+        }
+        
+        if(condCount == 0) {
+           query = op + " * FROM " + tbl; 
+        	  pstmt = conn.prepareStatement(query);   
+        }
+        else if(condCount == 1) {
+           query = op + " * FROM " + tbl + " WHERE " + c1c + " = ?";          
+           pstmt = conn.prepareStatement(query);
+           pstmt.setString(1, c1v); 
+        }
+        else {
+           query = op + " * FROM " + tbl + " WHERE " + c1c + " = ? AND " + c2c + " = ?";
+           pstmt = conn.prepareStatement(query);
+           pstmt.setString(1, c1v);
+           pstmt.setString(2, c2v);              
+        }
+		  rs = pstmt.executeQuery();
+        ResultSetMetaData metadata = rs.getMetaData();
+        int columnCount = metadata.getColumnCount();
+        %>
+          <table>
+            <tr>
+            <%
+            for (int i = 1; i <= columnCount; i++) {
+              %>
+                 <th><%=metadata.getColumnName(i)%></th>
+            <%
+            }
+            %></tr>
+        <%
+        while(rs.next()) {
+            %><tr><%
+            for (int i = 1; i <= columnCount; i++) {
+              %>
+                 <td><%=rs.getString(i)%></td>
+            <%
+            }
+            %></tr><%
 
-        if (rs != null) {
-            try {
-                rs.close();
-            } catch (SQLException e) { } // Ignore
-            rs = null;
         }
-        if (pstmt != null) {
-            try {
-                pstmt.close();
-            } catch (SQLException e) { } // Ignore
-            pstmt = null;
-        }
+        %></table><%
+	}
+	catch (SQLException e) {
+      %><div class="row">
+            Something Went Wrong!
+         </div><%
+	}
+	finally {
+		// Release resources in a finally block in reverse-order of
+		// their creation
 		
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) { } // Ignore
-            conn = null;
-        }
-    } 
-    }
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (SQLException e) { } // Ignore
+			rs = null;
+		}        
+		
+		if (pstmt != null) {
+			try {
+				pstmt.close();
+			} catch (SQLException e) { } // Ignore
+			pstmt = null;
+		}
+		
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) { } // Ignore
+			conn = null;
+		}
+	} 
 %>	
-	
+      </div>
+       <a href="index.html" class="button small">Go back!</a>
+    </div>  
+
     </body>
     <script>
         document.write('<script src=/js/vendor/'
@@ -114,5 +121,5 @@
         + '.js><\/script>');
     </script>
     <script src="js/foundation.min.js"></script>
-    <script>$(document).foundation();</script>    
+    <script>$(document).foundation();</script>
 </html>
