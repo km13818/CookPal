@@ -55,10 +55,13 @@ public class RecipeList extends BaseDrawerActivity {
 
     }
 
-
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     protected void onRestart() {
+        super.onRestart();
     //    setContentView(R.layout.activity_grocery_list_list);
         populateListView();
     }
