@@ -337,7 +337,6 @@ containing a value of this type.
         public static int standard=0x7f050000;
         public static int top=0x7f050005;
     }
-
     public static final class layout {
         public static int com_facebook_friendpickerfragment=0x7f030000;
         public static int com_facebook_login_activity_layout=0x7f030001;

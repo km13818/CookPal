@@ -45,11 +45,12 @@ public class BaseDrawerActivity extends Activity {
 
     protected void onResume() {
         super.onResume();
-        //setDrawerSelectedItem(getCurrentDrawerItem());
+        setDrawerSelectedItem(getCurrentDrawerItem());
     }
 
     public void finish() {
         super.finish();
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
     }
 
     @Override
@@ -113,6 +114,7 @@ public class BaseDrawerActivity extends Activity {
             }
         };
 
+        mDrawerToggle.setDrawerIndicatorEnabled(isDrawerIndicatorEnabled());
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         //if (savedInstanceState == null) {
@@ -121,13 +123,22 @@ public class BaseDrawerActivity extends Activity {
 
     }
 
-    /*private void setDrawerSelectedItem(int menuItemPosition) {
-
+    private void setDrawerSelectedItem(int menuItemPosition) {
+        if (isDrawerIndicatorEnabled() && menuItemPosition != -1) {
+            mDrawerList.setItemChecked(menuItemPosition, true);
+        }
     }
 
     private int getCurrentDrawerItem() {
-
-    }*/
+        if (this instanceof RecipeList) {
+            return DRAWER_COOKBOOK;
+        } else if (this instanceof AssistantActivity) {
+            return DRAWER_ASSISTANT;
+        } else if (this instanceof SettingsActivity) {
+            return DRAWER_SETTINGS;
+        }
+        return -1;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -171,6 +182,10 @@ public class BaseDrawerActivity extends Activity {
 
         if (intent != null) {
             startActivity(intent);
+
+            if (!(this instanceof RecipeList)) {
+                finish();
+            }
         }
 
         mDrawerList.setItemChecked(position, true);
@@ -181,22 +196,72 @@ public class BaseDrawerActivity extends Activity {
     }
 
     @Override
+    public void onBackPressed() {
+        if (isDrawerOpen()) {
+            closeDrawer();
+            return;
+        }
+        super.onBackPressed();
+    }
+
+    protected boolean isDrawerOpen() {
+        return mDrawerLayout.isDrawerOpen(mDrawerList);
+    }
+
+    protected void closeDrawer() {
+        mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+    protected void openDrawer() {
+        mDrawerLayout.openDrawer(mDrawerList);
+    }
+
+    protected boolean isDrawerEnabled() {
+        return true;
+    }
+
+    private boolean toggleDrawer() {
+        if (isDrawerIndicatorEnabled()) {
+            if (mDrawerLayout.isDrawerVisible(mDrawerList)) {
+                mDrawerLayout.closeDrawer(mDrawerList);
+            } else {
+                mDrawerLayout.openDrawer(mDrawerList);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /** Override this to disable drawer indicator. */
+    protected boolean isDrawerIndicatorEnabled() {
+        return true;
+    }
+
+
+    @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
         getActionBar().setTitle(mTitle);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                return toggleDrawer();
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return false;
     }
+
+    /*@Override
+    public void setActionBarView(Activity activity) {
+        if (isDrawerOpen()) {
+            getActionBar().setCustomView(null);
+        } else {
+            super.setActionBarView(activity);
+        }
+    }*/
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
