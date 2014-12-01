@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".RecipeList"
-            android:label="@string/title_activity_cookbook" >
+            android:label="RECIPE"
+            android:theme="@style/RecipeABTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sign_in_button_top_margin">200dp</dimen>
+    <dimen name="sign_up_button_top_margin">130dp</dimen>
+    <dimen name="sign_up_button_bottom_margin">30dp</dimen>
+    <dimen name="sign_in_button_bottom_margin">30dp</dimen>
+    <dimen name="login_signup_width">300dp</dimen>
+    <dimen name="login_signup_height">55dp</dimen>
+
+</resources>

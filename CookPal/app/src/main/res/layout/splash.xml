@@ -8,19 +8,19 @@
 
     <com.facebook.widget.LoginButton
         android:id="@+id/login_button"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
+        android:layout_width="230dp"
+        android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="900dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginTop="@dimen/sign_in_button_top_margin"
+         />
 
     <Button
         android:id="@+id/signup_button"
         android:background="@drawable/signup"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="130dp"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginTop="@dimen/sign_up_button_top_margin"
+        />
 
 </LinearLayout>
