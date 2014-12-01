@@ -1,11 +1,11 @@
 package cse190.cookpal;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -19,7 +19,7 @@ import com.facebook.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseDrawerActivity extends Activity {
+public class BaseDrawerActivity extends FragmentActivity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
