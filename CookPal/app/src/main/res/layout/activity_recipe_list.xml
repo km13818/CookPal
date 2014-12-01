@@ -62,6 +62,16 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <EditText
+            android:paddingTop="20px"
+            android:id="@+id/serverText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:id="@+id/GetServerData"/>
 
         <ListView
             android:layout_width="wrap_content"

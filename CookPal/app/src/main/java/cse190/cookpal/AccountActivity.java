@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -46,6 +47,7 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
     private boolean isResumed = false;
     private UiLifecycleHelper uiHelper;
     private MenuItem settings;
+    private Button signup;
     public static String fb_id;
     //public SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
 
@@ -72,6 +74,7 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
             }
         }
         transaction.commit();
+
     }
 
     private void showFragment(int fragmentIndex, boolean addToBackStack) {
