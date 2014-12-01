@@ -52,6 +52,8 @@ public class RecipeList extends BaseDrawerActivity {
     ImageButton deleteGroceryListButton;
     String recipeWhosePictureWasTaken;
     ImageView currRecipeImageView;
+
+    //called after picture is taken with requestCode 0
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("recipelist", "onactivityresult");
@@ -65,6 +67,7 @@ public class RecipeList extends BaseDrawerActivity {
 
 
                 currRecipeImageView.setImageBitmap(recipeImageBitMap);
+                Log.d("recipeList", "recipeimagebaos: " + imageBaos);
                 Log.d("recipelist", "recipewhosepicturewastaken: "  + recipeWhosePictureWasTaken);
                 HashMap<String,String> insertImageParams = new HashMap<String,String>();
                 insertImageParams.put("r_name", recipeWhosePictureWasTaken);
