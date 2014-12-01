@@ -60,7 +60,6 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
         android:id="@+id/deleteGroceryListButton"
         android:clickable="true"
         android:src="@android:drawable/ic_menu_delete"/>
@@ -103,8 +102,6 @@
             android:gravity="center"
             android:layout_below="@+id/addGroceryListButton"
             android:layout_centerHorizontal="true" />
-
-
 
         <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/pager"

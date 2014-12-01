@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sign_in_button_top_margin">400dp</dimen>
+    <dimen name="sign_up_button_top_margin">110dp</dimen>
+
+</resources>
