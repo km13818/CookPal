@@ -58,7 +58,9 @@ import java.util.List;
  * the {@link #setSession(com.facebook.Session)} method.
  */
 public class LoginButton extends Button {
-    
+
+
+
     public static enum ToolTipMode {
         /**
          * Default display mode. A server query will determine if the tool tip should be displayed
