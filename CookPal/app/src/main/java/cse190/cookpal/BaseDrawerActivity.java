@@ -33,7 +33,7 @@ public class BaseDrawerActivity extends Activity {
 
     private static final int DRAWER_COOKBOOK = 0;
     private static final int DRAWER_ASSISTANT = 1;
-    private static final int DRAWER_SETTINGS = 2;
+    private static final int DRAWER_SHARE = 2;
     private static final int DRAWER_LOGOUT = 3;
 
     @Override
@@ -88,7 +88,7 @@ public class BaseDrawerActivity extends Activity {
         // Add Drawer Item to dataList
         dataList.add(new DrawerItem(getString(R.string.nav_title_cookbook), R.drawable.ic_action_settings));
         dataList.add(new DrawerItem(getString(R.string.nav_title_assistant), R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(getString(R.string.nav_title_settings), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_share), R.drawable.ic_action_settings));
         dataList.add(new DrawerItem(getString(R.string.nav_title_logout), R.drawable.ic_action_settings));
 
         adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
@@ -132,8 +132,8 @@ public class BaseDrawerActivity extends Activity {
             return DRAWER_COOKBOOK;
         } else if (this instanceof AssistantActivity) {
             return DRAWER_ASSISTANT;
-        } else if (this instanceof SettingsActivity) {
-            return DRAWER_SETTINGS;
+        } else if (this instanceof ShareActivity) {
+            return DRAWER_SHARE;
         }
         return -1;
     }
@@ -160,11 +160,11 @@ public class BaseDrawerActivity extends Activity {
                 }
                 intent = new Intent(this, AssistantActivity.class);
                 break;
-            case DRAWER_SETTINGS:
-                if (this instanceof SettingsActivity) {
+            case DRAWER_SHARE:
+                if (this instanceof ShareActivity) {
                     break;
                 }
-                intent = new Intent(this, SettingsActivity.class);
+                intent = new Intent(this, ShareActivity.class);
                 break;
             case DRAWER_LOGOUT:
                 if (Session.getActiveSession() != null) {
