@@ -3,14 +3,15 @@ package cse190.cookpal;
 
 import android.os.CountDownTimer;
 
-public abstract class PausableCountdownTimer {
+public class PausableCountdownTimer {
     private long timeremaining;
-    private long mcountDownInterval;
+    private long countDownInterval;
     private CountDownTimer timer;
+    private TimerHandler handler;
 
     public PausableCountdownTimer(long millisInFuture, long countDownInterval) {
         timeremaining = millisInFuture;
-        mcountDownInterval = countDownInterval;
+        this.countDownInterval = countDownInterval;
         timer =  new CountDownTimer(millisInFuture, countDownInterval) {
             public void onTick(long millisUntilFinished) {
                 timeremaining = millisUntilFinished;
@@ -32,7 +33,7 @@ public abstract class PausableCountdownTimer {
 
     public synchronized void resume() {
         if (timer == null){
-            timer =  new CountDownTimer(timeremaining, mcountDownInterval) {
+            timer =  new CountDownTimer(timeremaining, countDownInterval) {
                 public void onTick(long millisUntilFinished) {
                     timeremaining = millisUntilFinished;
                     PausableCountdownTimer.this.onTick(millisUntilFinished);
@@ -54,10 +55,26 @@ public abstract class PausableCountdownTimer {
         timer.start();
     }
 
-    public long getTimeRemaining(){
+    public long getTimeRemaining() {
         return timeremaining;
     }
 
-    public abstract void onTick(long millisUntilFinished);
-    public abstract void onFinish();
+    public void onTick(long millisUntilFinished) {
+        if (handler != null)
+            handler.onTick(millisUntilFinished);
+    }
+
+    public void onFinish() {
+        if (handler != null)
+            handler.onFinish();
+    }
+
+    public void setHandler(TimerHandler handler) {
+        this.handler = handler;
+    }
+
+    public static interface TimerHandler {
+        public void onTick(long millisUntilFinished);
+        public void onFinish();
+    }
 }

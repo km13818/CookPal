@@ -33,4 +33,12 @@ public class AssistantActivity extends BaseDrawerActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public static class AssistantTracker {
+        private static AssistantTracker singleton;
+
+        public Recipe currentRecipe;
+        public Recipe.Step currentStep;
+        public PausableCountdownTimer timer;
+    }
 }

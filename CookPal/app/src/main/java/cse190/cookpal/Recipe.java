@@ -10,6 +10,7 @@ public class Recipe {
     public ArrayList<Step> steps;
 
     public class Step {
+        public int stepNumber;
         public String overview;
         public String description;
         public int time;  //time in seconds of step
