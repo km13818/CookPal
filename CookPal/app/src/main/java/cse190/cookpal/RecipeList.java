@@ -1,16 +1,23 @@
 package cse190.cookpal;
 
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,8 +26,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TabHost;
 import android.widget.TextView;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
@@ -39,7 +46,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 
-public class RecipeList extends BaseDrawerActivity {
+public class RecipeList extends BaseDrawerActivity implements
+        ActionBar.TabListener{
     private static final String TAG = "RecipeList";
 
     //TODO: potentially refactor. not sure if it's a good idea to have data structures as global vars in activity
@@ -53,35 +61,38 @@ public class RecipeList extends BaseDrawerActivity {
     String recipeWhosePictureWasTaken;
     ImageView currRecipeImageView;
 
+    private ViewPager viewPager;
+    private TabsPagerAdapter mAdapter;
+    private ActionBar actionBar;
+    // Tab titles
+    private String[] tabs = { "Overview", "Ingredients", "Directions" };
+    TabHost tabHost;
     //called after picture is taken with requestCode 0
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("recipelist", "onactivityresult");
-        if(requestCode == 0) {
-            if(data.getExtras() != null) {
+        if (requestCode == 0) {
+            if (data.getExtras() != null) {
                 Bitmap recipeImageBitMap = (Bitmap) data.getExtras().get("data");
                 Log.d("recipelist", "recipe image taken: " + recipeImageBitMap);
 
                 ByteArrayOutputStream imageBaos = new ByteArrayOutputStream();
-                recipeImageBitMap.compress(Bitmap.CompressFormat.JPEG,100, imageBaos );
+                recipeImageBitMap.compress(Bitmap.CompressFormat.JPEG, 100, imageBaos);
 
 
                 currRecipeImageView.setImageBitmap(recipeImageBitMap);
                 Log.d("recipeList", "recipeimagebaos: " + imageBaos);
-                Log.d("recipelist", "recipewhosepicturewastaken: "  + recipeWhosePictureWasTaken);
-                HashMap<String,String> insertImageParams = new HashMap<String,String>();
+                Log.d("recipelist", "recipewhosepicturewastaken: " + recipeWhosePictureWasTaken);
+                HashMap<String, String> insertImageParams = new HashMap<String, String>();
                 insertImageParams.put("r_name", recipeWhosePictureWasTaken);
                 insertImageParams.put("fb_id", AccountActivity.getFbId());
                 insertImageParams.put("image", new String(imageBaos.toByteArray()));
                 insertImageParams.put("filter", "add_image");
                 HttpUtil.makeHttpPost(insertImageParams);
-            }
-            else
-            {
+            } else {
                 Log.d("recipeist", "no picture was taken");
             }
         }
-
     }
 
     @Override
@@ -110,6 +121,48 @@ public class RecipeList extends BaseDrawerActivity {
                 AccountActivity.getFbId();
         new LongOperation().execute(serverRecipeListRequestURL);
 
+        // Initilization
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        actionBar = getActionBar();
+        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+
+        viewPager.setAdapter(mAdapter);
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        // Adding Tabs
+        for (String tab_name : tabs) {
+            actionBar.addTab(actionBar.newTab().setText(tab_name)
+                    .setTabListener(this));
+        }
+        final ActionBar actionBar = getActionBar();
+        actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.unselected_tabs)));
+
+        /**
+         * on swiping the viewpager make respective tab selected
+         * */
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                // on changing the page
+                // make respected tab selected
+                actionBar.setSelectedNavigationItem(position);
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
+
+        //TODO: populate recipeLists using db
+        HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
+        recipeListRetrievalParams.put("fb_id",AccountActivity.getFbId());
+       // HttpResponse recipeListRetrievalResponse = HttpUtil.makeHttpPost(recipeListRetrievalParams);
 
 
         //TODO: pass in recipeList array list here from db
@@ -180,6 +233,30 @@ public class RecipeList extends BaseDrawerActivity {
         });
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.recipe_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    }
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        // on tab selected
+        // show respected fragment view
+        viewPager.setCurrentItem(tab.getPosition());
+        //tab.setCustomView(getResources().getColor(R.color.selected_tabs));
+        //tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(getResources().getColor(R.color.selected_tabs));
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    }
+
 
     private void populateListView() {
         //Create list of items
