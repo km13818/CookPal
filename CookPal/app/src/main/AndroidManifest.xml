@@ -36,10 +36,6 @@
             android:label="@string/title_activity_assistant" >
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
             android:name=".AddRecipeActivity"
             android:label="@string/title_activity_add_recipe" >
         </activity>
@@ -64,10 +60,6 @@
         <activity
             android:name=".RestFulWebservice"
             android:label="@string/title_activity_rest_ful_webservice" >
-        </activity>
-        <activity
-            android:name=".Share_Activity"
-            android:label="@string/title_activity_share_" >
         </activity>
         <activity
             android:name=".ShareActivity"
