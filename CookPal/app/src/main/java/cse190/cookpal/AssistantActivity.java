@@ -2,16 +2,21 @@ package cse190.cookpal;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.*;
+import android.widget.*;
 
 
 public class AssistantActivity extends BaseDrawerActivity {
+
+    private LinearLayout stepList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
+
+        stepList = (LinearLayout) findViewById(R.id.assistant_stepList);
+        stepList.setVisibility(View.GONE);
     }
 
 
@@ -32,5 +37,13 @@ public class AssistantActivity extends BaseDrawerActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void stepListToggle(View view) {
+        if(stepList.getVisibility() == View.GONE) {
+            stepList.setVisibility(View.VISIBLE);
+        } else {
+            stepList.setVisibility(View.GONE);
+        }
     }
 }
