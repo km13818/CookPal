@@ -32,10 +32,6 @@
     <string name="confirm_create_recipe_button">Create this recipe</string>
     <string name="title_activity_home_page">HomePage</string>
     <string name="title_activity_share_">share</string>
-<<<<<<< HEAD
     <string name="title_activity_recipe">Recipe</string>
-=======
-    <string name="title_activity_recipe">RecipeActivity</string>
->>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
 
 </resources>
