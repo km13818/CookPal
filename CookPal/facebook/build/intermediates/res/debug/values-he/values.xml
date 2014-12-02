@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
     <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/values-he/strings.xml -->
+=======
+    <!-- From: file:/Users/scha/git/CookPal/CookPal/facebook/res/values-he/strings.xml -->
+>>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
     <eat-comment />
 
     <string name="com_facebook_choose_friends">בחר חברים</string>

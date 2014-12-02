@@ -31,6 +31,7 @@ import java.util.List;
 
 public class AddRecipeActivity extends Activity {
     final Context thisContext = this;
+    HttpUtil httpUtil = new HttpUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class AddRecipeActivity extends Activity {
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
-                HttpUtil.makeHttpPost(insertRecipeParams);
+                httpUtil.makeHttpPost(insertRecipeParams);
 
 
                 //recipe_ingredient: id,account_id,recipe_id, name, quantity
@@ -89,7 +90,7 @@ public class AddRecipeActivity extends Activity {
                         insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
                         insertRecipeInstructionParams.put("filter", "insert_instruction");
 
-                        HttpUtil.makeHttpPost(insertRecipeInstructionParams);
+                        httpUtil.makeHttpPost(insertRecipeInstructionParams);
 
                     }
                 } //end for
@@ -116,7 +117,7 @@ public class AddRecipeActivity extends Activity {
                         insertIngredientParams.put("ingr_name", ingredientEditText.getText().toString());
                         insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
                         insertIngredientParams.put("filter", "insert_ingredient");
-                        HttpUtil.makeHttpPost(insertIngredientParams);
+                        httpUtil.makeHttpPost(insertIngredientParams);
                     }
                 } //end for
                 startActivity(intent);
@@ -154,7 +155,6 @@ public class AddRecipeActivity extends Activity {
                 newInstructionRowLayout.addView(hoursTextView);
                 newInstructionRowLayout.addView(minsEditText);
                 newInstructionRowLayout.addView(minsTextView);
-Log.e("addrecipeactivity", "asdfajsdlkfjqoweifjqowiefjqoweifj");
                 instructionsLayout.addView(newInstructionRowLayout);
 
 

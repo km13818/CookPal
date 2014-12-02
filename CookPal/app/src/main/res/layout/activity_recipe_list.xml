@@ -6,17 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".GroceryList">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/deleteGroceryListButton"
-        android:clickable="true"
-        android:src="@android:drawable/ic_menu_delete"/>
+
     <!-- As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/deleteGroceryListButton"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_delete"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/addGroceryListButton"
+            android:clickable="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/recipeListView" />
+
+        <EditText
+            android:paddingTop="20px"
+            android:id="@+id/serverText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
 
         <ListView
             android:layout_width="wrap_content"
@@ -27,15 +45,6 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="54dp" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/addGroceryListButton"
-            android:clickable="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/recipeListView" />
 
         <TextView
             android:layout_width="wrap_content"

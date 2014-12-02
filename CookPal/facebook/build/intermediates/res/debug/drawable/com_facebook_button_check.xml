@@ -18,4 +18,8 @@
   <item android:state_checked="true" android:drawable="@drawable/com_facebook_button_check_on" />
   <item android:drawable="@drawable/com_facebook_button_check_off" />
 </selector>
+<<<<<<< HEAD
 <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check.xml -->
+=======
+<!-- From: file:/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check.xml -->
+>>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca

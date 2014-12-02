@@ -25,4 +25,8 @@
     <item android:state_focused="true"                                                             android:drawable="@drawable/com_facebook_picker_list_focused" />
 
 </selector>
+<<<<<<< HEAD
 <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector.xml -->
+=======
+<!-- From: file:/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector.xml -->
+>>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca

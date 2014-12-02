@@ -1,6 +1,7 @@
 package cse190.cookpal;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -132,8 +133,10 @@ public class BaseDrawerActivity extends FragmentActivity {
             return DRAWER_COOKBOOK;
         } else if (this instanceof AssistantActivity) {
             return DRAWER_ASSISTANT;
+
         } else if (this instanceof ShareActivity) {
             return DRAWER_SHARE;
+
         }
         return -1;
     }

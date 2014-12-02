@@ -52,4 +52,8 @@
       android:src="@drawable/com_facebook_tooltip_blue_bottomnub"
       />
 </RelativeLayout>
+<<<<<<< HEAD
 <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/layout/com_facebook_tooltip_bubble.xml -->
+=======
+<!-- From: file:/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_tooltip_bubble.xml -->
+>>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
