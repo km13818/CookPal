@@ -34,4 +34,8 @@
     <string name="confirm_create_recipe_button">Create this recipe</string>
     <string name="title_activity_home_page">HomePage</string>
 
+    <!-- Assistant Strings -->
+    <string name="etc">ETC</string>
+    <string name="timeLeft">time left</string>
+
 </resources>
