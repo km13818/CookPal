@@ -1,33 +1,34 @@
 package cse190.cookpal;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.facebook.android.DialogError;
-import com.facebook.android.Facebook;
-import com.facebook.android.FacebookError;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.widget.FacebookDialog;
 
 
 public class ShareActivity extends BaseDrawerActivity {
 
-    Facebook facebookClient;
-    SharedPreferences mPrefs;
+    private UiLifecycleHelper uiHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
 
-        //loginToFacebook();
+        uiHelper = new UiLifecycleHelper(this, null);
+        uiHelper.onCreate(savedInstanceState);
 
-        //if (facebookClient.isSessionValid()) {
-            postToWall();
-        //}
+        FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
+                .setLink("https://developers.facebook.com/android")
+                .build();
+        uiHelper.trackPendingDialogCall(shareDialog.present());
+
+
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,89 +52,41 @@ public class ShareActivity extends BaseDrawerActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        facebookClient.authorizeCallback(requestCode, resultCode, data);
-    }
 
-    public void loginToFacebook() {
-        mPrefs = getPreferences(MODE_PRIVATE);
-        String access_token = mPrefs.getString("access_token", null);
-        long expires = mPrefs.getLong("access_expires", 0);
-
-        if (access_token != null) {
-            facebookClient.setAccessToken(access_token);
-        }
-
-        if (expires != 0) {
-            facebookClient.setAccessExpires(expires);
-        }
-
-        if (!facebookClient.isSessionValid()) {
-            facebookClient.authorize(this, new String[] { "publish_stream" }, new Facebook.DialogListener() {
-
-                @Override
-                public void onCancel() {
-                    // Function to handle cancel event
-                }
-
-                @Override
-                public void onComplete(Bundle values) {
-                    // Function to handle complete event
-                    // Edit Preferences and update facebook acess_token
-                    SharedPreferences.Editor editor = mPrefs.edit();
-                    editor.putString("access_token", facebookClient.getAccessToken());
-                    editor.putLong("access_expires", facebookClient.getAccessExpires());
-                    editor.commit();
-
-                    postToWall();
-                }
-
-                @Override
-                public void onError(DialogError error) {
-                    // Function to handle error
-
-                }
-
-                @Override
-                public void onFacebookError(FacebookError fberror) {
-                    // Function to handle Facebook errors
-
-                }
-
-            });
-        }
-    }
-
-    private void postToWall() {
-        Bundle parameters = new Bundle();
-        parameters.putString("name", "Battery Monitor");
-        parameters.putString("link", "https://play.google.com/store/apps/details?id=com.ck.batterymonitor");
-        parameters.putString("picture", "link to the picture");
-        parameters.putString("display", "page");
-        // parameters.putString("app_id", "228476323938322");
-
-        facebookClient.dialog(ShareActivity.this, "feed", parameters, new Facebook.DialogListener() {
-
+        uiHelper.onActivityResult(requestCode, resultCode, data, new FacebookDialog.Callback() {
             @Override
-            public void onFacebookError(FacebookError e) {
-                // TODO Auto-generated method stub
-
+            public void onError(FacebookDialog.PendingCall pendingCall, Exception error, Bundle data) {
+                Log.e("Activity", String.format("Error: %s", error.toString()));
             }
 
             @Override
-            public void onError(DialogError e) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onComplete(Bundle values) {
-                // TODO Auto-generated method stub
-            }
-
-            @Override
-            public void onCancel() {
-                // TODO Auto-generated method stub
+            public void onComplete(FacebookDialog.PendingCall pendingCall, Bundle data) {
+                Log.i("Activity", "Success!");
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        uiHelper.onResume();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        uiHelper.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        uiHelper.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        uiHelper.onDestroy();
     }
 }
