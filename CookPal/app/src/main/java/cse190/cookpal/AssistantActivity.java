@@ -1,6 +1,5 @@
 package cse190.cookpal;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -9,6 +8,8 @@ import android.widget.*;
 public class AssistantActivity extends BaseDrawerActivity {
 
     private LinearLayout stepList;
+    private Recipe currRecipe;
+    private ListAdapter stepListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,10 @@ public class AssistantActivity extends BaseDrawerActivity {
 
         stepList = (LinearLayout) findViewById(R.id.assistant_stepList);
         stepList.setVisibility(View.GONE);
+
+        //TODO: recipe class
+        //items = new string[] { "Vegetables","Fruits","Flower Buds","Legumes","Bulbs","Tubers" };
+        //stepListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, items);
     }
 
 

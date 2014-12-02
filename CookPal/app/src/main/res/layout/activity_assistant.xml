@@ -102,6 +102,7 @@
         </RelativeLayout>
 
         <!-- list of steps that slides up -->
+
         <LinearLayout
             android:id="@+id/assistant_stepList"
             android:layout_width="match_parent"
@@ -125,8 +126,8 @@
                 android:text="@string/etc"
                 android:onClick="stepListToggle"/>
 
-
         </LinearLayout>
+
     </RelativeLayout>
 
     <ListView
