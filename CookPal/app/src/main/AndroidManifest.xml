@@ -67,7 +67,8 @@
         </activity>
         <activity
             android:name=".RecipeActivity"
-            android:label="@string/title_activity_recipe" >
+            android:label="@string/title_activity_recipe"
+            android:theme="@style/RecipeABTheme">
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

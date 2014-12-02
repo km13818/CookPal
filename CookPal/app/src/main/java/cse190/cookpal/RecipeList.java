@@ -46,8 +46,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 
-public class RecipeList extends BaseDrawerActivity implements
-        ActionBar.TabListener{
+public class RecipeList extends BaseDrawerActivity {
     private static final String TAG = "RecipeList";
 
     //TODO: potentially refactor. not sure if it's a good idea to have data structures as global vars in activity
@@ -61,12 +60,6 @@ public class RecipeList extends BaseDrawerActivity implements
     String recipeWhosePictureWasTaken;
     ImageView currRecipeImageView;
 
-    private ViewPager viewPager;
-    private TabsPagerAdapter mAdapter;
-    private ActionBar actionBar;
-    // Tab titles
-    private String[] tabs = { "Overview", "Ingredients", "Directions" };
-    TabHost tabHost;
     //called after picture is taken with requestCode 0
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -120,44 +113,6 @@ public class RecipeList extends BaseDrawerActivity implements
         String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
                 AccountActivity.getFbId();
         new LongOperation().execute(serverRecipeListRequestURL);
-
-        // Initilization
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        actionBar = getActionBar();
-        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-
-        viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // Adding Tabs
-        for (String tab_name : tabs) {
-            actionBar.addTab(actionBar.newTab().setText(tab_name)
-                    .setTabListener(this));
-        }
-        final ActionBar actionBar = getActionBar();
-        actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.unselected_tabs)));
-
-        /**
-         * on swiping the viewpager make respective tab selected
-         * */
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                // on changing the page
-                // make respected tab selected
-                actionBar.setSelectedNavigationItem(position);
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
 
         //TODO: populate recipeLists using db
         HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
@@ -240,22 +195,7 @@ public class RecipeList extends BaseDrawerActivity implements
         inflater.inflate(R.menu.recipe_activity_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
 
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        // on tab selected
-        // show respected fragment view
-        viewPager.setCurrentItem(tab.getPosition());
-        //tab.setCustomView(getResources().getColor(R.color.selected_tabs));
-        //tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(getResources().getColor(R.color.selected_tabs));
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
 
 
     private void populateListView() {
