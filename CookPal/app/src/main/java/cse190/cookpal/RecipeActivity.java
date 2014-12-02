@@ -1,5 +1,6 @@
 package cse190.cookpal;
 
+<<<<<<< HEAD
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.graphics.drawable.ColorDrawable;
@@ -19,10 +20,20 @@ public class RecipeActivity extends BaseDrawerActivity implements
     // Tab titles
     private String[] tabs = { "Overview", "Ingredients", "Directions" };
     TabHost tabHost;
+=======
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
+
+public class RecipeActivity extends BaseDrawerActivity {
+
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+<<<<<<< HEAD
 
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -79,11 +90,20 @@ public class RecipeActivity extends BaseDrawerActivity implements
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
     }
+=======
+    }
+
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+<<<<<<< HEAD
         return false;
+=======
+        getMenuInflater().inflate(R.menu.recipe, menu);
+        return true;
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
     }
 
     @Override

@@ -3,6 +3,9 @@
 
     <dataSet config="20.0.0" >
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
         <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/res" />
     </dataSet>
     <dataSet config="main" >
@@ -10,6 +13,7 @@
             <file
                 name="com_facebook_button_blue"
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue.xml"
+<<<<<<< HEAD
 =======
         <source path="/Users/scha/git/CookPal/CookPal/facebook/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/res" />
     </dataSet>
@@ -19,1060 +23,1530 @@
                 name="com_facebook_button_blue"
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_focused"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_normal"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_normal.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_normal.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_normal.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_blue_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_check"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_check_off"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check_off.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check_off.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check_off.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_check_on"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check_on.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check_on.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_check_on.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_focused"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_normal"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_normal.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_normal.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_normal.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_grey_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_like"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_background.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_background.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_background.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background_selected"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_background_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_background_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_background_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon_selected"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_icon_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_icon_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_icon_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_like_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_pressed.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_pressed.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_pressed.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_like_selected"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_selected.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_selected.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_button_like_selected.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_close"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_close.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_close.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_close.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_inverse_icon"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_inverse_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_inverse_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_inverse_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_list_divider"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_list_divider.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_list_divider.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_list_divider.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_list_section_header_background"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_list_section_header_background.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_list_section_header_background.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_list_section_header_background.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_loginbutton_silver"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_loginbutton_silver.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_loginbutton_silver.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_loginbutton_silver.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_logo"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_logo.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_logo.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_logo.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_item_background"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_item_background.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_item_background.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_item_background.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_list_focused"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_list_longpressed"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_longpressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_longpressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_longpressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_list_pressed"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_list_selector"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_list_selector_background_transition"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector_background_transition.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector_background_transition.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector_background_transition.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_list_selector_disabled"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector_disabled.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector_disabled.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_list_selector_disabled.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_picker_top_button"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_top_button.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_top_button.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_picker_top_button.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_place_default_icon"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_place_default_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_place_default_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_place_default_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_profile_default_icon"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_default_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_default_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_default_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_profile_picture_blank_portrait"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_picture_blank_portrait.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_picture_blank_portrait.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_picture_blank_portrait.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_profile_picture_blank_square"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_picture_blank_square.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_picture_blank_square.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_profile_picture_blank_square.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_top_background"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_top_background.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_top_background.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_top_background.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_top_button"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_top_button.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_top_button.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_top_button.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_usersettingsfragment_background_gradient"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_usersettingsfragment_background_gradient.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable/com_facebook_usersettingsfragment_background_gradient.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable/com_facebook_usersettingsfragment_background_gradient.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_focused"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_normal"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_normal.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_normal.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_normal.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_blue_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_focused"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_normal"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_normal.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_normal.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_normal.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_grey_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_background.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_background.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_background.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background_selected"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_background_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_background_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_background_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon_selected"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_icon_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_icon_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_icon_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_pressed.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_pressed.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_button_like_pressed.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_close"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_close.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_close.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_close.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_inverse_icon"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_inverse_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_inverse_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_inverse_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_logo"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_logo.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_logo.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_logo.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_picker_magnifier"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_picker_magnifier.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_picker_magnifier.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_picker_magnifier.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_background"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_background.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_background.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_background.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_bottomnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_bottomnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_bottomnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_bottomnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_topnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_topnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_topnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_topnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_xout"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_xout.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_xout.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_black_xout.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_background"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_background.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_background.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_background.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_bottomnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_bottomnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_bottomnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_bottomnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_topnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_topnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_topnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_topnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_xout"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_xout.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_xout.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-hdpi/com_facebook_tooltip_blue_xout.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_close"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-ldpi/com_facebook_close.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-ldpi/com_facebook_close.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-ldpi/com_facebook_close.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="ldpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_focused"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_normal"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_normal.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_normal.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_normal.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_button_blue_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_inverse_icon"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_inverse_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_inverse_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_inverse_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_picker_magnifier"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_picker_magnifier.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_picker_magnifier.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_picker_magnifier.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_background"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_background.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_background.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_background.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_bottomnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_bottomnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_bottomnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_bottomnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_topnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_topnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_topnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_topnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_xout"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_xout.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_xout.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_black_xout.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_background"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_background.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_background.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_background.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_bottomnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_bottomnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_bottomnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_bottomnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_topnub"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_topnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_topnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_topnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_xout"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_xout.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_xout.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-mdpi/com_facebook_tooltip_blue_xout.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_focused"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_normal"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_normal.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_normal.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_normal.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_blue_pressed"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_blue_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_focused"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_focused.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_focused.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_focused.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_normal"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_normal.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_normal.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_normal.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_grey_pressed"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_pressed.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_pressed.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_grey_pressed.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_background.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_background.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_background.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background_selected"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_background_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_background_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_background_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon_selected"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_icon_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_icon_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_icon_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_pressed"
+<<<<<<< HEAD
 <<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_pressed.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_pressed.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_button_like_pressed.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_close"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_close.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_close.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_close.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_inverse_icon"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_inverse_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_inverse_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_inverse_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_logo"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_logo.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_logo.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_logo.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_picker_magnifier"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_picker_magnifier.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_picker_magnifier.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_picker_magnifier.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_background"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_background.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_background.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_background.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_bottomnub"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_bottomnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_bottomnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_bottomnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_topnub"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_topnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_topnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_topnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_black_xout"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_xout.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_xout.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_black_xout.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_background"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_background.9.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_background.9.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_background.9.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_bottomnub"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_bottomnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_bottomnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_bottomnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_topnub"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_topnub.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_topnub.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_topnub.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_tooltip_blue_xout"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_xout.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_xout.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xhdpi/com_facebook_tooltip_blue_xout.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_background.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_background.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_background.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_background_selected"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_background_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_background_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_background_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_icon.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_icon.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_icon.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_icon_selected"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_icon_selected.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_icon_selected.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_icon_selected.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_button_like_pressed"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_pressed.png"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_pressed.png"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/drawable-xxhdpi/com_facebook_button_like_pressed.png"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xxhdpi-v4"
                 type="drawable" />
             <file
                 name="com_facebook_friendpickerfragment"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_friendpickerfragment.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_friendpickerfragment.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_friendpickerfragment.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_login_activity_layout"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_login_activity_layout.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_login_activity_layout.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_login_activity_layout.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_activity_circle_row"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_activity_circle_row.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_activity_circle_row.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_activity_circle_row.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_checkbox"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_checkbox.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_checkbox.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_checkbox.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_image"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_image.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_image.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_image.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_list_row"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_list_row.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_list_row.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_list_row.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_list_section_header"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_list_section_header.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_list_section_header.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_list_section_header.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_search_box"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_search_box.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_search_box.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_search_box.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_title_bar"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_title_bar.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_title_bar.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_title_bar.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_picker_title_bar_stub"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_title_bar_stub.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_picker_title_bar_stub.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_picker_title_bar_stub.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_placepickerfragment"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_placepickerfragment.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_placepickerfragment.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_placepickerfragment.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_placepickerfragment_list_row"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_placepickerfragment_list_row.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_placepickerfragment_list_row.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_placepickerfragment_list_row.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_search_bar_layout"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_search_bar_layout.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_search_bar_layout.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_search_bar_layout.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_tooltip_bubble"
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_tooltip_bubble.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_tooltip_bubble.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_tooltip_bubble.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers=""
                 type="layout" />
             <file
                 name="com_facebook_usersettingsfragment"
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/layout/com_facebook_usersettingsfragment.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/attrs.xml"
+<<<<<<< HEAD
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/layout/com_facebook_usersettingsfragment.xml"
                 qualifiers=""
@@ -1080,6 +1554,8 @@
             <file
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values/attrs.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="" >
                 <declare-styleable name="com_facebook_profile_picture_view" >
                     <attr name="preset_size" >
@@ -1205,10 +1681,14 @@
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/colors.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values/colors.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/colors.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="" >
                 <color name="com_facebook_picker_search_bar_background" >#f5f5f7
                 </color>
@@ -1220,10 +1700,14 @@
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/drawables.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values/drawables.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/drawables.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="" >
                 <drawable name="com_facebook_picker_default_separator_color" >
 #33464c59
@@ -1231,10 +1715,14 @@
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/strings.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values/strings.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/strings.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="" >
                 <string name="com_facebook_usersettingsfragment_logged_in" >Logged in
                 </string>
@@ -1297,10 +1785,14 @@
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/styles.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values/styles.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values/styles.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="" >
                 <dimen name="com_facebook_profilepictureview_preset_size_normal" >100dp
                 </dimen>
@@ -1337,16 +1829,22 @@
                 <dimen name="com_facebook_usersettingsfragment_profile_picture_width" >64dp
                 </dimen>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 <dimen name="com_facebook_likeboxcountview_caret_width" >6dp
                 </dimen>
                 <dimen name="com_facebook_usersettingsfragment_profile_picture_height" >64dp
                 </dimen>
+<<<<<<< HEAD
 =======
                 <dimen name="com_facebook_usersettingsfragment_profile_picture_height" >64dp
                 </dimen>
                 <dimen name="com_facebook_likeboxcountview_caret_width" >6dp
                 </dimen>
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
 
                 <color name="com_facebook_usersettingsfragment_connected_text_color" >#FFFFFF
                 </color>
@@ -1472,10 +1970,14 @@ center
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-es/strings.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values-es/strings.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-es/strings.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="es" >
                 <string name="com_facebook_nearby" >Cercano
                 </string>
@@ -1530,20 +2032,28 @@ center
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-hdpi/dimens.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values-hdpi/dimens.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-hdpi/dimens.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="hdpi-v4" >
                 <dimen name="com_facebook_picker_divider_width" >1px
                 </dimen>
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-he/strings.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values-he/strings.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-he/strings.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="he" >
                 <string name="com_facebook_requesterror_password_changed" >.הסיסמה שלך בפייסבוק השתנתה, אנא חבר מחדש את האפליקציה עם פייסבוק
                 </string>
@@ -1590,25 +2100,35 @@ center
                 <string name="com_facebook_loginview_logged_in_using_facebook" >מחובר באמצעות פייסבוק
                 </string>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 <string name="com_facebook_dialogloginactivity_ok_button" >אישור
                 </string>
                 <string name="com_facebook_requesterror_permissions" >.חיבור האפליקציה עם פייסבוק נכשל בשל הרשאות לא מספקות, אנא הענק הרשאות לאפליקציה בכדי שהפעולה תוכל להתבצע
                 </string>
+<<<<<<< HEAD
 =======
                 <string name="com_facebook_requesterror_permissions" >.חיבור האפליקציה עם פייסבוק נכשל בשל הרשאות לא מספקות, אנא הענק הרשאות לאפליקציה בכדי שהפעולה תוכל להתבצע
                 </string>
                 <string name="com_facebook_dialogloginactivity_ok_button" >אישור
                 </string>
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 <string name="com_facebook_loginview_log_out_action" >התנתק
                 </string>
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-iw/strings.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values-iw/strings.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-iw/strings.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="iw" >
                 <string name="com_facebook_usersettingsfragment_log_in_button" >התחבר…
                 </string>
@@ -1651,16 +2171,22 @@ center
                 <string name="com_facebook_logo_content_description" >פייסבוק לוגו
                 </string>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 <string name="com_facebook_dialogloginactivity_ok_button" >אישור
                 </string>
                 <string name="com_facebook_loading" >..מעלה
                 </string>
+<<<<<<< HEAD
 =======
                 <string name="com_facebook_loading" >..מעלה
                 </string>
                 <string name="com_facebook_dialogloginactivity_ok_button" >אישור
                 </string>
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 <string name="com_facebook_loginview_log_in_button" >התחבר לפייסבוק
                 </string>
                 <string name="com_facebook_nearby" >קרוב אליי
@@ -1670,41 +2196,57 @@ center
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-ldpi/dimens.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values-ldpi/dimens.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-ldpi/dimens.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="ldpi-v4" >
                 <dimen name="com_facebook_picker_divider_width" >1px
                 </dimen>
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-mdpi/dimens.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values-mdpi/dimens.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-mdpi/dimens.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="mdpi-v4" >
                 <dimen name="com_facebook_picker_divider_width" >1px
                 </dimen>
             </file>
             <file
 <<<<<<< HEAD
+<<<<<<< HEAD
                 path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-xhdpi/dimens.xml"
 =======
                 path="/Users/scha/git/CookPal/CookPal/facebook/res/values-xhdpi/dimens.xml"
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+                path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/res/values-xhdpi/dimens.xml"
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
                 qualifiers="xhdpi-v4" >
                 <dimen name="com_facebook_picker_divider_width" >2px
                 </dimen>
             </file>
         </source>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
         <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/build/generated/res/rs/debug" />
         <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/build/generated/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
         <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/src/debug/res" />
+<<<<<<< HEAD
 =======
         <source path="/Users/scha/git/CookPal/CookPal/facebook/build/generated/res/rs/debug" />
         <source path="/Users/scha/git/CookPal/CookPal/facebook/build/generated/res/generated/debug" />
@@ -1712,6 +2254,8 @@ center
     <dataSet config="debug" >
         <source path="/Users/scha/git/CookPal/CookPal/facebook/src/debug/res" />
 >>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
+=======
+>>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
     </dataSet>
 
 </merger>
