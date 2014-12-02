@@ -29,13 +29,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignRight="@+id/recipeListView" />
 
-        <EditText
-            android:paddingTop="20px"
-            android:id="@+id/serverText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
-
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

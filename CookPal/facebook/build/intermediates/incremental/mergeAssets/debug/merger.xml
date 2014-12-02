@@ -2,23 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
-        <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/src/main/assets" />
-    </dataSet>
-    <dataSet config="debug" >
-        <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/src/debug/assets" />
-<<<<<<< HEAD
-=======
         <source path="/Users/scha/git/CookPal/CookPal/facebook/src/main/assets" />
     </dataSet>
     <dataSet config="debug" >
         <source path="/Users/scha/git/CookPal/CookPal/facebook/src/debug/assets" />
->>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
-=======
->>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
     </dataSet>
 
 </merger>
