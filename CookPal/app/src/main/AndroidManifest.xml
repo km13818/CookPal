@@ -20,7 +20,7 @@
         <activity
             android:name=".RecipeList"
             android:label="RECIPE"
-            android:theme="@style/RecipeABTheme">
+            android:theme="@style/RecipeABTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -65,7 +65,10 @@
             android:name=".ShareActivity"
             android:label="@string/title_activity_share_" >
         </activity>
-
+        <activity
+            android:name=".RecipeActivity"
+            android:label="@string/title_activity_recipe" >
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
