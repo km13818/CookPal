@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <!-- Assistant Main Page - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
         <RelativeLayout
-            android:id="@+id/assistant_page"
+            android:id="@+id/assistant_currStep"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
@@ -67,7 +68,7 @@
 
             <!-- Timer section -->
             <RelativeLayout
-                android:id="@+id/assistant_timeLeft"
+                android:id="@+id/assistant_timeTakes"
                 android:layout_width="match_parent"
                 android:layout_below="@id/assistant_stepDescription"
                 android:layout_height="match_parent">
@@ -103,7 +104,8 @@
                 android:onClick="stepListToggle"/>
         </RelativeLayout>
 
-        <!-- List of steps that slides up (hidden until ETC button clicked/slid) -->
+
+        <!-- List of steps that slides up (hidden until ETC button clicked/slid) - - - - - - - - -->
         <RelativeLayout
             android:id="@+id/assistant_stepListLayout"
             android:layout_width="match_parent"
@@ -136,8 +138,90 @@
                 android:onClick="stepListToggle"
                 android:layout_alignParentBottom="true"/>
         </RelativeLayout>
+
+
+        <!-- Step preview (hidden until user clicks a step from the step list above) - - - - - - -->
+        <RelativeLayout
+            android:id="@+id/assistant_stepPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/transparent">
+
+            <!-- Step preview header: number and title -->
+            <RelativeLayout
+                android:id="@+id/assistant_stepPreviewHeader"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                <TextView
+                    android:id="@+id/assistant_stepPreviewNumber"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/orange"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="40sp"
+                    android:padding="10dp"
+                    android:text="@string/dummyStepNum">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/assistant_stepPreviewTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/assistant_stepPreviewNumber"
+                    android:background="@color/light_orange"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:padding="20dp"
+                    android:text="@string/dummyStepTitle">
+                </TextView>
+            </RelativeLayout>
+
+            <!-- Step preview description -->
+            <TextView
+                android:id="@+id/assistant_stepPreviewDescription"
+                android:padding="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/assistant_stepPreviewHeader"
+                android:textColor="@color/orange"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/dummyStepDescrip">
+            </TextView>
+
+            <!-- Step Time Takes section -->
+            <RelativeLayout
+                android:id="@+id/assistant_previewTimeTakes"
+                android:layout_width="match_parent"
+                android:layout_below="@id/assistant_stepPreviewDescription"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="180dp"
+                    android:layout_height="60dp"
+                    android:background="@color/green">
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="-30dp"
+                        android:textColor="@color/white"
+                        android:textSize="36sp"
+                        android:text="@string/timeLeft">
+                    </TextView>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
+
+    <!-- Drawer - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <ListView
         android:id="@+id/left_drawer"
         android:layout_width="240dp"

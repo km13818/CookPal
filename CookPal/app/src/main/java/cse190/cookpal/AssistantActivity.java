@@ -7,7 +7,9 @@ import android.widget.*;
 
 public class AssistantActivity extends BaseDrawerActivity {
 
+    private RelativeLayout currStepLayout;
     private RelativeLayout stepListLayout;
+    private RelativeLayout stepPreviewLayout;
 
     private TextView stepNumView;
     private TextView stepTitleView;
@@ -24,9 +26,16 @@ public class AssistantActivity extends BaseDrawerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
 
+        // Bind the current step (main assistant page) view
+        currStepLayout = (RelativeLayout) findViewById(R.id.assistant_currStep);
+
         // Hide the step list on the bottom (the ETC bar) until it's clicked
         stepListLayout = (RelativeLayout) findViewById(R.id.assistant_stepListLayout);
         stepListLayout.setVisibility(View.GONE);
+
+        // Hide the step preview layout until user clicks on a step in the step list
+        stepPreviewLayout = (RelativeLayout) findViewById(R.id.assistant_stepPreview);
+        stepPreviewLayout.setVisibility(View.GONE);
 
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
@@ -36,12 +45,13 @@ public class AssistantActivity extends BaseDrawerActivity {
             currStep = currRecipe.getStepList().get(0);
         }
 
-        // Bind and populate the step information
+        // Bind the views
         stepNumView = (TextView) findViewById(R.id.assistant_stepNumber);
         stepTitleView = (TextView) findViewById(R.id.assistant_stepTitle);
         stepDescriptView = (TextView) findViewById(R.id.assistant_stepDescription);
         stepListView = (ListView) findViewById(R.id.assistant_stepListView);
 
+        // Set the step information
         stepNumView.setText(currStep.getStepNumber() + "");
         stepTitleView.setText(currStep.getTitle());
         stepDescriptView.setText(currStep.getDescription());
@@ -49,6 +59,28 @@ public class AssistantActivity extends BaseDrawerActivity {
         // Bind the step list adapter
         stepListAdapter = new ArrayAdapter<Step>(this, android.R.layout.simple_list_item_1, currRecipe.getStepList());
         stepListView.setAdapter(stepListAdapter);
+
+
+        // TODO: VERIFY THIS WORKS
+        /*
+        stepListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                view.animate().setDuration(2000).alpha(0)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                stepListView.removeView(item);
+                                adapter.notifyDataSetChanged();
+                                view.setAlpha(1);
+                            }
+                        });
+
+            }
+        */
     }
 
 
