@@ -7,12 +7,14 @@ import android.widget.*;
 
 public class AssistantActivity extends BaseDrawerActivity {
 
-    private LinearLayout stepListLayout;
+    private RelativeLayout stepListLayout;
 
     private TextView stepNumView;
     private TextView stepTitleView;
     private TextView stepDescriptView;
+    private ListView stepListView;
 
+    private ListAdapter stepListAdapter;
 
     private Recipe currRecipe;
     private Step currStep;
@@ -23,7 +25,7 @@ public class AssistantActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_assistant);
 
         // Hide the step list on the bottom (the ETC bar) until it's clicked
-        stepListLayout = (LinearLayout) findViewById(R.id.assistant_stepList);
+        stepListLayout = (RelativeLayout) findViewById(R.id.assistant_stepListLayout);
         stepListLayout.setVisibility(View.GONE);
 
         // Recipe creation
@@ -38,10 +40,15 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepNumView = (TextView) findViewById(R.id.assistant_stepNumber);
         stepTitleView = (TextView) findViewById(R.id.assistant_stepTitle);
         stepDescriptView = (TextView) findViewById(R.id.assistant_stepDescription);
+        stepListView = (ListView) findViewById(R.id.assistant_stepListView);
 
         stepNumView.setText(currStep.getStepNumber() + "");
         stepTitleView.setText(currStep.getTitle());
         stepDescriptView.setText(currStep.getDescription());
+
+        // Bind the step list adapter
+        stepListAdapter = new ArrayAdapter<Step>(this, android.R.layout.simple_list_item_1, currRecipe.getStepList());
+        stepListView.setAdapter(stepListAdapter);
     }
 
 
