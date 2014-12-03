@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class AddRecipeActivity extends Activity {
+public class AddRecipeActivity extends BaseDrawerActivity {
     final Context thisContext = this;
     HttpUtil httpUtil = new HttpUtil();
 

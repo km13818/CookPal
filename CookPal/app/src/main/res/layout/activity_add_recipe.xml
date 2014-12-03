@@ -1,220 +1,242 @@
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/add_recipe_vertical_layout">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recipe_name"
-        android:layout_gravity="left|top"
-        android:background="@drawable/view_border_green"
-        android:padding="50dp"
-        >
+        android:layout_height="match_parent"
+        android:id="@+id/add_recipe_vertical_layout">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="recipe name"
-            android:textColor="@color/white"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/recipe_name_text"
-            android:padding="10dp"
-            android:password="false" />
-
-        <EditText
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/recipe_name"
+            android:layout_gravity="left|top"
             android:background="@drawable/view_border_green"
-            android:padding="10dp"
-            android:textColor="@color/white"
-            android:id="@+id/recipeNameInput"
-            android:layout_gravity="center_horizontal" />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addInstructionsButtonLayout"
-        android:background="@drawable/view_border_green">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="add instructions"
-            android:textColor="@color/white"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/instructionsTitleTextView"
-            android:padding="10dp"
-            />
-
-        <ImageButton
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="add instructions"
-            android:src="@drawable/add_icon"
-            android:id="@+id/addInstructionsButton"
-            android:clickable="true"
-            android:padding="10dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/instructionsLayout"
-        android:background="@drawable/view_border_orange"
-        android:padding="50dp"
-        android:layout_gravity="left|top">
-
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipe_name2"
-            android:layout_gravity="left|top">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1."
-                android:textColor="@color/white"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/recipe_name_text2"
-                android:password="false"
-                />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ingredient"
-                android:textColor="@color/white"
-                android:layout_gravity="start"
-                />
+            android:padding="50dp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="  time  "
+                android:text="recipe name"
                 android:textColor="@color/white"
-                android:id="@+id/timeTextView"
-                />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText3"
-                android:textColor="@color/white"
-                android:inputType="number"
-                android:maxLength="2"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                 />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hr "
-                android:textColor="@color/white"
-                android:id="@+id/hoursTextView1" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/minsEditText1"
-                android:textColor="@color/white"
-                android:inputType="number"
-                android:maxLength="2"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                 />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="min"
-                android:textColor="@color/white"
-                android:id="@+id/minsTextView" />
-        </LinearLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addIngredientsButtonLayout"
-        android:layout_gravity="left|top" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ingredients"
-            android:id="@+id/ingredientsTitleTextView" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add more instructions"
-            android:id="@+id/addIngredientsButton"
-            android:clickable="true" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addIngredientsLayout"
-        android:layout_gravity="left|top" >
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/linearLayout2"
-            android:layout_gravity="left|top" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1."
-                android:id="@+id/textView2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/recipe_name_text"
+                android:padding="10dp"
                 android:password="false" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
+                android:background="@drawable/view_border_green"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:id="@+id/recipeNameInput"
                 android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addInstructionsButtonLayout"
+            android:background="@drawable/view_border_green">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="add instructions"
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/instructionsTitleTextView"
+                android:padding="10dp"
+                />
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="add instructions"
+                android:src="@drawable/add_icon"
+                android:id="@+id/addInstructionsButton"
+                android:clickable="true"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/instructionsLayout"
+            android:background="@drawable/view_border_orange"
+            android:padding="50dp"
+            android:layout_gravity="left|top">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_name2"
+                android:layout_gravity="left|top">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1."
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/recipe_name_text2"
+                    android:password="false"
+                    />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ingredient"
+                    android:textColor="@color/white"
+                    android:layout_gravity="start"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  time  "
+                    android:textColor="@color/white"
+                    android:id="@+id/timeTextView"
+                    />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText3"
+                    android:textColor="@color/white"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                     />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="hr "
+                    android:textColor="@color/white"
+                    android:id="@+id/hoursTextView1" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/minsEditText1"
+                    android:textColor="@color/white"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                     />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="min"
+                    android:textColor="@color/white"
+                    android:id="@+id/minsTextView" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addIngredientsButtonLayout"
+            android:layout_gravity="left|top" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quantity: "
-                android:id="@+id/quantityTextView" />
+                android:text="Ingredients"
+                android:id="@+id/ingredientsTitleTextView" />
 
-            <EditText
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText2"
-                android:layout_weight="1" />
-
+                android:text="Add more instructions"
+                android:id="@+id/addIngredientsButton"
+                android:clickable="true" />
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/confirm_create_recipe_layout"
-        android:layout_gravity="left|top">
-
-        <Button
-            android:id="@+id/confirm_create_recipe_button"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/confirm_create_recipe_button" />
+            android:id="@+id/addIngredientsLayout"
+            android:layout_gravity="left|top" >
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:layout_gravity="left|top" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1."
+                    android:id="@+id/textView2"
+                    android:password="false" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText"
+                    android:layout_gravity="center_horizontal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity: "
+                    android:id="@+id/quantityTextView" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText2"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/confirm_create_recipe_layout"
+            android:layout_gravity="left|top">
+
+            <Button
+                android:id="@+id/confirm_create_recipe_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/confirm_create_recipe_button" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="#ffff"/>
+</android.support.v4.widget.DrawerLayout>
