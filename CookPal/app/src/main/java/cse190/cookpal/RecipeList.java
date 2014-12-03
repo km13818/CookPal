@@ -56,42 +56,11 @@ public class RecipeList extends BaseDrawerActivity {
     Button deleteConfirmButton;
     TextView deleteConfirmText;
     //ImageButton deleteGroceryListButton;
-    String recipeWhosePictureWasTaken;
-    ImageView currRecipeImageView;
 
     // WebServer Request URL
     String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
             AccountActivity.getFbId();
 
-    //called after picture is taken with requestCode 0
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("recipelist", "onactivityresult");
-        if (requestCode == 0) {
-            if (data.getExtras() != null) {
-                Bitmap recipeImageBitMap = (Bitmap) data.getExtras().get("data");
-                Log.d("recipelist", "recipe image taken: " + recipeImageBitMap);
-
-                ByteArrayOutputStream imageBaos = new ByteArrayOutputStream();
-                recipeImageBitMap.compress(Bitmap.CompressFormat.JPEG, 100, imageBaos);
-
-
-                currRecipeImageView.setImageBitmap(recipeImageBitMap);
-                Log.d("recipeList", "recipeimagebaos: " + imageBaos);
-                Log.d("recipelist", "recipewhosepicturewastaken: "  + recipeWhosePictureWasTaken);
-                HashMap<String,String> insertImageParams = new HashMap<String,String>();
-                insertImageParams.put("r_name", recipeWhosePictureWasTaken);
-                insertImageParams.put("fb_id", AccountActivity.getFbId());
-                insertImageParams.put("image", new String(imageBaos.toByteArray()));
-                insertImageParams.put("filter", "add_image");
-                httpUtil.makeHttpPost(insertImageParams);
-            }
-            else
-            {
-                Log.d("recipeist", "no picture was taken");
-            }
-        }
-    }
 
     @Override
     protected void onResume() {
@@ -115,18 +84,9 @@ public class RecipeList extends BaseDrawerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
 
-        //TODO: populate recipeList using db
 
         new LongOperation().execute(serverRecipeListRequestURL);
 
-        //TODO: populate recipeLists using db
-        HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
-        recipeListRetrievalParams.put("fb_id",AccountActivity.getFbId());
-       // HttpResponse recipeListRetrievalResponse = HttpUtil.makeHttpPost(recipeListRetrievalParams);
-
-
-        //TODO: pass in recipeList array list here from db
-        // populateListView();
 
         /*ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
         addGroceryListButton.setOnClickListener(new View.OnClickListener() {
@@ -276,18 +236,6 @@ public class RecipeList extends BaseDrawerActivity {
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
-            Button currAddPictureButton = (Button)convertView.findViewById(R.id.addPictureButton);
-            currAddPictureButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    recipeWhosePictureWasTaken = recipeName;
-                    currRecipeImageView = (ImageView) thisConvertView.findViewById(R.id.recipeEntryImageView);
-                    startActivityForResult(cameraIntent, 0);
-
-                }
-            });
 
 
             return convertView;
