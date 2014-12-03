@@ -10,7 +10,6 @@
         <item name="android:background">@color/blue</item>
     </style>
 
-
     <!-- the theme applied to the application or activity -->
     <style name="RecipeABTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/actionBar</item>
