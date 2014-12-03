@@ -34,7 +34,32 @@
             android:id="@+id/recipeNameInput"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addInstructionsButtonLayout"
+        android:background="@drawable/view_border_green">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add instructions"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/instructionsTitleTextView"
+            android:padding="10dp"
+            />
 
+        <ImageButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="add instructions"
+            android:src="@drawable/add_icon"
+            android:id="@+id/addInstructionsButton"
+            android:clickable="true"
+            android:padding="10dp"
+            />
+    </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -43,31 +68,7 @@
         android:background="@drawable/view_border_orange"
         android:padding="50dp"
         android:layout_gravity="left|top">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/addInstructionsButtonLayout">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="add instructions"
-                android:textColor="@color/white"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/instructionsTitleTextView"
-                android:padding="10dp"
-                />
 
-            <ImageButton
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="add instructions"
-                android:src="@drawable/add_icon"
-                android:id="@+id/addInstructionsButton"
-                android:clickable="true"
-                android:padding="10dp"
-                />
-        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
