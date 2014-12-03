@@ -128,14 +128,14 @@ public class RecipeList extends BaseDrawerActivity {
         //TODO: pass in recipeList array list here from db
         // populateListView();
 
-        ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
+        /*ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
         addGroceryListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(RecipeList.this, AddRecipeActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
         //popupInit();
     }
 
@@ -161,7 +161,6 @@ public class RecipeList extends BaseDrawerActivity {
                                 deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
                                 deleteRecipeParams.put("filter", "delete_recipe");
                                 httpUtil.makeHttpPost(deleteRecipeParams);
-
                             }
                         }
                         onRestart();
@@ -238,9 +237,10 @@ public class RecipeList extends BaseDrawerActivity {
         switch (item.getItemId()) {
             case R.id.deleteGroceryListButton:
                 popupInit();
-                //deleteConfirmWindow = new PopupWindow(thisLayout, LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-                //deleteConfirmWindow.showAtLocation(thisLayout, Gravity.CENTER,50, 50);
-                //deleteConfirmWindow.showAsDropDown(deleteGroceryListButton);
+                return true;
+            case R.id.addGroceryListButton:
+                Intent i = new Intent(RecipeList.this, AddRecipeActivity.class);
+                startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
