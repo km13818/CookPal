@@ -15,6 +15,10 @@ public class Step {
         this.stepNumber = stepNum;
     }
 
+    public String toString() {
+        return stepNumber + ": " + title + "\n\ttime: " + timeTakes.getTime();
+    }
+
     public int getStepNumber() {
         return stepNumber;
     }

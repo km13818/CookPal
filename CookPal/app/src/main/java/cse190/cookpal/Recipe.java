@@ -35,8 +35,8 @@ public class Recipe {
         Step currStep;
 
         for(int i = 0; i < 10; i++) {
-            currStep = new Step("Chop the onions: " + i,
-                    "Take your knife. And chop the onions. Don't cry or you're banished: " + i,
+            currStep = new Step("Chop the onions " + i,
+                    "Take your knife. And chop the onions. Don't cry or you're banished " + i,
                     new Time(1000 * i), i);
 
             stepList.add(currStep);
