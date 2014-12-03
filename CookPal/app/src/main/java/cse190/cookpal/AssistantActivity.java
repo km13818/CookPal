@@ -7,14 +7,23 @@ import android.widget.*;
 
 public class AssistantActivity extends BaseDrawerActivity {
 
+    // Layouts
     private RelativeLayout currStepLayout;
     private RelativeLayout stepListLayout;
     private RelativeLayout stepPreviewLayout;
 
+    // Current Step (assistant "home") views
     private TextView stepNumView;
     private TextView stepTitleView;
     private TextView stepDescriptView;
+
+    // Step list view
     private ListView stepListView;
+
+    // Step Preview (when user clicks from step list) views
+    private TextView stepPreviewNumView;
+    private TextView stepPreviewTitleView;
+    private TextView stepPreviewDescriptView;
 
     private ListAdapter stepListAdapter;
 
@@ -40,7 +49,6 @@ public class AssistantActivity extends BaseDrawerActivity {
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = new Recipe("Chicken and Rice");
-
         if(null != currRecipe.getStepList()) {
             currStep = currRecipe.getStepList().get(0);
         }
@@ -50,6 +58,9 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepTitleView = (TextView) findViewById(R.id.assistant_stepTitle);
         stepDescriptView = (TextView) findViewById(R.id.assistant_stepDescription);
         stepListView = (ListView) findViewById(R.id.assistant_stepListView);
+        stepPreviewNumView = (TextView) findViewById(R.id.assistant_stepPreviewNumber);
+        stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
+        stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
 
         // Set the step information
         stepNumView.setText(currStep.getStepNumber() + "");
@@ -67,6 +78,11 @@ public class AssistantActivity extends BaseDrawerActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 Step clickedStep = (Step) parent.getItemAtPosition(position);
+
+                // Populate the step preview with data from this clicked step
+                stepPreviewNumView.setText(clickedStep.getStepNumber() + "");
+                stepPreviewTitleView.setText(clickedStep.getTitle());
+                stepPreviewDescriptView.setText(clickedStep.getDescription());
 
                 stepPreviewToggle(view);
             }
