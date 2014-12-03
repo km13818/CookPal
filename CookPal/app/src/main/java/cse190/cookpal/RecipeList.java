@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,7 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
 import org.apache.http.client.HttpClient;
@@ -43,6 +45,7 @@ public class RecipeList extends BaseDrawerActivity {
     private static final String TAG = "RecipeList";
 
     //TODO: potentially refactor. not sure if it's a good idea to have data structures as global vars in activity
+    HttpUtil httpUtil = new HttpUtil();
     ArrayList<String> recipeList = new ArrayList<String>();
     ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
     LinearLayout thisLayout;
@@ -53,17 +56,21 @@ public class RecipeList extends BaseDrawerActivity {
     String recipeWhosePictureWasTaken;
     ImageView currRecipeImageView;
 
+    // WebServer Request URL
+    String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
+            AccountActivity.getFbId();
+
     //called after picture is taken with requestCode 0
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("recipelist", "onactivityresult");
-        if(requestCode == 0) {
-            if(data.getExtras() != null) {
+        if (requestCode == 0) {
+            if (data.getExtras() != null) {
                 Bitmap recipeImageBitMap = (Bitmap) data.getExtras().get("data");
                 Log.d("recipelist", "recipe image taken: " + recipeImageBitMap);
 
                 ByteArrayOutputStream imageBaos = new ByteArrayOutputStream();
-                recipeImageBitMap.compress(Bitmap.CompressFormat.JPEG,100, imageBaos );
+                recipeImageBitMap.compress(Bitmap.CompressFormat.JPEG, 100, imageBaos);
 
 
                 currRecipeImageView.setImageBitmap(recipeImageBitMap);
@@ -74,14 +81,13 @@ public class RecipeList extends BaseDrawerActivity {
                 insertImageParams.put("fb_id", AccountActivity.getFbId());
                 insertImageParams.put("image", new String(imageBaos.toByteArray()));
                 insertImageParams.put("filter", "add_image");
-                HttpUtil.makeHttpPost(insertImageParams);
+                httpUtil.makeHttpPost(insertImageParams);
             }
             else
             {
                 Log.d("recipeist", "no picture was taken");
             }
         }
-
     }
 
     @Override
@@ -96,6 +102,8 @@ public class RecipeList extends BaseDrawerActivity {
     @Override
     protected void onRestart() {
         Log.d("recipelist", "recipelist onrestart");
+        recipeList = new ArrayList<String>();
+        new LongOperation().execute(serverRecipeListRequestURL);
         populateListView();
         super.onRestart();
     }
@@ -105,11 +113,13 @@ public class RecipeList extends BaseDrawerActivity {
         setContentView(R.layout.activity_recipe_list);
 
         //TODO: populate recipeList using db
-        // WebServer Request URL
-        String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
-                AccountActivity.getFbId();
+
         new LongOperation().execute(serverRecipeListRequestURL);
 
+        //TODO: populate recipeLists using db
+        HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
+        recipeListRetrievalParams.put("fb_id",AccountActivity.getFbId());
+       // HttpResponse recipeListRetrievalResponse = HttpUtil.makeHttpPost(recipeListRetrievalParams);
 
 
         //TODO: pass in recipeList array list here from db
@@ -149,14 +159,12 @@ public class RecipeList extends BaseDrawerActivity {
                     if(checkBoxes.get(i).isChecked() && RecipeList.this.recipeList.contains(checkBoxes.get(i).getText())) {
 
                         //test code
-                        //TODO: test DELETE FROM DB ->onrestart()
+                        //TODO: currently because checkBoxes is hacky, will delete checked recipes multiple times. should fix this
                         HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
-                        deleteRecipeParams.put("name", recipeName);
+                        deleteRecipeParams.put("r_name", recipeName);
                         deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
                         deleteRecipeParams.put("filter", "delete_recipe");
-                        HttpUtil.makeHttpPost(deleteRecipeParams);
-                        RecipeList.this.recipeList.remove(checkBoxes.get(i).getText());
-                        checkBoxes.remove(i);
+                        httpUtil.makeHttpPost(deleteRecipeParams);
 
                     }
                 }
@@ -180,11 +188,21 @@ public class RecipeList extends BaseDrawerActivity {
         });
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.recipe_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
 
     private void populateListView() {
         //Create list of items
 
         checkBoxes = new ArrayList<CheckBox>();
+
         ArrayAdapter<String> recipeListAdapter = new RecipeListAdapter();
         ListView list = (ListView) findViewById(R.id.recipeListView);
         list.setAdapter(recipeListAdapter);

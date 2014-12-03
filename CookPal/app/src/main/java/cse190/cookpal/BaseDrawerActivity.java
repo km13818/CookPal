@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -19,7 +20,7 @@ import com.facebook.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseDrawerActivity extends Activity {
+public class BaseDrawerActivity extends FragmentActivity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -33,7 +34,7 @@ public class BaseDrawerActivity extends Activity {
 
     private static final int DRAWER_COOKBOOK = 0;
     private static final int DRAWER_ASSISTANT = 1;
-    private static final int DRAWER_SETTINGS = 2;
+    private static final int DRAWER_SHARE = 2;
     private static final int DRAWER_LOGOUT = 3;
 
     @Override
@@ -86,10 +87,10 @@ public class BaseDrawerActivity extends Activity {
                 GravityCompat.START);
 
         // Add Drawer Item to dataList
-        dataList.add(new DrawerItem(getString(R.string.nav_title_cookbook), R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(getString(R.string.nav_title_assistant), R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(getString(R.string.nav_title_settings), R.drawable.ic_action_settings));
-        dataList.add(new DrawerItem(getString(R.string.nav_title_logout), R.drawable.ic_action_settings));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_cookbook), R.drawable.nav_cookbook_icon));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_assistant), R.drawable.nav_chef_icon));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_share), R.drawable.abc_ic_menu_share_holo_dark));
+        dataList.add(new DrawerItem(getString(R.string.nav_title_logout), R.drawable.nav_settings_icon));
 
         adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
                 dataList);
@@ -132,8 +133,10 @@ public class BaseDrawerActivity extends Activity {
             return DRAWER_COOKBOOK;
         } else if (this instanceof AssistantActivity) {
             return DRAWER_ASSISTANT;
-        } else if (this instanceof SettingsActivity) {
-            return DRAWER_SETTINGS;
+
+        } else if (this instanceof ShareActivity) {
+            return DRAWER_SHARE;
+
         }
         return -1;
     }
@@ -160,11 +163,11 @@ public class BaseDrawerActivity extends Activity {
                 }
                 intent = new Intent(this, AssistantActivity.class);
                 break;
-            case DRAWER_SETTINGS:
-                if (this instanceof SettingsActivity) {
+            case DRAWER_SHARE:
+                if (this instanceof ShareActivity) {
                     break;
                 }
-                intent = new Intent(this, SettingsActivity.class);
+                intent = new Intent(this, ShareActivity.class);
                 break;
             case DRAWER_LOGOUT:
                 if (Session.getActiveSession() != null) {

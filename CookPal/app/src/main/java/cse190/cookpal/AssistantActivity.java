@@ -7,21 +7,41 @@ import android.widget.*;
 
 public class AssistantActivity extends BaseDrawerActivity {
 
-    private LinearLayout stepList;
+    private LinearLayout stepListLayout;
+
+    private TextView stepNumView;
+    private TextView stepTitleView;
+    private TextView stepDescriptView;
+
+
     private Recipe currRecipe;
-    private ListAdapter stepListAdapter;
+    private Step currStep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
 
-        stepList = (LinearLayout) findViewById(R.id.assistant_stepList);
-        stepList.setVisibility(View.GONE);
+        // Hide the step list on the bottom (the ETC bar) until it's clicked
+        stepListLayout = (LinearLayout) findViewById(R.id.assistant_stepList);
+        stepListLayout.setVisibility(View.GONE);
 
-        //TODO: recipe class
-        //items = new string[] { "Vegetables","Fruits","Flower Buds","Legumes","Bulbs","Tubers" };
-        //stepListAdapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, items);
+        // Recipe creation
+        //TODO: pull in recipe class from Intent.getIntent()? something like that.
+        currRecipe = new Recipe("Chicken and Rice");
+
+        if(null != currRecipe.getStepList()) {
+            currStep = currRecipe.getStepList().get(0);
+        }
+
+        // Bind and populate the step information
+        stepNumView = (TextView) findViewById(R.id.assistant_stepNumber);
+        stepTitleView = (TextView) findViewById(R.id.assistant_stepTitle);
+        stepDescriptView = (TextView) findViewById(R.id.assistant_stepDescription);
+
+        stepNumView.setText(currStep.getStepNumber() + "");
+        stepTitleView.setText(currStep.getTitle());
+        stepDescriptView.setText(currStep.getDescription());
     }
 
 
@@ -45,10 +65,10 @@ public class AssistantActivity extends BaseDrawerActivity {
     }
 
     public void stepListToggle(View view) {
-        if(stepList.getVisibility() == View.GONE) {
-            stepList.setVisibility(View.VISIBLE);
+        if(stepListLayout.getVisibility() == View.GONE) {
+            stepListLayout.setVisibility(View.VISIBLE);
         } else {
-            stepList.setVisibility(View.GONE);
+            stepListLayout.setVisibility(View.GONE);
         }
     }
 }

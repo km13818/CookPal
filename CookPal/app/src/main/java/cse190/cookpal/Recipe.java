@@ -4,53 +4,44 @@ import java.sql.Time;
 import java.util.ArrayList;
 
 public class Recipe {
+
     private String recipeName;
-    private ArrayList<Steps> stepList;
+    private ArrayList<Step> stepList;
 
-    public ArrayList<Steps> getStepList() {
-        return stepList;
-    }
+    //TODO: hold recipe image
 
-    public void setStepList(ArrayList<Steps> stepList) {
+    public Recipe(String name, ArrayList<Step> stepList) {
+        this.recipeName = name;
         this.stepList = stepList;
     }
 
-    class Steps {
-        private String title;
-        private String description;
-        private Time timeTakes;
-        private int stepNumber;
+    // TODO: temporary dummy Recipe until actual data is passed from Recipe Intent --> remove this
+    public Recipe(String name) {
+        this.recipeName = name;
+        this.stepList = dummyStepList();
+    }
 
-        public int getStepNumber() {
-            return stepNumber;
+    public ArrayList<Step> getStepList() {
+        return stepList;
+    }
+
+    public void setStepList(ArrayList<Step> stepList) {
+        this.stepList = stepList;
+    }
+
+    // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
+    public ArrayList<Step> dummyStepList() {
+        ArrayList<Step> stepList = new ArrayList<Step>();
+        Step currStep;
+
+        for(int i = 0; i < 10; i++) {
+            currStep = new Step("Chop the onions: " + i,
+                    "Take your knife. And chop the onions. Don't cry or you're banished: " + i,
+                    new Time(1000 * i), i);
+
+            stepList.add(currStep);
         }
 
-        public void setStepNumber(int stepNumber) {
-            this.stepNumber = stepNumber;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public Time getTimeTakes() {
-            return timeTakes;
-        }
-
-        public void setTimeTakes(Time timeTakes) {
-            this.timeTakes = timeTakes;
-        }
+        return stepList;
     }
 }
