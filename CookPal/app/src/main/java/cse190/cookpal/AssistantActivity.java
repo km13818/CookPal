@@ -57,30 +57,20 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepDescriptView.setText(currStep.getDescription());
 
         // Bind the step list adapter
-        stepListAdapter = new ArrayAdapter<Step>(this, android.R.layout.simple_list_item_1, currRecipe.getStepList());
+        stepListAdapter = new ArrayAdapter<Step>(
+                this, android.R.layout.simple_list_item_1, currRecipe.getStepList());
         stepListView.setAdapter(stepListAdapter);
 
 
         // TODO: VERIFY THIS WORKS
-        /*
         stepListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                                    int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-                view.animate().setDuration(2000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                stepListView.removeView(item);
-                                adapter.notifyDataSetChanged();
-                                view.setAlpha(1);
-                            }
-                        });
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                Step clickedStep = (Step) parent.getItemAtPosition(position);
 
+                stepPreviewToggle(view);
             }
-        */
+        });
     }
 
 
@@ -104,10 +94,18 @@ public class AssistantActivity extends BaseDrawerActivity {
     }
 
     public void stepListToggle(View view) {
-        if(stepListLayout.getVisibility() == View.GONE) {
-            stepListLayout.setVisibility(View.VISIBLE);
+        viewToggle(view, stepListLayout);
+    }
+
+    public void stepPreviewToggle(View view) {
+        viewToggle(view, stepPreviewLayout);
+    }
+
+    private void viewToggle(View view, RelativeLayout layoutToToggle) {
+        if(layoutToToggle.getVisibility() == View.GONE) {
+            layoutToToggle.setVisibility(View.VISIBLE);
         } else {
-            stepListLayout.setVisibility(View.GONE);
+            layoutToToggle.setVisibility(View.GONE);
         }
     }
 }

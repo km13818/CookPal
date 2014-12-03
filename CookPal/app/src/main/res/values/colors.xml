@@ -12,7 +12,6 @@
     <color name="accent_green">#97e08f</color>
     <color name="unselected_tabs">#98b962</color>
     <color name="selected_tabs">#2d4762</color>
-
-
-
+    <color name="grey">#939598</color>
+    <color name="light_grey">#BCBEC0</color>
 </resources>
