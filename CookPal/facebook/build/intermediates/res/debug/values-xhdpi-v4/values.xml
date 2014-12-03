@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/values-xhdpi/dimens.xml -->
-=======
     <!-- From: file:/Users/scha/git/CookPal/CookPal/facebook/res/values-xhdpi/dimens.xml -->
->>>>>>> ee7fa24ab8c8ac41f4b5eb3c0c1c0fddd3fcaaca
-=======
-    <!-- From: file:/Users/timchi/Documents/CSE%20190/CookPal/CookPal/facebook/res/values-xhdpi/dimens.xml -->
->>>>>>> 47733a2e649acc8100d5e36566b3ebe3ba0845aa
     <eat-comment />
 
     <dimen name="com_facebook_picker_divider_width">2px</dimen>
