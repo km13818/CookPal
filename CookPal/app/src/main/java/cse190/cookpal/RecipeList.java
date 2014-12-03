@@ -1,7 +1,9 @@
 package cse190.cookpal;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -52,7 +55,7 @@ public class RecipeList extends BaseDrawerActivity {
     PopupWindow deleteConfirmWindow;
     Button deleteConfirmButton;
     TextView deleteConfirmText;
-    ImageButton deleteGroceryListButton;
+    //ImageButton deleteGroceryListButton;
     String recipeWhosePictureWasTaken;
     ImageView currRecipeImageView;
 
@@ -133,19 +136,53 @@ public class RecipeList extends BaseDrawerActivity {
                 startActivity(i);
             }
         });
-        popupInit();
+        //popupInit();
     }
 
     private void popupInit() {
-        deleteGroceryListButton = (ImageButton) findViewById(R.id.deleteGroceryListButton);
-        deleteConfirmText = new TextView(this);
+        //deleteGroceryListButton = (ImageButton) findViewById(R.id.deleteGroceryListButton);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Confirm delete?")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        ListView recipeList = (ListView) findViewById(R.id.recipeListView);
+
+                        for(int i = 0; i < checkBoxes.size(); i++) {
+                            String recipeName = (String)checkBoxes.get(i).getText();
+                            Log.d(TAG, recipeName);
+
+                            if(checkBoxes.get(i).isChecked() && RecipeList.this.recipeList.contains(checkBoxes.get(i).getText())) {
+
+                                //test code
+                                //TODO: currently because checkBoxes is hacky, will delete checked recipes multiple times. should fix this
+                                HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
+                                deleteRecipeParams.put("r_name", recipeName);
+                                deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
+                                deleteRecipeParams.put("filter", "delete_recipe");
+                                httpUtil.makeHttpPost(deleteRecipeParams);
+
+                            }
+                        }
+                        onRestart();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        /*deleteConfirmText = new TextView(this);
         deleteConfirmButton = new Button(this);
         thisLayout = new LinearLayout(this);
 
         deleteConfirmText.setText("Confirm delete?");
-        deleteConfirmButton.setText("OK");
+        deleteConfirmButton.setText("OK");*/
 
-        deleteConfirmButton.setOnClickListener(new View.OnClickListener() {
+        /*deleteConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ListView recipeList = (ListView) findViewById(R.id.recipeListView);
@@ -174,9 +211,9 @@ public class RecipeList extends BaseDrawerActivity {
             }
         });
         thisLayout.addView(deleteConfirmText);
-        thisLayout.addView(deleteConfirmButton);
+        thisLayout.addView(deleteConfirmButton);*/
 
-        deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
+        /*deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteConfirmWindow = new PopupWindow(thisLayout, LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
@@ -185,7 +222,7 @@ public class RecipeList extends BaseDrawerActivity {
 
 
             }
-        });
+        });*/
 
     }
     @Override
@@ -196,7 +233,19 @@ public class RecipeList extends BaseDrawerActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deleteGroceryListButton:
+                popupInit();
+                //deleteConfirmWindow = new PopupWindow(thisLayout, LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+                //deleteConfirmWindow.showAtLocation(thisLayout, Gravity.CENTER,50, 50);
+                //deleteConfirmWindow.showAsDropDown(deleteGroceryListButton);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     private void populateListView() {
         //Create list of items
