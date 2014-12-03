@@ -236,6 +236,8 @@ public class RecipeList extends BaseDrawerActivity {
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
+            TextView currTextView = (TextView) convertView.findViewById(R.id.recipeTitle);
+            currTextView.setText(recipeName);
 
 
             return convertView;
