@@ -3,7 +3,10 @@ package cse190.cookpal;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -140,13 +143,37 @@ public class AddRecipeActivity extends Activity {
                 EditText newInstruction = new EditText(thisContext);
 
                 TextView timeTextView = new TextView(thisContext);
-                timeTextView.setText("Time: ");
+                timeTextView.setText("  time  ");
                 EditText hoursEditText = new EditText(thisContext);
                 EditText minsEditText = new EditText(thisContext);
                 TextView hoursTextView = new TextView(thisContext);
-                hoursTextView.setText(" hrs ");
+                hoursTextView.setText("hr ");
                 TextView minsTextView = new TextView(thisContext);
-                minsTextView.setText(" mins");
+                minsTextView.setText("min");
+
+                instructionNum.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                instructionNum.setTextColor(Color.WHITE);
+                newInstruction.setTextColor(Color.WHITE);
+                timeTextView.setTextColor(Color.WHITE);
+                hoursEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                hoursEditText.setTextColor(Color.WHITE);
+                minsEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                minsEditText.setTextColor(Color.WHITE);
+                hoursTextView.setTextColor(Color.WHITE);
+                minsTextView.setTextColor(Color.WHITE);
+
+                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                InputFilter[] filterArray = new InputFilter[1];
+                filterArray[0] = new InputFilter.LengthFilter(2);
+                param.weight = 1.0f;
+                newInstruction.setLayoutParams(param);
+                param.weight = 0.0f;
+                minsEditText.setLayoutParams(param);
+                hoursEditText.setLayoutParams(param);
+                minsEditText.setFilters(filterArray);
+                hoursEditText.setFilters(filterArray);
 
                 newInstructionRowLayout.addView(instructionNum);
                 newInstructionRowLayout.addView(newInstruction);

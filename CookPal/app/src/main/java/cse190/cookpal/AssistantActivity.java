@@ -1,17 +1,54 @@
 package cse190.cookpal;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.*;
+import android.widget.*;
 
 
 public class AssistantActivity extends BaseDrawerActivity {
+
+    private RelativeLayout stepListLayout;
+
+    private TextView stepNumView;
+    private TextView stepTitleView;
+    private TextView stepDescriptView;
+    private ListView stepListView;
+
+    private ListAdapter stepListAdapter;
+
+    private Recipe currRecipe;
+    private Step currStep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
+
+        // Hide the step list on the bottom (the ETC bar) until it's clicked
+        stepListLayout = (RelativeLayout) findViewById(R.id.assistant_stepListLayout);
+        stepListLayout.setVisibility(View.GONE);
+
+        // Recipe creation
+        //TODO: pull in recipe class from Intent.getIntent()? something like that.
+        currRecipe = new Recipe("Chicken and Rice");
+
+        if(null != currRecipe.getStepList()) {
+            currStep = currRecipe.getStepList().get(0);
+        }
+
+        // Bind and populate the step information
+        stepNumView = (TextView) findViewById(R.id.assistant_stepNumber);
+        stepTitleView = (TextView) findViewById(R.id.assistant_stepTitle);
+        stepDescriptView = (TextView) findViewById(R.id.assistant_stepDescription);
+        stepListView = (ListView) findViewById(R.id.assistant_stepListView);
+
+        stepNumView.setText(currStep.getStepNumber() + "");
+        stepTitleView.setText(currStep.getTitle());
+        stepDescriptView.setText(currStep.getDescription());
+
+        // Bind the step list adapter
+        stepListAdapter = new ArrayAdapter<Step>(this, android.R.layout.simple_list_item_1, currRecipe.getStepList());
+        stepListView.setAdapter(stepListAdapter);
     }
 
 
@@ -32,5 +69,13 @@ public class AssistantActivity extends BaseDrawerActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void stepListToggle(View view) {
+        if(stepListLayout.getVisibility() == View.GONE) {
+            stepListLayout.setVisibility(View.VISIBLE);
+        } else {
+            stepListLayout.setVisibility(View.GONE);
+        }
     }
 }

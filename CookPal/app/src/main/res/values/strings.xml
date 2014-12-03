@@ -34,4 +34,12 @@
     <string name="title_activity_share_">share</string>
     <string name="title_activity_recipe">Recipe</string>
 
+    <!-- Assistant Strings -->
+    <string name="etc">ETC</string>
+    <string name="timeLeft">time left</string>
+    <!-- Note: dummy text is replaced by AssistantActivity.java. Needed just to see rendering preview -->
+    <string name="dummyStepDescrip">dummy description shouldnt show up</string>
+    <string name="dummyStepTitle">dummytitle shouldnt show up</string>
+    <string name="dummyStepNum">69</string>
+
 </resources>
