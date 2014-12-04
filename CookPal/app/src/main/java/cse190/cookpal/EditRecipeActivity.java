@@ -89,6 +89,9 @@ public class EditRecipeActivity extends Activity {
             Log.d("editrecipeeacivity", "stepdesc editext: " + stepDescriptionTextView.toString());
             Log.d("editrecipeeacivity", "stepdescription: " + stepDescription);
 
+
+            TextView stepNoTextView = (TextView) convertView.findViewById(R.id.stepNoTextView);
+            stepNoTextView.setText(stepList.get(position).getStepNumber() + ".");
             stepDescriptionTextView.setText(stepDescription);
 
             EditText hoursEditText = (EditText) (convertView.findViewById(R.id.hoursEditText));
@@ -101,4 +104,23 @@ public class EditRecipeActivity extends Activity {
             return convertView;
         }
     }
+
+    //sort steps
+
+    // 2 1 3
+    //1 2 3
+    //1 2 3
+   /* public ArrayList<Step> sortSteps (ArrayList<Step> stepList) {
+        for (int i = 0; i < stepList.size(); i++) {
+            for (int j = i; j < stepList.size(); j++) {
+                if(stepList.get(j).getStepNumber() == i+1) {
+                    //swap j with i
+                    Step temp = stepList.get(j); //TODO: IMPLEMENT CLONE
+                    stepList.set(j, stepList.get(i));
+                    stepList.set(i,temp );
+                    break; //break out inner
+                }
+            }
+        }
+    }*/
 }

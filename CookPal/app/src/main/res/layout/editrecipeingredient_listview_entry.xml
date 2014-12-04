@@ -5,19 +5,23 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ingredient"
+        android:id="@+id/ingredientEditText"
         android:layout_weight="1" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Quantity:"
-        android:id="@+id/ingredientQuantityTextView"
-        android:gravity="center"
+        android:id="@+id/quantityTextView"
+        android:layout_toRightOf="@id/ingredientEditText"
         android:layout_centerHorizontal="true" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/quantity"
+        android:id="@+id/quantityEditText"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_toRightOf="@id/quantityTextView"
         android:layout_weight="1" />
+
 </RelativeLayout>

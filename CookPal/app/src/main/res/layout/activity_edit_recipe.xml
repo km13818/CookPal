@@ -64,7 +64,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
 
-    <!--ingredients textview + button
+    <!--ingredients textview + button-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
@@ -81,14 +81,14 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add more ingredients"
+            android:text="Add more instructions"
             android:id="@+id/addIngredientsButton"
             android:clickable="true"
             />
-    </LinearLayout>-->
+    </LinearLayout>
 
 
-    <!-- ingredients listview
+    <!-- ingredients listview -->
 
 
         <ListView
@@ -100,9 +100,8 @@
             android:dividerHeight="0dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
--->
 
-    <!-- confirm create recipe
+    <!-- confirm create recipe -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
@@ -118,5 +117,5 @@
 
 
     </LinearLayout>
--->
+
 </LinearLayout>
