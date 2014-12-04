@@ -128,6 +128,12 @@ public class AssistantActivity extends BaseDrawerActivity {
         displayCurrStep(view);
     }
 
+    private void setCurrStepViewData(Step currStep) {
+        stepNumView.setText(currStep.getStepNumber() + "");
+        stepTitleView.setText(currStep.getTitle());
+        stepDescriptView.setText(currStep.getDescription());
+    }
+
     // Methods to show only the current layout and hide everything else so they aren't clickable
     public void displayStepList(View view) {
         stepListLayout.setVisibility(View.VISIBLE);
@@ -145,11 +151,5 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.VISIBLE);
         stepPreviewLayout.setVisibility(View.GONE);
-    }
-
-    private void setCurrStepViewData(Step currStep) {
-        stepNumView.setText(currStep.getStepNumber() + "");
-        stepTitleView.setText(currStep.getTitle());
-        stepDescriptView.setText(currStep.getDescription());
     }
 }

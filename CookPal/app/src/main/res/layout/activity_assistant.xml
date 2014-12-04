@@ -257,9 +257,11 @@
                 </TextView>
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:layout_below="@id/assistant_timerPreviewDisplay">
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/assistant_timerPreviewDisplay"
+                    android:layout_marginTop="30dp">
                     <Button
                         android:id="@+id/assistant_backToStepListButton"
                         android:layout_width="wrap_content"
@@ -268,6 +270,7 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:text="Back to List"
+                        android:layout_marginRight="20dp"
                         android:padding="10dp"
                         android:onClick="displayStepList"/>
 
