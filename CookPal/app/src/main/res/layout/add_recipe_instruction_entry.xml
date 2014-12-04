@@ -25,7 +25,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/ingredient"
+            android:id="@+id/add_recipe_instruction_step_edit"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -53,7 +53,7 @@
         <EditText
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editText3"
+            android:id="@+id/add_recipe_instruction_hr_edit"
             android:textColor="@color/white"
             android:inputType="number"
             android:maxLength="2"
@@ -74,7 +74,7 @@
         <EditText
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:id="@+id/minsEditText1"
+            android:id="@+id/add_recipe_instruction_min_edit"
             android:textColor="@color/white"
             android:inputType="number"
             android:maxLength="2"

@@ -79,10 +79,10 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                         //loop throuhg view's children to find EditTexts
                         int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
                         ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
-                        TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
-                        EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
-                        EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
-                        EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
+                        TextView instructionNumView = (TextView)horizontalViewGroup.findViewById(R.id.add_recipe_instruction_step);
+                        EditText instructionEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_step_edit);
+                        EditText instructionHoursEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_hr_edit);
+                        EditText instructionMinsEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_min_edit);
                         Log.d("AddRecipeActivity", "instr: " + instructionEditText.getText().toString() + " hrs: " + instructionHoursEditText.getText().toString() + " mins: " + instructionMinsEditText.getText().toString());
                         //TODO: INSERT INSTRUCTION
 
@@ -132,7 +132,7 @@ public class AddRecipeActivity extends BaseDrawerActivity {
         ImageButton addInstructionsButton = (ImageButton) findViewById(R.id.addInstructionsButton);
         addInstructionsButton.setOnClickListener(new View.OnClickListener() {
 
-            int currInstructionCount = 1;
+            int currInstructionCount = 0;
             @Override
             public void onClick(View v) {
                 //add row to instructionsLayout
@@ -152,7 +152,7 @@ public class AddRecipeActivity extends BaseDrawerActivity {
         ImageButton addIngredientsButton = (ImageButton) findViewById(R.id.addIngredientsButton);
         addIngredientsButton.setOnClickListener(new View.OnClickListener() {
 
-            int currIngredientCount = 1;
+            int currIngredientCount = 0;
             @Override
             public void onClick(View v) {
                 //add row to instructionsLayout
