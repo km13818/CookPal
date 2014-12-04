@@ -71,6 +71,10 @@
             android:label="@string/title_activity_recipe"
             android:theme="@style/RecipeABTheme">
         </activity>
+        <activity
+            android:name=".ttsTest"
+            android:label="@string/title_activity_tts">
+        </activity>
     </application>
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
