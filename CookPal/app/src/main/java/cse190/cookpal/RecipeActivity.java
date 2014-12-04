@@ -64,6 +64,10 @@ public class RecipeActivity extends BaseDrawerActivity implements
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+
+        //Get Recipe Object passed by recipeList
+        Intent intent = getIntent();
+        Recipe currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
     }
 
     @Override
