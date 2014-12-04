@@ -3,6 +3,7 @@ package cse190.cookpal;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
+import java.util.*;
 
 
 public class AssistantActivity extends BaseDrawerActivity {
@@ -63,9 +64,7 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
 
         // Set the step information
-        stepNumView.setText(currStep.getStepNumber() + "");
-        stepTitleView.setText(currStep.getTitle());
-        stepDescriptView.setText(currStep.getDescription());
+        setCurrStepViewData(currStep);
 
         // Bind the step list adapter
         stepListAdapter = new ArrayAdapter<Step>(
@@ -107,6 +106,19 @@ public class AssistantActivity extends BaseDrawerActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void moveToNextStep(View view) {
+        int currStepIdx = currStep.getStepNumber();
+        ArrayList<Step> stepList = currRecipe.getStepList();
+
+        // If next step exists, move to it and update the view
+        if(++currStepIdx < stepList.size()) {
+            currStep = stepList.get(currStepIdx);
+            setCurrStepViewData(currStep);
+            displayCurrStep(view);
+        }
+    }
+
+    // Methods to show only the current layout and hide everything else so they aren't clickable
     public void displayStepList(View view) {
         stepListLayout.setVisibility(View.VISIBLE);
         currStepLayout.setVisibility(View.GONE);
@@ -123,5 +135,11 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.VISIBLE);
         stepPreviewLayout.setVisibility(View.GONE);
+    }
+
+    private void setCurrStepViewData(Step currStep) {
+        stepNumView.setText(currStep.getStepNumber() + "");
+        stepTitleView.setText(currStep.getTitle());
+        stepDescriptView.setText(currStep.getDescription());
     }
 }
