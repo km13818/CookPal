@@ -18,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -41,6 +43,8 @@ public class AddRecipeActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
+        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
+
         Button confirmAddButton = (Button) findViewById(R.id.confirm_create_recipe_button);
         confirmAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,5 +242,20 @@ public class AddRecipeActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //start tracking
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        //stop tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+
     }
 }

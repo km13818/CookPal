@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.FacebookDialog;
+import com.google.android.gms.analytics.GoogleAnalytics;
 
 
 public class ShareActivity extends BaseDrawerActivity {
@@ -18,6 +19,7 @@ public class ShareActivity extends BaseDrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
+        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
 
         uiHelper = new UiLifecycleHelper(this, null);
         uiHelper.onCreate(savedInstanceState);
@@ -87,5 +89,20 @@ public class ShareActivity extends BaseDrawerActivity {
     public void onDestroy() {
         super.onDestroy();
         uiHelper.onDestroy();
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //start tracking
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        //stop tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+
     }
 }

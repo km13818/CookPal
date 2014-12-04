@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 import java.util.ArrayList;
 
 
@@ -30,6 +32,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
 
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -121,5 +124,20 @@ public class RecipeActivity extends BaseDrawerActivity implements
     public void addRecipeClicked(MenuItem menuItem) {
         Intent intent = new Intent(this, AddRecipeActivity.class);
         startActivity(intent);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //start tracking
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        //stop tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+
     }
 }
