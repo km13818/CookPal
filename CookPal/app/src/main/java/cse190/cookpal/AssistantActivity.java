@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 
 public class AssistantActivity extends BaseDrawerActivity {
 
@@ -23,7 +25,7 @@ public class AssistantActivity extends BaseDrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
-
+        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
         // Hide the step list on the bottom (the ETC bar) until it's clicked
         stepListLayout = (RelativeLayout) findViewById(R.id.assistant_stepListLayout);
         stepListLayout.setVisibility(View.GONE);
@@ -77,5 +79,19 @@ public class AssistantActivity extends BaseDrawerActivity {
         } else {
             stepListLayout.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //start tracking
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        //stop tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+
     }
 }

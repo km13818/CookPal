@@ -30,7 +30,7 @@
             break;
          }
       }
-      if(!isInDB) {
+      if(isInDB == false) {
          query = "INSERT INTO account (name, account_id) VALUES (?, ?)";
          pstmt = conn.prepareStatement(query);     
 

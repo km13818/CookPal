@@ -348,4 +348,8 @@ public class RecipeList extends BaseDrawerActivity {
     }
     ///////////////////////////////////////////END JSON RETRIEVAL ///////////////////////////////////////////
 
+    public void addRecipeClicked(MenuItem menuItem) {
+        Intent intent = new Intent(this, AddRecipeActivity.class);
+        startActivity(intent);
+    }
 }
