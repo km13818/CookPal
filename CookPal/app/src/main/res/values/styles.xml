@@ -29,4 +29,16 @@
     <!-- tab indicator -->
         <item name="android:background">@color/green</item>
     </style>
+
+    <style name="ingredientTVStyle">
+        <item name="android:textColor">@color/black</item>
+
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/ingredient_card_bg</item>
+
+        <item name="android:textSize">14dp</item>
+        <item name="android:padding">50dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
