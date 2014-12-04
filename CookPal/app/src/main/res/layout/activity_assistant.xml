@@ -101,7 +101,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:text="@string/etc"
-                android:onClick="stepListToggle"/>
+                android:onClick="displayStepList"/>
         </RelativeLayout>
 
 
@@ -135,7 +135,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:text="@string/etc"
-                android:onClick="stepListToggle"
+                android:onClick="displayCurrStep"
                 android:layout_alignParentBottom="true"/>
         </RelativeLayout>
 

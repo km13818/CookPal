@@ -72,8 +72,7 @@ public class AssistantActivity extends BaseDrawerActivity {
                 this, android.R.layout.simple_list_item_1, currRecipe.getStepList());
         stepListView.setAdapter(stepListAdapter);
 
-
-        // TODO: VERIFY THIS WORKS
+        // Handle clicking the step list
         stepListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -84,11 +83,10 @@ public class AssistantActivity extends BaseDrawerActivity {
                 stepPreviewTitleView.setText(clickedStep.getTitle());
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
 
-                stepPreviewToggle(view);
+                displayStepPreview(view);
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,19 +107,21 @@ public class AssistantActivity extends BaseDrawerActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void stepListToggle(View view) {
-        viewToggle(view, stepListLayout);
+    public void displayStepList(View view) {
+        stepListLayout.setVisibility(View.VISIBLE);
+        currStepLayout.setVisibility(View.GONE);
+        stepPreviewLayout.setVisibility(View.GONE);
     }
 
-    public void stepPreviewToggle(View view) {
-        viewToggle(view, stepPreviewLayout);
+    public void displayStepPreview(View view) {
+        stepListLayout.setVisibility(View.GONE);
+        currStepLayout.setVisibility(View.GONE);
+        stepPreviewLayout.setVisibility(View.VISIBLE);
     }
 
-    private void viewToggle(View view, RelativeLayout layoutToToggle) {
-        if(layoutToToggle.getVisibility() == View.GONE) {
-            layoutToToggle.setVisibility(View.VISIBLE);
-        } else {
-            layoutToToggle.setVisibility(View.GONE);
-        }
+    public void displayCurrStep(View view) {
+        stepListLayout.setVisibility(View.GONE);
+        currStepLayout.setVisibility(View.VISIBLE);
+        stepPreviewLayout.setVisibility(View.GONE);
     }
 }
