@@ -2,6 +2,7 @@ package cse190.cookpal;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
     private String[] tabs = {"Overview", "Ingredients", "Directions"};
 
     public static ArrayList<Ingredients> ingredientList;
+    private static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +69,16 @@ public class RecipeActivity extends BaseDrawerActivity implements
             }
         });
 
+        this.mContext = this;
         //Get Recipe Object passed by recipeList
         //Intent intent = getIntent();
         //Recipe currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
 
         //ingredientList = currentRecipe.getIngredientList();
+    }
+
+    public static Context getContext(){
+        return mContext;
     }
 
     @Override
