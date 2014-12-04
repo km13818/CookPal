@@ -15,6 +15,12 @@ public class Step {
         this.stepNumber = stepNum;
     }
 
+    @Override
+    public String toString() {
+        return getStepNumber() + ": " + getTitle() + "\nTime Takes: "
+                + getHours() + "hr " + getMinutes() + "m";
+    }
+
     public String toStringDescription() {
         return "STEP: "+stepNumber  + getDescription();
     }
