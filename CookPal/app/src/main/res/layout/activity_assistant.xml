@@ -228,6 +228,7 @@
                 android:layout_below="@id/assistant_stepPreviewDescription"
                 android:layout_height="match_parent">
                 <RelativeLayout
+                    android:id="@+id/assistant_timeTakesPreviewText"
                     android:layout_width="180dp"
                     android:layout_height="60dp"
                     android:background="@color/grey">
@@ -241,6 +242,46 @@
                         android:textSize="36sp"
                         android:text="@string/timeLeft">
                     </TextView>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/assistant_timerPreviewDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/assistant_timeTakesPreviewText"
+                    android:layout_centerInParent="true"
+                    android:textSize="50sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"
+                    android:text="00:03:00">
+                </TextView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/assistant_timerPreviewDisplay">
+                    <Button
+                        android:id="@+id/assistant_backToStepListButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="@color/light_green"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Back to List"
+                        android:padding="10dp"
+                        android:onClick="displayStepList"/>
+
+                    <Button
+                        android:id="@+id/assistant_skipToStepButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:background="@color/light_green"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Skip Here"
+                        android:layout_toRightOf="@id/assistant_backToStepListButton"
+                        android:padding="10dp"
+                        android:onClick="skipToStep"/>
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>

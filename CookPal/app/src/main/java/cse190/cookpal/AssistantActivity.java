@@ -82,6 +82,9 @@ public class AssistantActivity extends BaseDrawerActivity {
                 stepPreviewTitleView.setText(clickedStep.getTitle());
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
 
+                // Save the clicked step data to be accessed if the user chooses to skip there
+                stepPreviewLayout.setTag(clickedStep);
+
                 displayStepPreview(view);
             }
         });
@@ -116,6 +119,13 @@ public class AssistantActivity extends BaseDrawerActivity {
             setCurrStepViewData(currStep);
             displayCurrStep(view);
         }
+    }
+
+    public void skipToStep(View view) {
+        // Receive the step data that the user skipped to (set in the step list click listener)
+        currStep = (Step) stepPreviewLayout.getTag();
+        setCurrStepViewData(currStep);
+        displayCurrStep(view);
     }
 
     // Methods to show only the current layout and hide everything else so they aren't clickable
