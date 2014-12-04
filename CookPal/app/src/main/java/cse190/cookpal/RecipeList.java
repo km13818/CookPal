@@ -181,7 +181,7 @@ public class RecipeList extends BaseDrawerActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.recipe_activity_menu, menu);
+        inflater.inflate(R.menu.recipelist_activity_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
