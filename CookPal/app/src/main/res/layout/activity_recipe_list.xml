@@ -13,41 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/deleteGroceryListButton"
-            android:clickable="true"
-            android:src="@android:drawable/ic_menu_delete"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/addGroceryListButton"
-            android:clickable="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/recipeListView" />
-
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/recipeListView"
             android:layout_weight="1"
+            android:divider="@null"
+            android:dividerHeight="0dp"
             android:layout_below="@+id/groceryListListTitle"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="54dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="My Recipes"
-            android:id="@+id/groceryListListTitle"
-            android:gravity="center"
-            android:layout_below="@+id/addGroceryListButton"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentStart="true"/>
 
     </RelativeLayout>
 

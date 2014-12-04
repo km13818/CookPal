@@ -17,6 +17,4 @@
         android:showAsAction="ifRoom"
         android:onClick="addRecipeClicked"/>
 
-
-
 </menu>
