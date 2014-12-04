@@ -27,8 +27,6 @@ public class ShareActivity extends BaseDrawerActivity {
                 .build();
         uiHelper.trackPendingDialogCall(shareDialog.present());
 
-
-
     }
 
     @Override
