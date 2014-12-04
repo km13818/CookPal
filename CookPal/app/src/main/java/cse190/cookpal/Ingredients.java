@@ -10,10 +10,11 @@ public class Ingredients {
 
     public Ingredients(String name, String quantity ) {
         this.name = name;
+        this.quantity = quantity;
     }
 
     public String toString() {
-        return quantity + name;
+        return getQuantity() +" of "+ getIngredientName();
     }
 
     public void setIngredientName(String name){
