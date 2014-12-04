@@ -9,7 +9,8 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TabHost;
+
+import java.util.ArrayList;
 
 
 public class RecipeActivity extends BaseDrawerActivity implements
@@ -20,7 +21,8 @@ public class RecipeActivity extends BaseDrawerActivity implements
     private ActionBar actionBar;
     // Tab titles
     private String[] tabs = {"Overview", "Ingredients", "Directions"};
-    TabHost tabHost;
+
+    public static ArrayList<Ingredients> ingredientList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +68,10 @@ public class RecipeActivity extends BaseDrawerActivity implements
         });
 
         //Get Recipe Object passed by recipeList
-        Intent intent = getIntent();
-        Recipe currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
+        //Intent intent = getIntent();
+        //Recipe currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
+
+        //ingredientList = currentRecipe.getIngredientList();
     }
 
     @Override

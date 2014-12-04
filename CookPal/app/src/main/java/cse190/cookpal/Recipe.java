@@ -31,6 +31,14 @@ public class Recipe {
     public void setStepList(ArrayList<Step> stepList) {
         this.stepList = stepList;
     }
+    public void setIngredientList(ArrayList<Ingredients> ingredientList) {
+        this.ingredientList = ingredientList;
+    }
+
+    public ArrayList<Ingredients> getIngredientList() {
+        return this.ingredientList;
+    }
+
 
     // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
     public ArrayList<Step> dummyStepList() {
