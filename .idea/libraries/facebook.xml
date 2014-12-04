@@ -6,10 +6,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/CookPal/facebook/src" />
-      <root url="file://$PROJECT_DIR$/CookPal/facebook/build/generated/source/r/debug" />
-      <root url="file://$PROJECT_DIR$/CookPal/facebook/build/generated/source/r/release" />
-      <root url="file://$PROJECT_DIR$/CookPal/facebook/build/generated/source/buildConfig/debug" />
-      <root url="file://$PROJECT_DIR$/CookPal/facebook/build/generated/source/buildConfig/release" />
     </SOURCES>
   </library>
 </component>

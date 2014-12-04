@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="android-support-v4">
-    <CLASSES>
-      <root url="jar:///usr/local/Cellar/android-sdk/23.0.2/extras/android/support/v4/android-support-v4.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
