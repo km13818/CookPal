@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/addIngredientsButtonLayout"
-            android:background="@drawable/view_border_green">
+            android:background="@drawable/view_border_orange">
 
             <ImageButton
                 android:layout_width="50dp"
@@ -66,9 +66,10 @@
                 android:id="@+id/addIngredientsButton"
                 android:src="@drawable/add_icon"
                 android:clickable="true"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_vertical"/>
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/addIngredientsLayout"
-            android:background="@drawable/view_border_orange"
+            android:background="@drawable/view_border_light_orange"
             android:padding="5dp"
             android:layout_gravity="left|top" >
 
@@ -115,12 +116,16 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"/>
 
                 <EditText
-                    android:layout_width="match_parent"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText"
                     android:layout_gravity="center_horizontal"
                     android:textColor="@color/white"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:background="@drawable/view_border_light_orange_sm"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -130,12 +135,24 @@
                     android:textColor="@color/white"/>
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText2"
-                    android:layout_weight="1"
                     android:textColor="@color/white"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:background="@drawable/view_border_light_orange_sm"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"/>
+
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/add_recipe_ingredients_delete"
+                    android:src="@drawable/delete_icon"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -146,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/addInstructionsButtonLayout"
-            android:background="@drawable/view_border_green">
+            android:background="@drawable/view_border_orange">
 
             <ImageButton
                 android:layout_width="50dp"
@@ -155,9 +172,10 @@
                 android:src="@drawable/add_icon"
                 android:id="@+id/addInstructionsButton"
                 android:clickable="true"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_vertical"/>
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -181,76 +199,111 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/instructionsLayout"
-            android:background="@drawable/view_border_orange"
+            android:background="@drawable/view_border_light_orange"
             android:padding="5dp"
             android:layout_gravity="left|top">
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recipe_name2"
                 android:layout_gravity="left|top"
                 android:padding="5dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1."
-                    android:textColor="@color/white"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/recipe_name_text2"
-                    android:password="false"
-                    />
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ingredient"
-                    android:textColor="@color/white"
-                    android:layout_gravity="start"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="  Time:  "
-                    android:textColor="@color/white"
-                    android:id="@+id/timeTextView"
-                    />
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1."
+                        android:textColor="@color/white"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:password="false"
+                        />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ingredient"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center_horizontal"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:background="@drawable/view_border_light_orange_sm"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:padding="5dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText3"
-                    android:textColor="@color/white"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                     />
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="hr "
-                    android:textColor="@color/white"
-                    android:id="@+id/hoursTextView1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimated cooking time: "
+                        android:textColor="@color/white"
+                        android:id="@+id/timeTextView"
+                        />
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/minsEditText1"
-                    android:textColor="@color/white"
-                    android:inputType="number"
-                    android:maxLength="2"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                     />
+                    <EditText
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText3"
+                        android:textColor="@color/white"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:background="@drawable/view_border_light_orange_sm"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:padding="5dp"
+                        />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="min"
-                    android:textColor="@color/white"
-                    android:id="@+id/minsTextView" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="hr "
+                        android:textColor="@color/white"
+                        android:id="@+id/hoursTextView1" />
+
+                    <EditText
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/minsEditText1"
+                        android:textColor="@color/white"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:background="@drawable/view_border_light_orange_sm"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:padding="5dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="min"
+                        android:textColor="@color/white"
+                        android:id="@+id/minsTextView" />
+
+                    <ImageButton
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/add_recipe_instruction_delete"
+                        android:src="@drawable/delete_icon"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitXY"
+                        android:layout_marginLeft="10dp"
+                        />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

@@ -9,6 +9,7 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -136,59 +137,14 @@ public class AddRecipeActivity extends BaseDrawerActivity {
             public void onClick(View v) {
                 //add row to instructionsLayout
                 currInstructionCount++;
+
                 LinearLayout instructionsLayout = (LinearLayout) findViewById(R.id.instructionsLayout);
-                LinearLayout newInstructionRowLayout = new LinearLayout(thisContext);
-                newInstructionRowLayout.setPadding(5,5,5,5);
+                View newInstructionView = getLayoutInflater().inflate(R.layout.add_recipe_instruction_entry, null);
 
-                TextView instructionNum = new TextView(thisContext);
+                TextView instructionNum = (TextView) newInstructionView.findViewById(R.id.add_recipe_instruction_step);
                 instructionNum.setText(String.valueOf(currInstructionCount) + ".");
-                EditText newInstruction = new EditText(thisContext);
 
-                TextView timeTextView = new TextView(thisContext);
-                timeTextView.setText("  Time:  ");
-                EditText hoursEditText = new EditText(thisContext);
-                EditText minsEditText = new EditText(thisContext);
-                TextView hoursTextView = new TextView(thisContext);
-                hoursTextView.setText("hr ");
-                TextView minsTextView = new TextView(thisContext);
-                minsTextView.setText("min");
-
-                instructionNum.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                hoursEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
-                hoursEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                minsEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                minsEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
-
-                instructionNum.setTextColor(Color.WHITE);
-                newInstruction.setTextColor(Color.WHITE);
-                timeTextView.setTextColor(Color.WHITE);
-                hoursEditText.setTextColor(Color.WHITE);
-                minsEditText.setTextColor(Color.WHITE);
-                hoursTextView.setTextColor(Color.WHITE);
-                minsTextView.setTextColor(Color.WHITE);
-
-                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT);
-                InputFilter[] filterArray = new InputFilter[1];
-                filterArray[0] = new InputFilter.LengthFilter(2);
-                param.weight = 1.0f;
-                newInstruction.setLayoutParams(param);
-                param.weight = 0.0f;
-                minsEditText.setLayoutParams(param);
-                hoursEditText.setLayoutParams(param);
-                minsEditText.setFilters(filterArray);
-                hoursEditText.setFilters(filterArray);
-
-                newInstructionRowLayout.addView(instructionNum);
-                newInstructionRowLayout.addView(newInstruction);
-                newInstructionRowLayout.addView(timeTextView);
-                newInstructionRowLayout.addView(hoursEditText);
-                newInstructionRowLayout.addView(hoursTextView);
-                newInstructionRowLayout.addView(minsEditText);
-                newInstructionRowLayout.addView(minsTextView);
-                instructionsLayout.addView(newInstructionRowLayout);
-
+                instructionsLayout.addView(newInstructionView);
 
             }
         });
@@ -201,33 +157,14 @@ public class AddRecipeActivity extends BaseDrawerActivity {
             public void onClick(View v) {
                 //add row to instructionsLayout
                 currIngredientCount++;
+
                 LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
-                LinearLayout newIngredientRowLayout = new LinearLayout(thisContext);
-                newIngredientRowLayout.setPadding(5,5,5,5);
+                View newIngredientView = getLayoutInflater().inflate(R.layout.add_recipe_ingredients_entry, null);
 
-                TextView ingredientNum = new TextView(thisContext);
+                TextView ingredientNum = (TextView) newIngredientView.findViewById(R.id.add_recipe_ingredients_step);
                 ingredientNum.setText(String.valueOf(currIngredientCount) + ".");
-                EditText newIngredient = new EditText(thisContext);
 
-                TextView quantityTextView = new TextView(thisContext);
-                quantityTextView.setText("Quantity: ");
-                EditText newQuantity = new EditText(thisContext);
-
-                ingredientNum.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                newQuantity.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                ingredientNum.setTextColor(Color.WHITE);
-                newIngredient.setTextColor(Color.WHITE);
-                quantityTextView.setTextColor(Color.WHITE);
-                newQuantity.setTextColor(Color.WHITE);
-
-                newIngredientRowLayout.addView(ingredientNum);
-                newIngredientRowLayout.addView(newIngredient);
-                newIngredientRowLayout.addView(quantityTextView);
-                newIngredientRowLayout.addView(newQuantity);
-
-                ingredientsLayout.addView(newIngredientRowLayout);
-
-
+                ingredientsLayout.addView(newIngredientView);
             }
         });
     }//end on create
