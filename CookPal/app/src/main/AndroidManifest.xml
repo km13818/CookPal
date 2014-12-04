@@ -11,9 +11,13 @@
             android:name=".AccountActivity"
             android:label="@string/title_activity_account"
             android:theme="@android:style/Theme.NoTitleBar"
-            android:windowSoftInputMode="adjustResize|stateHidden">
+            android:windowSoftInputMode="adjustResize|stateHidden" >
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.facebook.LoginActivity"
@@ -22,13 +26,9 @@
         </activity>
         <activity
             android:name=".RecipeList"
-            android:label="@string/APP_NAME" >
+            android:label="RECIPE"
+            android:theme="@style/RecipeABTheme">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".CookbookActivity"
@@ -39,22 +39,23 @@
             android:label="@string/title_activity_assistant" >
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
             android:name=".AddRecipeActivity"
             android:label="@string/title_activity_add_recipe" >
         </activity>
-        <!--<meta-data
+        <!--
+            <meta-data
+
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />-->
+            android:value="@integer/google_play_services_version" />
+        -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/APP_ID" />
-        <!--<meta-data
+        <!--
+            <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />-->
+            android:value="@integer/google_play_services_version" />
+        -->
 
         <activity
             android:name=".TestJSON"
@@ -63,6 +64,10 @@
         <activity
             android:name=".RestFulWebservice"
             android:label="@string/title_activity_rest_ful_webservice" >
+        </activity>
+        <activity
+            android:name=".ShareActivity"
+            android:label="@string/title_activity_share" >
         </activity>
     </application>
     <!-- To access Google+ APIs: -->

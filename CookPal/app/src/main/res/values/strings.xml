@@ -2,15 +2,17 @@
 <resources>
 
     <string name="app_name">CookPal</string>
-    <string name="title_activity_main">Main</string>
-    <string name="title_activity_cookbook">cookbook</string>
-    <string name="title_activity_assistant">assistant</string>
-    <string name="title_activity_settings">settings</string>
-    <string name="title_activity_logout">logout</string>
-
+    <string name="nav_title_cookbook">cookbook</string>
+    <string name="nav_title_assistant">assistant</string>
+    <string name="nav_title_settings">settings</string>
+    <string name="nav_title_share">share</string>
+    <string name="nav_title_logout">logout</string>
+    <string name="title_activity_cookbook">COOKBOOK</string>
+    <string name="title_activity_assistant">ASSISTANT</string>
+    <string name="title_activity_share">SHARE</string>
+    <string name="title_activity_settings">SETTINGS</string>
     <string name="action_settings">Settings</string>
     <string name="action_share">Share</string>
-
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
 
@@ -29,5 +31,6 @@
     <string name="title_activity_add_recipe">AddRecipe</string>
     <string name="confirm_create_recipe_button">Create this recipe</string>
     <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_share_">share</string>
 
 </resources>
