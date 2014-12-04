@@ -32,5 +32,16 @@
     <string name="confirm_create_recipe_button">Create this recipe</string>
     <string name="title_activity_home_page">HomePage</string>
     <string name="title_activity_share_">share</string>
+    <string name="title_activity_recipe">Recipe</string>
+    <string name="title_activity_tts">Text to Speech Test</string>
+    <string name="text1">testing one two three</string>
+    <string name="write">Write Text</string>
+    <!-- Assistant Strings -->
+    <string name="etc">ETC</string>
+    <string name="timeLeft">time left</string>
+    <!-- Note: dummy text is replaced by AssistantActivity.java. Needed just to see rendering preview -->
+    <string name="dummyStepDescrip">dummy description shouldnt show up</string>
+    <string name="dummyStepTitle">dummytitle shouldnt show up</string>
+    <string name="dummyStepNum">69</string>
 
 </resources>

@@ -6,25 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".GroceryList">
 
-
-    <!-- As the main content view, the view below consumes the entire
-         space available using match_parent in both dimensions. -->
-    <RelativeLayout
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipeListView"
-            android:layout_weight="1"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:layout_below="@+id/groceryListListTitle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
-
-    </RelativeLayout>
+    </android.support.v4.view.ViewPager>
 
     <FrameLayout
         android:id="@+id/content_frame"
@@ -41,4 +27,3 @@
         android:dividerHeight="0dp"
         android:background="#ffff"/>
 </android.support.v4.widget.DrawerLayout>
-

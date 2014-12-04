@@ -6,10 +6,137 @@
 
     <!-- As the main content view, the view below consumes the entire
          space available using match_parent in both dimensions. -->
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:id="@+id/assistant_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp"
+            android:background="@android:color/transparent">
+
+            <!-- Step header: number and title -->
+            <RelativeLayout
+                android:id="@+id/assistant_stepHeader"
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                <TextView
+                    android:id="@+id/assistant_stepNumber"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/orange"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="40sp"
+                    android:padding="10dp"
+                    android:text="@string/dummyStepNum">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/assistant_stepTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/assistant_stepNumber"
+                    android:background="@color/light_orange"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:padding="20dp"
+                    android:text="@string/dummyStepTitle">
+                </TextView>
+            </RelativeLayout>
+
+            <!-- Step description -->
+            <TextView
+                android:id="@+id/assistant_stepDescription"
+                android:padding="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/assistant_stepHeader"
+                android:textColor="@color/orange"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/dummyStepDescrip">
+            </TextView>
+
+            <!-- Timer section -->
+            <RelativeLayout
+                android:id="@+id/assistant_timeLeft"
+                android:layout_width="match_parent"
+                android:layout_below="@id/assistant_stepDescription"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="180dp"
+                    android:layout_height="60dp"
+                    android:background="@color/green">
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="-30dp"
+                        android:textColor="@color/white"
+                        android:textSize="36sp"
+                        android:text="@string/timeLeft">
+                    </TextView>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!-- Step list slider/button -->
+            <Button
+                android:id="@+id/assistant_stepListButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:background="@color/orange"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="@string/etc"
+                android:onClick="stepListToggle"/>
+        </RelativeLayout>
+
+        <!-- List of steps that slides up (hidden until ETC button clicked/slid) -->
+        <RelativeLayout
+            android:id="@+id/assistant_stepListLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:content="@+id/content"
+            android:orientation="vertical">
+
+            <!-- list of steps populated by AssistantActivity.java -->
+            <ListView
+                android:id="@+id/assistant_stepListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/assistant_etcButton">
+            </ListView>
+
+            <Button
+                android:id="@+id/assistant_etcButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:background="@color/orange"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="@string/etc"
+                android:onClick="stepListToggle"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/left_drawer"

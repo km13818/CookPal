@@ -1,20 +1,19 @@
 package cse190.cookpal;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -26,7 +25,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,8 +44,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 
-public class RecipeList extends BaseDrawerActivity implements
-        ActionBar.TabListener{
+public class RecipeList extends BaseDrawerActivity {
     private static final String TAG = "RecipeList";
 
     //TODO: potentially refactor. not sure if it's a good idea to have data structures as global vars in activity
@@ -58,50 +55,12 @@ public class RecipeList extends BaseDrawerActivity implements
     PopupWindow deleteConfirmWindow;
     Button deleteConfirmButton;
     TextView deleteConfirmText;
-    ImageButton deleteGroceryListButton;
-    String recipeWhosePictureWasTaken;
-    ImageView currRecipeImageView;
-    private ViewPager viewPager;
-    private TabsPagerAdapter mAdapter;
-    private ActionBar actionBar;
-    // Tab titles
-    private String[] tabs = { "Overview", "Ingredients", "Directions" };
-    TabHost tabHost;
+    //ImageButton deleteGroceryListButton;
 
     // WebServer Request URL
     String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
             AccountActivity.getFbId();
 
-
-    //called after picture is taken with requestCode 0
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("recipelist", "onactivityresult");
-        if (requestCode == 0) {
-            if (data.getExtras() != null) {
-                Bitmap recipeImageBitMap = (Bitmap) data.getExtras().get("data");
-                Log.d("recipelist", "recipe image taken: " + recipeImageBitMap);
-
-                ByteArrayOutputStream imageBaos = new ByteArrayOutputStream();
-                recipeImageBitMap.compress(Bitmap.CompressFormat.JPEG, 100, imageBaos);
-
-
-                currRecipeImageView.setImageBitmap(recipeImageBitMap);
-                Log.d("recipeList", "recipeimagebaos: " + imageBaos);
-                Log.d("recipelist", "recipewhosepicturewastaken: "  + recipeWhosePictureWasTaken);
-                HashMap<String,String> insertImageParams = new HashMap<String,String>();
-                insertImageParams.put("r_name", recipeWhosePictureWasTaken);
-                insertImageParams.put("fb_id", AccountActivity.getFbId());
-                insertImageParams.put("image", new String(imageBaos.toByteArray()));
-                insertImageParams.put("filter", "add_image");
-                httpUtil.makeHttpPost(insertImageParams);
-            }
-            else
-            {
-                Log.d("recipeist", "no picture was taken");
-            }
-        }
-    }
 
     @Override
     protected void onResume() {
@@ -125,78 +84,64 @@ public class RecipeList extends BaseDrawerActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
 
-        //TODO: populate recipeList using db
 
         new LongOperation().execute(serverRecipeListRequestURL);
 
-        // Initilization
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        actionBar = getActionBar();
-        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
-        viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // Adding Tabs
-        for (String tab_name : tabs) {
-            actionBar.addTab(actionBar.newTab().setText(tab_name)
-                    .setTabListener(this));
-        }
-        final ActionBar actionBar = getActionBar();
-        actionBar.setStackedBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.unselected_tabs)));
-
-        /**
-         * on swiping the viewpager make respective tab selected
-         * */
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                // on changing the page
-                // make respected tab selected
-                actionBar.setSelectedNavigationItem(position);
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
-
-        //TODO: populate recipeLists using db
-        HashMap<String, String> recipeListRetrievalParams = new HashMap<String,String>();
-        recipeListRetrievalParams.put("fb_id",AccountActivity.getFbId());
-       // HttpResponse recipeListRetrievalResponse = HttpUtil.makeHttpPost(recipeListRetrievalParams);
-
-
-        //TODO: pass in recipeList array list here from db
-        // populateListView();
-
-        ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
+        /*ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
         addGroceryListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(RecipeList.this, AddRecipeActivity.class);
                 startActivity(i);
             }
-        });
-        popupInit();
+        });*/
+        //popupInit();
     }
 
     private void popupInit() {
-        deleteGroceryListButton = (ImageButton) findViewById(R.id.deleteGroceryListButton);
-        deleteConfirmText = new TextView(this);
+        //deleteGroceryListButton = (ImageButton) findViewById(R.id.deleteGroceryListButton);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage("Confirm delete?")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        ListView recipeList = (ListView) findViewById(R.id.recipeListView);
+
+                        for(int i = 0; i < checkBoxes.size(); i++) {
+                            String recipeName = (String)checkBoxes.get(i).getText();
+                            Log.d(TAG, recipeName);
+
+                            if(checkBoxes.get(i).isChecked() && RecipeList.this.recipeList.contains(checkBoxes.get(i).getText())) {
+
+                                //test code
+                                //TODO: currently because checkBoxes is hacky, will delete checked recipes multiple times. should fix this
+                                HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
+                                deleteRecipeParams.put("r_name", recipeName);
+                                deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
+                                deleteRecipeParams.put("filter", "delete_recipe");
+                                httpUtil.makeHttpPost(deleteRecipeParams);
+                            }
+                        }
+                        onRestart();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        /*deleteConfirmText = new TextView(this);
         deleteConfirmButton = new Button(this);
         thisLayout = new LinearLayout(this);
 
         deleteConfirmText.setText("Confirm delete?");
-        deleteConfirmButton.setText("OK");
+        deleteConfirmButton.setText("OK");*/
 
-        deleteConfirmButton.setOnClickListener(new View.OnClickListener() {
+        /*deleteConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ListView recipeList = (ListView) findViewById(R.id.recipeListView);
@@ -225,9 +170,9 @@ public class RecipeList extends BaseDrawerActivity implements
             }
         });
         thisLayout.addView(deleteConfirmText);
-        thisLayout.addView(deleteConfirmButton);
+        thisLayout.addView(deleteConfirmButton);*/
 
-        deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
+        /*deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteConfirmWindow = new PopupWindow(thisLayout, LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
@@ -236,7 +181,7 @@ public class RecipeList extends BaseDrawerActivity implements
 
 
             }
-        });
+        });*/
 
     }
     @Override
@@ -246,23 +191,21 @@ public class RecipeList extends BaseDrawerActivity implements
         inflater.inflate(R.menu.recipe_activity_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
 
     @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        // on tab selected
-        // show respected fragment view
-        viewPager.setCurrentItem(tab.getPosition());
-        //tab.setCustomView(getResources().getColor(R.color.selected_tabs));
-        //tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab()).setBackgroundColor(getResources().getColor(R.color.selected_tabs));
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deleteGroceryListButton:
+                popupInit();
+                return true;
+            case R.id.addGroceryListButton:
+                Intent i = new Intent(RecipeList.this, AddRecipeActivity.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
-
 
     private void populateListView() {
         //Create list of items
@@ -293,18 +236,8 @@ public class RecipeList extends BaseDrawerActivity implements
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
-            Button currAddPictureButton = (Button)convertView.findViewById(R.id.addPictureButton);
-            currAddPictureButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    recipeWhosePictureWasTaken = recipeName;
-                    currRecipeImageView = (ImageView) thisConvertView.findViewById(R.id.recipeEntryImageView);
-                    startActivityForResult(cameraIntent, 0);
-
-                }
-            });
+            TextView currTextView = (TextView) convertView.findViewById(R.id.recipeTitle);
+            currTextView.setText(recipeName);
 
 
             return convertView;

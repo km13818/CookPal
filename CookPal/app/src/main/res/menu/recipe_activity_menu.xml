@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <!-- Search, should appear as action button -->
-    <item android:id="@+id/action_search"
-        android:icon="@android:drawable/ic_menu_delete"
+    <item android:id="@+id/start_assistant"
+        android:icon="@drawable/chef_icon"
         android:title="start_assistant"
         android:showAsAction="ifRoom" />
 
+    <item android:id="@+id/delete_recipe"
+        android:icon="@drawable/delete_recipe_icon"
+        android:title="delete_recipe"
+        android:showAsAction="ifRoom" />
+
+    <item android:id="@+id/add_recipe"
+        android:icon="@drawable/edit_icon"
+        android:title="add_recipe"
+        android:showAsAction="ifRoom"
+        android:onClick="addRecipeClicked"/>
+
+
+
+    <!-- Search, should appear as action button -->
+    <item android:id="@+id/deleteGroceryListButton"
+        android:icon="@drawable/delete_icon"
+        android:title="Delete Recipe"
+        android:showAsAction="ifRoom" />
+    <item android:id="@+id/addGroceryListButton"
+        android:icon="@drawable/add_icon"
+        android:title="Add Recipe"
+        android:showAsAction="ifRoom" />
 </menu>

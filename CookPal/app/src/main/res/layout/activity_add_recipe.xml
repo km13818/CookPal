@@ -2,64 +2,77 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/add_recipe_vertical_layout">
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recipe_name"
-        android:layout_gravity="left|top">
+        android:layout_gravity="left|top"
+        android:background="@drawable/view_border_green"
+        android:padding="50dp"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recipe name"
+            android:text="recipe name"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/recipe_name_text"
+            android:padding="10dp"
             android:password="false" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/view_border_green"
+            android:padding="10dp"
+            android:textColor="@color/white"
             android:id="@+id/recipeNameInput"
             android:layout_gravity="center_horizontal" />
-
-
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addInstructionsButtonLayout"
-        android:layout_gravity="left|top">
-
+        android:background="@drawable/view_border_green">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Instructions"
-            android:id="@+id/instructionsTitleTextView" />
+            android:text="add instructions"
+            android:textColor="@color/white"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/instructionsTitleTextView"
+            android:padding="10dp"
+            />
 
         <ImageButton
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Add more instructions"
+            android:text="add instructions"
+            android:src="@drawable/add_icon"
             android:id="@+id/addInstructionsButton"
             android:clickable="true"
+            android:padding="10dp"
             />
     </LinearLayout>
-
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/instructionsLayout"
+        android:background="@drawable/view_border_orange"
+        android:padding="50dp"
         android:layout_gravity="left|top">
+
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/recipe_name2"
             android:layout_gravity="left|top">
@@ -67,42 +80,59 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1."
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/recipe_name_text2"
-                android:password="false" />
+                android:password="false"
+                />
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ingredient"
-                android:layout_gravity="center_horizontal" />
+                android:textColor="@color/white"
+                android:layout_gravity="start"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time: "
-                android:id="@+id/timeTextView" />
+                android:text="  time  "
+                android:textColor="@color/white"
+                android:id="@+id/timeTextView"
+                />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText3"
-                android:layout_weight="1" />
+                android:textColor="@color/white"
+                android:inputType="number"
+                android:maxLength="2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hrs"
+                android:text="hr "
+                android:textColor="@color/white"
                 android:id="@+id/hoursTextView1" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/minsEditText1"
-                android:layout_weight="1" />
+                android:textColor="@color/white"
+                android:inputType="number"
+                android:maxLength="2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="mins"
+                android:text="min"
+                android:textColor="@color/white"
                 android:id="@+id/minsTextView" />
         </LinearLayout>
     </LinearLayout>
