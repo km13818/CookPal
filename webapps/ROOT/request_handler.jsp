@@ -1,5 +1,6 @@
 <%@ page import="java.io.*" %>
 <%@ page import="java.sql.*"%>
+<%@ page import="java.util.*"%>
 <%@ page import="org.json.simple.*" %>
 <%@ page contentType="application/json" %>
 
@@ -8,8 +9,6 @@
    response.setContentType("application/json");
 
    //response field declarations: the login id is mandatory for all activities 
-   InputStream recipeImage = request.getInputStream();
-   
    //filter and ACC_ID
    String handleFilter = request.getParameter("filter");
    String accId = request.getParameter("fb_id"); 	
@@ -33,7 +32,7 @@
    //variables
    String userName = "";
    String query = "";
-   
+   String err = "";
    
    boolean isInDB = false;
    Connection conn = null;
@@ -64,8 +63,7 @@
       if(handleFilter.equals("insert_recipe")) {
          query = "INSERT INTO recipe (name, account_id, cookbook_type) VALUES (?, ?, ?)";
          pstmt = conn.prepareStatement(query);     
-         
-         byte[] decoded = Base64.decodeBase64(recipeImageEncoded);
+		 
          conn.setAutoCommit(false);       
          pstmt.setString(1, recipeName);
          pstmt.setString(2, accId);
@@ -76,7 +74,6 @@
       }  
       // retrieve all recipes for a certain user id
       else if(handleFilter.equals("select_recipes")) {
-         int id = 0;
          query = "SELECT * FROM recipe WHERE account_id = ?";
          pstmt = conn.prepareStatement(query);          
          pstmt.setString(1, accId);    
@@ -94,17 +91,18 @@
       // deletes recipes with name for a certain user id
       // causes a cascading deletion that removes all corresponding ingredients and instructions
       else if(handleFilter.equals("delete_recipe")) { 
-         
+         int wat = 0;
          query = "DELETE FROM recipe WHERE account_id = ? AND name = ?";
          pstmt = conn.prepareStatement(query);   
-         
          conn.setAutoCommit(false);
          pstmt.setString(1, accId);
          pstmt.setString(2, recipeName);
-         pstmt.executeUpdate(); 
+         err = "error in delete";
+         wat = pstmt.executeUpdate(); 
+         out.print(wat + " rows was successfully deleted");
          conn.commit();
-         conn.setAutoCommit(true);        
-
+         conn.setAutoCommit(true);     
+		 
          query = "DELETE FROM recipe_ingredient WHERE account_id = ? AND recipe_name = ?";
          pstmt = conn.prepareStatement(query);   
          
@@ -124,21 +122,6 @@
          pstmt.executeUpdate(); 
          conn.commit();
          conn.setAutoCommit(true);                  
-         
-      }
-      // adds an image to a recipe
-      else if(handleFilter.equals("add_image")) {
-         query = "UPDATE recipe SET image = ? WHERE account_id = ? AND name = ?";
-         pstmt = conn.prepareStatement(query);   
-         
-         conn.setAutoCommit(false);
-         pstmt.setBlob(1, recipeImage);
-         pstmt.setString(2, accId);
-         pstmt.setString(3, recipeName);
-         pstmt.executeUpdate(); 
-         conn.commit();
-         conn.setAutoCommit(true);   
-      
       }
       // inserts an ingredient to the corresponding recipe
       else if(handleFilter.equals("insert_ingredient")) {
@@ -165,16 +148,50 @@
          pstmt.setString(4, recipeInstrTimeHr);
          pstmt.setString(5, recipeInstrTimeMin);
          pstmt.setString(6, recipeInstrStepNo);         
-         pstmt.executeUpdate(); 
+         pstmt.executeUpdate();
          conn.commit();
          conn.setAutoCommit(true);               
       }  
-      
-      //TODO: Deleting/
-      else {
+      //retrieving instructions to be used by the cook assistant/timer
+      else if(handleFilter.equals("select_instruction")) {
+         query = "SELECT * FROM recipe_instruction WHERE account_id = ? AND recipe_name = ?";
+         pstmt = conn.prepareStatement(query);          
+         pstmt.setString(1, accId);  
+         pstmt.setString(2, recipeName);
+         rs = pstmt.executeQuery();
+         while(rs.next()) {
+            JSONObject kv = new JSONObject();
+            kv.put("recipe name", rs.getString("recipe_name"));
+            kv.put("instruction", rs.getString("instruction"));
+            kv.put("hours", rs.getInt("hrs"));
+            kv.put("minutes", rs.getInt("mins"));
+            kv.put("step number", rs.getInt("step_no"));
+            fields.add(kv);
+         }
+         result.put(userName+"'s recipe_instruction:", fields);
+         out.print(result);
+         out.flush();          
+      }
+      else if(handleFilter.equals("select_ingredient")) {
+         query = "SELECT * FROM recipe_ingredient WHERE account_id = ? AND recipe_name = ?";
+         pstmt = conn.prepareStatement(query);          
+         pstmt.setString(1, accId);  
+         pstmt.setString(2, recipeName);
+         rs = pstmt.executeQuery();
+         while(rs.next()) {
+            JSONObject kv = new JSONObject();
+            kv.put("recipe name", rs.getString("recipe_name"));
+            kv.put("ingredient", rs.getString("name"));
+            kv.put("quantity", rs.getString("quantity"));
+            fields.add(kv);
+         }
+         result.put(userName+"'s recipe_ingredients:", fields);
+         out.print(result);
+         out.flush();          
       }
    }   
    catch(SQLException e) {
+	  out.print(err);
       e.printStackTrace();
    }
    finally {

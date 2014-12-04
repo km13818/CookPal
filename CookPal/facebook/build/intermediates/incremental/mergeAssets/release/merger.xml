@@ -2,10 +2,10 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/src/main/assets" />
+        <source path="C:\Users\Tom\AndroidStudioProjects\CookPal\CookPal\facebook\src\main\assets" />
     </dataSet>
     <dataSet config="release" >
-        <source path="/Users/timchi/Documents/CSE 190/CookPal/CookPal/facebook/src/release/assets" />
+        <source path="C:\Users\Tom\AndroidStudioProjects\CookPal\CookPal\facebook\src\release\assets" />
     </dataSet>
 
 </merger>

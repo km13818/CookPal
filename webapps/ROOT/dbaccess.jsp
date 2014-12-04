@@ -21,6 +21,7 @@
    String c2v = request.getParameter("col2v");
    
    String query = ""; 
+   String sqlFrom = "";
    int condCount = 2;
    Connection conn = null;
    PreparedStatement pstmt = null;
@@ -37,22 +38,40 @@
         if(c2c.equals("") || c2v.equals("")) {
          condCount--;
         }
+        boolean delete = false;
+        if(op.equals("SELECT") || op.equals("select")) {
+           sqlFrom = " * FROM ";
+        }
+        else if(op.equals("DELETE") || op.equals("delete")) {
+           sqlFrom = " FROM ";
+           delete = true;
+        }
         
+        //shit 
         if(condCount == 0) {
-           query = op + " * FROM " + tbl; 
+           query = op + sqlFrom + tbl; 
         	  pstmt = conn.prepareStatement(query);   
         }
         else if(condCount == 1) {
-           query = op + " * FROM " + tbl + " WHERE " + c1c + " = ?";          
+           query = op + sqlFrom + tbl + " WHERE " + c1c + " = ?";    
            pstmt = conn.prepareStatement(query);
            pstmt.setString(1, c1v); 
         }
         else {
-           query = op + " * FROM " + tbl + " WHERE " + c1c + " = ? AND " + c2c + " = ?";
+           query = op + sqlFrom + tbl + " WHERE " + c1c + " = ? AND " + c2c + " = ?";
            pstmt = conn.prepareStatement(query);
            pstmt.setString(1, c1v);
            pstmt.setString(2, c2v);              
         }
+        if(delete) {
+         int wat = 0;
+         conn.setAutoCommit(false);
+         wat = pstmt.executeUpdate(); 
+         conn.commit();
+         conn.setAutoCommit(true);
+         %><h1><%=wat%> rows were deleted.</h1><%
+        }
+        else {
 		  rs = pstmt.executeQuery();
         ResultSetMetaData metadata = rs.getMetaData();
         int columnCount = metadata.getColumnCount();
@@ -78,6 +97,7 @@
 
         }
         %></table><%
+        }
 	}
 	catch (SQLException e) {
       %><div class="row">
