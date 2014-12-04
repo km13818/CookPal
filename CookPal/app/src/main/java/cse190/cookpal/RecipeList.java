@@ -5,23 +5,17 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -35,7 +29,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
@@ -236,6 +229,8 @@ public class RecipeList extends BaseDrawerActivity {
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
+            TextView currTextView = (TextView) convertView.findViewById(R.id.recipeTitle);
+            currTextView.setText(recipeName);
 
 
             return convertView;
@@ -353,4 +348,8 @@ public class RecipeList extends BaseDrawerActivity {
     }
     ///////////////////////////////////////////END JSON RETRIEVAL ///////////////////////////////////////////
 
+    public void addRecipeClicked(MenuItem menuItem) {
+        Intent intent = new Intent(this, AddRecipeActivity.class);
+        startActivity(intent);
+    }
 }

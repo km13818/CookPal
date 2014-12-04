@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
@@ -56,6 +58,7 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
         ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -284,5 +287,19 @@ public class AccountActivity extends FragmentActivity implements SelectionFragme
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_account, container, false);
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //start tracking
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        //stop tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+
     }
 }

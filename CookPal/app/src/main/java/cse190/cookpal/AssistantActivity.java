@@ -5,6 +5,8 @@ import android.view.*;
 import android.widget.*;
 import java.util.*;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 
 public class AssistantActivity extends BaseDrawerActivity {
 
@@ -35,6 +37,9 @@ public class AssistantActivity extends BaseDrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
+
+        // Google analytics tracker
+        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
 
         // Bind the current step (main assistant page) view
         currStepLayout = (RelativeLayout) findViewById(R.id.assistant_currStep);
@@ -151,5 +156,19 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.VISIBLE);
         stepPreviewLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //start tracking
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        //stop tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
     }
 }

@@ -2,27 +2,37 @@ package cse190.cookpal;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TabHost;
+
+import com.google.android.gms.analytics.GoogleAnalytics;
+
+import java.util.ArrayList;
 
 
 public class RecipeActivity extends BaseDrawerActivity implements
-        ActionBar.TabListener{
+        ActionBar.TabListener {
 
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = { "Overview", "Ingredients", "Directions" };
-    TabHost tabHost;
+    private String[] tabs = {"Overview", "Ingredients", "Directions"};
+
+    public static ArrayList<Ingredients> ingredientList;
+    private static Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
 
         // Initilization
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -61,6 +71,17 @@ public class RecipeActivity extends BaseDrawerActivity implements
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+
+        this.mContext = this;
+        //Get Recipe Object passed by recipeList
+        //Intent intent = getIntent();
+        //Recipe currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
+
+        //ingredientList = currentRecipe.getIngredientList();
+    }
+
+    public static Context getContext(){
+        return mContext;
     }
 
     @Override
@@ -83,7 +104,9 @@ public class RecipeActivity extends BaseDrawerActivity implements
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        return false;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.recipe_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -96,5 +119,25 @@ public class RecipeActivity extends BaseDrawerActivity implements
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addRecipeClicked(MenuItem menuItem) {
+        Intent intent = new Intent(this, AddRecipeActivity.class);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //start tracking
+        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        //stop tracking
+        GoogleAnalytics.getInstance(this).reportActivityStop(this);
+
     }
 }
