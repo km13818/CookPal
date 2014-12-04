@@ -45,7 +45,7 @@ public class RestFulWebservice extends Activity {
             public void onClick(View arg0) {
 
                 // WebServer Request URL
-                String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/dbaccess.jsp";
+                String serverURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp";
                 // Use AsyncTask execute Method To Prevent ANR Problem
                 new LongOperation().execute(serverURL);
             }

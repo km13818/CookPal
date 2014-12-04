@@ -18,14 +18,14 @@ public class ttsTest extends Activity {
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_main);
+      setContentView(R.layout.activity_tts_test);
       write = (EditText)findViewById(R.id.editText1);
       ttobj=new TextToSpeech(getApplicationContext(), 
       new TextToSpeech.OnInitListener() {
       @Override
       public void onInit(int status) {
          if(status != TextToSpeech.ERROR){
-             ttobj.setLanguage(Locale.US);
+             ttobj.setLanguage(Locale.UK);
             }				
          }
       });
@@ -41,7 +41,7 @@ public class ttsTest extends Activity {
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
       // Inflate the menu; this adds items to the action bar if it is present.
-      getMenuInflater().inflate(R.menu.main, menu);
+      getMenuInflater().inflate(R.menu.tts_test, menu);
       return true;
    }
    public void speakText(View view){

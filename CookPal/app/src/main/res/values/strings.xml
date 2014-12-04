@@ -34,6 +34,8 @@
     <string name="title_activity_share_">share</string>
     <string name="title_activity_recipe">Recipe</string>
     <string name="title_activity_tts">Text to Speech Test</string>
+    <string name="text1">testing one two three</string>
+    <string name="write">Write Text</string>
     <!-- Assistant Strings -->
     <string name="etc">ETC</string>
     <string name="timeLeft">time left</string>
