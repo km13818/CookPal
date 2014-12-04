@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -137,13 +138,14 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                 currInstructionCount++;
                 LinearLayout instructionsLayout = (LinearLayout) findViewById(R.id.instructionsLayout);
                 LinearLayout newInstructionRowLayout = new LinearLayout(thisContext);
+                newInstructionRowLayout.setPadding(5,5,5,5);
 
                 TextView instructionNum = new TextView(thisContext);
                 instructionNum.setText(String.valueOf(currInstructionCount) + ".");
                 EditText newInstruction = new EditText(thisContext);
 
                 TextView timeTextView = new TextView(thisContext);
-                timeTextView.setText("  time  ");
+                timeTextView.setText("  Time:  ");
                 EditText hoursEditText = new EditText(thisContext);
                 EditText minsEditText = new EditText(thisContext);
                 TextView hoursTextView = new TextView(thisContext);
@@ -152,12 +154,15 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                 minsTextView.setText("min");
 
                 instructionNum.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                hoursEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                hoursEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                minsEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                minsEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
                 instructionNum.setTextColor(Color.WHITE);
                 newInstruction.setTextColor(Color.WHITE);
                 timeTextView.setTextColor(Color.WHITE);
-                hoursEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
                 hoursEditText.setTextColor(Color.WHITE);
-                minsEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
                 minsEditText.setTextColor(Color.WHITE);
                 hoursTextView.setTextColor(Color.WHITE);
                 minsTextView.setTextColor(Color.WHITE);
@@ -198,6 +203,7 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                 currIngredientCount++;
                 LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
                 LinearLayout newIngredientRowLayout = new LinearLayout(thisContext);
+                newIngredientRowLayout.setPadding(5,5,5,5);
 
                 TextView ingredientNum = new TextView(thisContext);
                 ingredientNum.setText(String.valueOf(currIngredientCount) + ".");
@@ -206,6 +212,13 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                 TextView quantityTextView = new TextView(thisContext);
                 quantityTextView.setText("Quantity: ");
                 EditText newQuantity = new EditText(thisContext);
+
+                ingredientNum.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                newQuantity.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
+                ingredientNum.setTextColor(Color.WHITE);
+                newIngredient.setTextColor(Color.WHITE);
+                quantityTextView.setTextColor(Color.WHITE);
+                newQuantity.setTextColor(Color.WHITE);
 
                 newIngredientRowLayout.addView(ingredientNum);
                 newIngredientRowLayout.addView(newIngredient);

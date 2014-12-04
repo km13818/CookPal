@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:id="@+id/add_recipe_vertical_layout">
 
+        <!-- NAME -->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -18,53 +19,162 @@
             android:id="@+id/recipe_name"
             android:layout_gravity="left|top"
             android:background="@drawable/view_border_green"
-            android:padding="50dp"
+            android:padding="5dp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="recipe name"
+                android:layout_height="50dp"
+                android:text="name"
                 android:textColor="@color/white"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:id="@+id/recipe_name_text"
-                android:padding="10dp"
-                android:password="false" />
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="0dp"
+                android:paddingLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:password="false"
+                android:layout_gravity="center_vertical"/>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/view_border_green"
                 android:padding="10dp"
+                android:layout_margin="10dp"
                 android:textColor="@color/white"
                 android:id="@+id/recipeNameInput"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
+
+        <!-- INGREDIENTS -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addIngredientsButtonLayout"
+            android:background="@drawable/view_border_green">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="add ingredients"
+                android:id="@+id/addIngredientsButton"
+                android:src="@drawable/add_icon"
+                android:clickable="true"
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="ingredients"
+                android:id="@+id/ingredientsTitleTextView"
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="0dp"
+                android:paddingLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addIngredientsLayout"
+            android:background="@drawable/view_border_orange"
+            android:padding="5dp"
+            android:layout_gravity="left|top" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout2"
+                android:padding="5dp"
+                android:layout_gravity="left|top" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1."
+                    android:id="@+id/textView2"
+                    android:textColor="@color/white"
+                    android:password="false"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity: "
+                    android:id="@+id/quantityTextView"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText2"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- INSTRUCTIONS -->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/addInstructionsButtonLayout"
             android:background="@drawable/view_border_green">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="add instructions"
-                android:textColor="@color/white"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/instructionsTitleTextView"
-                android:padding="10dp"
-                />
 
             <ImageButton
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:text="add instructions"
                 android:src="@drawable/add_icon"
                 android:id="@+id/addInstructionsButton"
                 android:clickable="true"
                 android:padding="10dp"
-                />
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="instructions"
+                android:textColor="@color/white"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/instructionsTitleTextView"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="0dp"
+                android:paddingLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_vertical" />
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -72,16 +182,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/instructionsLayout"
             android:background="@drawable/view_border_orange"
-            android:padding="50dp"
+            android:padding="5dp"
             android:layout_gravity="left|top">
-
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recipe_name2"
-                android:layout_gravity="left|top">
+                android:layout_gravity="left|top"
+                android:padding="5dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,12 +207,13 @@
                     android:id="@+id/ingredient"
                     android:textColor="@color/white"
                     android:layout_gravity="start"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="  time  "
+                    android:text="  Time:  "
                     android:textColor="@color/white"
                     android:id="@+id/timeTextView"
                     />
@@ -143,70 +254,7 @@
             </LinearLayout>
         </LinearLayout>
 
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/addIngredientsButtonLayout"
-            android:layout_gravity="left|top" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ingredients"
-                android:id="@+id/ingredientsTitleTextView" />
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add more instructions"
-                android:id="@+id/addIngredientsButton"
-                android:clickable="true" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/addIngredientsLayout"
-            android:layout_gravity="left|top" >
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/linearLayout2"
-                android:layout_gravity="left|top" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1."
-                    android:id="@+id/textView2"
-                    android:password="false" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText"
-                    android:layout_gravity="center_horizontal" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Quantity: "
-                    android:id="@+id/quantityTextView" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/editText2"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-        </LinearLayout>
-
+        <!-- CREATE -->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
@@ -219,8 +267,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/confirm_create_recipe_button" />
-
-
         </LinearLayout>
 
     </LinearLayout>
