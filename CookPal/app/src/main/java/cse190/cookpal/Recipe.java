@@ -18,18 +18,20 @@ public class Recipe {
     // TODO: temporary dummy Recipe until actual data is passed from Recipe Intent --> remove this
     public Recipe(String name) {
         this.recipeName = name;
-        this.stepList = dummyStepList();
+        //this.stepList = dummyStepList();
     }
 
     public ArrayList<Step> getStepList() {
         return stepList;
     }
 
+    public String getRecipeName() { return recipeName;}
+
     public void setStepList(ArrayList<Step> stepList) {
         this.stepList = stepList;
     }
 
-    // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
+   /* // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
     public ArrayList<Step> dummyStepList() {
         ArrayList<Step> stepList = new ArrayList<Step>();
         Step currStep;
@@ -43,5 +45,5 @@ public class Recipe {
         }
 
         return stepList;
-    }
+    }*/
 }

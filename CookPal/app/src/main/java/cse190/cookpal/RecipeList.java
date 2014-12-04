@@ -86,17 +86,6 @@ public class RecipeList extends BaseDrawerActivity {
 
 
         new LongOperation().execute(serverRecipeListRequestURL);
-
-
-        /*ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
-        addGroceryListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(RecipeList.this, AddRecipeActivity.class);
-                startActivity(i);
-            }
-        });*/
-        //popupInit();
     }
 
     private void popupInit() {
@@ -133,55 +122,6 @@ public class RecipeList extends BaseDrawerActivity {
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
-        /*deleteConfirmText = new TextView(this);
-        deleteConfirmButton = new Button(this);
-        thisLayout = new LinearLayout(this);
-
-        deleteConfirmText.setText("Confirm delete?");
-        deleteConfirmButton.setText("OK");*/
-
-        /*deleteConfirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ListView recipeList = (ListView) findViewById(R.id.recipeListView);
-
-                //TODO: instead of having global variable of checkboxes, just findElementById (more organized)
-                //checkBoxes has all checkboxes + junk at end. very very hacky
-                for(int i = 0; i < checkBoxes.size(); i++) {
-                    String recipeName = (String)checkBoxes.get(i).getText();
-                    Log.d(TAG, recipeName);
-
-                    if(checkBoxes.get(i).isChecked() && RecipeList.this.recipeList.contains(checkBoxes.get(i).getText())) {
-
-                        //test code
-                        //TODO: currently because checkBoxes is hacky, will delete checked recipes multiple times. should fix this
-                        HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
-                        deleteRecipeParams.put("r_name", recipeName);
-                        deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
-                        deleteRecipeParams.put("filter", "delete_recipe");
-                        httpUtil.makeHttpPost(deleteRecipeParams);
-
-                    }
-                }
-                deleteConfirmWindow.dismiss();
-
-                onRestart();
-            }
-        });
-        thisLayout.addView(deleteConfirmText);
-        thisLayout.addView(deleteConfirmButton);*/
-
-        /*deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteConfirmWindow = new PopupWindow(thisLayout, LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-                deleteConfirmWindow.showAtLocation(thisLayout, Gravity.CENTER,50, 50);
-                deleteConfirmWindow.showAsDropDown(deleteGroceryListButton);
-
-
-            }
-        });*/
 
     }
     @Override

@@ -5,7 +5,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/instruction"
+        android:id="@+id/instructionEditText"
         android:layout_weight="1" />
     <TextView
         android:layout_width="wrap_content"
@@ -13,24 +13,30 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Hours:"
         android:id="@+id/hoursTextView"
-        android:gravity="center"
+        android:layout_toRightOf="@id/instructionEditText"
         android:layout_centerHorizontal="true" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/hours"
+        android:id="@+id/hoursEditText"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_toRightOf="@id/hoursTextView"
         android:layout_weight="1" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Minutes:"
+        android:layout_toRightOf="@id/hoursEditText"
         android:id="@+id/minutesTextView"
-        android:gravity="center"
         android:layout_centerHorizontal="true" />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/minutes"
+        android:id="@+id/minutesEditText"
+        android:inputType="number"
+        android:maxLength="2"
+        android:layout_toRightOf="@id/minutesTextView"
         android:layout_weight="1" />
 </RelativeLayout>

@@ -5,18 +5,20 @@ import java.sql.Time;
 public class Step {
     private String title;
     private String description;
-    private Time timeTakes;
+
+    private int minutes;
     private int stepNumber;
 
-    public Step(String title, String desc, Time time, int stepNum) {
+    public Step(String title, String desc, int hours, int minutes, int stepNum) {
         this.title = title;
         this.description = desc;
-        this.timeTakes = time;
+        this.hours = hours;
+        this.minutes = minutes;
         this.stepNumber = stepNum;
     }
 
     public String toString() {
-        return stepNumber + ": " + title + "\n\ttime: " + timeTakes.getTime();
+        return stepNumber + ": " + title + "\n\ttime: " + hours + " hours " + minutes + "minutes";
     }
 
     public int getStepNumber() {
@@ -43,11 +45,23 @@ public class Step {
         this.description = description;
     }
 
-    public Time getTimeTakes() {
-        return timeTakes;
+    public int getMinutes() {
+        return minutes;
     }
 
-    public void setTimeTakes(Time timeTakes) {
-        this.timeTakes = timeTakes;
+    public int getHours() {
+        return hours;
     }
+
+    private int hours;
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+
 }
