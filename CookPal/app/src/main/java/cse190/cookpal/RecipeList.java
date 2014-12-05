@@ -16,11 +16,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -44,6 +48,7 @@ public class RecipeList extends BaseDrawerActivity {
     //TODO: potentially refactor. not sure if it's a good idea to have data structures as global vars in activity
     HttpUtil httpUtil = new HttpUtil();
     ArrayList<String> recipeList = new ArrayList<String>();
+    ArrayList<String> recipeImageList = new ArrayList<String>();
     ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
     LinearLayout thisLayout;
     PopupWindow deleteConfirmWindow;
@@ -54,6 +59,7 @@ public class RecipeList extends BaseDrawerActivity {
     // WebServer Request URL
     String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
             AccountActivity.getFbId();
+
 
 
     @Override
@@ -69,6 +75,7 @@ public class RecipeList extends BaseDrawerActivity {
     protected void onRestart() {
         Log.d("recipelist", "recipelist onrestart");
         recipeList = new ArrayList<String>();
+        recipeImageList = new ArrayList<String>();
         new LongOperation().execute(serverRecipeListRequestURL);
         populateListView();
         super.onRestart();
@@ -78,7 +85,9 @@ public class RecipeList extends BaseDrawerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
 
-
+        //initialize image lazy loader
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(config);
         new LongOperation().execute(serverRecipeListRequestURL);
       //  new PopulateRecipeOperation().execute(AccountActivity.getFbId(),"aaaa" );
 
@@ -206,19 +215,24 @@ public class RecipeList extends BaseDrawerActivity {
 
         checkBoxes = new ArrayList<CheckBox>();
 
-        ArrayAdapter<String> recipeListAdapter = new RecipeListAdapter();
+        ArrayAdapter<String> recipeListAdapter = new RecipeListAdapter(recipeList, recipeImageList);
         ListView list = (ListView) findViewById(R.id.recipeListView);
         list.setAdapter(recipeListAdapter);
 
     }
 
     private class RecipeListAdapter extends ArrayAdapter<String> {
+        ImageLoader imageLoader;
+        ArrayList<String> urls;
         public RecipeListAdapter() {
             super(RecipeList.this, R.layout.recipe_listview_entry, recipeList);
+            imageLoader = imageLoader.getInstance();
         }
 
-        public RecipeListAdapter(ArrayList<String> recipeLists) {
+        public RecipeListAdapter(ArrayList<String> recipeLists, ArrayList<String> recipeImageURLs) {
             super(RecipeList.this, R.layout.recipe_listview_entry, recipeLists);
+            imageLoader = imageLoader.getInstance();
+            urls = recipeImageURLs;
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -238,7 +252,8 @@ public class RecipeList extends BaseDrawerActivity {
                     new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "RECIPEACTIVITY");
                 }
             });
-
+            ImageView currImageView = (ImageView) convertView.findViewById(R.id.recipeEntryImageView);
+            imageLoader.displayImage(urls.get(position), currImageView);
             return convertView;
         }
     }
@@ -525,9 +540,10 @@ public class RecipeList extends BaseDrawerActivity {
                         JSONArray recipeArray = (JSONArray) jsonResponse.get(key);
                         for (int i = 0; i < recipeArray.length(); i++) {
                             String recipeName = ((JSONObject)recipeArray.get(i)).get("recipe name").toString();
-
+                            String recipeImageURL = ((JSONObject)recipeArray.get(i)).get("image").toString();
                             Log.d("recipeList activity", "recipeName from db: " + recipeName);
                             recipeList.add(recipeName);
+                            recipeImageList.add(recipeImageURL);
                         }
                     }
                     populateListView();

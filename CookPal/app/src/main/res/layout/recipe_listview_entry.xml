@@ -47,12 +47,11 @@
         android:ellipsize="end"
         android:maxLines="1"/>
 
-    <!--<ImageView
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/recipeEntryImageView"
-        android:layout_alignBottom="@+id/addPictureButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />-->
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
