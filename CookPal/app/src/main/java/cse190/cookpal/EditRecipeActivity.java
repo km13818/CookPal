@@ -73,6 +73,7 @@ public class EditRecipeActivity extends Activity {
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
+                insertRecipeParams.put("image_url", "");
                 httpUtil.makeHttpPost(insertRecipeParams);
 
                 ListView instructionsEditListView = (ListView) findViewById(R.id.instructionsEditListView);
@@ -86,26 +87,26 @@ public class EditRecipeActivity extends Activity {
                     //instructionLayout has many horizontal linearlayout as children, who each have children containing EditText
                     View horizontalView = instructionsEditListView.getChildAt(i);
 
-                        //loop throuhg view's children to find EditTexts
+                    //loop throuhg view's children to find EditTexts
 
-                        ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
-                        TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
-                        EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
-                        EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
-                        EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
-                        Log.d("AddRecipeActivity", "instr: " + instructionEditText.getText().toString() + " hrs: " + instructionHoursEditText.getText().toString() + " mins: " + instructionMinsEditText.getText().toString());
-                        //TODO: INSERT INSTRUCTION
+                    ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                    TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
+                    EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
+                    EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
+                    EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
+                    Log.d("AddRecipeActivity", "instr: " + instructionEditText.getText().toString() + " hrs: " + instructionHoursEditText.getText().toString() + " mins: " + instructionMinsEditText.getText().toString());
+                    //TODO: INSERT INSTRUCTION
 
-                        HashMap<String,String> insertRecipeInstructionParams = new HashMap<String,String>();
-                        insertRecipeInstructionParams.put("name", currentRecipe.getRecipeName());
-                        insertRecipeInstructionParams.put("fb_id", AccountActivity.getFbId());
-                        insertRecipeInstructionParams.put("instruction", instructionEditText.getText().toString());
-                        insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
-                        insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
-                        insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
-                        insertRecipeInstructionParams.put("filter", "insert_instruction");
+                    HashMap<String,String> insertRecipeInstructionParams = new HashMap<String,String>();
+                    insertRecipeInstructionParams.put("name", currentRecipe.getRecipeName());
+                    insertRecipeInstructionParams.put("fb_id", AccountActivity.getFbId());
+                    insertRecipeInstructionParams.put("instruction", instructionEditText.getText().toString());
+                    insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
+                    insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
+                    insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
+                    insertRecipeInstructionParams.put("filter", "insert_instruction");
 
-                     //   httpUtil.makeHttpPost(insertRecipeInstructionParams);
+                    httpUtil.makeHttpPost(insertRecipeInstructionParams);
 
 
                 } //end for
@@ -119,22 +120,22 @@ public class EditRecipeActivity extends Activity {
                     //ingredientsLayout has many horizontal linearlayout as children, who each have children containing EditText
                     View horizontalView = ingredientsEditListView.getChildAt(i);
 
-                        //loop throuhg view's children to find EditTexts
-                        ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
-                        EditText ingredientEditText = (EditText) horizontalViewGroup.getChildAt(0);
-                        EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.getChildAt(2);
-                        Log.d("AddRecipeActivity", "ingred: " + ingredientEditText.getText().toString() + " quantity: " + ingredientQuantityEditText.getText().toString());
-                        //TODO: INSERT INGREDIENT
-                        HashMap<String,String> insertIngredientParams = new HashMap<String,String>();
-                        insertIngredientParams.put("name", currentRecipe.getRecipeName());
-                        insertIngredientParams.put("fb_id", AccountActivity.getFbId());
-                        insertIngredientParams.put("ingr_name", ingredientEditText.getText().toString());
-                        insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
-                        insertIngredientParams.put("filter", "insert_ingredient");
-                 //       httpUtil.makeHttpPost(insertIngredientParams);
+                    //loop throuhg view's children to find EditTexts
+                    ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                    EditText ingredientEditText = (EditText) horizontalViewGroup.getChildAt(0);
+                    EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.getChildAt(2);
+                    Log.d("AddRecipeActivity", "ingred: " + ingredientEditText.getText().toString() + " quantity: " + ingredientQuantityEditText.getText().toString());
+                    //TODO: INSERT INGREDIENT
+                    HashMap<String,String> insertIngredientParams = new HashMap<String,String>();
+                    insertIngredientParams.put("name", currentRecipe.getRecipeName());
+                    insertIngredientParams.put("fb_id", AccountActivity.getFbId());
+                    insertIngredientParams.put("ingr_name", ingredientEditText.getText().toString());
+                    insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
+                    insertIngredientParams.put("filter", "insert_ingredient");
+                    httpUtil.makeHttpPost(insertIngredientParams);
 
                 } //end for
-                
+
                 Intent i = new Intent(EditRecipeActivity.this, RecipeList.class);
                 startActivity(i);
             }

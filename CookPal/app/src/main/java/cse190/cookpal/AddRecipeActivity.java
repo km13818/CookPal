@@ -57,6 +57,7 @@ public class AddRecipeActivity extends Activity {
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
+                insertRecipeParams.put("image_url", "");
                 httpUtil.makeHttpPost(insertRecipeParams);
 
 
