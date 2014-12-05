@@ -49,6 +49,7 @@ public class Recipe implements Serializable {
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
+
     // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
     public ArrayList<Step> dummyStepList() {
         ArrayList<Step> stepList = new ArrayList<Step>();
