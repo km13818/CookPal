@@ -1,5 +1,6 @@
 package cse190.cookpal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.*;
@@ -43,7 +44,7 @@ public class AssistantActivity extends BaseDrawerActivity {
         // Google analytics tracker
         //((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
 
-        //initialize the speaker
+        // Initialize the speaker
         assistantSpeaker = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
                     @Override
                     public void onInit(int status) {
@@ -53,6 +54,7 @@ public class AssistantActivity extends BaseDrawerActivity {
                     }
                 });
         write = "this is a test please speakerino";
+
         // Bind the current step (main assistant page) view
         currStepLayout = (RelativeLayout) findViewById(R.id.assistant_currStep);
 
@@ -80,15 +82,12 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
         stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
 
-        //tts tester
+        // Text-to-speech tester
         stepDescriptView.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v){
-                String speech = "Step " + stepNumView.getText().toString() + ". ";
-                speech += stepTitleView.getText().toString() + ", ";
-                speech += stepDescriptView.getText().toString();
-                assistantSpeaker.speak(speech,TextToSpeech.QUEUE_FLUSH,null);
+            public void onClick(View v) {
+                speakStepInfo(currStep);
             }
         });
 
@@ -96,7 +95,8 @@ public class AssistantActivity extends BaseDrawerActivity {
         setCurrStepViewData(currStep);
 
         // Bind the step list adapter
-        stepListAdapter = new AssistantStepListAdapter(this, R.layout.assistant_steplist_listviewitem, currRecipe.getStepList());
+        stepListAdapter = new AssistantStepListAdapter(this,
+                R.layout.assistant_steplist_listviewitem, currRecipe.getStepList(), currStep);
         stepListView.setAdapter(stepListAdapter);
 
         // Handle clicking the step list
@@ -106,9 +106,10 @@ public class AssistantActivity extends BaseDrawerActivity {
                 Step clickedStep = (Step) parent.getItemAtPosition(position);
 
                 // Populate the step preview with data from this clicked step
-                stepPreviewNumView.setText(clickedStep.getStepNumber() + "");
+                stepPreviewNumView.setText(String.valueOf(clickedStep.getStepNumber()));
                 stepPreviewTitleView.setText(clickedStep.getTitle());
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
+
                 // Save the clicked step data to be accessed if the user chooses to skip there
                 stepPreviewLayout.setTag(clickedStep);
 
@@ -143,16 +144,14 @@ public class AssistantActivity extends BaseDrawerActivity {
         // If next step exists, move to it and update the view
         if(++currStepIdx < stepList.size()) {
             currStep = stepList.get(currStepIdx);
-            setCurrStepViewData(currStep);
-            displayCurrStep(view);
+            changeCurrStepView(view);
         }
     }
 
     public void skipToStep(View view) {
         // Receive the step data that the user skipped to (set in the step list click listener)
         currStep = (Step) stepPreviewLayout.getTag();
-        setCurrStepViewData(currStep);
-        displayCurrStep(view);
+        changeCurrStepView(view);
     }
 
     private void setCurrStepViewData(Step currStep) {
@@ -186,6 +185,21 @@ public class AssistantActivity extends BaseDrawerActivity {
             assistantSpeaker.shutdown();
         }
         super.onPause();
+    }
+
+    private void speakStepInfo(Step step) {
+        String speech = "Step " + step.getStepNumber() + ". " + step.getTitle() + ", " + step.getDescription();
+
+        assistantSpeaker.speak(speech,TextToSpeech.QUEUE_FLUSH,null);
+    }
+
+    private void changeCurrStepView(View view) {
+        // Set data and display the new view
+        setCurrStepViewData(currStep);
+        displayCurrStep(view);
+
+        // Say the step information once the view is moved
+        speakStepInfo(currStep);
     }
 
 }
