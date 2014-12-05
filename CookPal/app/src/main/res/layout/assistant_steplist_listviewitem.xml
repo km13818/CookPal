@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dp">
+    <TextView
+        android:id="@+id/stepListItem_stepNum"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:background="@color/orange"
+        android:text="@string/dummyStepNum"
+        android:padding="10dp"/>
+    <TextView
+        android:id="@+id/stepListItem_stepTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:layout_toRightOf="@id/stepListItem_stepNum"
+        android:textColor="@color/white"
+        android:background="@color/light_orange"
+        android:padding="10dp"
+        android:text="@string/dummyStepTitle"/>
+    <TextView
+        android:id="@+id/stepListItem_stepTimeTakes"
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:layout_below="@id/stepListItem_stepTitle"
+        android:textColor="@color/light_orange"
+        android:textSize="12dp"
+        android:text="@string/dummyTimeLeft"/>
+</RelativeLayout>

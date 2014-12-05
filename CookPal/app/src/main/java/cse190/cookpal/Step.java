@@ -18,6 +18,11 @@ public class Step implements Serializable{
         this.stepNumber = stepNum;
     }
 
+    @Override
+    public String toString() {
+        return getStepNumber() + ": " + getTitle() + "\n" + getTime();
+    }
+
     public String toStringDescription() {
 
         return "STEP: "+stepNumber  + " " +  getDescription() + " hrs: " + hours + " minutes: " + minutes;
@@ -29,8 +34,14 @@ public class Step implements Serializable{
     }
 
     public String getTime(int hours, int minutes){
-        if(hours == 0 && minutes == 0) return "Time: n/a";
-        else return "Time: "+intToString(hours)+" : "+intToString(minutes);
+        if(hours == 0 && minutes == 0) {
+            return "Time: n/a";
+        }
+        else return "Time: " + intToString(hours) + "hr " + intToString(minutes) + "m";
+    }
+
+    public String getTime() {
+        return getTime(getHours(), getMinutes());
     }
 
     public int getStepNumber() {

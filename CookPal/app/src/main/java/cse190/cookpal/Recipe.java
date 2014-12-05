@@ -19,7 +19,7 @@ public class Recipe implements Serializable {
         this.ingredientList = ingredientList;
     }
 
-    // TODO: temporary dummy Recipe until actual data is passed from Recipe Intent --> remove this
+    // Note: dummy Recipe for testing purposes
     public Recipe(String name) {
         this.recipeName = name;
         this.stepList = dummyStepList();
@@ -50,7 +50,7 @@ public class Recipe implements Serializable {
         this.recipeName = recipeName;
     }
 
-    // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
+    // Note: dummy step population for testing purposes
     public ArrayList<Step> dummyStepList() {
         ArrayList<Step> stepList = new ArrayList<Step>();
         Step currStep;
