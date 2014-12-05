@@ -20,7 +20,6 @@
     substitute for the full length canonical Activity name in screen view hit. In order to
     specify an alternate screen name use an <screenName> element, with the name attribute
     specifying the canonical name, and the value the alias to use instead. -->
-    <screenName name="cse190.cookpal.AccountActivity">Login Activity</screenName>
     <screenName name="cse190.cookpal.AddRecipeActivity">New Recipe Activity</screenName>
     <screenName name="cse190.cookpal.AssistantActivity">Cooking Assistant Activity</screenName>
     <screenName name="cse190.cookpal.CookbookActivity">Cookbook Activity</screenName>
