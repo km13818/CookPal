@@ -289,6 +289,7 @@ public class RecipeList extends BaseDrawerActivity {
                 // Defined URL  where to send data
                 String serverUrlString = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?";
                 String selectInstructionsUrlString = serverUrlString + "fb_id=" + params[0] + "&r_name=" + params[1] + "&filter=" + "select_instruction";
+                Log.d("", "instr url: " + selectInstructionsUrlString );
                 URL selectInstructionsUrl = new URL(selectInstructionsUrlString);
 
                 // Send POST data request
@@ -358,6 +359,8 @@ public class RecipeList extends BaseDrawerActivity {
 
         protected void onPostExecute(Void unused) {
             Log.d("recipelist", "onpostexecute.....");
+            Log.d("recipeList activity", "instr json return string: " + instructionsReturnString);
+            Log.d("recipeList activity", "ingr json return string: " + ingredientsReturnString);
             // Close progress dialog
             Dialog.dismiss();
 
@@ -394,7 +397,7 @@ public class RecipeList extends BaseDrawerActivity {
 
                 }
                 /****************** Start Parse Response JSON Data *************/
-                Log.d("recipeList activity", "json return string: " + instructionsReturnString);
+
                 JSONObject jsonResponse;
 
             }
