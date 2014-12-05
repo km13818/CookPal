@@ -5,163 +5,170 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/add_recipe_vertical_layout">
-
-        <!-- NAME -->
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
+        
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipe_name"
-            android:layout_gravity="left|top"
-            android:background="@drawable/view_border_green"
-            android:padding="5dp"
-            >
+            android:layout_height="match_parent"
+            android:id="@+id/add_recipe_vertical_layout">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="name"
-                android:textColor="@color/white"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/recipe_name_text"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="0dp"
-                android:paddingLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:password="false"
-                android:layout_gravity="center_vertical"/>
-
-            <EditText
+            <!-- NAME -->
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/recipe_name"
+                android:layout_gravity="left|top"
                 android:background="@drawable/view_border_green"
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:textColor="@color/white"
-                android:id="@+id/recipeNameInput"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
-
-        <!-- INGREDIENTS -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/addIngredientsButtonLayout"
-            android:background="@drawable/view_border_orange">
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="add ingredients"
-                android:id="@+id/addIngredientsButton"
-                android:src="@drawable/add_icon"
-                android:clickable="true"
                 android:padding="5dp"
-                android:layout_margin="5dp"
-                android:layout_gravity="center_vertical"
-                android:background="@android:color/transparent"/>
+                >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="ingredients"
-                android:id="@+id/ingredientsTitleTextView"
-                android:textColor="@color/white"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="0dp"
-                android:paddingLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="name"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/recipe_name_text"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:password="false"
+                    android:layout_gravity="center_vertical"/>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/addIngredientsLayout"
-            android:background="@drawable/view_border_light_orange"
-            android:padding="5dp"
-            android:layout_gravity="left|top" >
-        </LinearLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_border_green"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/recipeNameInput"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
 
-        <!-- INSTRUCTIONS -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/addInstructionsButtonLayout"
-            android:background="@drawable/view_border_orange">
+            <!-- INGREDIENTS -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/addIngredientsButtonLayout"
+                android:background="@drawable/view_border_orange">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="add instructions"
-                android:src="@drawable/add_icon"
-                android:id="@+id/addInstructionsButton"
-                android:clickable="true"
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="add ingredients"
+                    android:id="@+id/addIngredientsButton"
+                    android:src="@drawable/add_icon"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="ingredients"
+                    android:id="@+id/ingredientsTitleTextView"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/addIngredientsLayout"
+                android:background="@drawable/view_border_light_orange"
                 android:padding="5dp"
-                android:layout_margin="5dp"
-                android:layout_gravity="center_vertical"
-                android:background="@android:color/transparent"/>
+                android:layout_gravity="left|top" >
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:text="instructions"
-                android:textColor="@color/white"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/instructionsTitleTextView"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="0dp"
-                android:paddingLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/instructionsLayout"
-            android:background="@drawable/view_border_light_orange"
-            android:padding="5dp"
-            android:layout_gravity="left|top">
-        </LinearLayout>
+            <!-- INSTRUCTIONS -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/addInstructionsButtonLayout"
+                android:background="@drawable/view_border_orange">
 
-        <!-- CREATE -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/confirm_create_recipe_layout"
-            android:layout_gravity="left|top">
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="add instructions"
+                    android:src="@drawable/add_icon"
+                    android:id="@+id/addInstructionsButton"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"/>
 
-            <Button
-                android:id="@+id/confirm_create_recipe_button"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="instructions"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/instructionsTitleTextView"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/instructionsLayout"
+                android:background="@drawable/view_border_light_orange"
+                android:padding="5dp"
+                android:layout_gravity="left|top">
+            </LinearLayout>
+
+            <!-- CREATE -->
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/confirm_create_recipe_button" />
-        </LinearLayout>
+                android:id="@+id/confirm_create_recipe_layout"
+                android:layout_gravity="left|top">
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/confirm_create_recipe_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/confirm_create_recipe_button" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
     <FrameLayout
         android:id="@+id/content_frame"
