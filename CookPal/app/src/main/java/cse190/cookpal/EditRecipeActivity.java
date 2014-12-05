@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -60,11 +61,12 @@ public class EditRecipeActivity extends Activity {
                 deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
                 deleteRecipeParams.put("filter", "delete_recipe");
                 httpUtil.makeHttpPost(deleteRecipeParams);
-                try {
-                    Thread.sleep(5000);                 //1000 milliseconds is one second.
+           /*     try {
+                    Thread.sleep(20000);                 //1000 milliseconds is one second.
                 } catch(InterruptedException ex) {
+                    Log.d("thread sleep fail", "threadsleepfail");
                     Thread.currentThread().interrupt();
-                }
+                }*/
                 //insert recipe
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
                 insertRecipeParams.put("r_name", currentRecipe.getRecipeName());
@@ -73,21 +75,19 @@ public class EditRecipeActivity extends Activity {
                 insertRecipeParams.put("cookbook_type", "private");
                 httpUtil.makeHttpPost(insertRecipeParams);
 
+                ListView instructionsEditListView = (ListView) findViewById(R.id.instructionsEditListView);
+                Log.d("instrcount","instructions count: " + instructionsEditListView.getCount());
 
-                //insert instructions
-                //loop through all EditText
-                ViewGroup group = (ViewGroup)findViewById(R.id.instructionsEditListView);
-                int instructionLayoutChildrenCount = group.getChildCount();
-                Log.d("count=", String.valueOf(instructionLayoutChildrenCount));
 
+                //***************BELOW CODE CURRENTLY DOES NOTHING BECAUSE HTTP MAKE POST COMMENTED OUT*******
+                //*****************************************************************************
                 //loop through and insert instructions
-                for(int i = 0;  i<instructionLayoutChildrenCount; i++ ) {
+                for(int i = 0;  i<instructionsEditListView.getCount(); i++ ) {
                     //instructionLayout has many horizontal linearlayout as children, who each have children containing EditText
-                    View horizontalView = group.getChildAt(i);
-                    if(horizontalView instanceof LinearLayout)
-                    {
+                    View horizontalView = instructionsEditListView.getChildAt(i);
+
                         //loop throuhg view's children to find EditTexts
-                        int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
+
                         ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
                         TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
                         EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
@@ -105,26 +105,24 @@ public class EditRecipeActivity extends Activity {
                         insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
                         insertRecipeInstructionParams.put("filter", "insert_instruction");
 
-                        httpUtil.makeHttpPost(insertRecipeInstructionParams);
+                     //   httpUtil.makeHttpPost(insertRecipeInstructionParams);
 
-                    }
+
                 } //end for
 
                 //insert ingredients
-                ViewGroup addIngredientsLayoutGroup = (ViewGroup)findViewById(R.id.ingredientsEditListView);
-                int ingredientsLayoutChildrenCount = addIngredientsLayoutGroup.getChildCount();
+                ListView ingredientsEditListView = (ListView) findViewById(R.id.ingredientsEditListView);
+                Log.d("instrcount","instructions count: " + ingredientsEditListView.getCount());
 
                 //loop through and insert ingredients
-                for(int i = 0; i < ingredientsLayoutChildrenCount; i++) {
+                for(int i = 0; i < ingredientsEditListView.getCount(); i++) {
                     //ingredientsLayout has many horizontal linearlayout as children, who each have children containing EditText
-                    View horizontalView = addIngredientsLayoutGroup.getChildAt(i);
-                    if(horizontalView instanceof LinearLayout)
-                    {
+                    View horizontalView = ingredientsEditListView.getChildAt(i);
+
                         //loop throuhg view's children to find EditTexts
-                        int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
                         ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
-                        EditText ingredientEditText = (EditText) horizontalViewGroup.getChildAt(1);
-                        EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.getChildAt(3);
+                        EditText ingredientEditText = (EditText) horizontalViewGroup.getChildAt(0);
+                        EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.getChildAt(2);
                         Log.d("AddRecipeActivity", "ingred: " + ingredientEditText.getText().toString() + " quantity: " + ingredientQuantityEditText.getText().toString());
                         //TODO: INSERT INGREDIENT
                         HashMap<String,String> insertIngredientParams = new HashMap<String,String>();
@@ -133,8 +131,8 @@ public class EditRecipeActivity extends Activity {
                         insertIngredientParams.put("ingr_name", ingredientEditText.getText().toString());
                         insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
                         insertIngredientParams.put("filter", "insert_ingredient");
-                        httpUtil.makeHttpPost(insertIngredientParams);
-                    }
+                 //       httpUtil.makeHttpPost(insertIngredientParams);
+
                 } //end for
                 
                 Intent i = new Intent(EditRecipeActivity.this, RecipeList.class);
