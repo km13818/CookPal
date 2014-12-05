@@ -62,13 +62,14 @@
       //actions
       //a new recipe wants to be added to the DB
       if(handleFilter.equals("insert_recipe")) {
-         query = "INSERT INTO recipe (name, account_id, cookbook_type) VALUES (?, ?, ?)";
+         query = "INSERT INTO recipe (name, account_id, cookbook_type, image_url) VALUES (?, ?, ?, ?)";
          pstmt = conn.prepareStatement(query);     
 		 
          conn.setAutoCommit(false);       
          pstmt.setString(1, recipeName);
          pstmt.setString(2, accId);
          pstmt.setString(3, recipeCBType);
+		 pstmt.setString(4, recipeImageURL);
          pstmt.executeUpdate(); 
          conn.commit();
          conn.setAutoCommit(true);         
