@@ -52,18 +52,19 @@ public class AddRecipeActivity extends BaseDrawerActivity {
             @Override
             public void onClick(View v) {
                 String recipeName = ((EditText) findViewById(R.id.recipeNameInput)).getText().toString();
+                String imageUrl = ((EditText) findViewById(R.id.recipeImageUrlInput)).getText().toString();
 
                 Intent intent = new Intent(AddRecipeActivity.this, RecipeList.class);
                 intent.putExtra("RECIPE_NAME",recipeName);
 
                 //INSERT RECIPE
-                //recipe: id, account_id, cookbook_type, name,
+                //recipe: id, account_id, cookbook_type, name, image_url
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
                 insertRecipeParams.put("r_name", recipeName);
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
-                insertRecipeParams.put("image_url", "");
+                insertRecipeParams.put("image_url", imageUrl);
                 httpUtil.makeHttpPost(insertRecipeParams);
 
 
