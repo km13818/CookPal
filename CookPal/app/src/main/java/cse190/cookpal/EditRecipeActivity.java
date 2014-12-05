@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -38,12 +39,12 @@ public class EditRecipeActivity extends Activity {
 
         ArrayList<Step> stepList = currentRecipe.getStepList();
         ArrayAdapter<Step> stepListAdapter = new StepListAdapter(stepList);
-        ListView instructionsListView = (ListView) findViewById(R.id.instructionsListView);
+        ListView instructionsListView = (ListView) findViewById(R.id.instructionsEditListView);
         instructionsListView.setAdapter(stepListAdapter);
 
         ArrayList<Ingredients> ingredientList = currentRecipe.getIngredientList();
         ArrayAdapter<Ingredients> ingredientsListAdapter = new IngredientsListAdapter(ingredientList);
-        ListView ingredientsListView = (ListView) findViewById(R.id.ingredientsListView);
+        ListView ingredientsListView = (ListView) findViewById(R.id.ingredientsEditListView);
         ingredientsListView.setAdapter(ingredientsListAdapter);
 
         Button updateRecipeButton = (Button) findViewById(R.id.updateRecipeButton);
@@ -67,9 +68,67 @@ public class EditRecipeActivity extends Activity {
 
 
                 //insert instructions
+                //loop through all EditText
+                ViewGroup group = (ViewGroup)findViewById(R.id.instructionsEditListView);
+                int instructionLayoutChildrenCount = group.getChildCount();
+                Log.d("count=", String.valueOf(instructionLayoutChildrenCount));
+
+                //loop through and insert instructions
+                for(int i = 0;  i<instructionLayoutChildrenCount; i++ ) {
+                    //instructionLayout has many horizontal linearlayout as children, who each have children containing EditText
+                    View horizontalView = group.getChildAt(i);
+                    if(horizontalView instanceof LinearLayout)
+                    {
+                        //loop throuhg view's children to find EditTexts
+                        int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
+                        ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                        TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
+                        EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
+                        EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
+                        EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
+                        Log.d("AddRecipeActivity", "instr: " + instructionEditText.getText().toString() + " hrs: " + instructionHoursEditText.getText().toString() + " mins: " + instructionMinsEditText.getText().toString());
+                        //TODO: INSERT INSTRUCTION
+
+                        HashMap<String,String> insertRecipeInstructionParams = new HashMap<String,String>();
+                        insertRecipeInstructionParams.put("name", currentRecipe.getRecipeName());
+                        insertRecipeInstructionParams.put("fb_id", AccountActivity.getFbId());
+                        insertRecipeInstructionParams.put("instruction", instructionEditText.getText().toString());
+                        insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
+                        insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
+                        insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
+                        insertRecipeInstructionParams.put("filter", "insert_instruction");
+
+                        httpUtil.makeHttpPost(insertRecipeInstructionParams);
+
+                    }
+                } //end for
 
                 //insert ingredients
+                ViewGroup addIngredientsLayoutGroup = (ViewGroup)findViewById(R.id.ingredientsEditListView);
+                int ingredientsLayoutChildrenCount = addIngredientsLayoutGroup.getChildCount();
 
+                //loop through and insert ingredients
+                for(int i = 0; i < ingredientsLayoutChildrenCount; i++) {
+                    //ingredientsLayout has many horizontal linearlayout as children, who each have children containing EditText
+                    View horizontalView = addIngredientsLayoutGroup.getChildAt(i);
+                    if(horizontalView instanceof LinearLayout)
+                    {
+                        //loop throuhg view's children to find EditTexts
+                        int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
+                        ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                        EditText ingredientEditText = (EditText) horizontalViewGroup.getChildAt(1);
+                        EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.getChildAt(3);
+                        Log.d("AddRecipeActivity", "ingred: " + ingredientEditText.getText().toString() + " quantity: " + ingredientQuantityEditText.getText().toString());
+                        //TODO: INSERT INGREDIENT
+                        HashMap<String,String> insertIngredientParams = new HashMap<String,String>();
+                        insertIngredientParams.put("name", currentRecipe.getRecipeName());
+                        insertIngredientParams.put("fb_id", AccountActivity.getFbId());
+                        insertIngredientParams.put("ingr_name", ingredientEditText.getText().toString());
+                        insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
+                        insertIngredientParams.put("filter", "insert_ingredient");
+                        httpUtil.makeHttpPost(insertIngredientParams);
+                    }
+                } //end for
                 
                 Intent i = new Intent(EditRecipeActivity.this, RecipeList.class);
                 startActivity(i);
