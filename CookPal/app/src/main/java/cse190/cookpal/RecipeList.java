@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -182,7 +183,7 @@ public class RecipeList extends BaseDrawerActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.recipelist_activity_menu, menu);
+     //   inflater.inflate(R.menu.recipelist_activity_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -230,6 +231,14 @@ public class RecipeList extends BaseDrawerActivity {
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
+
+            ImageButton editRecipeButton = (ImageButton) convertView.findViewById(R.id.editRecipeButton);
+            editRecipeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "EDITRECIPEACTIVITY");
+                }
+            });
             TextView currTextView = (TextView) convertView.findViewById(R.id.recipeTitle);
             currTextView.setText(recipeName);
             currTextView.setOnClickListener(new View.OnClickListener() {
@@ -425,6 +434,11 @@ public class RecipeList extends BaseDrawerActivity {
             Recipe recipe = new Recipe(recipeName,stepList,ingredientsList);
             if(nextActivity.equals("RECIPEACTIVITY")) {
                 Intent intent= new Intent(RecipeList.this, RecipeActivity.class);
+                intent.putExtra("recipe", (Serializable) recipe);
+                startActivity(intent);
+            }
+            if(nextActivity.equals("EDITRECIPEACTIVITY")) {
+                Intent intent= new Intent(RecipeList.this, EditRecipeActivity.class);
                 intent.putExtra("recipe", (Serializable) recipe);
                 startActivity(intent);
             }
