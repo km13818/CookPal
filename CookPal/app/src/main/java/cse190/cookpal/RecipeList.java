@@ -249,11 +249,19 @@ public class RecipeList extends BaseDrawerActivity {
             currTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "RECIPEACTIVITY");
+                new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "RECIPEACTIVITY");
                 }
             });
             ImageView currImageView = (ImageView) convertView.findViewById(R.id.recipeEntryImageView);
-            imageLoader.displayImage(urls.get(position), currImageView);
+            //if the entry does not have an url, we use local resources to avoid slowdowns
+            if(urls.get(position).length() == 0) {
+                int id = getResources().getIdentifier("cse190.cookpal:drawable/placeholder", null, null);
+                currImageView.setImageResource(id);
+            }
+            //else we grab according to the specified url
+            else {
+                imageLoader.displayImage(urls.get(position), currImageView);
+            }
             return convertView;
         }
     }
