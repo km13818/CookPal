@@ -104,7 +104,40 @@ public class EditRecipeActivity extends Activity {
             return convertView;
         }
     }
+    private class IngredientsListAdapter extends ArrayAdapter<Ingredients> {
+        public IngredientsListAdapter(ArrayList<Ingredients> ingredientsList) {
+            super(EditRecipeActivity.this, R.layout.editrecipeingredient_listview_entry, ingredientsList);
+        }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ArrayList<Ingredients> ingredientsList = currentRecipe.getIngredientList();
 
+
+            if(convertView == null) {
+                convertView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, parent, false);
+            }
+            final View thisConvertView = convertView;
+            final String name = ingredientsList.get(position).getIngredientName();
+            final String quantity = ingredientsList.get(position).getQuantity();
+         /*   EditText stepDescriptionTextView = (EditText) convertView.findViewById(R.id.instructionEditText);
+            Log.d("editrecipeeacivity", "stepdesc editext: " + stepDescriptionTextView.toString());
+            Log.d("editrecipeeacivity", "stepdescription: " + stepDescription);
+
+
+            TextView stepNoTextView = (TextView) convertView.findViewById(R.id.stepNoTextView);
+            stepNoTextView.setText(stepList.get(position).getStepNumber() + ".");
+            stepDescriptionTextView.setText(stepDescription);
+
+            EditText hoursEditText = (EditText) (convertView.findViewById(R.id.hoursEditText));
+
+            Log.d("hoursEditText", hoursEditText.toString());
+            hoursEditText.setText("12");
+            EditText minutesEditText = (EditText) convertView.findViewById(R.id.minutesEditText);
+            minutesEditText.setText(String.valueOf(stepList.get(position).getMinutes()));*/
+
+            return convertView;
+        }
+    }
     //sort steps
 
     // 2 1 3

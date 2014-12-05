@@ -1,9 +1,11 @@
 package cse190.cookpal;
 
-import java.sql.Time;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe implements Serializable {
+
+
 
     private String recipeName;
     private ArrayList<Step> stepList;
@@ -20,7 +22,7 @@ public class Recipe {
     // TODO: temporary dummy Recipe until actual data is passed from Recipe Intent --> remove this
     public Recipe(String name) {
         this.recipeName = name;
-     //   this.stepList = dummyStepList();
+        this.stepList = dummyStepList();
         this.ingredientList = dummyIngredientsList();
     }
 
@@ -32,10 +34,22 @@ public class Recipe {
         this.stepList = stepList;
     }
 
+    public void setIngredientList(ArrayList<Ingredients> ingredientList) {
+        this.ingredientList = ingredientList;
+    }
+
+    public ArrayList<Ingredients> getIngredientList() {
+        return this.ingredientList;
+    }
+
     public String getRecipeName() {
         return recipeName;
     }
-  /*  // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
+    // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
     public ArrayList<Step> dummyStepList() {
         ArrayList<Step> stepList = new ArrayList<Step>();
         Step currStep;
@@ -43,14 +57,14 @@ public class Recipe {
         for(int i = 0; i < 10; i++) {
             currStep = new Step("Chop the onions " + i,
                     "Take your knife. And chop the onions. Don't cry or you're banished " + i,
-                    new Time(1000 * i), i);
+                    0, i, i);
 
             stepList.add(currStep);
         }
 
         return stepList;
     }
-*/
+
     public ArrayList<Ingredients> dummyIngredientsList(){
         ArrayList<Ingredients> ingredientList = new ArrayList<Ingredients>();
         Ingredients ingredient;
@@ -63,19 +77,24 @@ public class Recipe {
         return ingredientList;
     }
 
-   /* // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
-    public ArrayList<Step> dummyStepList() {
-        ArrayList<Step> stepList = new ArrayList<Step>();
-        Step currStep;
+/*    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-        for(int i = 0; i < 10; i++) {
-            currStep = new Step("Chop the onions " + i,
-                    "Take your knife. And chop the onions. Don't cry or you're banished " + i,
-                    new Time(1000 * i), i);
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
 
-            stepList.add(currStep);
+    }
+
+    // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    public static final Parcelable.Creator<Recipe> CREATOR = new Parcelable.Creator<Recipe>() {
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
         }
 
-        return stepList;
-    }*/
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };*/
 }

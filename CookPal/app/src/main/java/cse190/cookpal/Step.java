@@ -1,11 +1,12 @@
 package cse190.cookpal;
 
-import java.sql.Time;
 
-public class Step {
+import java.io.Serializable;
+
+public class Step implements Serializable{
     private String title;
     private String description;
-
+    private int hours;
     private int minutes;
     private int stepNumber;
 
@@ -17,8 +18,19 @@ public class Step {
         this.stepNumber = stepNum;
     }
 
-    public String toString() {
-        return stepNumber + ": " + title + "\n\ttime: " + hours + " hours " + minutes + "minutes";
+    public String toStringDescription() {
+
+        return "STEP: "+stepNumber  + " " +  getDescription() + " hrs: " + hours + " minutes: " + minutes;
+    }
+
+    public String intToString(int num){
+        //TODO how to carry over the 1
+        return String.valueOf(num);
+    }
+
+    public String getTime(int hours, int minutes){
+        if(hours == 0 && minutes == 0) return "Time: n/a";
+        else return "Time: "+intToString(hours)+" : "+intToString(minutes);
     }
 
     public int getStepNumber() {
@@ -45,23 +57,15 @@ public class Step {
         this.description = description;
     }
 
+    public int getHours() { return minutes; }
+
     public int getMinutes() {
         return minutes;
     }
-
-    public int getHours() {
-        return hours;
-    }
-
-    private int hours;
 
     public void setMinutes(int minutes) {
         this.minutes = minutes;
     }
 
-    public void setHours(int hours) {
-        this.hours = hours;
-    }
-
-
+    public void setHours(int hours) { this.hours = hours; }
 }

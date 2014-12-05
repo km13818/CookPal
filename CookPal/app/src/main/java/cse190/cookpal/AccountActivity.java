@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
