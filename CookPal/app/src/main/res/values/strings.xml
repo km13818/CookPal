@@ -46,5 +46,6 @@
     <string name="dummyStepDescrip">dummy description shouldnt show up</string>
     <string name="dummyStepTitle">dummytitle shouldnt show up</string>
     <string name="dummyStepNum">69</string>
+    <string name="dummyTimeLeft">3hr30min</string>
 
 </resources>

@@ -35,6 +35,10 @@ public class Step {
         else return "Time: "+intToString(hours)+" : "+intToString(minutes);
     }
 
+    public String getTime() {
+        return getTime(getHours(), getMinutes());
+    }
+
     public int getStepNumber() {
         return stepNumber;
     }
