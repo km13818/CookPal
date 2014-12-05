@@ -60,7 +60,11 @@ public class EditRecipeActivity extends Activity {
                 deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
                 deleteRecipeParams.put("filter", "delete_recipe");
                 httpUtil.makeHttpPost(deleteRecipeParams);
-
+                try {
+                    Thread.sleep(5000);                 //1000 milliseconds is one second.
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
                 //insert recipe
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
                 insertRecipeParams.put("r_name", currentRecipe.getRecipeName());
