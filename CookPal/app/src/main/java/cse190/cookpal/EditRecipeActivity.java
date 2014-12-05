@@ -38,11 +38,14 @@ public class EditRecipeActivity extends Activity {
 
 
         ArrayList<Step> stepList = currentRecipe.getStepList();
+        Log.d("s", "steplistsize: " + stepList.size());
         ArrayAdapter<Step> stepListAdapter = new StepListAdapter(stepList);
         ListView instructionsListView = (ListView) findViewById(R.id.instructionsEditListView);
         instructionsListView.setAdapter(stepListAdapter);
 
         ArrayList<Ingredients> ingredientList = currentRecipe.getIngredientList();
+        Log.d("s", "ingrlistsize: " + ingredientList.size());
+
         ArrayAdapter<Ingredients> ingredientsListAdapter = new IngredientsListAdapter(ingredientList);
         ListView ingredientsListView = (ListView) findViewById(R.id.ingredientsEditListView);
         ingredientsListView.setAdapter(ingredientsListAdapter);

@@ -432,13 +432,21 @@ public class RecipeList extends BaseDrawerActivity {
             }
 
             Recipe recipe = new Recipe(recipeName,stepList,ingredientsList);
+            Log.d("","steplistsize direct : " + stepList.size());
+            Log.d("","ingrlistsize direct : " + ingredientsList.size());
+            Log.d("","steplistsize frm recipelist b4 if: " + recipe.getStepList().size());
+            Log.d("","ingrlistsize frm recipelist b4 if: " + recipe.getIngredientList().size());
             if(nextActivity.equals("RECIPEACTIVITY")) {
                 Intent intent= new Intent(RecipeList.this, RecipeActivity.class);
+                Log.d("","steplistsize frm recipelist: " + recipe.getStepList().size());
+                Log.d("","ingrlistsize frm recipelist: " + recipe.getIngredientList().size());
                 intent.putExtra("recipe", (Serializable) recipe);
                 startActivity(intent);
             }
             if(nextActivity.equals("EDITRECIPEACTIVITY")) {
                 Intent intent= new Intent(RecipeList.this, EditRecipeActivity.class);
+                Log.d("","steplistsize frm recipelist: " + recipe.getStepList().size());
+                Log.d("","ingrlistsize frm recipelist: " + recipe.getIngredientList().size());
                 intent.putExtra("recipe", (Serializable) recipe);
                 startActivity(intent);
             }
