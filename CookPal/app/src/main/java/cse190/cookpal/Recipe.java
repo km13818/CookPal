@@ -1,8 +1,11 @@
 package cse190.cookpal;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe implements Serializable {
+
+
 
     private String recipeName;
     private ArrayList<Step> stepList;
@@ -30,6 +33,7 @@ public class Recipe {
     public void setStepList(ArrayList<Step> stepList) {
         this.stepList = stepList;
     }
+
     public void setIngredientList(ArrayList<Ingredients> ingredientList) {
         this.ingredientList = ingredientList;
     }
@@ -38,20 +42,26 @@ public class Recipe {
         return this.ingredientList;
     }
 
+    public String getRecipeName() {
+        return recipeName;
+    }
 
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
     // TODO: temporary step population until actual data is passed from Recipe Intent --> remove this
     public ArrayList<Step> dummyStepList() {
         ArrayList<Step> stepList = new ArrayList<Step>();
-//        Step currStep;
-//
-//        for(int i = 0; i < 10; i++) {
-//            currStep = new Step("Chop the onions " + i,
-//                    "Take your knife. And chop the onions. Don't cry or you're banished " + i,
-//                    new Time(1000 * i), i);
-//
-//            stepList.add(currStep);
-//        }
-//
+        Step currStep;
+
+        for(int i = 0; i < 10; i++) {
+            currStep = new Step("Chop the onions " + i,
+                    "Take your knife. And chop the onions. Don't cry or you're banished " + i,
+                    0, i, i);
+
+            stepList.add(currStep);
+        }
+
         return stepList;
     }
 
@@ -66,4 +76,25 @@ public class Recipe {
 
         return ingredientList;
     }
+
+/*    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
+
+    // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    public static final Parcelable.Creator<Recipe> CREATOR = new Parcelable.Creator<Recipe>() {
+        public Recipe createFromParcel(Parcel in) {
+            return new Recipe(in);
+        }
+
+        public Recipe[] newArray(int size) {
+            return new Recipe[size];
+        }
+    };*/
 }
