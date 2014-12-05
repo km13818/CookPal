@@ -57,6 +57,46 @@
                     android:layout_gravity="center_vertical" />
             </LinearLayout>
 
+            <!-- IMAGE -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_image_url"
+                android:layout_gravity="left|top"
+                android:background="@drawable/view_border_orange"
+                android:padding="5dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="img url"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/recipe_image_url_text"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:password="false"
+                    android:layout_gravity="center_vertical"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_border_orange_sm"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/recipeImageUrlInput"
+                    android:layout_gravity="center_vertical" />
+            </LinearLayout>
+
             <!-- INGREDIENTS -->
             <LinearLayout
                 android:orientation="horizontal"
@@ -152,15 +192,24 @@
                 android:layout_gravity="left|top">
             </LinearLayout>
 
+            <!-- filler so create will stay at bottom -->
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/white">
+            </FrameLayout>
+
             <!-- CREATE -->
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:id="@+id/confirm_create_recipe_layout"
                 android:background="@drawable/view_border_green"
                 android:padding="5dp"
-                android:gravity="center">
+                >
 
                 <Button
                     android:id="@+id/confirm_create_recipe_button"
