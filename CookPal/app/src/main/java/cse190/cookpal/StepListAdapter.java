@@ -26,7 +26,7 @@ public abstract class StepListAdapter extends ArrayAdapter<Step> {
         if(currView == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             //v = inflater.inflate(R.layout.list_item, null);
-            currView = inflater.inflate(R.layout.steplist_listviewitem, null);
+            currView = inflater.inflate(R.layout.assistant_steplist_listviewitem, null);
         }
 
         // Note: ArrayAdapter will iterate through the list, calling getView() each time
