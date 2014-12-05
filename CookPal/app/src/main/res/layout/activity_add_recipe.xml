@@ -10,7 +10,7 @@
         android:layout_height="fill_parent"
         android:fillViewport="true"
         android:orientation="vertical">
-        
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -39,19 +39,19 @@
                     android:paddingBottom="10dp"
                     android:paddingRight="0dp"
                     android:paddingLeft="0dp"
-                    android:layout_marginRight="0dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
                     android:password="false"
                     android:layout_gravity="center_vertical"/>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/view_border_green"
+                    android:background="@drawable/view_border_green_sm"
                     android:padding="10dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="3dp"
                     android:textColor="@color/white"
                     android:id="@+id/recipeNameInput"
                     android:layout_gravity="center_vertical" />
@@ -73,7 +73,7 @@
                     android:src="@drawable/add_icon"
                     android:clickable="true"
                     android:padding="5dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="3dp"
                     android:layout_gravity="center_vertical"
                     android:background="@android:color/transparent"/>
 
@@ -90,8 +90,8 @@
                     android:paddingLeft="0dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
                     android:layout_gravity="center_vertical" />
             </LinearLayout>
 
@@ -121,7 +121,7 @@
                     android:id="@+id/addInstructionsButton"
                     android:clickable="true"
                     android:padding="5dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="3dp"
                     android:layout_gravity="center_vertical"
                     android:background="@android:color/transparent"/>
 
@@ -138,8 +138,8 @@
                     android:paddingLeft="0dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
                     android:layout_gravity="center_vertical" />
             </LinearLayout>
             <LinearLayout
@@ -155,16 +155,27 @@
             <!-- CREATE -->
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/confirm_create_recipe_layout"
-                android:layout_gravity="left|top">
+                android:background="@drawable/view_border_green"
+                android:padding="5dp"
+                android:gravity="center">
 
                 <Button
                     android:id="@+id/confirm_create_recipe_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/confirm_create_recipe_button" />
+                    android:text="@string/confirm_create_recipe_button"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:background="@color/light_green"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingRight="40dp"
+                    android:paddingLeft="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
             </LinearLayout>
 
         </LinearLayout>
