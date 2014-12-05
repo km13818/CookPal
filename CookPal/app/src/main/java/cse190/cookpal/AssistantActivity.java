@@ -74,7 +74,7 @@ public class AssistantActivity extends BaseDrawerActivity {
         // Bind the step list adapter
 //        stepListAdapter = new ArrayAdapter<Step>(
 //                this, android.R.layout.simple_list_item_1, currRecipe.getStepList());
-        stepListAdapter = new StepListAdapter(this, R.layout.assistant_steplist_listviewitem, currRecipe.getStepList());
+        stepListAdapter = new AssistantStepListAdapter(this, R.layout.steplist_listviewitem, currRecipe.getStepList());
         stepListView.setAdapter(stepListAdapter);
 
         // Handle clicking the step list
