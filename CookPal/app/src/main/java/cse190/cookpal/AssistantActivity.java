@@ -1,6 +1,7 @@
 package cse190.cookpal;
 
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.*;
 import android.widget.*;
 import java.util.*;
@@ -32,15 +33,26 @@ public class AssistantActivity extends BaseDrawerActivity {
 
     private Recipe currRecipe;
     private Step currStep;
-
+    private TextToSpeech assistantSpeaker;
+    private String write;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
 
         // Google analytics tracker
-        ((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
+        //((CookPalApp) getApplication()).getTracker(CookPalApp.TrackerName.APP_TRACKER);
 
+        //initialize the speaker
+        assistantSpeaker = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                    @Override
+                    public void onInit(int status) {
+                        if(status != TextToSpeech.ERROR){
+                            assistantSpeaker.setLanguage(Locale.UK);
+                        }
+                    }
+                });
+        write = "this is a test please speakerino";
         // Bind the current step (main assistant page) view
         currStepLayout = (RelativeLayout) findViewById(R.id.assistant_currStep);
 
@@ -68,6 +80,18 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
         stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
 
+        //tts tester
+        stepDescriptView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v){
+                String speech = "Step " + stepNumView.getText().toString() + ". ";
+                speech += stepTitleView.getText().toString() + ", ";
+                speech += stepDescriptView.getText().toString();
+                assistantSpeaker.speak(speech,TextToSpeech.QUEUE_FLUSH,null);
+            }
+        });
+
         // Set the step information
         setCurrStepViewData(currStep);
 
@@ -85,7 +109,6 @@ public class AssistantActivity extends BaseDrawerActivity {
                 stepPreviewNumView.setText(clickedStep.getStepNumber() + "");
                 stepPreviewTitleView.setText(clickedStep.getTitle());
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
-
                 // Save the clicked step data to be accessed if the user chooses to skip there
                 stepPreviewLayout.setTag(clickedStep);
 
@@ -156,18 +179,13 @@ public class AssistantActivity extends BaseDrawerActivity {
         currStepLayout.setVisibility(View.VISIBLE);
         stepPreviewLayout.setVisibility(View.GONE);
     }
-
     @Override
-    public void onStart() {
-        super.onStart();
-        //start tracking
-        GoogleAnalytics.getInstance(this).reportActivityStart(this);
+    public void onPause(){
+        if(assistantSpeaker != null){
+            assistantSpeaker.stop();
+            assistantSpeaker.shutdown();
+        }
+        super.onPause();
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        //stop tracking
-        GoogleAnalytics.getInstance(this).reportActivityStop(this);
-    }
 }
