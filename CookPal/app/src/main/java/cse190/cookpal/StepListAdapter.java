@@ -20,7 +20,6 @@ public class StepListAdapter extends ArrayAdapter<Step> {
     // Overrides getView to determine what the list item will look like
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-
         // Assign the view we are converting to a local variable
         View currView = convertView;
 
@@ -35,19 +34,11 @@ public class StepListAdapter extends ArrayAdapter<Step> {
         Step currIterStep = stepList.get(position);
 
         if(currIterStep != null) {
-
             // Bind TextView references
             // Note: These TextViews are created in the XML files we defined.
             TextView stepNum = (TextView) currView.findViewById(R.id.assistant_stepListItem_stepNum);
             TextView stepTitle = (TextView) currView.findViewById(R.id.assistant_stepListItem_stepTitle);
             TextView stepTime = (TextView) currView.findViewById(R.id.assistant_stepListItem_stepTimeTakes);
-
-//            TextView tt = (TextView) currView.findViewById(R.id.toptext);
-//            TextView ttd = (TextView) currView.findViewById(R.id.toptextdata);
-//            TextView mt = (TextView) currView.findViewById(R.id.middletext);
-//            TextView mtd = (TextView) currView.findViewById(R.id.middletextdata);
-//            TextView bt = (TextView) currView.findViewById(R.id.bottomtext);
-//            TextView btd = (TextView) currView.findViewById(R.id.desctext);
 
             // Populate views with data
             if(stepNum != null) {
@@ -59,27 +50,7 @@ public class StepListAdapter extends ArrayAdapter<Step> {
             if(stepTime != null) {
                 stepTime.setText(currIterStep.getTime());
             }
-
-//            if (tt != null){
-//                tt.setText("Name: ");
-//            }
-//            if (ttd != null){
-//                ttd.setText(currIterStep.getName());
-//            }
-//            if (mt != null){
-//                mt.setText("Price: ");
-//            }
-//            if (mtd != null){
-//                mtd.setText("$" + currIterStep.getPrice());
-//            }
-//            if (bt != null){
-//                bt.setText("Details: ");
-//            }
-//            if (btd != null){
-//                btd.setText(currIterStep.getDetails());
-//            }
         }
-
         return currView;
     }
 }

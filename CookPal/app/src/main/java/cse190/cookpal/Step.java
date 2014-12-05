@@ -17,8 +17,7 @@ public class Step {
 
     @Override
     public String toString() {
-        return getStepNumber() + ": " + getTitle() + "\nTime Takes: "
-                + getHours() + "hr " + getMinutes() + "m";
+        return getStepNumber() + ": " + getTitle() + "\n" + getTime();
     }
 
     public String toStringDescription() {
@@ -31,8 +30,10 @@ public class Step {
     }
 
     public String getTime(int hours, int minutes){
-        if(hours == 0 && minutes == 0) return "Time: n/a";
-        else return "Time: "+intToString(hours)+" : "+intToString(minutes);
+        if(hours == 0 && minutes == 0) {
+            return "Time: n/a";
+        }
+        else return "Time: " + intToString(hours) + "hr " + intToString(minutes) + "m";
     }
 
     public String getTime() {
