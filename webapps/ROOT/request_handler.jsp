@@ -17,6 +17,7 @@
    String recipeCBType = request.getParameter("cookbook_type");
    String recipeName = request.getParameter("r_name");
    String recipeId = request.getParameter("recipe_id");
+   String recipeImageURL = request.getParameter("image_url"); 
 
    //RECIPE INSTRUCTIONS FIELDS
    String recipeInstruction = request.getParameter("instruction");
@@ -82,6 +83,7 @@
             JSONObject kv = new JSONObject();
             kv.put("recipe name", rs.getString("name"));
             kv.put("cookbook status", rs.getString("cookbook_type"));
+			kv.put("image", rs.getString("image_url"));
             fields.add(kv);
          }
          result.put(userName+"'s recipes:", fields);

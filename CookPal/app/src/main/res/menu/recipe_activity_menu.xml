@@ -14,6 +14,5 @@
     <item android:id="@+id/add_recipe"
         android:icon="@drawable/edit_icon"
         android:title="add_recipe"
-        android:showAsAction="ifRoom"
-        android:onClick="addRecipeClicked"/>
+        android:showAsAction="ifRoom"/>
 </menu>

@@ -11,7 +11,7 @@
         android:layout_width="230dp"
         android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/sign_in_button_top_margin"
+        android:layout_marginTop="380dp"
          />
 
     <Button
@@ -20,7 +20,7 @@
         android:layout_width="230dp"
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/sign_up_button_top_margin"
+        android:layout_marginTop="90dp"
         />
 
 

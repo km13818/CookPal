@@ -1,9 +1,11 @@
 package cse190.cookpal;
 
+import java.io.Serializable;
+
 /**
  * Created by timchi on 12/3/14.
  */
-public class Ingredients {
+public class Ingredients implements Serializable{
 
     private String name;
     private String quantity;

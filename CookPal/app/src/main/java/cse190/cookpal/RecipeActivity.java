@@ -40,7 +40,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
         mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
         viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
+        //actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Adding Tabs
@@ -111,20 +111,25 @@ public class RecipeActivity extends BaseDrawerActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.start_assistant:
+                Intent intent = new Intent(this, AssistantActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.delete_recipe:
+                return true;
+            case R.id.add_recipe:
+                Intent i = new Intent(this, AddRecipeActivity.class);
+                startActivity(i);
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
-    public void addRecipeClicked(MenuItem menuItem) {
+    /*public void addRecipeClicked(MenuItem menuItem) {
         Intent intent = new Intent(this, AddRecipeActivity.class);
         startActivity(intent);
-    }
+    }*/
 
 
     @Override
