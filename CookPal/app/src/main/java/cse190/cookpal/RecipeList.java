@@ -393,14 +393,13 @@ public class RecipeList extends BaseDrawerActivity {
                         // public Step(String title, String desc, int hours, int minutes, int stepNum)
                         for (int i = 0; i < instructionsArray.length(); i++) {
                             int stepNumber = Integer.parseInt(((JSONObject) instructionsArray.get(i)).get("step number").toString());
-                            String desc = ((JSONObject) instructionsArray.get(i)).get("instruction").toString();
+                            String title = ((JSONObject) instructionsArray.get(i)).get("instruction").toString();
                             int hours = Integer.valueOf( ((JSONObject) instructionsArray.get(i)).get("hours").toString() );
                             int minutes = Integer.valueOf(((JSONObject) instructionsArray.get(i)).get("minutes").toString());
 
                             //create new Step
-                            Step step = new Step("", desc, hours, minutes, stepNumber);
+                            Step step = new Step(title, "", hours, minutes, stepNumber);
                             stepList.add(step);
-                            Log.d("recipeList activity", "step params: " + step.toStringDescription());
                         }
                     }
                 }
@@ -444,7 +443,7 @@ public class RecipeList extends BaseDrawerActivity {
                 }
 
             }
-
+            Log.e("recipeList","steList size: "+stepList.size());
             Recipe recipe = new Recipe(recipeName,stepList,ingredientsList);
             if(nextActivity.equals("RECIPEACTIVITY")) {
                 Intent intent= new Intent(RecipeList.this, RecipeActivity.class);

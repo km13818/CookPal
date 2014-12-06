@@ -73,6 +73,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
             }
         });
 
+        // Save variables for fragments to use
         this.mContext = this;
         //Get Recipe Object passed by recipeList
         Intent intent = getIntent();
@@ -84,6 +85,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
         return mContext;
     }
 
+    public static Recipe getCurrentRecipe() { return currentRecipe; }
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
     }
