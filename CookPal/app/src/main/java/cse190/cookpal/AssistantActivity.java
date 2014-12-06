@@ -1,13 +1,18 @@
 package cse190.cookpal;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.view.*;
-import android.widget.*;
-import java.util.*;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
+import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class AssistantActivity extends BaseDrawerActivity {
@@ -72,7 +77,6 @@ public class AssistantActivity extends BaseDrawerActivity {
 
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
-        currRecipe = new Recipe("Chicken and Rice");
         if(null != currRecipe.getStepList()) {
             //currStep = currRecipe.getStepList().get(0);
             Step firstStep = currRecipe.getStepList().get(0);
