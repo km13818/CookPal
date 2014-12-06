@@ -69,7 +69,7 @@ public class EditRecipeActivity extends Activity {
                 }*/
                 //insert recipe
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
-                insertRecipeParams.put("r_name", currentRecipe.getRecipeName());
+                insertRecipeParams.put("r_name", currentRecipe.getRecipeName()); //TODO: change to get from android
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
