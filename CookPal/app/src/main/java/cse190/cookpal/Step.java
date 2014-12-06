@@ -23,6 +23,7 @@ public class Step implements Serializable{
         return getStepNumber() + ": " + getTitle() + "\n" + getTime();
     }
 
+
     public String toStringDescription() {
 
         return "STEP: "+stepNumber  + " " +  getDescription() + " hrs: " + hours + " minutes: " + minutes;
@@ -42,6 +43,7 @@ public class Step implements Serializable{
 
     public String getTime() {
         return getTime(getHours(), getMinutes());
+
     }
 
     public int getStepNumber() {

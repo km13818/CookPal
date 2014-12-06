@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -244,11 +245,20 @@ public class RecipeList extends BaseDrawerActivity {
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
+
+            ImageButton editRecipeButton = (ImageButton) convertView.findViewById(R.id.editRecipeButton);
+            editRecipeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "EDITRECIPEACTIVITY");
+                }
+            });
             TextView currTextView = (TextView) convertView.findViewById(R.id.recipeTitle);
             currTextView.setText(recipeName);
             currTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                 new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "RECIPEACTIVITY");
                 }
             });
@@ -262,6 +272,7 @@ public class RecipeList extends BaseDrawerActivity {
             else {
                 imageLoader.displayImage(urls.get(position), currImageView);
             }
+
             return convertView;
         }
     }
@@ -372,6 +383,8 @@ public class RecipeList extends BaseDrawerActivity {
 
         protected void onPostExecute(Void unused) {
             Log.d("recipelist", "onpostexecute.....");
+            Log.d("recipeList activity", "instr json return string: " + instructionsReturnString);
+            Log.d("recipeList activity", "ingr json return string: " + ingredientsReturnString);
             // Close progress dialog
             Dialog.dismiss();
 
@@ -408,7 +421,7 @@ public class RecipeList extends BaseDrawerActivity {
 
                 }
                 /****************** Start Parse Response JSON Data *************/
-                Log.d("recipeList activity", "json return string: " + instructionsReturnString);
+
                 JSONObject jsonResponse;
 
             }
@@ -446,8 +459,21 @@ public class RecipeList extends BaseDrawerActivity {
             }
 
             Recipe recipe = new Recipe(recipeName,stepList,ingredientsList);
+            Log.d("","steplistsize direct : " + stepList.size());
+            Log.d("","ingrlistsize direct : " + ingredientsList.size());
+            Log.d("","steplistsize frm recipelist b4 if: " + recipe.getStepList().size());
+            Log.d("","ingrlistsize frm recipelist b4 if: " + recipe.getIngredientList().size());
             if(nextActivity.equals("RECIPEACTIVITY")) {
                 Intent intent= new Intent(RecipeList.this, RecipeActivity.class);
+                Log.d("","steplistsize frm recipelist: " + recipe.getStepList().size());
+                Log.d("","ingrlistsize frm recipelist: " + recipe.getIngredientList().size());
+                intent.putExtra("recipe", (Serializable) recipe);
+                startActivity(intent);
+            }
+            if(nextActivity.equals("EDITRECIPEACTIVITY")) {
+                Intent intent= new Intent(RecipeList.this, EditRecipeActivity.class);
+                Log.d("","steplistsize frm recipelist: " + recipe.getStepList().size());
+                Log.d("","ingrlistsize frm recipelist: " + recipe.getIngredientList().size());
                 intent.putExtra("recipe", (Serializable) recipe);
                 startActivity(intent);
             }
