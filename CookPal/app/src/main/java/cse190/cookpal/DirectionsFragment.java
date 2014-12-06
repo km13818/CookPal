@@ -1,12 +1,12 @@
 package cse190.cookpal;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,8 +15,11 @@ import java.util.ArrayList;
  * Created by timchi on 11/28/14.
  */
 public class DirectionsFragment extends Fragment {
-    @SuppressLint("NewApi")
-    @Override
+    private ListAdapter stepListAdapter;
+    private Step currStep;
+    private ListView stepListView;
+    private Recipe currRecipe;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -35,29 +38,21 @@ public class DirectionsFragment extends Fragment {
         directions.add(s3);
         directions.add(s4);
 
-        LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.directionLinearLayout);
+        //LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.directionLinearLayout);
         TextView description;
         TextView time;
         int hoursTake = 0;
         int minutesTake = 0;
-
-        for(int i = 0; i < directions.size(); i++){
-
-            description = new TextView(getActivity());
-            time = new TextView(getActivity());
-            hoursTake = directions.get(i).getHours();
-            minutesTake = directions.get(i).getMinutes();
-//            //ingredient.setTextAppearance(RecipeActivity.getContext(), R.style.ingredientTVStyle);
-            description.setText(directions.get(i).toStringDescription());
-            time.setText(directions.get(i).getTime(hoursTake, minutesTake));
-//            //ingredient.setGravity(Gravity.CENTER);
-            description.setBackground(getResources().getDrawable(R.drawable.ingredient_card_bg));
-//            ingredient.setGravity(Gravity.CENTER);
-//            ingredient.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-//            ingredient.setTextColor(getResources().getColor(R.color.white));
-            ll.addView(description);
-            ll.addView(time);
+        stepListView = (ListView) rootView.findViewById(R.id.directions_tab_listview);
+        currRecipe = new Recipe("Chicken and Rice");
+        if(null != currRecipe.getStepList()) {
+            currStep = currRecipe.getStepList().get(0);
         }
+
+        // Bind the step list adapter
+        stepListAdapter = new DirectionsStepListAdapter(RecipeActivity.getContext(),
+                R.layout.directions_steplist_listviewitem, currRecipe.getStepList());
+        stepListView.setAdapter(stepListAdapter);
         return rootView;
     }
 }

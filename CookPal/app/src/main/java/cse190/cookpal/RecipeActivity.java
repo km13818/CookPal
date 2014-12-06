@@ -27,6 +27,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
 
     public static ArrayList<Ingredients> ingredientList;
     private static Context mContext;
+    private static Recipe currentRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +75,9 @@ public class RecipeActivity extends BaseDrawerActivity implements
 
         this.mContext = this;
         //Get Recipe Object passed by recipeList
-        //Intent intent = getIntent();
-        //Recipe currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
+        Intent intent = getIntent();
+        currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
 
-        //ingredientList = currentRecipe.getIngredientList();
     }
 
     public static Context getContext(){
