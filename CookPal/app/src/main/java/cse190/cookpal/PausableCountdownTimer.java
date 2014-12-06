@@ -120,6 +120,26 @@ public class PausableCountdownTimer {
         long minutes = ((timeRemaining/1000)/60)%60;
         long seconds = (timeRemaining/1000)%60;
 
-        return hours + ":" + minutes + ":" + seconds;
+        String hourStr, minStr, secStr;
+
+        if(hours < 10) {
+            hourStr = "0" + hours;
+        } else {
+            hourStr = String.valueOf(hours);
+        }
+
+        if(minutes < 10) {
+            minStr = "0" + minutes;
+        } else {
+            minStr = String.valueOf(minutes);
+        }
+
+        if(seconds < 10) {
+            secStr = "0" + seconds;
+        } else {
+            secStr = String.valueOf(seconds);
+        }
+
+        return hourStr + ":" + minStr + ":" + secStr;
     }
 }

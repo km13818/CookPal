@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -16,6 +17,13 @@ import java.util.Locale;
 
 
 public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
+
+    // TODO: Add button on action bar to exit back to AssistantRecipeListActivity
+    // TODO: Pass in recipe data from AssistantRecipeListActivity or RecipeActivity
+    // TODO: Fix 'add time' and 'pause/resume' timer functionality
+    // TODO: Don't display nextStep button on last step --> maybe replace with finish button?
+    // TODO: calculate ETC...or just replace with 'step list'
+    // TODO: Add up/down caret on the ETC/step list to denote whether the list is up or down
 
     // Layouts
     private RelativeLayout currStepLayout;
@@ -34,7 +42,10 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private TextView stepPreviewNumView;
     private TextView stepPreviewTitleView;
     private TextView stepPreviewDescriptView;
+
+    // Timer views
     private TextView timerDisplayView;
+    private ImageButton playPauseButton;
 
     private ListAdapter stepListAdapter;
 
@@ -78,6 +89,17 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         stepPreviewLayout = (RelativeLayout) findViewById(R.id.assistant_stepPreview);
         stepPreviewLayout.setVisibility(View.GONE);
 
+        // Bind the views
+        stepNumView = (TextView) findViewById(R.id.assistant_stepNumber);
+        stepTitleView = (TextView) findViewById(R.id.assistant_stepTitle);
+        stepDescriptView = (TextView) findViewById(R.id.assistant_stepDescription);
+        stepListView = (ListView) findViewById(R.id.assistant_stepListView);
+        stepPreviewNumView = (TextView) findViewById(R.id.assistant_stepPreviewNumber);
+        stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
+        stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
+        timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
+        playPauseButton = (ImageButton) findViewById(R.id.assistant_playPauseButton);
+
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = new Recipe("Chicken and Rice");
@@ -88,16 +110,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
             createTimer(firstStep);
         }
-
-        // Bind the views
-        stepNumView = (TextView) findViewById(R.id.assistant_stepNumber);
-        stepTitleView = (TextView) findViewById(R.id.assistant_stepTitle);
-        stepDescriptView = (TextView) findViewById(R.id.assistant_stepDescription);
-        stepListView = (ListView) findViewById(R.id.assistant_stepListView);
-        stepPreviewNumView = (TextView) findViewById(R.id.assistant_stepPreviewNumber);
-        stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
-        stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
-        timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
 
         // Text-to-speech tester
         stepDescriptView.setOnClickListener(new View.OnClickListener()
@@ -263,15 +275,15 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         createTimer(newCurrStep);
     }
 
-    // TImer functions and button click handlers
+    // Timer functions and button click handlers
     public void pauseResumeTimer(View v) {
         if(timer != null) {
             if(timer.getState() == PausableCountdownTimer.TimerState.RUNNING) {
                 timer.pause();
-                // TODO: update button view to pause
+                playPauseButton.setImageResource(R.drawable.assistant_play_icon);
             } else {
                 timer.resume();
-                // TODO: change button view to play
+                playPauseButton.setImageResource(R.drawable.assistant_pause_icon);
             }
         }
     }
