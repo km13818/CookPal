@@ -204,20 +204,42 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                     public void onClick(View v) {
                         LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
                         LinearLayout newIngredientView = (LinearLayout) findViewById(R.id.add_recipe_ingredients_entry);
+
                         ingredientsLayout.removeView(newIngredientView);
                         currIngredientCount--;
-                        rebuildCounter();
+
+                        ViewGroup ingGroup = (ViewGroup)findViewById(R.id.addIngredientsLayout);
+                        int isCC = ingGroup.getChildCount();
+                        ArrayList <String> stepArray = new ArrayList<String>();
+                        ArrayList <String> qtyArray = new ArrayList<String>();
+                        for(int i = 0; i < isCC; i++) {
+                            String ingEditText = ((EditText) newIngredientView.findViewById(R.id.add_recipe_ingredients_step_edit)).getText().toString();
+                            String ingQtyEditText = ((EditText) newIngredientView.findViewById(R.id.add_recipe_ingredients_quantity_edit)).getText().toString();
+                            stepArray.add(ingEditText);
+                            qtyArray.add(ingQtyEditText);
+                            Log.e("add ing", ingEditText);
+                        }
+
+                        rebuildCounter(stepArray, qtyArray);
                     }
                     //ensure the list order is always proper (i.e. no gaps)
-                    public void rebuildCounter() {
+                    public void rebuildCounter(ArrayList <String> stepArray, ArrayList <String> qtyArray) {
                         ViewGroup ingGroup = (ViewGroup)findViewById(R.id.addIngredientsLayout);
                         int isCC = ingGroup.getChildCount();
                         for(int i = 0; i < isCC; i++) {
                             View horizontalView = ingGroup.getChildAt(i);
+
                             if(horizontalView instanceof LinearLayout) {
                                 ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
                                 TextView ingredientNumView = (TextView)horizontalViewGroup.findViewById(R.id.add_recipe_ingredients_step);
+
                                 ingredientNumView.setText(i+1 + ".");
+
+                                EditText ingredientEdit = (EditText)horizontalViewGroup.findViewById(R.id.add_recipe_ingredients_step_edit);
+                                EditText quantityEdit = (EditText)horizontalViewGroup.findViewById(R.id.add_recipe_ingredients_quantity_edit);
+                                ingredientEdit.setText(stepArray.get(i));
+                                quantityEdit.setText(qtyArray.get(i));
+                                Log.e("add ing after build", stepArray.get(i));
                             }
                         }
                     }
