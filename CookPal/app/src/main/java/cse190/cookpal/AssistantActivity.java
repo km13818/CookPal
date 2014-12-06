@@ -157,7 +157,6 @@ public class AssistantActivity extends BaseDrawerActivity {
 
     public void skipToStep(View view) {
         // Receive the step data that the user skipped to (set in the step list click listener)
-        // currStep = (Step) stepPreviewLayout.getTag();
         setCurrStep((Step) stepPreviewLayout.getTag());
         changeCurrStepView(view);
     }
@@ -217,13 +216,16 @@ public class AssistantActivity extends BaseDrawerActivity {
             int listItemStepNum = (Integer) v.getTag(R.id.stepNumber);
 
             // Unhighlight the previous currStep
-            if(listItemStepNum == prevCurrStep.getStepNumber()) {
-                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
-            }
+//            if(listItemStepNum == prevCurrStep.getStepNumber()) {
+//                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
+//            }
 
             // Highlight the currStep. Note: Must happen after unhighlighting for 1st step case
             if(listItemStepNum == currStep.getStepNumber()) {
                 updateStepListItemColors(v, R.color.orange, R.color.light_orange, R.color.orange);
+            } else {
+                // Unhighlight other steps
+                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
             }
         }
     }

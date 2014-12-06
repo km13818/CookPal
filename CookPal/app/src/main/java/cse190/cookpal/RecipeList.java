@@ -58,7 +58,7 @@ public class RecipeList extends BaseDrawerActivity {
     //ImageButton deleteGroceryListButton;
 
     // WebServer Request URL
-    String serverRecipeListRequestURL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
+    public static final String SERVER_RECIPE_LIST_REQUEST_URL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
             AccountActivity.getFbId();
 
 
@@ -77,7 +77,7 @@ public class RecipeList extends BaseDrawerActivity {
         Log.d("recipelist", "recipelist onrestart");
         recipeList = new ArrayList<String>();
         recipeImageList = new ArrayList<String>();
-        new LongOperation().execute(serverRecipeListRequestURL);
+        new LongOperation().execute(SERVER_RECIPE_LIST_REQUEST_URL);
         populateListView();
         super.onRestart();
     }
@@ -89,7 +89,7 @@ public class RecipeList extends BaseDrawerActivity {
         //initialize image lazy loader
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
         ImageLoader.getInstance().init(config);
-        new LongOperation().execute(serverRecipeListRequestURL);
+        new LongOperation().execute(SERVER_RECIPE_LIST_REQUEST_URL);
       //  new PopulateRecipeOperation().execute(AccountActivity.getFbId(),"aaaa" );
 
         /*ImageButton addGroceryListButton = (ImageButton)findViewById(R.id.addGroceryListButton);
@@ -496,6 +496,7 @@ public class RecipeList extends BaseDrawerActivity {
             Log.d("recipelist", "onPreExecute.....");
             //Start Progress Dialog (Message)
             recipeList = new ArrayList<String>();
+            recipeImageList = new ArrayList<String>();
             Dialog.setMessage("Please wait..");
             Dialog.show();
         }

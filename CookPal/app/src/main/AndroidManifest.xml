@@ -44,6 +44,10 @@
             android:label="@string/title_activity_assistant" >
         </activity>
         <activity
+            android:name=".AssistantRecipeListActivity"
+            android:label="@string/title_activity_assistant" >
+        </activity>
+        <activity
             android:name=".AddRecipeActivity"
             android:label="@string/title_activity_add_recipe" >
         </activity>

@@ -1,7 +1,6 @@
 package cse190.cookpal;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -131,7 +130,7 @@ public class BaseDrawerActivity extends FragmentActivity {
     private int getCurrentDrawerItem() {
         if (this instanceof RecipeList) {
             return DRAWER_COOKBOOK;
-        } else if (this instanceof AssistantActivity) {
+        } else if (this instanceof AssistantRecipeListActivity) {
             return DRAWER_ASSISTANT;
 
         } else if (this instanceof ShareActivity) {
@@ -158,10 +157,10 @@ public class BaseDrawerActivity extends FragmentActivity {
                 intent = new Intent(this, RecipeList.class);
                 break;
             case DRAWER_ASSISTANT:
-                if (this instanceof AssistantActivity) {
+                if (this instanceof AssistantRecipeListActivity) {
                     break;
                 }
-                intent = new Intent(this, AssistantActivity.class);
+                intent = new Intent(this, AssistantRecipeListActivity.class);
                 break;
             case DRAWER_SHARE:
                 if (this instanceof ShareActivity) {

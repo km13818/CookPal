@@ -35,15 +35,6 @@ public class AssistantStepListAdapter extends StepListAdapter {
         if(stepTimeView != null) {
             stepTimeView.setText(currIterStep.getTime());
         }
-
-        // TODO: figure this out -- not sure how to highlight only the current step and return everything else to normal
-        // If the step list item view is the current one, highlight it
-        /*if(currIterStep.getStepNumber() == getCurrStep().getStepNumber()) {
-            stepNumView.setBackgroundColor(R.color.orange);
-            stepTitleView.setBackgroundColor(R.color.light_orange);
-            stepTimeView.setTextColor(R.color.orange);
-        }
-        */
     }
 
     public Step getCurrStep() {
