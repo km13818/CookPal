@@ -36,6 +36,7 @@
                     android:textStyle="bold"
                     android:textSize="40sp"
                     android:padding="10dp"
+                    android:gravity="center"
                     android:text="@string/dummyStepNum">
                 </TextView>
 
@@ -49,6 +50,7 @@
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:padding="20dp"
+                    android:gravity="center"
                     android:text="@string/dummyStepTitle">
                 </TextView>
             </RelativeLayout>
@@ -63,6 +65,7 @@
                 android:textColor="@color/orange"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:text="@string/dummyStepDescrip">
             </TextView>
 
@@ -75,14 +78,14 @@
                 <RelativeLayout
                     android:id="@+id/assistant_timeTakesText"
                     android:layout_width="180dp"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:background="@color/green">
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="80dp"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="-30dp"
+                        android:layout_marginBottom="-40dp"
                         android:textColor="@color/white"
                         android:textSize="36sp"
                         android:text="@string/timeLeft">
@@ -96,23 +99,40 @@
                     android:layout_below="@id/assistant_timeTakesText"
                     android:layout_centerInParent="true"
                     android:textSize="50sp"
-                    android:textStyle="bold"
                     android:textColor="@color/green"
-                    android:text="00:03:00">
+                    android:textStyle="bold"
+                    android:text="00:03:00"
+                    android:layout_marginBottom="10dp">
                 </TextView>
 
-                <Button
-                    android:id="@+id/assistant_nextStepButton"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_below="@id/assistant_timerDisplay"
-                    android:background="@color/light_green"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:text="->"
-                    android:padding="10dp"
-                    android:onClick="moveToNextStep"/>
+                    android:layout_centerInParent="true">
+                    <ImageButton
+                        android:id="@+id/assistant_addTimeButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/assistant_add_time_icon"/>
 
+                    <ImageButton
+                        android:id="@+id/assistant_playPauseButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/assistant_play_icon"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/assistant_addTimeButton"/>
+
+                    <ImageButton
+                        android:id="@+id/assistant_nextStepButton"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/assistant_next_step_icon"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/assistant_playPauseButton"
+                        android:onClick="moveToNextStep"/>
+                </RelativeLayout>
             </RelativeLayout>
 
             <!-- Step list slider/button -->
