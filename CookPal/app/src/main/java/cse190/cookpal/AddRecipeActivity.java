@@ -159,6 +159,21 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                         LinearLayout instructionsLayout = (LinearLayout) findViewById(R.id.instructionsLayout);
                         LinearLayout newInstructionView = (LinearLayout) findViewById(R.id.add_recipe_instruction_entry);
                         instructionsLayout.removeView(newInstructionView);
+                        currInstructionCount--;
+                        rebuildCounter();
+                    }
+                    //ensure the list order is always proper (i.e. no gaps)
+                    public void rebuildCounter() {
+                        ViewGroup insGroup = (ViewGroup)findViewById(R.id.instructionsLayout);
+                        int isCC = insGroup.getChildCount();
+                        for(int i = 0; i < isCC; i++) {
+                            View horizontalView = insGroup.getChildAt(i);
+                            if(horizontalView instanceof LinearLayout) {
+                                ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                                TextView instructionNumView = (TextView)horizontalViewGroup.findViewById(R.id.add_recipe_instruction_step);
+                                instructionNumView.setText(i+1 + ".");
+                            }
+                        }
                     }
                 });
 
@@ -190,6 +205,21 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                         LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
                         LinearLayout newIngredientView = (LinearLayout) findViewById(R.id.add_recipe_ingredients_entry);
                         ingredientsLayout.removeView(newIngredientView);
+                        currIngredientCount--;
+                        rebuildCounter();
+                    }
+                    //ensure the list order is always proper (i.e. no gaps)
+                    public void rebuildCounter() {
+                        ViewGroup ingGroup = (ViewGroup)findViewById(R.id.addIngredientsLayout);
+                        int isCC = ingGroup.getChildCount();
+                        for(int i = 0; i < isCC; i++) {
+                            View horizontalView = ingGroup.getChildAt(i);
+                            if(horizontalView instanceof LinearLayout) {
+                                ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                                TextView ingredientNumView = (TextView)horizontalViewGroup.findViewById(R.id.add_recipe_ingredients_step);
+                                ingredientNumView.setText(i+1 + ".");
+                            }
+                        }
                     }
                 });
 
