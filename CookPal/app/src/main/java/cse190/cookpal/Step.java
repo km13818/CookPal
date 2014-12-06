@@ -1,6 +1,9 @@
 package cse190.cookpal;
 
-public class Step {
+
+import java.io.Serializable;
+
+public class Step implements Serializable{
     private String title;
     private String description;
     private int hours;
@@ -15,8 +18,14 @@ public class Step {
         this.stepNumber = stepNum;
     }
 
+    @Override
+    public String toString() {
+        return getStepNumber() + ": " + getTitle() + "\n" + getTime();
+    }
+
     public String toStringDescription() {
-        return "STEP: "+stepNumber  + getDescription();
+
+        return "STEP: "+stepNumber  + " " +  getDescription() + " hrs: " + hours + " minutes: " + minutes;
     }
 
     public String intToString(int num){
@@ -25,8 +34,14 @@ public class Step {
     }
 
     public String getTime(int hours, int minutes){
-        if(hours == 0 && minutes == 0) return "Time: n/a";
-        else return "Time: "+intToString(hours)+" : "+intToString(minutes);
+        if(hours == 0 && minutes == 0) {
+            return "Time: n/a";
+        }
+        else return "Time: " + intToString(hours) + "hr " + intToString(minutes) + "m";
+    }
+
+    public String getTime() {
+        return getTime(getHours(), getMinutes());
     }
 
     public int getStepNumber() {

@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class AddRecipeActivity extends Activity {
+public class AddRecipeActivity extends BaseDrawerActivity {
     final Context thisContext = this;
     HttpUtil httpUtil = new HttpUtil();
 
@@ -50,17 +52,19 @@ public class AddRecipeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String recipeName = ((EditText) findViewById(R.id.recipeNameInput)).getText().toString();
+                String imageUrl = ((EditText) findViewById(R.id.recipeImageUrlInput)).getText().toString();
 
                 Intent intent = new Intent(AddRecipeActivity.this, RecipeList.class);
                 intent.putExtra("RECIPE_NAME",recipeName);
 
                 //INSERT RECIPE
-                //recipe: id, account_id, cookbook_type, name,
+                //recipe: id, account_id, cookbook_type, name, image_url
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
                 insertRecipeParams.put("r_name", recipeName);
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
+                insertRecipeParams.put("image_url", imageUrl);
                 httpUtil.makeHttpPost(insertRecipeParams);
 
 
@@ -81,10 +85,10 @@ public class AddRecipeActivity extends Activity {
                         //loop throuhg view's children to find EditTexts
                         int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
                         ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
-                        TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
-                        EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
-                        EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
-                        EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
+                        TextView instructionNumView = (TextView)horizontalViewGroup.findViewById(R.id.add_recipe_instruction_step);
+                        EditText instructionEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_step_edit);
+                        EditText instructionHoursEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_hr_edit);
+                        EditText instructionMinsEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_min_edit);
                         Log.d("AddRecipeActivity", "instr: " + instructionEditText.getText().toString() + " hrs: " + instructionHoursEditText.getText().toString() + " mins: " + instructionMinsEditText.getText().toString());
                         //TODO: INSERT INSTRUCTION
 
@@ -134,60 +138,19 @@ public class AddRecipeActivity extends Activity {
         ImageButton addInstructionsButton = (ImageButton) findViewById(R.id.addInstructionsButton);
         addInstructionsButton.setOnClickListener(new View.OnClickListener() {
 
-            int currInstructionCount = 1;
+            int currInstructionCount = 0;
             @Override
             public void onClick(View v) {
                 //add row to instructionsLayout
                 currInstructionCount++;
+
                 LinearLayout instructionsLayout = (LinearLayout) findViewById(R.id.instructionsLayout);
-                LinearLayout newInstructionRowLayout = new LinearLayout(thisContext);
+                View newInstructionView = getLayoutInflater().inflate(R.layout.add_recipe_instruction_entry, null);
 
-                TextView instructionNum = new TextView(thisContext);
+                TextView instructionNum = (TextView) newInstructionView.findViewById(R.id.add_recipe_instruction_step);
                 instructionNum.setText(String.valueOf(currInstructionCount) + ".");
-                EditText newInstruction = new EditText(thisContext);
 
-                TextView timeTextView = new TextView(thisContext);
-                timeTextView.setText("  time  ");
-                EditText hoursEditText = new EditText(thisContext);
-                EditText minsEditText = new EditText(thisContext);
-                TextView hoursTextView = new TextView(thisContext);
-                hoursTextView.setText("hr ");
-                TextView minsTextView = new TextView(thisContext);
-                minsTextView.setText("min");
-
-                instructionNum.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                instructionNum.setTextColor(Color.WHITE);
-                newInstruction.setTextColor(Color.WHITE);
-                timeTextView.setTextColor(Color.WHITE);
-                hoursEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                hoursEditText.setTextColor(Color.WHITE);
-                minsEditText.setTextAppearance(thisContext, android.R.style.TextAppearance_Medium);
-                minsEditText.setTextColor(Color.WHITE);
-                hoursTextView.setTextColor(Color.WHITE);
-                minsTextView.setTextColor(Color.WHITE);
-
-                LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT);
-                InputFilter[] filterArray = new InputFilter[1];
-                filterArray[0] = new InputFilter.LengthFilter(2);
-                param.weight = 1.0f;
-                newInstruction.setLayoutParams(param);
-                param.weight = 0.0f;
-                minsEditText.setLayoutParams(param);
-                hoursEditText.setLayoutParams(param);
-                minsEditText.setFilters(filterArray);
-                hoursEditText.setFilters(filterArray);
-
-                newInstructionRowLayout.addView(instructionNum);
-                newInstructionRowLayout.addView(newInstruction);
-                newInstructionRowLayout.addView(timeTextView);
-                newInstructionRowLayout.addView(hoursEditText);
-                newInstructionRowLayout.addView(hoursTextView);
-                newInstructionRowLayout.addView(minsEditText);
-                newInstructionRowLayout.addView(minsTextView);
-                instructionsLayout.addView(newInstructionRowLayout);
-
+                instructionsLayout.addView(newInstructionView);
 
             }
         });
@@ -195,30 +158,19 @@ public class AddRecipeActivity extends Activity {
         ImageButton addIngredientsButton = (ImageButton) findViewById(R.id.addIngredientsButton);
         addIngredientsButton.setOnClickListener(new View.OnClickListener() {
 
-            int currIngredientCount = 1;
+            int currIngredientCount = 0;
             @Override
             public void onClick(View v) {
                 //add row to instructionsLayout
                 currIngredientCount++;
+
                 LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
-                LinearLayout newIngredientRowLayout = new LinearLayout(thisContext);
+                View newIngredientView = getLayoutInflater().inflate(R.layout.add_recipe_ingredients_entry, null);
 
-                TextView ingredientNum = new TextView(thisContext);
+                TextView ingredientNum = (TextView) newIngredientView.findViewById(R.id.add_recipe_ingredients_step);
                 ingredientNum.setText(String.valueOf(currIngredientCount) + ".");
-                EditText newIngredient = new EditText(thisContext);
 
-                TextView quantityTextView = new TextView(thisContext);
-                quantityTextView.setText("Quantity: ");
-                EditText newQuantity = new EditText(thisContext);
-
-                newIngredientRowLayout.addView(ingredientNum);
-                newIngredientRowLayout.addView(newIngredient);
-                newIngredientRowLayout.addView(quantityTextView);
-                newIngredientRowLayout.addView(newQuantity);
-
-                ingredientsLayout.addView(newIngredientRowLayout);
-
-
+                ingredientsLayout.addView(newIngredientView);
             }
         });
     }//end on create

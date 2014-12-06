@@ -17,6 +17,7 @@
    String recipeCBType = request.getParameter("cookbook_type");
    String recipeName = request.getParameter("r_name");
    String recipeId = request.getParameter("recipe_id");
+   String recipeImageURL = request.getParameter("image_url"); 
 
    //RECIPE INSTRUCTIONS FIELDS
    String recipeInstruction = request.getParameter("instruction");
@@ -61,13 +62,14 @@
       //actions
       //a new recipe wants to be added to the DB
       if(handleFilter.equals("insert_recipe")) {
-         query = "INSERT INTO recipe (name, account_id, cookbook_type) VALUES (?, ?, ?)";
+         query = "INSERT INTO recipe (name, account_id, cookbook_type, image_url) VALUES (?, ?, ?, ?)";
          pstmt = conn.prepareStatement(query);     
 		 
          conn.setAutoCommit(false);       
          pstmt.setString(1, recipeName);
          pstmt.setString(2, accId);
          pstmt.setString(3, recipeCBType);
+		 pstmt.setString(4, recipeImageURL);
          pstmt.executeUpdate(); 
          conn.commit();
          conn.setAutoCommit(true);         
@@ -82,6 +84,7 @@
             JSONObject kv = new JSONObject();
             kv.put("recipe name", rs.getString("name"));
             kv.put("cookbook status", rs.getString("cookbook_type"));
+			kv.put("image", rs.getString("image_url"));
             fields.add(kv);
          }
          result.put(userName+"'s recipes:", fields);

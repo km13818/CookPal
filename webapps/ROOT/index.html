@@ -11,32 +11,32 @@
 		<h1 align="center">CookPal Database Tester</h1>
       <br>   
       <div class="row">
-         <div class="large-12 columns text-center">
+         <div class="large-8 columns text-center">
             <fieldset>
              <legend>Perform Table Options</legend>
                <form method="POST" action="dbaccess.jsp">
                <div class="row">
                   <div class="large-6 columns">
                     <label>Operation</label>
-                    <input type="text" id="op" value="" name="operation">
+                    <input type="text" id="op" value="" name="operation" required>
                   </div>
                   <div class="large-6 columns">
                     <label>Table Name</label>
-                    <input type="text" id="tbl" value="" name="table">
+                    <input type="text" id="tbl" value="" name="table" required>
                   </div>
                </div>
                <div class="row">              
                   <div class="large-6 columns">
                       <label>Where cond1.col</label>
-                        <input type="text" id="cond1col" value="" name="col1">
+                        <input type="text" id="cond1col" value="" name="col1" placeholder="col 1 name">
                       <label>Where cond2.col</label>
-                        <input type="text" id="cond2col" value="" name="col2">  
+                        <input type="text" id="cond2col" value="" name="col2" placeholder="col 2 name">  
                   </div>
                   <div class="large-6 columns">
                       <label>Where cond1.val</label>
-                        <input type="text" id="cond1val" value="" name="col1v">
+                        <input type="text" id="cond1val" value="" name="col1v" placeholder="col 1 val">
                       <label>Where cond2.val</label>
-                        <input type="text" id="cond2val" value="" name="col2v">  
+                        <input type="text" id="cond2val" value="" name="col2v" placeholder="col 2 val">  
                   </div>               
                </div>
                <div class="row">
@@ -47,18 +47,33 @@
                </form>   
             </fieldset>      
          </div>
+		 <div class="large-4 columns text-center">
+			<div class="row">
+			<fieldset>
+				<legend>Purge Invalid Entries</legend>
+					<form method="POST" action="dbaccess.jsp">
+						<input type="hidden" name="purge" value="not null">
+					    <input type="text" value="" name="purgeop" placeholder="table name" required> 
+						<input type="submit" value="Purge!" class="button">
+					</form>
+			</fieldset>
+			</div>
+		 </div>
          <div class="row">
             <div class="large-12 columns">
-            <div class="large-6 columns">
-            <fieldset>
-            <button onclick="myQuery()" class="secondary button">Preview Query</button>
-            <p>
-               <b id="op-name"></b> * FROM <b id="table-name"></b> WHERE
-               <b id="c1col"></b> = "<b id="c1var"></b>" AND
-               <b id="c2col"></b> = "<b id="c2var"></b>"  
-            </p>
-            </fieldset>
-            </div>
+				<div class="large-6 columns">
+				<fieldset>
+				<button onclick="myQuery()" class="secondary button">Preview Query</button>
+				<p>
+				   <b id="op-name"></b> * FROM <b id="table-name"></b> WHERE
+				   <b id="c1col"></b> = "<b id="c1var"></b>" AND
+				   <b id="c2col"></b> = "<b id="c2var"></b>"  
+				</p>
+				</fieldset>
+				</div>
+				<div class="large-6 columns">
+
+				</div>
             </div>
          </div>
       </div>
