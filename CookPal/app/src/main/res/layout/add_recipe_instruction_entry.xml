@@ -97,6 +97,7 @@
             android:layout_height="30dp"
             android:id="@+id/add_recipe_instruction_delete"
             android:src="@drawable/delete_icon"
+            android:clickable="true"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
             android:scaleType="fitXY"

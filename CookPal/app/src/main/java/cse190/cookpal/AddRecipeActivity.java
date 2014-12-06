@@ -150,6 +150,18 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                 TextView instructionNum = (TextView) newInstructionView.findViewById(R.id.add_recipe_instruction_step);
                 instructionNum.setText(String.valueOf(currInstructionCount) + ".");
 
+
+                ImageButton deleteInstructionsButton = (ImageButton) newInstructionView.findViewById(R.id.add_recipe_instruction_delete);
+                deleteInstructionsButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        LinearLayout instructionsLayout = (LinearLayout) findViewById(R.id.instructionsLayout);
+                        LinearLayout newInstructionView = (LinearLayout) findViewById(R.id.add_recipe_instruction_entry);
+                        instructionsLayout.removeView(newInstructionView);
+                    }
+                });
+
                 instructionsLayout.addView(newInstructionView);
 
             }
@@ -169,6 +181,17 @@ public class AddRecipeActivity extends BaseDrawerActivity {
 
                 TextView ingredientNum = (TextView) newIngredientView.findViewById(R.id.add_recipe_ingredients_step);
                 ingredientNum.setText(String.valueOf(currIngredientCount) + ".");
+
+                ImageButton deleteIngredientsButton = (ImageButton) newIngredientView.findViewById(R.id.add_recipe_ingredients_delete);
+                deleteIngredientsButton.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
+                        LinearLayout newIngredientView = (LinearLayout) findViewById(R.id.add_recipe_ingredients_entry);
+                        ingredientsLayout.removeView(newIngredientView);
+                    }
+                });
 
                 ingredientsLayout.addView(newIngredientView);
             }
