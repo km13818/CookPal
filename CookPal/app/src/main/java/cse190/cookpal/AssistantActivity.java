@@ -34,8 +34,12 @@ public class AssistantActivity extends BaseDrawerActivity {
 
     private Recipe currRecipe;
     private Step currStep;
+    // Note: used to track previous currStep for step list highlighting purposes
+    private Step prevCurrStep;
+
     private TextToSpeech assistantSpeaker;
     private String write;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +74,9 @@ public class AssistantActivity extends BaseDrawerActivity {
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = new Recipe("Chicken and Rice");
         if(null != currRecipe.getStepList()) {
-            currStep = currRecipe.getStepList().get(0);
+            //currStep = currRecipe.getStepList().get(0);
+            Step firstStep = currRecipe.getStepList().get(0);
+            setCurrStep(firstStep);
         }
 
         // Bind the views
@@ -143,14 +149,16 @@ public class AssistantActivity extends BaseDrawerActivity {
 
         // If next step exists, move to it and update the view
         if(++currStepIdx < stepList.size()) {
-            currStep = stepList.get(currStepIdx);
+            // currStep = stepList.get(currStepIdx);
+            setCurrStep(stepList.get(currStepIdx));
             changeCurrStepView(view);
         }
     }
 
     public void skipToStep(View view) {
         // Receive the step data that the user skipped to (set in the step list click listener)
-        currStep = (Step) stepPreviewLayout.getTag();
+        // currStep = (Step) stepPreviewLayout.getTag();
+        setCurrStep((Step) stepPreviewLayout.getTag());
         changeCurrStepView(view);
     }
 
@@ -194,7 +202,7 @@ public class AssistantActivity extends BaseDrawerActivity {
     }
 
     private void changeCurrStepView(View view) {
-        // TODO: Save the current step before updating --> may need to do before this method (var, etc)
+        TextView stepNumView, stepTitleView, stepTimeView;
 
         // Set data and display the new view
         setCurrStepViewData(currStep);
@@ -209,20 +217,38 @@ public class AssistantActivity extends BaseDrawerActivity {
             View v = stepListView.getChildAt(i);
 
             // Note: Tag key/value set in AssistantStepListAdapter.java
-            if((Integer) v.getTag(R.id.stepNumber) == currStep.getStepNumber()) {
-                // TODO: move this out to the initla scope of this fctn
-                TextView stepNumView = (TextView) v.findViewById(R.id.stepListItem_stepNum);
-                TextView stepTitleView = (TextView) v.findViewById(R.id.stepListItem_stepTitle);
-                TextView stepTimeView = (TextView) v.findViewById(R.id.stepListItem_stepTimeTakes);
+            int listItemStepNum = (Integer) v.getTag(R.id.stepNumber);
 
-                // Populate the step preview with data from this clicked step
-                stepNumView.setBackgroundResource(R.color.orange);
-                stepTitleView.setBackgroundResource(R.color.light_orange);
-                stepTimeView.setTextColor(getResources().getColor(R.color.orange));
+            // Unhighlight the previous currStep
+            if(listItemStepNum == prevCurrStep.getStepNumber()) {
+                //TODO:
+            }
 
-                // TODO: unhighlight the old one
+            // Highlight the currStep. Note: Must happen after unhighlighting for 1st step case
+            if(listItemStepNum == currStep.getStepNumber()) {
+                updateStepListItemColors(v, R.color.orange, R.color.light_orange, R.color.orange);
             }
         }
     }
 
+    private void updateStepListItemColors(View v, int numColor, int titleColor, int timeColor) {
+        TextView stepNumView = (TextView) v.findViewById(R.id.stepListItem_stepNum);
+        TextView stepTitleView = (TextView) v.findViewById(R.id.stepListItem_stepTitle);
+        TextView stepTimeView = (TextView) v.findViewById(R.id.stepListItem_stepTimeTakes);
+
+        // Populate the step preview with data from this clicked step
+        stepNumView.setBackgroundResource(numColor);
+        stepTitleView.setBackgroundResource(titleColor);
+        stepTimeView.setTextColor(getResources().getColor(timeColor));
+    }
+
+    private void setCurrStep(Step newCurrStep) {
+        if(this.currStep == null) {
+            this.prevCurrStep = newCurrStep;
+            this.currStep = newCurrStep;
+        } else {
+            this.prevCurrStep = currStep;
+            this.currStep = newCurrStep;
+        }
+    }
 }
