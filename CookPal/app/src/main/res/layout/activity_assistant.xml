@@ -59,13 +59,13 @@
             <TextView
                 android:id="@+id/assistant_stepDescription"
                 android:padding="30dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_below="@id/assistant_stepHeader"
                 android:textColor="@color/orange"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:gravity="center"
+                android:layout_centerHorizontal="true"
                 android:text="@string/dummyStepDescrip">
             </TextView>
 
