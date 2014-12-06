@@ -37,7 +37,7 @@ public class HttpUtil {
     //recipe: id, account_id, cookbook_type, name, description
     //recipe_ingredient: id,account_id,recipe_id, name, quantity
     //recipe_instruction: id,account_id,recipe_id, description, time, title
-    public void makeHttpPost(HashMap<String, String> params) {
+    public synchronized void makeHttpPost(HashMap<String, String> params) {
         new LongOperation().execute(params);
     }
 

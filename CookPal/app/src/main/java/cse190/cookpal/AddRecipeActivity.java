@@ -197,7 +197,8 @@ public class AddRecipeActivity extends BaseDrawerActivity {
     }
 
 
-    @Override
+
+    /*@Override
     public void onStart() {
         super.onStart();
         //start tracking
@@ -209,5 +210,6 @@ public class AddRecipeActivity extends BaseDrawerActivity {
         //stop tracking
         GoogleAnalytics.getInstance(this).reportActivityStop(this);
 
-    }
+    }*/
 }
+

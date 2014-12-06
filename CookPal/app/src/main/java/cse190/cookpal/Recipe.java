@@ -50,7 +50,9 @@ public class Recipe implements Serializable {
         this.recipeName = recipeName;
     }
 
+
     // Note: dummy step population for testing purposes
+
     public ArrayList<Step> dummyStepList() {
         ArrayList<Step> stepList = new ArrayList<Step>();
         Step currStep;
