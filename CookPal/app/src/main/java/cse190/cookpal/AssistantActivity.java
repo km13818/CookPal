@@ -266,16 +266,38 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         createTimer(newCurrStep);
     }
 
-    @Override
-    public void onTick(long millisUntilFinished) {
-        // Find the view and update with the new time --> happens every second
-        if(timerDisplayView != null) {
-            timerDisplayView.setText(timer.formatTimeRemaining());
+    // TImer functions and button click handlers
+    public void pauseResumeTimer(View v) {
+        if(timer != null) {
+            if(timer.getState() == PausableCountdownTimer.TimerState.RUNNING) {
+                timer.pause();
+                // TODO: update button view to pause
+            } else {
+                timer.resume();
+                // TODO: change button view to play
+            }
+        }
+    }
+
+    public void increaseTimer(View v) {
+        if(timer != null) {
+            timer.addTime(ONE_SECOND_IN_MILLISECONDS * 60);
+            updateTimerView();
         }
     }
 
     @Override
+    public void onTick(long millisUntilFinished) {
+        // Find the view and update with the new time --> happens every second
+        updateTimerView();
+    }
+
+    @Override
     public void onFinish() {
+        updateTimerView();
+    }
+
+    private void updateTimerView() {
         if(timerDisplayView != null) {
             timerDisplayView.setText(timer.formatTimeRemaining());
         }
