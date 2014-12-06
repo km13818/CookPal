@@ -202,8 +202,6 @@ public class AssistantActivity extends BaseDrawerActivity {
     }
 
     private void changeCurrStepView(View view) {
-        TextView stepNumView, stepTitleView, stepTimeView;
-
         // Set data and display the new view
         setCurrStepViewData(currStep);
         displayCurrStep(view);
@@ -211,7 +209,6 @@ public class AssistantActivity extends BaseDrawerActivity {
         // Say the step information once the view is moved
         speakStepInfo(currStep);
 
-        // TODO: Set the step list to highlight the current step
         int numSteps = stepListView.getChildCount();
         for(int i = 0; i < numSteps; i++) {
             View v = stepListView.getChildAt(i);
@@ -221,7 +218,7 @@ public class AssistantActivity extends BaseDrawerActivity {
 
             // Unhighlight the previous currStep
             if(listItemStepNum == prevCurrStep.getStepNumber()) {
-                //TODO:
+                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
             }
 
             // Highlight the currStep. Note: Must happen after unhighlighting for 1st step case
