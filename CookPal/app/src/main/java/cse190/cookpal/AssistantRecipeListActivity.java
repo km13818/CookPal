@@ -28,6 +28,7 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -265,7 +266,7 @@ public class AssistantRecipeListActivity extends BaseDrawerActivity {
                 recipeName = params[1];
                 // Defined URL  where to send data
                 String serverUrlString = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?";
-                String selectInstructionsUrlString = serverUrlString + "fb_id=" + params[0] + "&r_name=" + params[1] + "&filter=" + "select_instruction";
+                String selectInstructionsUrlString = serverUrlString + "fb_id=" + params[0] + "&r_name=" + URLEncoder.encode(params[1],"UTF-8") + "&filter=" + "select_instruction";
                 URL selectInstructionsUrl = new URL(selectInstructionsUrlString);
 
                 // Send POST data request
@@ -300,7 +301,7 @@ public class AssistantRecipeListActivity extends BaseDrawerActivity {
 
                 // Defined URL  where to send data
                 String serverUrlString = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?";
-                String selectIngredientsUrlString = serverUrlString + "fb_id=" + params[0] + "&r_name=" + params[1] + "&filter=" + "select_ingredient";
+                String selectIngredientsUrlString = serverUrlString + "fb_id=" + params[0] + "&r_name=" + URLEncoder.encode(params[1], "UTF-8") + "&filter=" + "select_ingredient";
                 URL selectIngredientsUrl = new URL(selectIngredientsUrlString);
                 // Send POST data request
 
