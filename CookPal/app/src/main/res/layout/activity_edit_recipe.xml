@@ -1,121 +1,164 @@
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/add_recipe_vertical_layout">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/recipe_name"
-        android:layout_gravity="left|top">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recipe name"
-            android:id="@+id/recipe_name_text"
-            android:password="false" />
-
-        <EditText
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recipeNameInput"
-            android:layout_gravity="center_horizontal" />
+            android:layout_height="match_parent"
+            android:id="@+id/add_recipe_vertical_layout">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recipe_name"
+                android:layout_gravity="left|top"
+                android:background="@drawable/view_border_green"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="name"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/recipe_name_text"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:password="false"
+                    android:layout_gravity="center_vertical"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_border_green_sm"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/recipeNameInput"
+                    android:layout_gravity="center_vertical" />
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <!-- instructions textview+button-->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addInstructionsButtonLayout"
-        android:layout_gravity="left|top">
+            <!-- instructions textview+button-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addInstructionsButtonLayout"
+                android:layout_gravity="left|top">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Instructions"
-            android:id="@+id/instructionsTitleTextView" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Instructions"
+                    android:id="@+id/instructionsTitleTextView" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add more instructions"
-            android:id="@+id/addInstructionsButton"
-            android:clickable="true"
-            />
-    </LinearLayout>
-    <!-- instructions listview -->
-
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:id="@+id/instructionsEditListView"
-            android:layout_weight="1"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
-
-    <!--ingredients textview + button-->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/addIngredientsButtonLayout"
-        android:layout_gravity="left|top">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ingredients"
-            android:id="@+id/ingredientsTitleTextView" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add more instructions"
-            android:id="@+id/addIngredientsButton"
-            android:clickable="true"
-            />
-    </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add more instructions"
+                    android:id="@+id/addInstructionsButton"
+                    android:clickable="true"
+                    />
+            </LinearLayout>
+            <!-- instructions listview -->
 
 
-    <!-- ingredients listview -->
+                <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:id="@+id/instructionsEditListView"
+                    android:layout_weight="1"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+
+            <!--ingredients textview + button-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addIngredientsButtonLayout"
+                android:layout_gravity="left|top">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredients"
+                    android:id="@+id/ingredientsTitleTextView" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add more instructions"
+                    android:id="@+id/addIngredientsButton"
+                    android:clickable="true"
+                    />
+            </LinearLayout>
 
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:id="@+id/ingredientsEditListView"
-            android:layout_weight="1"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
-
-    <!-- confirm create recipe -->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/confirm_create_recipe_layout"
-        android:layout_gravity="left|top">
-
-        <Button
-            android:id="@+id/updateRecipeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Update recipe" />
+            <!-- ingredients listview -->
 
 
-    </LinearLayout>
+                <ListView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:id="@+id/ingredientsEditListView"
+                    android:layout_weight="1"
+                    android:divider="@null"
+                    android:dividerHeight="0dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
 
-</LinearLayout>
+            <!-- confirm create recipe -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/confirm_create_recipe_layout"
+                android:layout_gravity="left|top">
+
+                <Button
+                    android:id="@+id/updateRecipeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update recipe" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:background="#ffff"/>
+</android.support.v4.widget.DrawerLayout>

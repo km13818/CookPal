@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class EditRecipeActivity extends Activity {
+public class EditRecipeActivity extends BaseDrawerActivity {
     final Context thisContext = this;
     Recipe currentRecipe;
     HttpUtil httpUtil;
