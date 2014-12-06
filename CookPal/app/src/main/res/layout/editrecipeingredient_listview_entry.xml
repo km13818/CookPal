@@ -1,27 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ingredientEditText"
-        android:layout_weight="1" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_gravity="left|top">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Quantity:"
-        android:id="@+id/quantityTextView"
-        android:layout_toRightOf="@id/ingredientEditText"
-        android:layout_centerHorizontal="true" />
+        android:text="1."
+        android:id="@+id/add_recipe_ingredients_step"
+        android:textColor="@color/white"
+        android:password="false"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
     <EditText
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ingredientEditText"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@drawable/view_border_light_orange_sm"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Quantity: "
+        android:id="@+id/quantityTextView"
+        android:textColor="@color/white"/>
+    <EditText
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:id="@+id/quantityEditText"
-        android:inputType="number"
-        android:maxLength="2"
-        android:layout_toRightOf="@id/quantityTextView"
-        android:layout_weight="1" />
+        android:textColor="@color/white"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="@drawable/view_border_light_orange_sm"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:padding="5dp"/>
 
-</RelativeLayout>
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/add_recipe_ingredients_delete"
+        android:src="@drawable/delete_icon"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        android:clickable="true"
+        />
+
+</LinearLayout>

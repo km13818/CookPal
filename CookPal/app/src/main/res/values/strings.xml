@@ -40,7 +40,7 @@
     <string name="write">Write Text</string>
     <string name="title_activity_share_">share</string>
     <string name="title_activity_recipe">Recipe</string>
-    <string name="activity_edit_recipe">Edit Recipe</string>
+    <string name="activity_edit_recipe">EDIT RECIPE</string>
     <!-- Assistant Strings -->
     <string name="etc">ETC</string>
     <string name="timeLeft">time left</string>
