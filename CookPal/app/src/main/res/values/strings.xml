@@ -35,10 +35,12 @@
     <string name="title_activity_rest_ful_webservice">RestFulWebservice</string>
     <string name="confirm_create_recipe_button">CREATE RECIPE</string>
     <string name="title_activity_home_page">HomePage</string>
-    <string name="title_activity_recipe">RECIPE</string>
     <string name="title_activity_tts">Text to Speech Test</string>
     <string name="text1">testing one two three</string>
     <string name="write">Write Text</string>
+    <string name="title_activity_share_">share</string>
+    <string name="title_activity_recipe">Recipe</string>
+    <string name="activity_edit_recipe">Edit Recipe</string>
     <!-- Assistant Strings -->
     <string name="etc">ETC</string>
     <string name="timeLeft">time left</string>
