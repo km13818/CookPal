@@ -19,7 +19,7 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recipe_name"
                 android:layout_gravity="left|top"
@@ -53,96 +53,179 @@
                     android:textColor="@color/white"
                     android:id="@+id/recipeNameInput"
                     android:layout_gravity="center_vertical" />
-
-
             </LinearLayout>
 
-            <!-- instructions textview+button-->
+            <!-- IMAGE -->
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/addInstructionsButtonLayout"
-                android:layout_gravity="left|top">
+                android:id="@+id/recipe_image_url"
+                android:layout_gravity="left|top"
+                android:background="@drawable/view_border_orange"
+                android:padding="5dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Instructions"
-                    android:id="@+id/instructionsTitleTextView" />
+                    android:layout_height="50dp"
+                    android:text="img url"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/recipe_image_url_text"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:password="false"
+                    android:layout_gravity="center_vertical"/>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add more instructions"
-                    android:id="@+id/addInstructionsButton"
-                    android:clickable="true"
-                    />
+                    android:background="@drawable/view_border_orange_sm"
+                    android:padding="10dp"
+                    android:layout_margin="3dp"
+                    android:textColor="@color/white"
+                    android:id="@+id/recipeImageUrlInput"
+                    android:layout_gravity="center_vertical" />
             </LinearLayout>
-            <!-- instructions listview -->
 
-
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:id="@+id/instructionsEditListView"
-                    android:layout_weight="1"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-
-            <!--ingredients textview + button-->
+            <!-- INGREDIENTS -->
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/addIngredientsButtonLayout"
-                android:layout_gravity="left|top">
+                android:background="@drawable/view_border_orange">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="add ingredients"
+                    android:id="@+id/addIngredientsButton"
+                    android:src="@drawable/add_icon"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ingredients"
-                    android:id="@+id/ingredientsTitleTextView" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add more instructions"
-                    android:id="@+id/addIngredientsButton"
-                    android:clickable="true"
-                    />
+                    android:layout_height="50dp"
+                    android:text="ingredients"
+                    android:id="@+id/ingredientsTitleTextView"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_gravity="center_vertical"/>
             </LinearLayout>
 
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:id="@+id/ingredientsEditListView"
+                android:layout_weight="1"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:background="@drawable/view_border_light_orange"
+                android:padding="5dp"/>
 
-            <!-- ingredients listview -->
-
-
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:id="@+id/ingredientsEditListView"
-                    android:layout_weight="1"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
-
-            <!-- confirm create recipe -->
+            <!-- INSTRUCTION -->
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/addInstructionsButtonLayout"
+                android:background="@drawable/view_border_orange">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="add instructions"
+                    android:src="@drawable/add_icon"
+                    android:id="@+id/addInstructionsButton"
+                    android:clickable="true"
+                    android:padding="5dp"
+                    android:layout_margin="3dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="instructions"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/instructionsTitleTextView"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="0dp"
+                    android:paddingLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:id="@+id/instructionsEditListView"
+                android:layout_weight="1"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:background="@drawable/view_border_light_orange"
+                android:padding="5dp"/>
+
+            <!-- filler so create will stay at bottom -->
+            <!--<FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/white">
+            </FrameLayout>-->
+
+            <!-- CREATE -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:id="@+id/confirm_create_recipe_layout"
-                android:layout_gravity="left|top">
+                android:layout_gravity="left|top"
+                android:background="@drawable/view_border_green"
+                android:padding="5dp">
 
                 <Button
                     android:id="@+id/updateRecipeButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Update recipe" />
-
+                    android:text="UPDATE RECIPE"
+                    android:textColor="@color/white"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:background="@color/light_green"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:paddingRight="40dp"
+                    android:paddingLeft="40dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -1,49 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:layout_gravity="left|top">
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=""
-        android:id="@+id/stepNoTextView" />
-    <EditText
-        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="1."
+            android:textColor="@color/white"
+            android:password="false"
+            android:id="@+id/stepNoTextView" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/instructionEditText"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/view_border_light_orange_sm"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/stepNoTextView"
-        android:id="@+id/instructionEditText"
-        android:layout_weight="1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Hours:"
-        android:id="@+id/hoursTextView"
-        android:layout_toRightOf="@id/instructionEditText"
-        android:layout_centerHorizontal="true" />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/hoursEditText"
-        android:inputType="number"
-        android:maxLength="2"
-        android:layout_toRightOf="@id/hoursTextView"
-        android:layout_weight="1" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Minutes:"
-        android:layout_toRightOf="@id/hoursEditText"
-        android:id="@+id/minutesTextView"
-        android:layout_centerHorizontal="true" />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/minutesEditText"
-        android:inputType="number"
-        android:maxLength="2"
-        android:layout_toRightOf="@id/minutesTextView"
-        android:layout_weight="1" />
-</RelativeLayout>
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estimated cooking time: "
+            android:textColor="@color/white"
+            android:id="@+id/timeTextView"
+            />
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/hoursEditText"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/view_border_light_orange_sm"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hr"
+            android:id="@+id/hoursTextView"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/minutesEditText"
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:maxLength="2"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:background="@drawable/view_border_light_orange_sm"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min"
+            android:id="@+id/minutesTextView"
+            android:textColor="@color/white"/>
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/add_recipe_instruction_delete"
+            android:src="@drawable/delete_icon"
+            android:clickable="true"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="10dp"
+            />
+    </LinearLayout>
+</LinearLayout>
