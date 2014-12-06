@@ -4,14 +4,14 @@ package cse190.cookpal;
 import android.os.CountDownTimer;
 
 public class PausableCountdownTimer {
-    private long timeremaining;
+    private long timeRemaining;
     private long countDownInterval;
     private CountDownTimer timer;
     private TimerHandler handler;
     private TimerState state;
 
     public PausableCountdownTimer(long millisInFuture, long countDownInterval) {
-        timeremaining = millisInFuture;
+        timeRemaining = millisInFuture;
         this.countDownInterval = countDownInterval;
         state = TimerState.PAUSED;
         timer =  new CountDownTimer(millisInFuture, countDownInterval) {
@@ -34,8 +34,8 @@ public class PausableCountdownTimer {
     }
 
     public synchronized void resume() {
-        if (timeremaining != 0){
-            timer =  new CountDownTimer(timeremaining, countDownInterval) {
+        if (timeRemaining != 0){
+            timer =  new CountDownTimer(timeRemaining, countDownInterval) {
                 public void onTick(long millisUntilFinished) {
                     PausableCountdownTimer.this.onTick(millisUntilFinished);
                 }
@@ -53,7 +53,7 @@ public class PausableCountdownTimer {
         if (timer != null) {
             timer.cancel();
             timer = null;
-            timeremaining = 0;
+            timeRemaining = 0;
             state = TimerState.FINISHED;
         }
     }
@@ -65,8 +65,8 @@ public class PausableCountdownTimer {
     }
 
     public synchronized void addTime(long millis) {
-        timeremaining += millis;
-        timer =  new CountDownTimer(timeremaining, countDownInterval) {
+        timeRemaining += millis;
+        timer =  new CountDownTimer(timeRemaining, countDownInterval) {
             public void onTick(long millisUntilFinished) {
                 PausableCountdownTimer.this.onTick(millisUntilFinished);
             }
@@ -81,7 +81,7 @@ public class PausableCountdownTimer {
     }
 
     public synchronized long getTimeRemaining() {
-        return timeremaining;
+        return timeRemaining;
     }
 
     public synchronized TimerState getState() {
@@ -89,13 +89,13 @@ public class PausableCountdownTimer {
     }
 
     public void onTick(long millisUntilFinished) {
-        timeremaining = millisUntilFinished;
+        timeRemaining = millisUntilFinished;
         if (handler != null)
             handler.onTick(millisUntilFinished);
     }
 
     public void onFinish() {
-        timeremaining = 0;
+        timeRemaining = 0;
         timer = null;
         state = TimerState.FINISHED;
         if (handler != null)
@@ -113,5 +113,13 @@ public class PausableCountdownTimer {
 
     public static enum TimerState {
         PAUSED, RUNNING, FINISHED
+    }
+
+    public String formatTimeRemaining() {
+        long hours = (timeRemaining/1000)/3600;
+        long minutes = ((timeRemaining/1000)/60)%60;
+        long seconds = (timeRemaining/1000)%60;
+
+        return hours + ":" + minutes + ":" + seconds;
     }
 }

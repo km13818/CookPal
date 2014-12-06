@@ -23,38 +23,8 @@ public class IngredientsFragment extends Fragment{
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.ingredients_tab, container, false);
-
-        //ArrayList<Ingredients> ingredientList = RecipeActivity.ingredientList;
-        Ingredients i1 = new Ingredients("boneless chicken","1 lb");
-        Ingredients i2 = new Ingredients("chicken broth","1/2 cup");
-        Ingredients i3 = new Ingredients("oyster sauce","2 tbsp");
-        Ingredients i4 = new Ingredients("garlic cloves, minced, ","2");
-        Ingredients i5 = new Ingredients("chopped onion","1");
-        Ingredients i6 = new Ingredients("chopped tomato","1/2");
-        Ingredients i7 = new Ingredients("chopped cucumber","1");
-        Ingredients i8 = new Ingredients("sesame oil, divided","2tsp");
-        Ingredients i9 = new Ingredients("chopped red bell pepper","1/2 cup");
-
-
-        ArrayList<Ingredients> ingredientList = new ArrayList<Ingredients>();
-        ingredientList.add(i1);
-        ingredientList.add(i2);
-        ingredientList.add(i3);
-        ingredientList.add(i4);
-        ingredientList.add(i5);
-        ingredientList.add(i6);
-        ingredientList.add(i7);
-        ingredientList.add(i8);
-        ingredientList.add(i9);
-        ingredientList.add(i1);
-        ingredientList.add(i2);
-        ingredientList.add(i3);
-        ingredientList.add(i4);
-        ingredientList.add(i5);
-        ingredientList.add(i6);
-        ingredientList.add(i7);
-        ingredientList.add(i8);
-        ingredientList.add(i9);
+        Recipe currentRecipe = RecipeActivity.getCurrentRecipe();
+        ArrayList<Ingredients> ingredientList = currentRecipe.getIngredientList();
 
         LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.ingredientLinearLayout);
         TextView ingredient;

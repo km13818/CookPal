@@ -1,16 +1,21 @@
 package cse190.cookpal;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.view.*;
-import android.widget.*;
-import java.util.*;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.google.android.gms.analytics.GoogleAnalytics;
+import java.util.ArrayList;
+import java.util.Locale;
 
 
-public class AssistantActivity extends BaseDrawerActivity {
+public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
 
     // Layouts
     private RelativeLayout currStepLayout;
@@ -29,16 +34,19 @@ public class AssistantActivity extends BaseDrawerActivity {
     private TextView stepPreviewNumView;
     private TextView stepPreviewTitleView;
     private TextView stepPreviewDescriptView;
+    private TextView timerDisplayView;
 
     private ListAdapter stepListAdapter;
 
     private Recipe currRecipe;
     private Step currStep;
-    // Note: used to track previous currStep for step list highlighting purposes
-    private Step prevCurrStep;
 
     private TextToSpeech assistantSpeaker;
     private String write;
+
+    private PausableCountdownTimer timer;
+
+    private final int ONE_SECOND_IN_MILLISECONDS = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +81,12 @@ public class AssistantActivity extends BaseDrawerActivity {
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = new Recipe("Chicken and Rice");
+
         if(null != currRecipe.getStepList()) {
-            //currStep = currRecipe.getStepList().get(0);
             Step firstStep = currRecipe.getStepList().get(0);
             setCurrStep(firstStep);
+
+            createTimer(firstStep);
         }
 
         // Bind the views
@@ -87,6 +97,7 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepPreviewNumView = (TextView) findViewById(R.id.assistant_stepPreviewNumber);
         stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
         stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
+        timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
 
         // Text-to-speech tester
         stepDescriptView.setOnClickListener(new View.OnClickListener()
@@ -124,6 +135,13 @@ public class AssistantActivity extends BaseDrawerActivity {
         });
     }
 
+    private void createTimer(Step step) {
+        timer = new PausableCountdownTimer(step.getTimeInMilliseconds(),
+                ONE_SECOND_IN_MILLISECONDS);
+        timer.setHandler(this);
+        timer.start();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -157,7 +175,6 @@ public class AssistantActivity extends BaseDrawerActivity {
 
     public void skipToStep(View view) {
         // Receive the step data that the user skipped to (set in the step list click listener)
-        // currStep = (Step) stepPreviewLayout.getTag();
         setCurrStep((Step) stepPreviewLayout.getTag());
         changeCurrStepView(view);
     }
@@ -216,14 +233,12 @@ public class AssistantActivity extends BaseDrawerActivity {
             // Note: Tag key/value set in AssistantStepListAdapter.java
             int listItemStepNum = (Integer) v.getTag(R.id.stepNumber);
 
-            // Unhighlight the previous currStep
-            if(listItemStepNum == prevCurrStep.getStepNumber()) {
-                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
-            }
-
             // Highlight the currStep. Note: Must happen after unhighlighting for 1st step case
             if(listItemStepNum == currStep.getStepNumber()) {
                 updateStepListItemColors(v, R.color.orange, R.color.light_orange, R.color.orange);
+            } else {
+                // Unhighlight other steps
+                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
             }
         }
     }
@@ -240,12 +255,48 @@ public class AssistantActivity extends BaseDrawerActivity {
     }
 
     private void setCurrStep(Step newCurrStep) {
-        if(this.prevCurrStep == null) {
-            this.prevCurrStep = newCurrStep;
-            this.currStep = newCurrStep;
-        } else {
-            this.prevCurrStep = currStep;
-            this.currStep = newCurrStep;
+        this.currStep = newCurrStep;
+
+        if(timer != null) {
+            timer.cancel();
+        }
+        createTimer(newCurrStep);
+    }
+
+    // TImer functions and button click handlers
+    public void pauseResumeTimer(View v) {
+        if(timer != null) {
+            if(timer.getState() == PausableCountdownTimer.TimerState.RUNNING) {
+                timer.pause();
+                // TODO: update button view to pause
+            } else {
+                timer.resume();
+                // TODO: change button view to play
+            }
+        }
+    }
+
+    public void increaseTimer(View v) {
+        if(timer != null) {
+            timer.addTime(ONE_SECOND_IN_MILLISECONDS * 60);
+            updateTimerView();
+        }
+    }
+
+    @Override
+    public void onTick(long millisUntilFinished) {
+        // Find the view and update with the new time --> happens every second
+        updateTimerView();
+    }
+
+    @Override
+    public void onFinish() {
+        updateTimerView();
+    }
+
+    private void updateTimerView() {
+        if(timerDisplayView != null) {
+            timerDisplayView.setText(timer.formatTimeRemaining());
         }
     }
 }

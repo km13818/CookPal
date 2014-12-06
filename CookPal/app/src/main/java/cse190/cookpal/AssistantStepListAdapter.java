@@ -1,20 +1,23 @@
 package cse190.cookpal;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class AssistantStepListAdapter extends StepListAdapter {
-    // Pass in and save current step to highlight it in the step list
-    Step currStep;
-
     public AssistantStepListAdapter(Context context, int resource, ArrayList<Step> stepList, Step currStep) {
         super(context, resource, stepList);
-        setCurrStep(currStep);
     }
 
+    @Override
+    public View inflateListItem(LayoutInflater inflaterView) {
+        return inflaterView.inflate(R.layout.assistant_steplist_listviewitem, null);
+    }
+
+    @Override
     public void populateTextViews(View currView, Step currIterStep) {
         // Set tag to hold step number --> use as an ID to determine which step to highlight
         currView.setTag(R.id.stepNumber, currIterStep.getStepNumber());
@@ -35,22 +38,5 @@ public class AssistantStepListAdapter extends StepListAdapter {
         if(stepTimeView != null) {
             stepTimeView.setText(currIterStep.getTime());
         }
-
-        // TODO: figure this out -- not sure how to highlight only the current step and return everything else to normal
-        // If the step list item view is the current one, highlight it
-        /*if(currIterStep.getStepNumber() == getCurrStep().getStepNumber()) {
-            stepNumView.setBackgroundColor(R.color.orange);
-            stepTitleView.setBackgroundColor(R.color.light_orange);
-            stepTimeView.setTextColor(R.color.orange);
-        }
-        */
-    }
-
-    public Step getCurrStep() {
-        return currStep;
-    }
-
-    public void setCurrStep(Step currStep) {
-        this.currStep = currStep;
     }
 }
