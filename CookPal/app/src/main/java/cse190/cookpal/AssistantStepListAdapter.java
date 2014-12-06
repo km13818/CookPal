@@ -1,6 +1,7 @@
 package cse190.cookpal;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +14,11 @@ public class AssistantStepListAdapter extends StepListAdapter {
     public AssistantStepListAdapter(Context context, int resource, ArrayList<Step> stepList, Step currStep) {
         super(context, resource, stepList);
         setCurrStep(currStep);
+    }
+
+    @Override
+    public View inflateListItem(LayoutInflater inflaterView) {
+        return null;
     }
 
     public void populateTextViews(View currView, Step currIterStep) {
