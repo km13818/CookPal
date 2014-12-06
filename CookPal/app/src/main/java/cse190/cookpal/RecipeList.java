@@ -456,7 +456,6 @@ public class RecipeList extends BaseDrawerActivity {
                 }
 
             }
-            Log.e("recipeList","steList size: "+stepList.size());
             Recipe recipe = new Recipe(recipeName,stepList,ingredientsList);
             Log.d("","steplistsize direct : " + stepList.size());
             Log.d("","ingrlistsize direct : " + ingredientsList.size());

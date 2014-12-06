@@ -26,7 +26,6 @@ public class DirectionsFragment extends Fragment {
         currRecipe = RecipeActivity.getCurrentRecipe();
 
         stepListView = (ListView) rootView.findViewById(R.id.directions_tab_listview);
-        Log.e("directions frag", "size of steps: "+ currRecipe.getStepList().size());
         if(null != currRecipe.getStepList() && currRecipe.getStepList().size() != 0) {
             Log.e("overview frag", "steps: " + currRecipe.getStepList().get(0));
             currStep = currRecipe.getStepList().get(0);
