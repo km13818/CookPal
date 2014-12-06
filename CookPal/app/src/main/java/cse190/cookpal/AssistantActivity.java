@@ -240,7 +240,7 @@ public class AssistantActivity extends BaseDrawerActivity {
     }
 
     private void setCurrStep(Step newCurrStep) {
-        if(this.currStep == null) {
+        if(this.prevCurrStep == null) {
             this.prevCurrStep = newCurrStep;
             this.currStep = newCurrStep;
         } else {
