@@ -40,8 +40,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
     private Recipe currRecipe;
     private Step currStep;
-    // Note: used to track previous currStep for step list highlighting purposes
-    private Step prevCurrStep;
 
     private TextToSpeech assistantSpeaker;
     private String write;
@@ -82,8 +80,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
+        currRecipe = new Recipe("Chicken and Rice");
+
         if(null != currRecipe.getStepList()) {
-            //currStep = currRecipe.getStepList().get(0);
             Step firstStep = currRecipe.getStepList().get(0);
             setCurrStep(firstStep);
 
@@ -256,13 +255,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     private void setCurrStep(Step newCurrStep) {
-        if(this.prevCurrStep == null) {
-            this.prevCurrStep = newCurrStep;
-            this.currStep = newCurrStep;
-        } else {
-            this.prevCurrStep = currStep;
-            this.currStep = newCurrStep;
-        }
+        this.currStep = newCurrStep;
 
         if(timer != null) {
             timer.cancel();

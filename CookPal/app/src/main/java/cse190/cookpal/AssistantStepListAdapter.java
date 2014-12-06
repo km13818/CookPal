@@ -8,19 +8,16 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class AssistantStepListAdapter extends StepListAdapter {
-    // Pass in and save current step to highlight it in the step list
-    Step currStep;
-
     public AssistantStepListAdapter(Context context, int resource, ArrayList<Step> stepList, Step currStep) {
         super(context, resource, stepList);
-        setCurrStep(currStep);
     }
 
     @Override
     public View inflateListItem(LayoutInflater inflaterView) {
-        return null;
+        return inflaterView.inflate(R.layout.assistant_steplist_listviewitem, null);
     }
 
+    @Override
     public void populateTextViews(View currView, Step currIterStep) {
         // Set tag to hold step number --> use as an ID to determine which step to highlight
         currView.setTag(R.id.stepNumber, currIterStep.getStepNumber());
@@ -41,13 +38,5 @@ public class AssistantStepListAdapter extends StepListAdapter {
         if(stepTimeView != null) {
             stepTimeView.setText(currIterStep.getTime());
         }
-    }
-
-    public Step getCurrStep() {
-        return currStep;
-    }
-
-    public void setCurrStep(Step currStep) {
-        this.currStep = currStep;
     }
 }
