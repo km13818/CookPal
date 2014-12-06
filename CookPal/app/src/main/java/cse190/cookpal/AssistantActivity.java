@@ -10,7 +10,7 @@ import java.util.*;
 import com.google.android.gms.analytics.GoogleAnalytics;
 
 
-public class AssistantActivity extends BaseDrawerActivity {
+public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
 
     // Layouts
     private RelativeLayout currStepLayout;
@@ -29,6 +29,7 @@ public class AssistantActivity extends BaseDrawerActivity {
     private TextView stepPreviewNumView;
     private TextView stepPreviewTitleView;
     private TextView stepPreviewDescriptView;
+    private TextView timerDisplayView;
 
     private ListAdapter stepListAdapter;
 
@@ -39,6 +40,10 @@ public class AssistantActivity extends BaseDrawerActivity {
 
     private TextToSpeech assistantSpeaker;
     private String write;
+
+    private PausableCountdownTimer timer;
+
+    private final int ONE_SECOND_IN_MILLISECONDS = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,8 @@ public class AssistantActivity extends BaseDrawerActivity {
             //currStep = currRecipe.getStepList().get(0);
             Step firstStep = currRecipe.getStepList().get(0);
             setCurrStep(firstStep);
+
+            createTimer(firstStep);
         }
 
         // Bind the views
@@ -87,6 +94,7 @@ public class AssistantActivity extends BaseDrawerActivity {
         stepPreviewNumView = (TextView) findViewById(R.id.assistant_stepPreviewNumber);
         stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
         stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
+        timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
 
         // Text-to-speech tester
         stepDescriptView.setOnClickListener(new View.OnClickListener()
@@ -122,6 +130,13 @@ public class AssistantActivity extends BaseDrawerActivity {
                 displayStepPreview(view);
             }
         });
+    }
+
+    private void createTimer(Step step) {
+        timer = new PausableCountdownTimer(step.getTimeInMilliseconds(),
+                ONE_SECOND_IN_MILLISECONDS);
+        timer.setHandler(this);
+        timer.start();
     }
 
     @Override
@@ -215,11 +230,6 @@ public class AssistantActivity extends BaseDrawerActivity {
             // Note: Tag key/value set in AssistantStepListAdapter.java
             int listItemStepNum = (Integer) v.getTag(R.id.stepNumber);
 
-            // Unhighlight the previous currStep
-//            if(listItemStepNum == prevCurrStep.getStepNumber()) {
-//                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
-//            }
-
             // Highlight the currStep. Note: Must happen after unhighlighting for 1st step case
             if(listItemStepNum == currStep.getStepNumber()) {
                 updateStepListItemColors(v, R.color.orange, R.color.light_orange, R.color.orange);
@@ -248,6 +258,26 @@ public class AssistantActivity extends BaseDrawerActivity {
         } else {
             this.prevCurrStep = currStep;
             this.currStep = newCurrStep;
+        }
+
+        if(timer != null) {
+            timer.cancel();
+        }
+        createTimer(newCurrStep);
+    }
+
+    @Override
+    public void onTick(long millisUntilFinished) {
+        // Find the view and update with the new time --> happens every second
+        if(timerDisplayView != null) {
+            timerDisplayView.setText(timer.formatTimeRemaining());
+        }
+    }
+
+    @Override
+    public void onFinish() {
+        if(timerDisplayView != null) {
+            timerDisplayView.setText(timer.formatTimeRemaining());
         }
     }
 }

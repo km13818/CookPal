@@ -46,6 +46,10 @@ public class Step implements Serializable{
 
     }
 
+    public long getTimeInMilliseconds() {
+        return (getHours()*3600000) + (getMinutes()*60000);
+    }
+
     public int getStepNumber() {
         return stepNumber;
     }
