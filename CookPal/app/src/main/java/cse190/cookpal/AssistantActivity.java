@@ -194,12 +194,35 @@ public class AssistantActivity extends BaseDrawerActivity {
     }
 
     private void changeCurrStepView(View view) {
+        // TODO: Save the current step before updating --> may need to do before this method (var, etc)
+
         // Set data and display the new view
         setCurrStepViewData(currStep);
         displayCurrStep(view);
 
         // Say the step information once the view is moved
         speakStepInfo(currStep);
+
+        // TODO: Set the step list to highlight the current step
+        int numSteps = stepListView.getChildCount();
+        for(int i = 0; i < numSteps; i++) {
+            View v = stepListView.getChildAt(i);
+
+            // Note: Tag key/value set in AssistantStepListAdapter.java
+            if((Integer) v.getTag(R.id.stepNumber) == currStep.getStepNumber()) {
+                // TODO: move this out to the initla scope of this fctn
+                TextView stepNumView = (TextView) v.findViewById(R.id.stepListItem_stepNum);
+                TextView stepTitleView = (TextView) v.findViewById(R.id.stepListItem_stepTitle);
+                TextView stepTimeView = (TextView) v.findViewById(R.id.stepListItem_stepTimeTakes);
+
+                // Populate the step preview with data from this clicked step
+                stepNumView.setBackgroundResource(R.color.orange);
+                stepTitleView.setBackgroundResource(R.color.light_orange);
+                stepTimeView.setTextColor(getResources().getColor(R.color.orange));
+
+                // TODO: unhighlight the old one
+            }
+        }
     }
 
 }

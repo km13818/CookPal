@@ -16,6 +16,9 @@ public class AssistantStepListAdapter extends StepListAdapter {
     }
 
     public void populateTextViews(View currView, Step currIterStep) {
+        // Set tag to hold step number --> use as an ID to determine which step to highlight
+        currView.setTag(R.id.stepNumber, currIterStep.getStepNumber());
+
         // Bind TextView references
         // Note: These TextViews are created in the XML files we defined.
         TextView stepNumView = (TextView) currView.findViewById(R.id.stepListItem_stepNum);
