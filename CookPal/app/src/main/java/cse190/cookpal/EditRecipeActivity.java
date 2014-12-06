@@ -177,7 +177,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 convertView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, parent, false);
             }
             final View thisConvertView = convertView;
-            final String stepDescription = stepList.get(position).getDescription();
+            final String stepDescription = stepList.get(position).getTitle();
             EditText stepDescriptionTextView = (EditText) convertView.findViewById(R.id.instructionEditText);
             Log.d("editrecipeeacivity", "stepdesc editext: " + stepDescriptionTextView.toString());
             Log.d("editrecipeeacivity", "stepdescription: " + stepDescription);
