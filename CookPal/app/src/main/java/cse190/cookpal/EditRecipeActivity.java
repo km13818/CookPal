@@ -73,7 +73,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
-                insertRecipeParams.put("image_url", "");
+                insertRecipeParams.put("image_url", currentRecipe.getImgUrl());
                 httpUtil.makeHttpPost(insertRecipeParams);
 
                 ListView instructionsEditListView = (ListView) findViewById(R.id.instructionsEditListView);
