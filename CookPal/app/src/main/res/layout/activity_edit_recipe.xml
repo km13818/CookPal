@@ -135,15 +135,13 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/ingredientsEditLinearLayout"
-                android:layout_weight="1"
-                android:divider="@null"
-                android:dividerHeight="0dp"
                 android:background="@drawable/view_border_light_orange"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:layout_gravity="left|top"/>
 
             <!-- INSTRUCTION -->
             <LinearLayout
@@ -185,23 +183,21 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/instructionsEditLinearLayout"
-                android:layout_weight="1"
-                android:divider="@null"
-                android:dividerHeight="0dp"
                 android:background="@drawable/view_border_light_orange"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:layout_gravity="left|top"/>
 
             <!-- filler so create will stay at bottom -->
-            <!--<FrameLayout
+            <FrameLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@color/white">
-            </FrameLayout>-->
+            </FrameLayout>
 
             <!-- CREATE -->
             <LinearLayout

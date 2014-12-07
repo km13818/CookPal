@@ -48,7 +48,9 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             View newInstructionView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, null);
             //1. [step] Estimated cooking time:   x hr y min
           //  Log.d("newinstructionview", newInstructionView.get)
-            ((TextView) newInstructionView.findViewById(R.id.stepNoTextView)).setText(s.getStepNumber());
+            TextView stepText = ((TextView) newInstructionView.findViewById(R.id.stepNoTextView));
+            stepText.setText(Integer.toString(s.getStepNumber()));
+            //((TextView) newInstructionView.findViewById(R.id.stepNoTextView)).setText(s.getStepNumber());
             ((EditText) newInstructionView.findViewById(R.id.instructionEditText)).setText(s.getTitle());
             ((EditText) newInstructionView.findViewById(R.id.hoursEditText)).setText(s.getHours() + "");
             ((EditText) newInstructionView.findViewById(R.id.minutesEditText)).setText(s.getMinutes() + "");
