@@ -49,7 +49,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             //1. [step] Estimated cooking time:   x hr y min
           //  Log.d("newinstructionview", newInstructionView.get)
             TextView stepText = ((TextView) newInstructionView.findViewById(R.id.stepNoTextView));
-            stepText.setText(Integer.toString(s.getStepNumber()));
+            stepText.setText(Integer.toString(s.getStepNumber()) +  ".");
             //((TextView) newInstructionView.findViewById(R.id.stepNoTextView)).setText(s.getStepNumber());
             ((EditText) newInstructionView.findViewById(R.id.instructionTitleEditText)).setText(s.getTitle());
             ((EditText) newInstructionView.findViewById(R.id.instructionEditText)).setText(s.getDescription());
@@ -63,8 +63,9 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             @Override
             public void onClick(View v) {
                 LinearLayout instructionLayout = (LinearLayout) findViewById(R.id.instructionsEditLinearLayout);
+                Log.d("editrecipe", "num instructions b4 adding; " + instructionLayout.getChildCount());
                 View newInstructionView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, null);
-
+                ((TextView)newInstructionView.findViewById(R.id.stepNoTextView)).setText((instructionLayout.getChildCount()+1) + ".");
                 instructionLayout.addView(newInstructionView);
             }
         });
@@ -73,6 +74,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             LinearLayout ingredientLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
             View newIngredientView = getLayoutInflater().inflate(R.layout.editrecipeingredient_listview_entry, null);
 
+            ((TextView) newIngredientView.findViewById(R.id.add_recipe_ingredients_step)).setText((ingredientLayout.getChildCount() + 1) + ".");
             ((EditText) newIngredientView.findViewById(R.id.ingredientEditText)).setText(i.getIngredientName());
             ((EditText) newIngredientView.findViewById(R.id.quantityEditText)).setText(i.getQuantity());
 
@@ -83,9 +85,11 @@ public class EditRecipeActivity extends BaseDrawerActivity {
         addIngredientsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
-                View newIngredientView = getLayoutInflater().inflate(R.layout.editrecipeingredient_listview_entry, null);
 
+                LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
+                Log.d("editrecipe", "num ingredients b4 adding; " + ingredientsLayout.getChildCount());
+                View newIngredientView = getLayoutInflater().inflate(R.layout.editrecipeingredient_listview_entry, null);
+                ((TextView) newIngredientView.findViewById(R.id.add_recipe_ingredients_step)).setText((ingredientsLayout.getChildCount()+1) + ".");
                 ingredientsLayout.addView(newIngredientView);
             }
         });
