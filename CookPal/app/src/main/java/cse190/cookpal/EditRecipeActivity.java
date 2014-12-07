@@ -94,16 +94,16 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                     //loop throuhg view's children to find EditTexts
 
                     ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
-                    TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
+                    TextView instructionNumView = (TextView)horizontalViewGroup.findViewById(R.id.stepNoTextView);
                     EditText instructionTitleEditText = (EditText) horizontalViewGroup.findViewById(R.id.instructionTitleEditText);
                     EditText instructionEditText = (EditText) horizontalViewGroup.findViewById(R.id.instructionEditText);
-                    EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
-                    EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
+                    EditText instructionHoursEditText = (EditText) horizontalViewGroup.findViewById(R.id.hoursEditText);
+                    EditText instructionMinsEditText = (EditText) horizontalViewGroup.findViewById(R.id.minutesEditText);
                     Log.d("AddRecipeActivity", "instr: " + instructionEditText.getText().toString() + " hrs: " + instructionHoursEditText.getText().toString() + " mins: " + instructionMinsEditText.getText().toString());
                     //TODO: INSERT INSTRUCTION
 
                     HashMap<String,String> insertRecipeInstructionParams = new HashMap<String,String>();
-                    insertRecipeInstructionParams.put("name", currentRecipe.getRecipeName());
+                    insertRecipeInstructionParams.put("name", newRecipeName);
                     insertRecipeInstructionParams.put("fb_id", AccountActivity.getFbId());
                     insertRecipeInstructionParams.put("instruction", instructionTitleEditText.getText().toString());
                     insertRecipeInstructionParams.put("description", instructionEditText.getText().toString());
@@ -128,12 +128,12 @@ public class EditRecipeActivity extends BaseDrawerActivity {
 
                     //loop throuhg view's children to find EditTexts
                     ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
-                    EditText ingredientEditText = (EditText) horizontalViewGroup.getChildAt(0);
-                    EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.getChildAt(2);
+                    EditText ingredientEditText = (EditText) horizontalViewGroup.findViewById(R.id.ingredientEditText);
+                    EditText ingredientQuantityEditText = (EditText) horizontalViewGroup.findViewById(R.id.quantityEditText);
                     Log.d("AddRecipeActivity", "ingred: " + ingredientEditText.getText().toString() + " quantity: " + ingredientQuantityEditText.getText().toString());
                     //TODO: INSERT INGREDIENT
                     HashMap<String,String> insertIngredientParams = new HashMap<String,String>();
-                    insertIngredientParams.put("name", currentRecipe.getRecipeName());
+                    insertIngredientParams.put("name", newRecipeName);
                     insertIngredientParams.put("fb_id", AccountActivity.getFbId());
                     insertIngredientParams.put("ingr_name", ingredientEditText.getText().toString());
                     insertIngredientParams.put("quantity",ingredientQuantityEditText.getText().toString());
@@ -183,14 +183,17 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 convertView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, parent, false);
             }
             final View thisConvertView = convertView;
-            final String stepDescription = stepList.get(position).getTitle();
+            final String stepDescriptionTitle = stepList.get(position).getTitle();
+            final String stepDescription = stepList.get(position).getDescription();
+            EditText stepDescriptionTitleTextView = (EditText) convertView.findViewById(R.id.instructionTitleEditText);
             EditText stepDescriptionTextView = (EditText) convertView.findViewById(R.id.instructionEditText);
-            Log.d("editrecipeeacivity", "stepdesc editext: " + stepDescriptionTextView.toString());
-            Log.d("editrecipeeacivity", "stepdescription: " + stepDescription);
+            //Log.d("editrecipeeacivity", "stepdesc editext: " + stepDescriptionTextView.toString());
+            //Log.d("editrecipeeacivity", "stepdescription: " + stepDescription);
 
 
             TextView stepNoTextView = (TextView) convertView.findViewById(R.id.stepNoTextView);
             stepNoTextView.setText(stepList.get(position).getStepNumber() + ".");
+            stepDescriptionTitleTextView.setText(stepDescriptionTitle);
             stepDescriptionTextView.setText(stepDescription);
 
             EditText hoursEditText = (EditText) (convertView.findViewById(R.id.hoursEditText));

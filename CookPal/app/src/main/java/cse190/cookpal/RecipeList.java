@@ -471,11 +471,12 @@ public class RecipeList extends BaseDrawerActivity {
                         for (int i = 0; i < instructionsArray.length(); i++) {
                             int stepNumber = Integer.parseInt(((JSONObject) instructionsArray.get(i)).get("step number").toString());
                             String title = ((JSONObject) instructionsArray.get(i)).get("instruction").toString();
+                            String description = ((JSONObject) instructionsArray.get(i)).get("description").toString();
                             int hours = Integer.valueOf( ((JSONObject) instructionsArray.get(i)).get("hours").toString() );
                             int minutes = Integer.valueOf(((JSONObject) instructionsArray.get(i)).get("minutes").toString());
 
                             //create new Step
-                            Step step = new Step(title, "", hours, minutes, stepNumber);
+                            Step step = new Step(title, description, hours, minutes, stepNumber);
                             stepList.add(step);
                         }
                     }

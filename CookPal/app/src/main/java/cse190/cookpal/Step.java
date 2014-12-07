@@ -20,13 +20,13 @@ public class Step implements Serializable{
 
     @Override
     public String toString() {
-        return getStepNumber() + ": " + getTitle() + "\n" + getTime();
+        return getStepNumber() + ": " + getTitle() + "\n" + getDescription() + "\n" + getTime();
     }
 
 
     public String toStringDescription() {
 
-        return "STEP: "+stepNumber  + " " +  getDescription() + " hrs: " + hours + " minutes: " + minutes;
+        return "STEP: "+stepNumber  + " title: " + getTitle() + " desc: " + getDescription() + " hrs: " + hours + " minutes: " + minutes;
     }
 
     public String intToString(int num){
