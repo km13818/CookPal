@@ -45,7 +45,8 @@
         android:background="@drawable/view_border_light_orange_sm"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:text="1"/>
 
     <ImageButton
         android:layout_width="30dp"

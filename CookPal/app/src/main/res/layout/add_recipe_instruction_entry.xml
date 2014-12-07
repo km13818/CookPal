@@ -108,6 +108,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:padding="5dp"
+            android:text="0"
             />
 
         <TextView
@@ -129,6 +130,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:padding="5dp"
+            android:text="0"
             />
 
         <TextView
