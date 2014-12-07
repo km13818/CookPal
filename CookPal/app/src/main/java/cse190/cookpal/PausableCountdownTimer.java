@@ -53,9 +53,10 @@ public class PausableCountdownTimer {
         if (timer != null) {
             timer.cancel();
             timer = null;
-            timeRemaining = 0;
-            state = TimerState.FINISHED;
         }
+        timeRemaining = 0;
+        state = TimerState.FINISHED;
+        handler = null;
     }
 
     public synchronized void start() {
