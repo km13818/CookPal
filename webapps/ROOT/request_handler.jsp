@@ -198,7 +198,7 @@
             kv.put("hours", rs.getInt("hrs"));
             kv.put("minutes", rs.getInt("mins"));
             kv.put("step number", rs.getInt("step_no"));
-            kv.put("desc", rs.getString("description"));
+            kv.put("description", rs.getString("description"));
             fields.add(kv);
          }
          result.put(userName+"'s recipe_instruction:", fields);

@@ -158,17 +158,23 @@ public class AddRecipeActivity extends BaseDrawerActivity {
 
                     @Override
                     public void onClick(View v) {
+                        //get the parent's parent layout of this entry (structure of entry)
+                        ViewGroup parentView = (ViewGroup)v.getParent().getParent();
+                        //use the parent viewGroup to find the index of the current layout
+                        int currentIndex = ((ViewGroup)parentView.getParent()).indexOfChild(parentView);
+                        Log.e("index of current view's parent", currentIndex + "");
                         LinearLayout instructionsLayout = (LinearLayout) findViewById(R.id.instructionsLayout);
-                        LinearLayout newInstructionView = (LinearLayout) findViewById(R.id.add_recipe_instruction_entry);
+                        LinearLayout newInstructionView = (LinearLayout) instructionsLayout.getChildAt(currentIndex);
                         instructionsLayout.removeView(newInstructionView);
+                        //decrease the instruction counter
                         currInstructionCount--;
                         rebuildCounter();
                     }
                     //ensure the list order is always proper (i.e. no gaps)
                     public void rebuildCounter() {
                         ViewGroup insGroup = (ViewGroup)findViewById(R.id.instructionsLayout);
-                        int isCC = insGroup.getChildCount();
-                        for(int i = 0; i < isCC; i++) {
+                        //iterate through all the children and reset the step counter
+                        for(int i = 0; i < currInstructionCount; i++) {
                             View horizontalView = insGroup.getChildAt(i);
                             if(horizontalView instanceof LinearLayout) {
                                 ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
@@ -204,44 +210,29 @@ public class AddRecipeActivity extends BaseDrawerActivity {
 
                     @Override
                     public void onClick(View v) {
+                        //get the parent layout of this entry
+                        LinearLayout parentView = (LinearLayout)v.getParent();
+                        //use the parent viewGroup to find the index of the current layout
+                        int currentIndex = ((ViewGroup)parentView.getParent()).indexOfChild(parentView);
+                        Log.e("index of current view's parent", currentIndex + "");
                         LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.addIngredientsLayout);
-                        LinearLayout newIngredientView = (LinearLayout) findViewById(R.id.add_recipe_ingredients_entry);
-
+                        LinearLayout newIngredientView = (LinearLayout) ingredientsLayout.getChildAt(currentIndex);
                         ingredientsLayout.removeView(newIngredientView);
+                        //decrease the ingredient counter
                         currIngredientCount--;
-
-                        ViewGroup ingGroup = (ViewGroup)findViewById(R.id.addIngredientsLayout);
-                        int isCC = ingGroup.getChildCount();
-                        ArrayList <String> stepArray = new ArrayList<String>();
-                        ArrayList <String> qtyArray = new ArrayList<String>();
-                        for(int i = 0; i < isCC; i++) {
-                            String ingEditText = ((EditText) newIngredientView.findViewById(R.id.add_recipe_ingredients_step_edit)).getText().toString();
-                            String ingQtyEditText = ((EditText) newIngredientView.findViewById(R.id.add_recipe_ingredients_quantity_edit)).getText().toString();
-                            stepArray.add(ingEditText);
-                            qtyArray.add(ingQtyEditText);
-                            Log.e("add ing", ingEditText);
-                        }
-
-                        rebuildCounter(stepArray, qtyArray);
+                        rebuildCounter();
                     }
                     //ensure the list order is always proper (i.e. no gaps)
-                    public void rebuildCounter(ArrayList <String> stepArray, ArrayList <String> qtyArray) {
+                    public void rebuildCounter() {
                         ViewGroup ingGroup = (ViewGroup)findViewById(R.id.addIngredientsLayout);
-                        int isCC = ingGroup.getChildCount();
-                        for(int i = 0; i < isCC; i++) {
+                        //iterate through all the children and reset the step counter
+                        for(int i = 0; i < currIngredientCount; i++) {
                             View horizontalView = ingGroup.getChildAt(i);
-
                             if(horizontalView instanceof LinearLayout) {
                                 ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
                                 TextView ingredientNumView = (TextView)horizontalViewGroup.findViewById(R.id.add_recipe_ingredients_step);
 
                                 ingredientNumView.setText(i+1 + ".");
-
-                                EditText ingredientEdit = (EditText)horizontalViewGroup.findViewById(R.id.add_recipe_ingredients_step_edit);
-                                EditText quantityEdit = (EditText)horizontalViewGroup.findViewById(R.id.add_recipe_ingredients_quantity_edit);
-                                ingredientEdit.setText(stepArray.get(i));
-                                quantityEdit.setText(qtyArray.get(i));
-                                Log.e("add ing after build", stepArray.get(i));
                             }
                         }
                     }
