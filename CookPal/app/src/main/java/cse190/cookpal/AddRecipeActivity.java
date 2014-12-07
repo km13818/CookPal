@@ -97,7 +97,7 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                         insertRecipeInstructionParams.put("name", recipeName);
                         insertRecipeInstructionParams.put("fb_id", AccountActivity.getFbId());
                         insertRecipeInstructionParams.put("instruction", instructionTitleEditText.getText().toString());
-                        insertRecipeInstructionParams.put("desc", instructionEditText.getText().toString());
+                        insertRecipeInstructionParams.put("description", instructionEditText.getText().toString());
                         insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
                         insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
                         insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
