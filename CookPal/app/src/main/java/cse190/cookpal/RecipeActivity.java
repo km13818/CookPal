@@ -116,6 +116,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
         switch (item.getItemId()) {
             case R.id.start_assistant:
                 Intent intent = new Intent(this, AssistantActivity.class);
+                intent.putExtra("recipe",currentRecipe);
                 startActivity(intent);
                 return true;
             case R.id.delete_recipe:
