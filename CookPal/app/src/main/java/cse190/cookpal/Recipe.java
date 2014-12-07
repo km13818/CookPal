@@ -8,13 +8,15 @@ public class Recipe implements Serializable {
 
 
     private String recipeName;
+    private String imgUrl;
     private ArrayList<Step> stepList;
     private ArrayList<Ingredients> ingredientList;
 
     //TODO: hold recipe image
 
-    public Recipe(String name, ArrayList<Step> stepList, ArrayList<Ingredients> ingredientList) {
+    public Recipe(String name, String image, ArrayList<Step> stepList, ArrayList<Ingredients> ingredientList) {
         this.recipeName = name;
+        this.imgUrl = image;
         this.stepList = stepList;
         this.ingredientList = ingredientList;
     }
@@ -50,6 +52,11 @@ public class Recipe implements Serializable {
         this.recipeName = recipeName;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) { this.imgUrl = imgUrl; }
 
     // Note: dummy step population for testing purposes
 
