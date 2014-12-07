@@ -35,8 +35,8 @@ public class EditRecipeActivity extends BaseDrawerActivity {
         Intent intent = getIntent();
         currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
 
-        ((EditText)findViewById(R.id.recipeNameInput)).setText(currentRecipe.getRecipeName());
-        ((EditText)findViewById(R.id.recipeImageUrlInput)).setText(currentRecipe.getImgUrl());
+        ((EditText)findViewById(R.id.editRecipeNameInput)).setText(currentRecipe.getRecipeName());
+        ((EditText)findViewById(R.id.editRecipeImageUrlInput)).setText(currentRecipe.getImgUrl());
 
         ArrayList<Step> stepList = currentRecipe.getStepList();
         Log.d("s", "steplistsize: " + stepList.size());
@@ -67,13 +67,17 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                     Log.d("thread sleep fail", "threadsleepfail");
                     Thread.currentThread().interrupt();
                 }*/
+
+                String newRecipeName = ((EditText) findViewById(R.id.editRecipeNameInput)).getText().toString();
+                String newImageUrl = ((EditText) findViewById(R.id.editRecipeImageUrlInput)).getText().toString();
+
                 //insert recipe
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
-                insertRecipeParams.put("r_name", currentRecipe.getRecipeName()); //TODO: change to get from android
+                insertRecipeParams.put("r_name", newRecipeName);
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
                 insertRecipeParams.put("filter", "insert_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
-                insertRecipeParams.put("image_url", currentRecipe.getImgUrl());
+                insertRecipeParams.put("image_url", newImageUrl);
                 httpUtil.makeHttpPost(insertRecipeParams);
 
                 ListView instructionsEditListView = (ListView) findViewById(R.id.instructionsEditListView);
@@ -91,7 +95,8 @@ public class EditRecipeActivity extends BaseDrawerActivity {
 
                     ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
                     TextView instructionNumView = (TextView)horizontalViewGroup.getChildAt(0);
-                    EditText instructionEditText = (EditText) horizontalViewGroup.getChildAt(1);
+                    EditText instructionTitleEditText = (EditText) horizontalViewGroup.findViewById(R.id.instructionTitleEditText);
+                    EditText instructionEditText = (EditText) horizontalViewGroup.findViewById(R.id.instructionEditText);
                     EditText instructionHoursEditText = (EditText) horizontalViewGroup.getChildAt(3);
                     EditText instructionMinsEditText = (EditText) horizontalViewGroup.getChildAt(5);
                     Log.d("AddRecipeActivity", "instr: " + instructionEditText.getText().toString() + " hrs: " + instructionHoursEditText.getText().toString() + " mins: " + instructionMinsEditText.getText().toString());
@@ -100,7 +105,8 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                     HashMap<String,String> insertRecipeInstructionParams = new HashMap<String,String>();
                     insertRecipeInstructionParams.put("name", currentRecipe.getRecipeName());
                     insertRecipeInstructionParams.put("fb_id", AccountActivity.getFbId());
-                    insertRecipeInstructionParams.put("instruction", instructionEditText.getText().toString());
+                    insertRecipeInstructionParams.put("instruction", instructionTitleEditText.getText().toString());
+                    insertRecipeInstructionParams.put("description", instructionEditText.getText().toString());
                     insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
                     insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
                     insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));

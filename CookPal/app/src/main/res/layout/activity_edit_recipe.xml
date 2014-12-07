@@ -51,7 +51,7 @@
                     android:padding="10dp"
                     android:layout_margin="3dp"
                     android:textColor="@color/white"
-                    android:id="@+id/recipeNameInput"
+                    android:id="@+id/editRecipeNameInput"
                     android:layout_gravity="center_vertical" />
             </LinearLayout>
 
@@ -91,7 +91,7 @@
                     android:padding="10dp"
                     android:layout_margin="3dp"
                     android:textColor="@color/white"
-                    android:id="@+id/recipeImageUrlInput"
+                    android:id="@+id/editRecipeImageUrlInput"
                     android:layout_gravity="center_vertical" />
             </LinearLayout>
 
