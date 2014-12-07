@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:text="Estimated cooking time: "
             android:textColor="@color/white"
-            android:id="@+id/timeTextView"
+            android:id="@+id/cookTimeTextView"
             />
 
         <EditText

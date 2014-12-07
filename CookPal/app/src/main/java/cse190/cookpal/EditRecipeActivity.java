@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -33,26 +34,67 @@ public class EditRecipeActivity extends BaseDrawerActivity {
         setContentView(R.layout.activity_edit_recipe);
 
         Intent intent = getIntent();
-        currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
+        currentRecipe = (Recipe) intent.getSerializableExtra("recipe");
 
         ((EditText)findViewById(R.id.editRecipeNameInput)).setText(currentRecipe.getRecipeName());
         ((EditText)findViewById(R.id.editRecipeImageUrlInput)).setText(currentRecipe.getImgUrl());
 
         ArrayList<Step> stepList = currentRecipe.getStepList();
-        Log.d("s", "steplistsize: " + stepList.size());
-        ArrayAdapter<Step> stepListAdapter = new StepListAdapter(stepList);
-        ListView instructionsListView = (ListView) findViewById(R.id.instructionsEditListView);
-        instructionsListView.setAdapter(stepListAdapter);
-
         ArrayList<Ingredients> ingredientList = currentRecipe.getIngredientList();
-        Log.d("s", "ingrlistsize: " + ingredientList.size());
 
-        ArrayAdapter<Ingredients> ingredientsListAdapter = new IngredientsListAdapter(ingredientList);
-        ListView ingredientsListView = (ListView) findViewById(R.id.ingredientsEditListView);
-        ingredientsListView.setAdapter(ingredientsListAdapter);
+        for (Step s : stepList) {
+
+            LinearLayout stepLayout = (LinearLayout) findViewById(R.id.instructionsEditLinearLayout);
+            View newInstructionView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, null);
+            //1. [step] Estimated cooking time:   x hr y min
+          //  Log.d("newinstructionview", newInstructionView.get)
+            TextView stepText = ((TextView) newInstructionView.findViewById(R.id.stepNoTextView));
+            stepText.setText(Integer.toString(s.getStepNumber()));
+            //((TextView) newInstructionView.findViewById(R.id.stepNoTextView)).setText(s.getStepNumber());
+            ((EditText) newInstructionView.findViewById(R.id.instructionTitleEditText)).setText(s.getTitle());
+            ((EditText) newInstructionView.findViewById(R.id.instructionEditText)).setText(s.getDescription());
+            ((EditText) newInstructionView.findViewById(R.id.hoursEditText)).setText(s.getHours() + "");
+            ((EditText) newInstructionView.findViewById(R.id.minutesEditText)).setText(s.getMinutes() + "");
+            stepLayout.addView(newInstructionView);
+        }
+
+        ImageButton addInstructionsButton = ((ImageButton) findViewById(R.id.addInstructionsButton));
+        addInstructionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout instructionLayout = (LinearLayout) findViewById(R.id.instructionsEditLinearLayout);
+                View newInstructionView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, null);
+
+                instructionLayout.addView(newInstructionView);
+            }
+        });
+        for (Ingredients i : ingredientList) {
+            //[ingr]   "Quantity:" [5lbs]
+            LinearLayout ingredientLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
+            View newIngredientView = getLayoutInflater().inflate(R.layout.editrecipeingredient_listview_entry, null);
+
+            ((EditText) newIngredientView.findViewById(R.id.ingredientEditText)).setText(i.getIngredientName());
+            ((EditText) newIngredientView.findViewById(R.id.quantityEditText)).setText(i.getQuantity());
+
+            ingredientLayout.addView(newIngredientView);
+        }
+
+        ImageButton addIngredientsButton = ((ImageButton) findViewById(R.id.addIngredientsButton));
+        addIngredientsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
+                View newIngredientView = getLayoutInflater().inflate(R.layout.editrecipeingredient_listview_entry, null);
+
+                ingredientsLayout.addView(newIngredientView);
+            }
+        });
+
+
 
         Button updateRecipeButton = (Button) findViewById(R.id.updateRecipeButton);
-        updateRecipeButton.setOnClickListener(new View.OnClickListener() {
+        updateRecipeButton.
+                setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //delete
@@ -80,16 +122,15 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 insertRecipeParams.put("image_url", newImageUrl);
                 httpUtil.makeHttpPost(insertRecipeParams);
 
-                ListView instructionsEditListView = (ListView) findViewById(R.id.instructionsEditListView);
-                Log.d("instrcount","instructions count: " + instructionsEditListView.getCount());
+                ViewGroup instructionsEditLayout = (ViewGroup) findViewById(R.id.instructionsEditLinearLayout);
+                Log.d("instrcount","instructions count: " + instructionsEditLayout.getChildCount());
 
 
-                //***************BELOW CODE CURRENTLY DOES NOTHING BECAUSE HTTP MAKE POST COMMENTED OUT*******
-                //*****************************************************************************
+
                 //loop through and insert instructions
-                for(int i = 0;  i<instructionsEditListView.getCount(); i++ ) {
+                for(int i = 0;  i<instructionsEditLayout.getChildCount(); i++ ) {
                     //instructionLayout has many horizontal linearlayout as children, who each have children containing EditText
-                    View horizontalView = instructionsEditListView.getChildAt(i);
+                    View horizontalView = instructionsEditLayout.getChildAt(i);
 
                     //loop throuhg view's children to find EditTexts
 
@@ -118,13 +159,13 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 } //end for
 
                 //insert ingredients
-                ListView ingredientsEditListView = (ListView) findViewById(R.id.ingredientsEditListView);
-                Log.d("instrcount","instructions count: " + ingredientsEditListView.getCount());
+                ViewGroup ingredientsEditLayout = (ViewGroup) findViewById(R.id.ingredientsEditLinearLayout);
+                Log.d("instrcount","instructions count: " + ingredientsEditLayout.getChildCount());
 
                 //loop through and insert ingredients
-                for(int i = 0; i < ingredientsEditListView.getCount(); i++) {
+                for(int i = 0; i < ingredientsEditLayout.getChildCount(); i++) {
                     //ingredientsLayout has many horizontal linearlayout as children, who each have children containing EditText
-                    View horizontalView = ingredientsEditListView.getChildAt(i);
+                    View horizontalView = ingredientsEditLayout.getChildAt(i);
 
                     //loop throuhg view's children to find EditTexts
                     ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
@@ -145,7 +186,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 Intent i = new Intent(EditRecipeActivity.this, RecipeList.class);
                 startActivity(i);
             }
-        });
+        });//end updatebutton setonclick
     }
 
 
@@ -167,6 +208,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+/*<<<<<<< HEAD
 
     private class StepListAdapter extends ArrayAdapter<Step> {
 
@@ -229,7 +271,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
 
             return convertView;
         }
-    }
+    }*/
     //sort steps
 
     // 2 1 3
@@ -248,4 +290,6 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             }
         }
     }*/
+//=======
+//>>>>>>> modifyeditrecipe
 }
