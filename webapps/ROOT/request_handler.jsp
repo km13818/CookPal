@@ -8,6 +8,13 @@
    //ensure the page returns a json object
    response.setContentType("application/json");
 
+   //final strings for empty fields
+   final String NO_TIME = "0";
+   final String NO_NAME = "no name";
+   final String NO_TITLE = "no title";
+   final String NO_DESC = "no desc";
+   final String NO_QTY = "no qty";
+   
    //response field declarations: the login id is mandatory for all activities 
    //filter and ACC_ID
    String handleFilter = request.getParameter("filter");
@@ -17,14 +24,14 @@
    String recipeCBType = request.getParameter("cookbook_type");
    String recipeName = request.getParameter("r_name");
    String recipeId = request.getParameter("recipe_id");
-   String recipeImageURL = request.getParameter("image_url"); 
+   String imageURL = request.getParameter("image_url");
 
    //RECIPE INSTRUCTIONS FIELDS
    String recipeInstruction = request.getParameter("instruction");
    String recipeInstrStepNo = request.getParameter("step_no"); //int
    String recipeInstrTimeHr = request.getParameter("hrs"); //int
    String recipeInstrTimeMin = request.getParameter("mins"); //int
-
+   String recipeDesc = request.getParameter("description");
    //INGREDIENTS FIELDS
    String ingRecName = request.getParameter("name");
    String ingName = request.getParameter("ingr_name");
@@ -41,7 +48,28 @@
    ResultSet rs = null, startSet = null;
    JSONObject result = new JSONObject();  
    JSONArray fields = new JSONArray();
-
+   
+   if(recipeInstrTimeHr == "") {
+	  recipeInstrTimeHr = NO_TIME;
+   }
+   if( recipeInstrTimeMin == "") {
+	  recipeInstrTimeMin = NO_TIME;   
+   }
+   if( recipeInstruction == "") {
+	  recipeInstruction = NO_TITLE;   
+   }
+   if(recipeDesc == "") {
+	  recipeDesc = NO_DESC;   
+   }
+   if( ingName == "") {
+	 ingName = NO_NAME;   
+   }
+   if( ingQty == "") {
+	  ingQty = NO_QTY;   
+   }
+   if( recipeName == "") {
+	  recipeName = NO_NAME;   
+   }
    try {
       //establish a connection with the SQL database
       Class.forName("com.mysql.jdbc.Driver");
@@ -69,7 +97,7 @@
          pstmt.setString(1, recipeName);
          pstmt.setString(2, accId);
          pstmt.setString(3, recipeCBType);
-		 pstmt.setString(4, recipeImageURL);
+         pstmt.setString(4, imageURL);
          pstmt.executeUpdate(); 
          conn.commit();
          conn.setAutoCommit(true);         
@@ -84,7 +112,7 @@
             JSONObject kv = new JSONObject();
             kv.put("recipe name", rs.getString("name"));
             kv.put("cookbook status", rs.getString("cookbook_type"));
-			kv.put("image", rs.getString("image_url"));
+            kv.put("image", rs.getString("image_url"));
             fields.add(kv);
          }
          result.put(userName+"'s recipes:", fields);
@@ -142,7 +170,7 @@
       }      
       // inserts an instruction to the corresponding recipe
       else if(handleFilter.equals("insert_instruction")) {
-         query = "INSERT INTO recipe_instruction (recipe_name, account_id, instruction, hrs, mins, step_no) VALUES (?, ?, ?, ?, ?, ?)";
+         query = "INSERT INTO recipe_instruction (recipe_name, account_id, instruction, hrs, mins, step_no, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
          pstmt = conn.prepareStatement(query);     
          conn.setAutoCommit(false);       
          pstmt.setString(1, ingRecName);
@@ -151,6 +179,7 @@
          pstmt.setString(4, recipeInstrTimeHr);
          pstmt.setString(5, recipeInstrTimeMin);
          pstmt.setString(6, recipeInstrStepNo);         
+         pstmt.setString(7, recipeDesc);
          pstmt.executeUpdate();
          conn.commit();
          conn.setAutoCommit(true);               
@@ -169,6 +198,7 @@
             kv.put("hours", rs.getInt("hrs"));
             kv.put("minutes", rs.getInt("mins"));
             kv.put("step number", rs.getInt("step_no"));
+            kv.put("desc", rs.getString("description"));
             fields.add(kv);
          }
          result.put(userName+"'s recipe_instruction:", fields);
