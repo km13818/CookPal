@@ -20,11 +20,13 @@ import java.util.Locale;
 public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
 
     // TODO: Add button on action bar to exit back to AssistantRecipeListActivity
-    // TODO: Pass in recipe data from AssistantRecipeListActivity or RecipeActivity
     // TODO: Fix 'add time' and 'pause/resume' timer functionality
     // TODO: Don't display nextStep button on last step --> maybe replace with finish button?
     // TODO: calculate ETC...or just replace with 'step list'
     // TODO: Add up/down caret on the ETC/step list to denote whether the list is up or down
+    // TODO: Fix highlighting for initial step
+    // TODO: add logic for n/a time
+    // TODO: Fix bug where description is populated by title if Assistant is started from AssistantRecipeList
 
     // Layouts
     private RelativeLayout currStepLayout;
@@ -105,9 +107,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         playPauseButton = (ImageButton) findViewById(R.id.assistant_playPauseButton);
 
         // Recipe creation
-        //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
-
 
         if(null != currRecipe.getStepList()) {
             Step firstStep = currRecipe.getStepList().get(0);
@@ -186,7 +186,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         // If next step exists, move to it and update the view
         if(++currStepIdx < stepList.size()) {
-            // currStep = stepList.get(currStepIdx);
             setCurrStep(stepList.get(currStepIdx));
             changeCurrStepView(view);
         }
