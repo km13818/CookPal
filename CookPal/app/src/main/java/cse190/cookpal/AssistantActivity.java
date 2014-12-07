@@ -1,5 +1,6 @@
 package cse190.cookpal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
@@ -61,6 +62,8 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent previousRecipeActivityIntent = getIntent();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assistant);
 
@@ -102,7 +105,8 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
-        currRecipe = new Recipe("Chicken and Rice");
+        currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
+
 
         if(null != currRecipe.getStepList()) {
             Step firstStep = currRecipe.getStepList().get(0);
