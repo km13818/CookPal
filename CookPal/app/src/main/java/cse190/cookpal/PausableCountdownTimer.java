@@ -62,10 +62,13 @@ public class PausableCountdownTimer {
         if (timer != null) {
             timer.start();
         }
+        state = TimerState.RUNNING;
     }
 
     public synchronized void addTime(long millis) {
         timeRemaining += millis;
+        if (timer != null)
+            timer.cancel();
         timer =  new CountDownTimer(timeRemaining, countDownInterval) {
             public void onTick(long millisUntilFinished) {
                 PausableCountdownTimer.this.onTick(millisUntilFinished);
@@ -89,17 +92,21 @@ public class PausableCountdownTimer {
     }
 
     public void onTick(long millisUntilFinished) {
-        timeRemaining = millisUntilFinished;
-        if (handler != null)
-            handler.onTick(millisUntilFinished);
+        if (state != TimerState.PAUSED) {
+            timeRemaining = millisUntilFinished;
+            if (handler != null)
+                handler.onTick(millisUntilFinished);
+        }
     }
 
     public void onFinish() {
-        timeRemaining = 0;
-        timer = null;
-        state = TimerState.FINISHED;
-        if (handler != null)
-            handler.onFinish();
+        if (state != TimerState.PAUSED) {
+            timeRemaining = 0;
+            timer = null;
+            state = TimerState.FINISHED;
+            if (handler != null)
+                handler.onFinish();
+        }
     }
 
     public void setHandler(TimerHandler handler) {
