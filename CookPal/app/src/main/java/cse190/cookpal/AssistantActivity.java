@@ -35,6 +35,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private TextView stepNumView;
     private TextView stepTitleView;
     private TextView stepDescriptView;
+    // Timer views
+    private TextView timerDisplayView;
+    private ImageButton playPauseButton;
 
     // Step list view
     private ListView stepListView;
@@ -43,10 +46,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private TextView stepPreviewNumView;
     private TextView stepPreviewTitleView;
     private TextView stepPreviewDescriptView;
-
-    // Timer views
-    private TextView timerDisplayView;
-    private ImageButton playPauseButton;
+    private TextView stepPreviewTimerDisplayView;
 
     private ListAdapter stepListAdapter;
 
@@ -100,6 +100,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         stepPreviewNumView = (TextView) findViewById(R.id.assistant_stepPreviewNumber);
         stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
         stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
+        stepPreviewTimerDisplayView = (TextView) findViewById(R.id.assistant_timerPreviewDisplay);
         timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
         playPauseButton = (ImageButton) findViewById(R.id.assistant_playPauseButton);
 
@@ -142,6 +143,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
                 stepPreviewNumView.setText(String.valueOf(clickedStep.getStepNumber()));
                 stepPreviewTitleView.setText(clickedStep.getTitle());
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
+                stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
 
                 // Save the clicked step data to be accessed if the user chooses to skip there
                 stepPreviewLayout.setTag(clickedStep);
@@ -178,7 +180,8 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     public void moveToNextStep(View view) {
-        int currStepIdx = currStep.getStepNumber();
+        // Note: step starts at 1, not 0.
+        int currStepIdx = currStep.getStepNumber() - 1;
         ArrayList<Step> stepList = currRecipe.getStepList();
 
         // If next step exists, move to it and update the view

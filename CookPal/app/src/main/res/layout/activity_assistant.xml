@@ -121,7 +121,7 @@
                         android:id="@+id/assistant_playPauseButton"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:src="@drawable/assistant_play_icon"
+                        android:src="@drawable/assistant_pause_icon"
                         android:layout_marginLeft="20dp"
                         android:layout_toRightOf="@id/assistant_addTimeButton"
                         android:onClick="pauseResumeTimer"/>
