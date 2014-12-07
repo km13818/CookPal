@@ -104,7 +104,8 @@
             android:background="@drawable/view_border_light_orange_sm"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:text="0"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -124,7 +125,8 @@
             android:background="@drawable/view_border_light_orange_sm"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:text="0"/>
 
         <TextView
             android:layout_width="wrap_content"
