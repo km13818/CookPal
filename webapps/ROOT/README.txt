@@ -11,6 +11,9 @@ Processes login from AccountActivity (first time and returning)
 request_handler.jsp
 Processes inbound and outbound interaction between the server and app through HttpPost/Get. Returns a JSON object for grab requests.
 
+recipegen.jsp
+a simple random recipe generator.
+
 Additional Packages Used:
 <-------------------------->
 MySQL JDBC Connector (5.1.33)
