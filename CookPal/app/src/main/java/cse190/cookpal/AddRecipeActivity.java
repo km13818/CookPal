@@ -86,6 +86,7 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                         int horizontalLayoutChildrenCount = ((LinearLayout) horizontalView).getChildCount();
                         ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
                         TextView instructionNumView = (TextView)horizontalViewGroup.findViewById(R.id.add_recipe_instruction_step);
+                        EditText instructionTitleEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_title_edit);
                         EditText instructionEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_step_edit);
                         EditText instructionHoursEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_hr_edit);
                         EditText instructionMinsEditText = (EditText) horizontalViewGroup.findViewById(R.id.add_recipe_instruction_min_edit);
@@ -95,7 +96,8 @@ public class AddRecipeActivity extends BaseDrawerActivity {
                         HashMap<String,String> insertRecipeInstructionParams = new HashMap<String,String>();
                         insertRecipeInstructionParams.put("name", recipeName);
                         insertRecipeInstructionParams.put("fb_id", AccountActivity.getFbId());
-                        insertRecipeInstructionParams.put("instruction", instructionEditText.getText().toString());
+                        insertRecipeInstructionParams.put("instruction", instructionTitleEditText.getText().toString());
+                        insertRecipeInstructionParams.put("desc", instructionEditText.getText().toString());
                         insertRecipeInstructionParams.put("hrs", instructionHoursEditText.getText().toString());
                         insertRecipeInstructionParams.put("mins", instructionMinsEditText.getText().toString());
                         insertRecipeInstructionParams.put("step_no", instructionNumView.getText().toString().substring(0, instructionNumView.getText().toString().length() -1));
