@@ -21,7 +21,7 @@ public class OverviewFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.overview_tab, container, false);
 
-        Recipe currRecipe = new Recipe("Grilled Chicken and Veggies");
+        Recipe currRecipe = RecipeActivity.currentRecipe;
 
         ImageView recipeImage = (ImageView) rootView.findViewById(R.id.overview_recipe_image);
         recipeImage.setImageResource(R.drawable.lasagna);
