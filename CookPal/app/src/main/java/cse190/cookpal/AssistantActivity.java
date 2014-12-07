@@ -315,4 +315,13 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
             timerDisplayView.setText(timer.formatTimeRemaining());
         }
     }
+
+    private long millisLeftInRecipe() {
+        long millis = timer.getTimeRemaining();
+        ArrayList<Step> steps = currRecipe.getStepList();
+        for (Step s : steps.subList(currStep.getStepNumber()-1, steps.size())) {
+            millis += s.getHours()*3600000 + s.getMinutes()*60000;
+        }
+        return millis;
+    }
 }
