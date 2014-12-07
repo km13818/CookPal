@@ -126,7 +126,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         });
 
         // Set the step information
-        //setCurrStepViewData(currStep);
         changeCurrStepView();
 
         // Bind the step list adapter
@@ -198,12 +197,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         changeCurrStepView();
     }
 
-    /* private void setCurrStepViewData(Step currStep) {
-        stepNumView.setText(currStep.getStepNumber() + "");
-        stepTitleView.setText(currStep.getTitle());
-        stepDescriptView.setText(currStep.getDescription());
-    } */
-
     // Methods to show only the current layout and hide everything else so they aren't clickable
     // Note: View parameter is needed as a placeholder for button onClick event in XML layout files
     public void displayStepList(View view) {
@@ -235,7 +228,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private void speakStepInfo(Step step) {
         String speech = "Step " + step.getStepNumber() + ". " + step.getTitle() + ", " + step.getDescription();
 
-        assistantSpeaker.speak(speech,TextToSpeech.QUEUE_FLUSH,null);
+        assistantSpeaker.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     private void changeCurrStepView() {
