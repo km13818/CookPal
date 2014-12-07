@@ -74,7 +74,7 @@ public class Step implements Serializable{
         this.description = description;
     }
 
-    public int getHours() { return minutes; }
+    public int getHours() { return hours; }
 
     public int getMinutes() {
         return minutes;

@@ -190,7 +190,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             EditText hoursEditText = (EditText) (convertView.findViewById(R.id.hoursEditText));
 
             Log.d("hoursEditText", hoursEditText.toString());
-            hoursEditText.setText("12");
+            hoursEditText.setText(String.valueOf(stepList.get(position).getHours()));
             EditText minutesEditText = (EditText) convertView.findViewById(R.id.minutesEditText);
             minutesEditText.setText(String.valueOf(stepList.get(position).getMinutes()));
 
