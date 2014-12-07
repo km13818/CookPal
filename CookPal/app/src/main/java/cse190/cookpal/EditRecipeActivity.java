@@ -36,7 +36,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
         currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
 
         ((EditText)findViewById(R.id.recipeNameInput)).setText(currentRecipe.getRecipeName());
-
+        ((EditText)findViewById(R.id.recipeImageUrlInput)).setText(currentRecipe.getImgUrl());
 
         ArrayList<Step> stepList = currentRecipe.getStepList();
         Log.d("s", "steplistsize: " + stepList.size());

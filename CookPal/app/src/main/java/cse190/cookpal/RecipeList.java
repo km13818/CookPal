@@ -284,11 +284,14 @@ public class RecipeList extends BaseDrawerActivity {
         // Required initialization
 
         private final HttpClient Client = new DefaultHttpClient();
+        private String imgReturnString;
         private String instructionsReturnString;
         private String ingredientsReturnString;
         private String instructionsRetrievalErrorString = null;
         private String ingredientsRetrievalErrorString = null;
+        private String imgRetrievalErrorString = null;
         private String recipeName;
+        private String imgUrl;
         private String nextActivity;
         private ProgressDialog Dialog = new ProgressDialog(RecipeList.this);
         BufferedReader reader = null;
@@ -307,6 +310,40 @@ public class RecipeList extends BaseDrawerActivity {
         protected Void doInBackground(String... params) {
             Log.d("recipelist", "do in background.....");
             /************ Make Post Call To Web Server ***********/
+
+            //retrieve img url
+            try {
+                // Defined URL  where to send data
+                String serverUrlString = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?";
+                String selectInstructionsUrlString = serverUrlString + "fb_id=" + params[0] + "&r_name=" + URLEncoder.encode(params[1],"UTF-8") + "&filter=" + "select_recipes";
+                URL selectInstructionsUrl = new URL(selectInstructionsUrlString);
+
+                // Send POST data request
+
+                URLConnection conn = selectInstructionsUrl.openConnection();
+
+                // Get the server response
+
+                BufferedReader reader;
+                reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while ((line = reader.readLine()) != null) {
+                    // Append server response in string
+                    sb.append(line + "");
+                }
+
+                imgReturnString = sb.toString();
+            } catch (Exception ex) {
+                imgRetrievalErrorString = ex.getMessage();
+            } finally {
+                try {
+                    reader.close();
+                } catch (Exception ex) {
+                }
+            }
 
             // retrieve instruction
             try {
@@ -392,6 +429,32 @@ public class RecipeList extends BaseDrawerActivity {
             ArrayList<Step> stepList = new ArrayList<Step>();
             ArrayList<Ingredients> ingredientsList = new ArrayList<Ingredients>();
             Recipe clickedRecipe;
+
+            if (imgRetrievalErrorString != null) {
+
+            } else {
+                /****************** Start Parse Response JSON Data *************/
+                Log.d("recipeList activity", "json return string: " + imgReturnString);
+                JSONObject jsonResponse;
+                try {
+                    JSONObject imgJsonResponse = new JSONObject(imgReturnString);
+                    Iterator jsonKeysIterator = imgJsonResponse.keys();
+
+                    while(jsonKeysIterator.hasNext()) {
+                        String key = jsonKeysIterator.next().toString();
+                        JSONArray recipeArray = (JSONArray) imgJsonResponse.get(key);
+                        for (int i = 0; i < recipeArray.length(); i++) {
+                            String recipeImageURL = ((JSONObject)recipeArray.get(i)).get("image").toString();
+                            imgUrl = recipeImageURL;
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
             //error
             if (instructionsRetrievalErrorString != null) {
 
@@ -457,7 +520,7 @@ public class RecipeList extends BaseDrawerActivity {
                 }
 
             }
-            Recipe recipe = new Recipe(recipeName,stepList,ingredientsList);
+            Recipe recipe = new Recipe(recipeName,imgUrl,stepList,ingredientsList);
             Log.d("","steplistsize direct : " + stepList.size());
             Log.d("","ingrlistsize direct : " + ingredientsList.size());
             Log.d("","steplistsize frm recipelist b4 if: " + recipe.getStepList().size());
