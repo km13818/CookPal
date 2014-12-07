@@ -20,9 +20,9 @@ import java.util.Locale;
 public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
 
     // TODO: Add button on action bar to exit back to AssistantRecipeListActivity
-    // TODO: Fix 'add time' and 'pause/resume' timer functionality
+    // TODO: Fix 'add time' and 'pause/resume' timer functionality --> CONNOR
     // TODO: Don't display nextStep button on last step --> maybe replace with finish button?
-    // TODO: calculate ETC...or just replace with 'step list'
+    // TODO: calculate ETC...or just replace with 'step list' --> CONNOR
     // TODO: Add up/down caret on the ETC/step list to denote whether the list is up or down
     // TODO: Fix highlighting for initial step
     // TODO: add logic for n/a time
@@ -111,7 +111,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         if(null != currRecipe.getStepList()) {
             Step firstStep = currRecipe.getStepList().get(0);
-            setCurrStep(firstStep);
+            setCurrStepAndTimer(firstStep);
 
             createTimer(firstStep);
         }
@@ -126,7 +126,8 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         });
 
         // Set the step information
-        setCurrStepViewData(currStep);
+        //setCurrStepViewData(currStep);
+        changeCurrStepView();
 
         // Bind the step list adapter
         stepListAdapter = new AssistantStepListAdapter(this,
@@ -186,24 +187,25 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         // If next step exists, move to it and update the view
         if(++currStepIdx < stepList.size()) {
-            setCurrStep(stepList.get(currStepIdx));
-            changeCurrStepView(view);
+            setCurrStepAndTimer(stepList.get(currStepIdx));
+            changeCurrStepView();
         }
     }
 
     public void skipToStep(View view) {
         // Receive the step data that the user skipped to (set in the step list click listener)
-        setCurrStep((Step) stepPreviewLayout.getTag());
-        changeCurrStepView(view);
+        setCurrStepAndTimer((Step) stepPreviewLayout.getTag());
+        changeCurrStepView();
     }
 
-    private void setCurrStepViewData(Step currStep) {
+    /* private void setCurrStepViewData(Step currStep) {
         stepNumView.setText(currStep.getStepNumber() + "");
         stepTitleView.setText(currStep.getTitle());
         stepDescriptView.setText(currStep.getDescription());
-    }
+    } */
 
     // Methods to show only the current layout and hide everything else so they aren't clickable
+    // Note: View parameter is needed as a placeholder for button onClick event in XML layout files
     public void displayStepList(View view) {
         stepListLayout.setVisibility(View.VISIBLE);
         currStepLayout.setVisibility(View.GONE);
@@ -236,10 +238,14 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         assistantSpeaker.speak(speech,TextToSpeech.QUEUE_FLUSH,null);
     }
 
-    private void changeCurrStepView(View view) {
-        // Set data and display the new view
-        setCurrStepViewData(currStep);
-        displayCurrStep(view);
+    private void changeCurrStepView() {
+        // Set data for the new currStep view and display it
+        stepNumView.setText(currStep.getStepNumber() + "");
+        stepTitleView.setText(currStep.getTitle());
+        stepDescriptView.setText(currStep.getDescription());
+
+        // Note: view parameter needed as placeholder. Just pass in null
+        displayCurrStep(null);
 
         // Say the step information once the view is moved
         speakStepInfo(currStep);
@@ -253,15 +259,15 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
             // Highlight the currStep. Note: Must happen after unhighlighting for 1st step case
             if(listItemStepNum == currStep.getStepNumber()) {
-                updateStepListItemColors(v, R.color.orange, R.color.light_orange, R.color.orange);
+                updateStepListItemColors(v, R.color.orange, R.color.light_orange, getResources().getColor(R.color.orange));
             } else {
                 // Unhighlight other steps
-                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
+                updateStepListItemColors(v, R.color.grey, R.color.light_grey, getResources().getColor(R.color.grey));
             }
         }
     }
 
-    private void updateStepListItemColors(View v, int numColor, int titleColor, int timeColor) {
+    public static void updateStepListItemColors(View v, int numColor, int titleColor, int timeColor) {
         TextView stepNumView = (TextView) v.findViewById(R.id.stepListItem_stepNum);
         TextView stepTitleView = (TextView) v.findViewById(R.id.stepListItem_stepTitle);
         TextView stepTimeView = (TextView) v.findViewById(R.id.stepListItem_stepTimeTakes);
@@ -269,10 +275,10 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         // Populate the step preview with data from this clicked step
         stepNumView.setBackgroundResource(numColor);
         stepTitleView.setBackgroundResource(titleColor);
-        stepTimeView.setTextColor(getResources().getColor(timeColor));
+        stepTimeView.setTextColor(timeColor);
     }
 
-    private void setCurrStep(Step newCurrStep) {
+    private void setCurrStepAndTimer(Step newCurrStep) {
         this.currStep = newCurrStep;
 
         if(timer != null) {
