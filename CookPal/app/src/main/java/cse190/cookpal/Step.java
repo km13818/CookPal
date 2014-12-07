@@ -5,15 +5,13 @@ import java.io.Serializable;
 
 public class Step implements Serializable{
     private String title;
-    private String instructionTitle;
     private String description;
     private int hours;
     private int minutes;
     private int stepNumber;
 
-    public Step(String title, String instrTitle, String desc, int hours, int minutes, int stepNum) {
+    public Step(String title, String desc, int hours, int minutes, int stepNum) {
         this.title = title;
-        this.instructionTitle = instrTitle;
         this.description = desc;
         this.hours = hours;
         this.minutes = minutes;
@@ -28,7 +26,7 @@ public class Step implements Serializable{
 
     public String toStringDescription() {
 
-        return "STEP: "+stepNumber  + " " + getInstructionTitle() + " " +  getDescription() + " hrs: " + hours + " minutes: " + minutes;
+        return "STEP: "+stepNumber  + " " +  getDescription() + " hrs: " + hours + " minutes: " + minutes;
     }
 
     public String intToString(int num){
@@ -67,10 +65,6 @@ public class Step implements Serializable{
     public void setTitle(String title) {
         this.title = title;
     }
-
-    public String getInstructionTitle() { return instructionTitle; }
-
-    public void setInstructionTitle(String instrTitle) { this.instructionTitle = instrTitle; }
 
     public String getDescription() {
         return description;
