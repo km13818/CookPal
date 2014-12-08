@@ -6,22 +6,26 @@
     android:padding="6dp">
     <TextView
         android:id="@+id/direction_stepListItem_stepNum"
-        android:layout_width="40dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:textColor="@color/white"
         android:background="@color/orange"
         android:text="@string/dummyStepNum"
         android:layout_marginRight="5dp"
-        android:padding="10dp"/>
+        android:paddingTop="20dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_above="@+id/direction_stepListItem_stepDescription" />
     <TextView
         android:id="@+id/direction_stepListItem_stepTitle"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="40dp"
+        android:layout_height="20dp"
+        android:minHeight="30dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:layout_toRightOf="@id/direction_stepListItem_stepNum"
         android:textColor="@color/white"
         android:background="@color/orange"
-        android:padding="10dp"
         android:text="@string/dummyStepTitle"/>
 
     <TextView
@@ -33,13 +37,14 @@
         android:layout_below="@+id/direction_stepListItem_stepTitle"
         android:textColor="@color/white"
         android:background="@color/light_orange"
-        android:padding="10dp"
+        android:padding="4dp"
         android:text="@string/dummyStepTitle"/>
 
     <TextView
         android:id="@+id/direction_stepListItem_stepTimeTakes"
         android:layout_width="wrap_content"
-        android:layout_height="14dp"
+        android:layout_height="30dp"
+        android:minHeight="30dp"
         android:layout_below="@id/direction_stepListItem_stepDescription"
         android:textColor="@color/orange"
         android:layout_alignLeft="@+id/direction_stepListItem_stepDescription"
