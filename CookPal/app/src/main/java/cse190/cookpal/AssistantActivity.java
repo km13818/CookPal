@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -60,6 +61,8 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
     private PausableCountdownTimer timer;
 
+    private Button stepListButton;
+
     private final int ONE_SECOND_IN_MILLISECONDS = 1000;
 
     @Override
@@ -105,6 +108,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         stepPreviewTimerDisplayView = (TextView) findViewById(R.id.assistant_timerPreviewDisplay);
         timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
         playPauseButton = (ImageButton) findViewById(R.id.assistant_playPauseButton);
+        stepListButton = (Button) findViewById(R.id.assistant_stepListButton);
 
         // Recipe creation
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
@@ -127,6 +131,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         // Set the step information
         changeCurrStepView();
+
+        // Update the time-to-completion text
+        updateETCView();
 
         // Bind the step list adapter
         stepListAdapter = new AssistantStepListAdapter(this,
@@ -203,19 +210,44 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         stepListLayout.setVisibility(View.VISIBLE);
         currStepLayout.setVisibility(View.GONE);
         stepPreviewLayout.setVisibility(View.GONE);
+
+        updateETCView();
     }
 
     public void displayStepPreview(View view) {
         stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.GONE);
         stepPreviewLayout.setVisibility(View.VISIBLE);
+
+        updateETCView();
     }
 
     public void displayCurrStep(View view) {
         stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.VISIBLE);
         stepPreviewLayout.setVisibility(View.GONE);
+
+        updateETCView();
     }
+
+    // Updates the estimated time til completion and toggles the view
+    private void updateETCView() {
+        boolean listIsUp;
+        if(stepListLayout.getVisibility() == View.GONE) {
+            listIsUp = false;
+        } else {
+            listIsUp = true;
+        }
+
+        String remainingTime = PausableCountdownTimer.formattedTime(millisLeftInRecipe());
+
+        if(listIsUp) {
+            stepListButton.setText("hide steps. ETC: " + remainingTime);
+        } else {
+            stepListButton.setText("show steps. ETC: " + remainingTime);
+        }
+    }
+
     @Override
     public void onPause(){
         if(assistantSpeaker != null){
@@ -304,11 +336,13 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     public void onTick(long millisUntilFinished) {
         // Find the view and update with the new time --> happens every second
         updateTimerView();
+        updateETCView();
     }
 
     @Override
     public void onFinish() {
         updateTimerView();
+        updateETCView();
     }
 
     private void updateTimerView() {
@@ -320,7 +354,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private long millisLeftInRecipe() {
         long millis = timer.getTimeRemaining();
         ArrayList<Step> steps = currRecipe.getStepList();
-        for (Step s : steps.subList(currStep.getStepNumber()-1, steps.size())) {
+        for (Step s : steps.subList(currStep.getStepNumber(), steps.size())) {
             millis += s.getHours()*3600000 + s.getMinutes()*60000;
         }
         return millis;
