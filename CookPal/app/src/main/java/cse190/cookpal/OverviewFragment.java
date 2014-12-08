@@ -44,7 +44,10 @@ public class OverviewFragment extends Fragment {
             protected void onPostExecute(Void result) {
                 if (bitmap != null) {
                     recipeImage.setImageBitmap(bitmap);
+                } else {
+                    recipeImage.setImageResource(R.drawable.placeholder);
                 }
+
             }
 
         }.execute();
