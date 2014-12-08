@@ -22,14 +22,9 @@ import java.util.Locale;
 
 public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
 
-    // TODO: Add button on action bar to exit back to AssistantRecipeListActivity
-    // TODO: Fix 'add time' and 'pause/resume' timer functionality --> CONNOR
+    // TODO: Fix icon for button on action bar to exit back to AssistantRecipeListActivity
     // TODO: Don't display nextStep button on last step --> maybe replace with finish button?
-    // TODO: calculate ETC...or just replace with 'step list' --> CONNOR
     // TODO: Add up/down caret on the ETC/step list to denote whether the list is up or down
-    // TODO: Fix highlighting for initial step
-    // TODO: add logic for n/a time
-    // TODO: Fix bug where description is populated by title if Assistant is started from AssistantRecipeList
 
     // Layouts
     private RelativeLayout currStepLayout;
@@ -67,6 +62,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private Button stepListIsUpButton;
 
     private final int ONE_SECOND_IN_MILLISECONDS = 1000;
+    private final String NOT_APPLICABLE = "n/a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +148,13 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
                 stepPreviewNumView.setText(String.valueOf(clickedStep.getStepNumber()));
                 stepPreviewTitleView.setText(clickedStep.getTitle());
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
-                stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
+                // stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
+
+                if(clickedStep.getTimeInMilliseconds() == 0) {
+                    stepPreviewTimerDisplayView.setText(NOT_APPLICABLE);
+                } else {
+                    stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
+                }
 
                 // Save the clicked step data to be accessed if the user chooses to skip there
                 stepPreviewLayout.setTag(clickedStep);
@@ -341,7 +343,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         // Explicitly set view if no time because onTick() updates it, but it won't be called
         if(newCurrStep.getTimeInMilliseconds() == 0) {
-            timerDisplayView.setText("n/a");
+            timerDisplayView.setText(NOT_APPLICABLE);
         }
     }
 
