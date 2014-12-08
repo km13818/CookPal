@@ -21,11 +21,10 @@ import java.util.Locale;
 
 
 public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
-
-    // TODO: Fix icon for button on action bar to exit back to AssistantRecipeListActivity
     // TODO: Don't display nextStep button on last step --> maybe replace with finish button?
     // TODO: Add up/down caret on the ETC/step list to denote whether the list is up or down
     // TODO: make voice say initial step
+    // TODO: add code to change the 'pause' button to 'play' button when timer ends
 
     // Layouts
     private RelativeLayout currStepLayout;
@@ -55,15 +54,19 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private Step currStep;
 
     private TextToSpeech assistantSpeaker;
-    private String write;
 
     private PausableCountdownTimer timer;
 
     private Button stepListIsDownButton;
     private Button stepListIsUpButton;
+    private ImageButton nextStepButton;
 
     private final int ONE_SECOND_IN_MILLISECONDS = 1000;
-    private final String NOT_APPLICABLE = "n/a";
+    public static final String NOT_APPLICABLE = "n/a";
+    public static final String OK = "OK";
+    public static final String CANCEL = "Cancel";
+    public static final String EXIT_ASSISTANT = "Exit Assistant?";
+    public static final String ALL_DONE_RETURN_TO_RECIPE_LIST = "All done! Return to Recipe List?";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,10 +84,10 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
                     public void onInit(int status) {
                         if(status != TextToSpeech.ERROR){
                             assistantSpeaker.setLanguage(Locale.UK);
+                            speakStepInfo(currStep);
                         }
                     }
                 });
-        write = "this is a test please speakerino";
 
         // Bind the current step (main assistant page) view
         currStepLayout = (RelativeLayout) findViewById(R.id.assistant_currStep);
@@ -110,6 +113,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         playPauseButton = (ImageButton) findViewById(R.id.assistant_playPauseButton);
         stepListIsDownButton = (Button) findViewById(R.id.assistant_stepListIsDownButton);
         stepListIsUpButton = (Button) findViewById(R.id.assistant_stepListIsUpButton);
+        nextStepButton = (ImageButton) findViewById(R.id.assistant_nextStepButton);
 
         // Recipe creation
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
@@ -129,7 +133,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         });
 
         // Set the step information
-        changeCurrStepView();
+        changeCurrStepView_highlightStep_speakStep();
 
         // Update the time-to-completion text
         updateETCView();
@@ -151,10 +155,10 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
                 // stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
 
-                if(clickedStep.getTimeInMilliseconds() == 0) {
+                if (clickedStep.getTimeInMilliseconds() == 0) {
                     stepPreviewTimerDisplayView.setText(NOT_APPLICABLE);
                 } else {
-                    stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
+                    stepPreviewTimerDisplayView.setText(PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()));
                 }
 
                 // Save the clicked step data to be accessed if the user chooses to skip there
@@ -170,6 +174,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
                 ONE_SECOND_IN_MILLISECONDS);
         timer.setHandler(this);
         timer.start();
+        playPauseButton.setImageResource(R.drawable.assistant_pause_icon);
     }
 
     @Override
@@ -178,8 +183,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         getMenuInflater().inflate(R.menu.assistant, menu);
         return true;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -191,25 +194,29 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
             return true;
         }
         else if(id == R.id.exitAssistantButton) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-            builder.setMessage("Exit assistant?")
-                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Intent intent = new Intent(AssistantActivity.this, AssistantRecipeListActivity.class);
-                            startActivity(intent);
-                        }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alertDialog = builder.create();
+            AlertDialog alertDialog = createAlertDialog(EXIT_ASSISTANT, OK, CANCEL);
             alertDialog.show();
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private AlertDialog createAlertDialog(String message, String posButtonText, String negButtonText) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage(message)
+                .setPositiveButton(posButtonText, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(AssistantActivity.this, AssistantRecipeListActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton(negButtonText, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        return builder.create();
     }
 
     public void moveToNextStep(View view) {
@@ -220,14 +227,14 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         // If next step exists, move to it and update the view
         if(++currStepIdx < stepList.size()) {
             setCurrStepAndTimer(stepList.get(currStepIdx));
-            changeCurrStepView();
+            changeCurrStepView_highlightStep_speakStep();
         }
     }
 
     public void skipToStep(View view) {
         // Receive the step data that the user skipped to (set in the step list click listener)
         setCurrStepAndTimer((Step) stepPreviewLayout.getTag());
-        changeCurrStepView();
+        changeCurrStepView_highlightStep_speakStep();
     }
 
     // Methods to show only the current layout and hide everything else so they aren't clickable
@@ -288,12 +295,14 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     private void speakStepInfo(Step step) {
-        String speech = "Step " + step.getStepNumber() + ". " + step.getTitle() + ", " + step.getDescription();
+        if(step != null) {
+            String speech = "Step " + step.getStepNumber() + ". " + step.getTitle() + ", " + step.getDescription();
 
-        assistantSpeaker.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+            assistantSpeaker.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
+        }
     }
 
-    private void changeCurrStepView() {
+    private void changeCurrStepView_highlightStep_speakStep() {
         // Set data for the new currStep view and display it
         stepNumView.setText(currStep.getStepNumber() + "");
         stepTitleView.setText(currStep.getTitle());
@@ -301,9 +310,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
         // Note: view parameter needed as placeholder. Just pass in null
         displayCurrStep(null);
-
-        // Say the step information once the view is moved
-        speakStepInfo(currStep);
 
         int numSteps = stepListView.getChildCount();
         for(int i = 0; i < numSteps; i++) {
@@ -320,6 +326,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
                 updateStepListItemColors(v, R.color.grey, R.color.light_grey, getResources().getColor(R.color.grey));
             }
         }
+
+        // Say the step information once the view is moved
+        speakStepInfo(currStep);
     }
 
     public static void updateStepListItemColors(View v, int numColor, int titleColor, int timeColor) {
@@ -345,6 +354,13 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         // Explicitly set view if no time because onTick() updates it, but it won't be called
         if(newCurrStep.getTimeInMilliseconds() == 0) {
             timerDisplayView.setText(NOT_APPLICABLE);
+        }
+
+        // If we're on the last step, disable 'next step' button
+        if(newCurrStep.getStepNumber() == stepListView.getChildCount()) {
+            nextStepButton.setImageResource(R.drawable.disabled_next_step_icon);
+        } else {
+            nextStepButton.setImageResource(R.drawable.assistant_next_step_icon);
         }
     }
 
@@ -379,6 +395,11 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     public void onFinish() {
         updateTimerView();
         updateETCView();
+        playPauseButton.setImageResource(R.drawable.assistant_play_icon);
+
+        if(currStep.getStepNumber() == stepListView.getChildCount()) {
+            createAlertDialog(ALL_DONE_RETURN_TO_RECIPE_LIST, OK, CANCEL).show();
+        }
     }
 
     private void updateTimerView() {
