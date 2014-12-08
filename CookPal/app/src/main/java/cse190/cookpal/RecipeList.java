@@ -243,6 +243,7 @@ public class RecipeList extends BaseDrawerActivity {
             }
             final View thisConvertView = convertView;
             final String recipeName = recipeList.get(position);
+            final String recipeImageURL = recipeImageList.get(position);
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
@@ -251,7 +252,7 @@ public class RecipeList extends BaseDrawerActivity {
             editRecipeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "EDITRECIPEACTIVITY");
+                    new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "EDITRECIPEACTIVITY", recipeImageURL);
                 }
             });
             TextView currTextView = (TextView) convertView.findViewById(R.id.recipeTitle);
@@ -260,7 +261,7 @@ public class RecipeList extends BaseDrawerActivity {
                 @Override
                 public void onClick(View v) {
 
-                new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "RECIPEACTIVITY");
+                new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "RECIPEACTIVITY", recipeImageURL);
                 }
             });
             ImageView currImageView = (ImageView) convertView.findViewById(R.id.recipeEntryImageView);
@@ -310,7 +311,7 @@ public class RecipeList extends BaseDrawerActivity {
         protected Void doInBackground(String... params) {
             Log.d("recipelist", "do in background.....");
             /************ Make Post Call To Web Server ***********/
-
+            imgUrl = params[3];
             //retrieve img url
             try {
                 // Defined URL  where to send data
@@ -426,14 +427,16 @@ public class RecipeList extends BaseDrawerActivity {
             // Close progress dialog
             Dialog.dismiss();
 
+            ArrayList<String> imgList = new ArrayList<String>();
             ArrayList<Step> stepList = new ArrayList<Step>();
             ArrayList<Ingredients> ingredientsList = new ArrayList<Ingredients>();
             Recipe clickedRecipe;
 
-            if (imgRetrievalErrorString != null) {
+           // if (imgRetrievalErrorString != null) {
 
-            } else {
+            //} else {
                 /****************** Start Parse Response JSON Data *************/
+            /*
                 Log.d("recipeList activity", "json return string: " + imgReturnString);
                 JSONObject jsonResponse;
                 try {
@@ -445,7 +448,9 @@ public class RecipeList extends BaseDrawerActivity {
                         JSONArray recipeArray = (JSONArray) imgJsonResponse.get(key);
                         for (int i = 0; i < recipeArray.length(); i++) {
                             String recipeImageURL = ((JSONObject)recipeArray.get(i)).get("image").toString();
-                            imgUrl = recipeImageURL;
+                            Log.e("img", recipeImageURL);
+                            imgList.add(recipeImageURL);
+                            //imgUrl = recipeImageURL;
                         }
                     }
 
@@ -453,7 +458,7 @@ public class RecipeList extends BaseDrawerActivity {
                     e.printStackTrace();
                 }
 
-            }
+            } */
 
             //error
             if (instructionsRetrievalErrorString != null) {
