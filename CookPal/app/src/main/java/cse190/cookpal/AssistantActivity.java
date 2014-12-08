@@ -266,16 +266,18 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     public void displayCurrStep(View view) {
-        View v = findViewById(R.id.assistant_stepListLayout);
-        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_out_bottom);
-        v.startAnimation(anim);
-        stepListLayout.setVisibility(View.GONE);
+        View button = findViewById(R.id.assistant_stepListIsUpButton);
+        if (view == button) {
+            View v = findViewById(R.id.assistant_stepListLayout);
+            Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_out_bottom);
+            v.startAnimation(anim);
 
-        View v2 = findViewById(R.id.assistant_currStep);
-        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_in_top);
-        v2.startAnimation(anim2);
+            View v2 = findViewById(R.id.assistant_currStep);
+            Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_in_top);
+            v2.startAnimation(anim2);
+        }
+        stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.VISIBLE);
-        
         stepPreviewLayout.setVisibility(View.GONE);
 
         updateETCView();
