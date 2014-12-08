@@ -19,6 +19,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 
@@ -296,7 +298,12 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
             listIsUp = true;
         }
 
-        String remainingTime = PausableCountdownTimer.formattedTime(millisLeftInRecipe());
+        //String remainingTime = PausableCountdownTimer.formattedTime(millisLeftInRecipe());
+
+        Calendar calendar = GregorianCalendar.getInstance();
+        calendar.add(Calendar.MILLISECOND, (int)millisLeftInRecipe());
+        String remainingTime = ""+calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE)
+                +((calendar.get(Calendar.AM_PM)==Calendar.AM)?" AM":" PM");
 
         if(listIsUp) {
             stepListIsUpButton.setText("hide steps. ETC: " + remainingTime);
