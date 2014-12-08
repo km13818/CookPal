@@ -73,12 +73,12 @@ public class RecipeList extends BaseDrawerActivity {
         super.onDestroy();
     }
     @Override
+
     protected void onRestart() {
         Log.d("recipelist", "recipelist onrestart");
         recipeList = new ArrayList<String>();
         recipeImageList = new ArrayList<String>();
         new LongOperation().execute(SERVER_RECIPE_LIST_REQUEST_URL);
-        populateListView();
         super.onRestart();
     }
     @Override
@@ -88,8 +88,6 @@ public class RecipeList extends BaseDrawerActivity {
 
 
         //initialize image lazy loader
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
-        ImageLoader.getInstance().init(config);
         new LongOperation().execute(SERVER_RECIPE_LIST_REQUEST_URL);
       //  new PopulateRecipeOperation().execute(AccountActivity.getFbId(),"aaaa" );
 
@@ -241,9 +239,14 @@ public class RecipeList extends BaseDrawerActivity {
             if(convertView == null) {
                 convertView = getLayoutInflater().inflate(R.layout.recipe_listview_entry, parent, false);
             }
+
             final View thisConvertView = convertView;
             final String recipeName = recipeList.get(position);
             final String recipeImageURL = recipeImageList.get(position);
+            ImageView currImageView = (ImageView) thisConvertView.findViewById(R.id.recipeEntryImageView);
+            //if the entry does not have an url, we use local resources to avoid slowdowns
+            imageLoader.displayImage(recipeImageURL, currImageView);
+
             CheckBox currCheckBox = (CheckBox) convertView.findViewById(R.id.recipeListviewEntry);
             currCheckBox.setText(recipeName);
             checkBoxes.add(currCheckBox);
@@ -255,7 +258,7 @@ public class RecipeList extends BaseDrawerActivity {
                     new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "EDITRECIPEACTIVITY", recipeImageURL);
                 }
             });
-            TextView currTextView = (TextView) convertView.findViewById(R.id.recipeTitle);
+            TextView currTextView = (TextView) thisConvertView.findViewById(R.id.recipeTitle);
             currTextView.setText(recipeName);
             currTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -264,18 +267,9 @@ public class RecipeList extends BaseDrawerActivity {
                 new PopulateRecipeOperation().execute(AccountActivity.getFbId(), recipeName, "RECIPEACTIVITY", recipeImageURL);
                 }
             });
-            ImageView currImageView = (ImageView) convertView.findViewById(R.id.recipeEntryImageView);
-            //if the entry does not have an url, we use local resources to avoid slowdowns
-            if(urls.get(position).length() == 0) {
-                int id = getResources().getIdentifier("cse190.cookpal:drawable/placeholder", null, null);
-                currImageView.setImageResource(id);
-            }
-            //else we grab according to the specified url
-            else {
-                imageLoader.displayImage(urls.get(position), currImageView);
-            }
 
-            return convertView;
+            Log.e("this recipe is loading image", recipeName);
+            return thisConvertView;
         }
     }
     /////////////////////////////////////////////Start JSON Retrieval code///////////////
@@ -649,6 +643,7 @@ public class RecipeList extends BaseDrawerActivity {
                             recipeImageList.add(recipeImageURL);
                         }
                     }
+                    Log.e("populating list view", "blah");
                     populateListView();
                     /****************** End Parse Response JSON Data *************/
 

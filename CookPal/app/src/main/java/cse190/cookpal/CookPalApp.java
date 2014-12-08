@@ -2,6 +2,9 @@ package cse190.cookpal;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import android.app.Application;
 
@@ -27,6 +30,7 @@ public class CookPalApp extends Application {
 
     public static int GENERAL_TRACKER = 0;
 
+
     public enum TrackerName {
         APP_TRACKER, // Tracker used only in this app.
         GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
@@ -50,5 +54,11 @@ public class CookPalApp extends Application {
 
         }
         return mTrackers.get(trackerId);
+    }
+    public void onCreate() {
+        super.onCreate();
+        DisplayImageOptions options = new DisplayImageOptions.Builder().showImageForEmptyUri(R.drawable.placeholder).build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).defaultDisplayImageOptions(options).build();
+        ImageLoader.getInstance().init(config);
     }
 }
