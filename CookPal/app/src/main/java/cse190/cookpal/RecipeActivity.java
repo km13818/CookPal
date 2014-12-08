@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
@@ -173,5 +174,10 @@ public class RecipeActivity extends BaseDrawerActivity implements
         //stop tracking
         GoogleAnalytics.getInstance(this).reportActivityStop(this);
 
+    }
+
+    public void startAssistantClicked(View view){
+        Intent intent = new Intent(RecipeActivity.getContext(), AssistantActivity.class);
+        startActivity(intent);
     }
 }
