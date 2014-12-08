@@ -37,6 +37,7 @@ public class EditRecipeActivity extends BaseDrawerActivity {
         currentRecipe = (Recipe) intent.getSerializableExtra("recipe");
 
         ((EditText)findViewById(R.id.editRecipeNameInput)).setText(currentRecipe.getRecipeName());
+        Log.e("testing", currentRecipe.getImgUrl());
         ((EditText)findViewById(R.id.editRecipeImageUrlInput)).setText(currentRecipe.getImgUrl());
 
         ArrayList<Step> stepList = currentRecipe.getStepList();
@@ -55,6 +56,38 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             ((EditText) newInstructionView.findViewById(R.id.instructionEditText)).setText(s.getDescription());
             ((EditText) newInstructionView.findViewById(R.id.hoursEditText)).setText(s.getHours() + "");
             ((EditText) newInstructionView.findViewById(R.id.minutesEditText)).setText(s.getMinutes() + "");
+
+            ImageButton deleteInstructionButton = (ImageButton) newInstructionView.findViewById(R.id.edit_recipe_instruction_delete);
+            deleteInstructionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //get the parent's parent layout of this entry (structure of entry)
+                    ViewGroup parentView = (ViewGroup)v.getParent().getParent();
+                    //use the parent viewGroup to find the index of the current layout
+                    int currentIndex = ((ViewGroup)parentView.getParent()).indexOfChild(parentView);
+                    Log.e("index of current view's parent", currentIndex + "");
+                    LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.instructionsEditLinearLayout);
+                    LinearLayout newInstructionView = (LinearLayout) ingredientsLayout.getChildAt(currentIndex);
+                    ingredientsLayout.removeView(newInstructionView);
+                    //decrease the ingredient counter
+                    rebuildCounter();
+                }
+
+                //ensure the list order is always proper (i.e. no gaps)
+                public void rebuildCounter() {
+                    ViewGroup ingGroup = (ViewGroup)findViewById(R.id.instructionsEditLinearLayout);
+                    //iterate through all the children and reset the step counter
+                    for(int i = 0; i < (ingGroup.getChildCount() + 1); i++) {
+                        View horizontalView = ingGroup.getChildAt(i);
+                        if(horizontalView instanceof LinearLayout) {
+                            ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                            TextView ingredientNumView = (TextView)horizontalViewGroup.findViewById(R.id.stepNoTextView);
+
+                            ingredientNumView.setText(i+1 + ".");
+                        }
+                    }
+                }
+            });
             stepLayout.addView(newInstructionView);
         }
 
@@ -66,6 +99,38 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 Log.d("editrecipe", "num instructions b4 adding; " + instructionLayout.getChildCount());
                 View newInstructionView = getLayoutInflater().inflate(R.layout.editrecipeinstruction_listview_entry, null);
                 ((TextView)newInstructionView.findViewById(R.id.stepNoTextView)).setText((instructionLayout.getChildCount()+1) + ".");
+
+                ImageButton deleteInstructionButton = (ImageButton) newInstructionView.findViewById(R.id.edit_recipe_instruction_delete);
+                deleteInstructionButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //get the parent's parent layout of this entry (structure of entry)
+                        ViewGroup parentView = (ViewGroup)v.getParent().getParent();
+                        //use the parent viewGroup to find the index of the current layout
+                        int currentIndex = ((ViewGroup)parentView.getParent()).indexOfChild(parentView);
+                        Log.e("index of current view's parent", currentIndex + "");
+                        LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.instructionsEditLinearLayout);
+                        LinearLayout newInstructionView = (LinearLayout) ingredientsLayout.getChildAt(currentIndex);
+                        ingredientsLayout.removeView(newInstructionView);
+                        //decrease the ingredient counter
+                        rebuildCounter();
+                    }
+
+                    //ensure the list order is always proper (i.e. no gaps)
+                    public void rebuildCounter() {
+                        ViewGroup ingGroup = (ViewGroup)findViewById(R.id.instructionsEditLinearLayout);
+                        //iterate through all the children and reset the step counter
+                        for(int i = 0; i < (ingGroup.getChildCount() + 1); i++) {
+                            View horizontalView = ingGroup.getChildAt(i);
+                            if(horizontalView instanceof LinearLayout) {
+                                ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                                TextView ingredientNumView = (TextView)horizontalViewGroup.findViewById(R.id.stepNoTextView);
+
+                                ingredientNumView.setText(i+1 + ".");
+                            }
+                        }
+                    }
+                });
                 instructionLayout.addView(newInstructionView);
             }
         });
@@ -74,10 +139,41 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             LinearLayout ingredientLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
             View newIngredientView = getLayoutInflater().inflate(R.layout.editrecipeingredient_listview_entry, null);
 
-            ((TextView) newIngredientView.findViewById(R.id.add_recipe_ingredients_step)).setText((ingredientLayout.getChildCount() + 1) + ".");
+            ((TextView) newIngredientView.findViewById(R.id.edit_recipe_ingredients_step)).setText((ingredientLayout.getChildCount() + 1) + ".");
             ((EditText) newIngredientView.findViewById(R.id.ingredientEditText)).setText(i.getIngredientName());
             ((EditText) newIngredientView.findViewById(R.id.quantityEditText)).setText(i.getQuantity());
 
+            ImageButton deleteIngredientsButton = (ImageButton) newIngredientView.findViewById(R.id.edit_recipe_ingredients_delete);
+            deleteIngredientsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //get the parent layout of this entry
+                    LinearLayout parentView = (LinearLayout)v.getParent();
+                    //use the parent viewGroup to find the index of the current layout
+                    int currentIndex = ((ViewGroup)parentView.getParent()).indexOfChild(parentView);
+                    Log.e("index of current view's parent", currentIndex + "");
+                    LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
+                    LinearLayout newIngredientView = (LinearLayout) ingredientsLayout.getChildAt(currentIndex);
+                    ingredientsLayout.removeView(newIngredientView);
+                    //decrease the ingredient counter
+                    rebuildCounter();
+                }
+
+                //ensure the list order is always proper (i.e. no gaps)
+                public void rebuildCounter() {
+                    ViewGroup ingGroup = (ViewGroup)findViewById(R.id.ingredientsEditLinearLayout);
+                    //iterate through all the children and reset the step counter
+                    for(int i = 0; i < (ingGroup.getChildCount() + 1); i++) {
+                        View horizontalView = ingGroup.getChildAt(i);
+                        if(horizontalView instanceof LinearLayout) {
+                            ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                            TextView ingredientNumView = (TextView)horizontalViewGroup.findViewById(R.id.edit_recipe_ingredients_step);
+
+                            ingredientNumView.setText(i+1 + ".");
+                        }
+                    }
+                }
+            });
             ingredientLayout.addView(newIngredientView);
         }
 
@@ -89,7 +185,39 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
                 Log.d("editrecipe", "num ingredients b4 adding; " + ingredientsLayout.getChildCount());
                 View newIngredientView = getLayoutInflater().inflate(R.layout.editrecipeingredient_listview_entry, null);
-                ((TextView) newIngredientView.findViewById(R.id.add_recipe_ingredients_step)).setText((ingredientsLayout.getChildCount()+1) + ".");
+                ((TextView) newIngredientView.findViewById(R.id.edit_recipe_ingredients_step)).setText((ingredientsLayout.getChildCount()+1) + ".");
+
+                ImageButton deleteIngredientsButton = (ImageButton) newIngredientView.findViewById(R.id.edit_recipe_ingredients_delete);
+                deleteIngredientsButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //get the parent layout of this entry
+                        LinearLayout parentView = (LinearLayout)v.getParent();
+                        //use the parent viewGroup to find the index of the current layout
+                        int currentIndex = ((ViewGroup)parentView.getParent()).indexOfChild(parentView);
+                        Log.e("index of current view's parent", currentIndex + "");
+                        LinearLayout ingredientsLayout = (LinearLayout) findViewById(R.id.ingredientsEditLinearLayout);
+                        LinearLayout newIngredientView = (LinearLayout) ingredientsLayout.getChildAt(currentIndex);
+                        ingredientsLayout.removeView(newIngredientView);
+                        //decrease the ingredient counter
+                        rebuildCounter();
+                    }
+
+                    //ensure the list order is always proper (i.e. no gaps)
+                    public void rebuildCounter() {
+                        ViewGroup ingGroup = (ViewGroup)findViewById(R.id.ingredientsEditLinearLayout);
+                        //iterate through all the children and reset the step counter
+                        for(int i = 0; i < (ingGroup.getChildCount() + 1); i++) {
+                            View horizontalView = ingGroup.getChildAt(i);
+                            if(horizontalView instanceof LinearLayout) {
+                                ViewGroup horizontalViewGroup = (ViewGroup)horizontalView;
+                                TextView ingredientNumView = (TextView)horizontalViewGroup.findViewById(R.id.edit_recipe_ingredients_step);
+
+                                ingredientNumView.setText(i+1 + ".");
+                            }
+                        }
+                    }
+                });
                 ingredientsLayout.addView(newIngredientView);
             }
         });
