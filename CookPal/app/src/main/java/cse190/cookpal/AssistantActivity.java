@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
 
 
@@ -110,7 +108,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
-
+        if(currRecipe == null){  //if it came from RecipeActivity
+            currRecipe = RecipeActivity.getCurrentRecipe();
+        }
 
         if(null != currRecipe.getStepList()) {
             Step firstStep = currRecipe.getStepList().get(0);
