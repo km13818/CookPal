@@ -139,7 +139,7 @@
 
             <!-- Step list slider/button -->
             <Button
-                android:id="@+id/assistant_stepListButton"
+                android:id="@+id/assistant_stepListIsDownButton"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentBottom="true"
@@ -170,12 +170,12 @@
                 android:id="@+id/assistant_stepListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/assistant_etcButton">
+                android:layout_above="@+id/assistant_stepListIsUpButton">
 
             </ListView>
 
             <Button
-                android:id="@+id/assistant_etcButton"
+                android:id="@+id/assistant_stepListIsUpButton"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_centerHorizontal="true"

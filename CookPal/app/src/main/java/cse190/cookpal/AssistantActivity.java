@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
 
 
@@ -65,7 +63,8 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
     private PausableCountdownTimer timer;
 
-    private Button stepListButton;
+    private Button stepListIsDownButton;
+    private Button stepListIsUpButton;
 
     private final int ONE_SECOND_IN_MILLISECONDS = 1000;
 
@@ -112,7 +111,8 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         stepPreviewTimerDisplayView = (TextView) findViewById(R.id.assistant_timerPreviewDisplay);
         timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
         playPauseButton = (ImageButton) findViewById(R.id.assistant_playPauseButton);
-        stepListButton = (Button) findViewById(R.id.assistant_stepListButton);
+        stepListIsDownButton = (Button) findViewById(R.id.assistant_stepListIsDownButton);
+        stepListIsUpButton = (Button) findViewById(R.id.assistant_stepListIsUpButton);
 
         // Recipe creation
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
@@ -257,6 +257,10 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
     // Updates the estimated time til completion and toggles the view
     private void updateETCView() {
+        // TODO: calculate ETC with system time
+        // Calendar calendar = GregorianCalendar.getInstance();
+        // calendar.add(Calendar.MILLISECOND, millisLeftInRecipe());
+
         boolean listIsUp;
         if(stepListLayout.getVisibility() == View.GONE) {
             listIsUp = false;
@@ -267,9 +271,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         String remainingTime = PausableCountdownTimer.formattedTime(millisLeftInRecipe());
 
         if(listIsUp) {
-            stepListButton.setText("hide steps. ETC: " + remainingTime);
+            stepListIsUpButton.setText("hide steps. ETC: " + remainingTime);
         } else {
-            stepListButton.setText("show steps. ETC: " + remainingTime);
+            stepListIsDownButton.setText("show steps. ETC: " + remainingTime);
         }
     }
 
