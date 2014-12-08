@@ -2,7 +2,6 @@ package cse190.cookpal;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ public class DirectionsFragment extends Fragment {
 
         stepListView = (ListView) rootView.findViewById(R.id.directions_tab_listview);
         if(null != currRecipe.getStepList() && currRecipe.getStepList().size() != 0) {
-            Log.e("overview frag", "steps: " + currRecipe.getStepList().get(0));
             currStep = currRecipe.getStepList().get(0);
         }
 

@@ -30,7 +30,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
 
     public static ArrayList<Ingredients> ingredientList;
     private static Context mContext;
-    public static Recipe currentRecipe;
+    private static Recipe currentRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
