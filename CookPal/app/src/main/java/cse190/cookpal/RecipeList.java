@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -56,9 +56,8 @@ public class RecipeList extends BaseDrawerActivity {
     PopupWindow deleteConfirmWindow;
     Button deleteConfirmButton;
     TextView deleteConfirmText;
-    //ImageButton deleteGroceryListButton;
-
     // WebServer Request URL
+
     public static final String SERVER_RECIPE_LIST_REQUEST_URL = "http://ec2-54-69-39-93.us-west-2.compute.amazonaws.com:8080/request_handler.jsp?filter=select_recipes&fb_id=" +
             AccountActivity.getFbId();
 
@@ -86,6 +85,7 @@ public class RecipeList extends BaseDrawerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
+
 
         //initialize image lazy loader
         new LongOperation().execute(SERVER_RECIPE_LIST_REQUEST_URL);
