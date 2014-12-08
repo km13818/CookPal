@@ -287,10 +287,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
     // Updates the estimated time til completion and toggles the view
     private void updateETCView() {
-        // TODO: calculate ETC with system time
-        // Calendar calendar = GregorianCalendar.getInstance();
-        // calendar.add(Calendar.MILLISECOND, millisLeftInRecipe());
-
         boolean listIsUp;
         if(stepListLayout.getVisibility() == View.GONE) {
             listIsUp = false;
@@ -298,12 +294,21 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
             listIsUp = true;
         }
 
-        //String remainingTime = PausableCountdownTimer.formattedTime(millisLeftInRecipe());
+        // Timer format
+        // String remainingTime = PausableCountdownTimer.formattedTime(millisLeftInRecipe());
 
+        // Time based on current system time format
         Calendar calendar = GregorianCalendar.getInstance();
         calendar.add(Calendar.MILLISECOND, (int)millisLeftInRecipe());
-        String remainingTime = ""+calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE)
-                +((calendar.get(Calendar.AM_PM)==Calendar.AM)?" AM":" PM");
+
+        String remainingTime = calendar.get(Calendar.HOUR) + ":";
+        int minutes = calendar.get(Calendar.MINUTE);
+        if(minutes < 10) {
+            remainingTime += "0" + minutes;
+        } else {
+            remainingTime += minutes;
+        }
+        remainingTime += ((calendar.get(Calendar.AM_PM)==Calendar.AM)?" AM":" PM");
 
         if(listIsUp) {
             stepListIsUpButton.setText("hide steps. ETC: " + remainingTime);
