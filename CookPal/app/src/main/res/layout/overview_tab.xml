@@ -11,6 +11,7 @@
         android:padding="10dp"
         android:layout_alignParentTop="true"
         android:scaleType="fitXY"
+        android:layout_marginBottom="58dp"
         android:adjustViewBounds="true"/>
 
     <TextView
@@ -19,6 +20,8 @@
         android:id="@+id/overview_recipe_name"
         android:gravity="center"
         android:textSize="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
