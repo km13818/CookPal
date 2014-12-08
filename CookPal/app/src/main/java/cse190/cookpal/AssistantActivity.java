@@ -108,9 +108,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         // Recipe creation
         //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
-        if(currRecipe == null){  //if it came from RecipeActivity
-            currRecipe = RecipeActivity.getCurrentRecipe();
-        }
 
         if(null != currRecipe.getStepList()) {
             Step firstStep = currRecipe.getStepList().get(0);
