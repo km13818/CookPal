@@ -23,6 +23,7 @@
    //RECIPE FIELDS
    String recipeCBType = request.getParameter("cookbook_type");
    String recipeName = request.getParameter("r_name");
+   String recipeNameCurrent = request.getParameter("r_name_curr");
    String recipeId = request.getParameter("recipe_id");
    String imageURL = request.getParameter("image_url");
 
@@ -222,6 +223,41 @@
          out.print(result);
          out.flush();          
       }
+	  //cascade delete recipe ingredients and instructions but update recipe table
+	  else if(handleFilter.equals("update_recipe")) {	  
+         query = "UPDATE recipe SET name = ?, cookbook_type = ?, image_url = ? WHERE account_id = ? AND name = ?";
+         pstmt = conn.prepareStatement(query);     
+		 
+         conn.setAutoCommit(false);       
+         pstmt.setString(1, recipeName);
+         pstmt.setString(2, recipeCBType);
+         pstmt.setString(3, imageURL);
+		 pstmt.setString(4, accId);
+		 pstmt.setString(5, recipeNameCurrent);
+         pstmt.executeUpdate(); 
+         conn.commit();
+         conn.setAutoCommit(true);     	
+	  
+		 query = "DELETE FROM recipe_ingredient WHERE account_id = ? AND recipe_name = ?";
+         pstmt = conn.prepareStatement(query);   
+         
+         conn.setAutoCommit(false);
+         pstmt.setString(1, accId);
+         pstmt.setString(2, recipeName);
+         pstmt.executeUpdate(); 
+         conn.commit();
+         conn.setAutoCommit(true);         
+         
+         query = "DELETE FROM recipe_instruction WHERE account_id = ? AND recipe_name = ?";
+         pstmt = conn.prepareStatement(query);   
+         
+         conn.setAutoCommit(false);
+         pstmt.setString(1, accId);
+         pstmt.setString(2, recipeName);
+         pstmt.executeUpdate(); 
+         conn.commit();
+         conn.setAutoCommit(true);   
+	  }
    }   
    catch(SQLException e) {
 	  out.print(err);
