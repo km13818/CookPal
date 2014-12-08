@@ -25,15 +25,19 @@ public class DirectionsStepListAdapter extends StepListAdapter {
         // Bind TextView references
         // Note: These TextViews are created in the XML files we defined.
         TextView stepNum = (TextView) currView.findViewById(R.id.direction_stepListItem_stepNum);
-        TextView stepTitle = (TextView) currView.findViewById(R.id.direction_stepListItem_stepDescription);
+        TextView stepTitle = (TextView) currView.findViewById(R.id.direction_stepListItem_stepTitle);
+        TextView stepDescription = (TextView) currView.findViewById(R.id.direction_stepListItem_stepDescription);
         TextView stepTime = (TextView) currView.findViewById(R.id.direction_stepListItem_stepTimeTakes);
 
         // Populate views with data
         if(stepNum != null) {
             stepNum.setText(String.valueOf(currIterStep.getStepNumber()));
         }
-        if(stepTitle != null) {
+        if(stepTitle != null){
             stepTitle.setText(currIterStep.getTitle());
+        }
+        if(stepDescription != null) {
+            stepDescription.setText(currIterStep.getDescription());
         }
         if(stepTime != null) {
             stepTime.setText(currIterStep.getTime());

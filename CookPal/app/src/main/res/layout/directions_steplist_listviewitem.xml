@@ -14,15 +14,28 @@
         android:layout_marginRight="5dp"
         android:padding="10dp"/>
     <TextView
-        android:id="@+id/direction_stepListItem_stepDescription"
+        android:id="@+id/direction_stepListItem_stepTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:minHeight="40dp"
         android:layout_toRightOf="@id/direction_stepListItem_stepNum"
         android:textColor="@color/white"
+        android:background="@color/orange"
+        android:padding="10dp"
+        android:text="@string/dummyStepTitle"/>
+
+    <TextView
+        android:id="@+id/direction_stepListItem_stepDescription"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:layout_toRightOf="@id/direction_stepListItem_stepNum"
+        android:layout_below="@+id/direction_stepListItem_stepTitle"
+        android:textColor="@color/white"
         android:background="@color/light_orange"
         android:padding="10dp"
         android:text="@string/dummyStepTitle"/>
+
     <TextView
         android:id="@+id/direction_stepListItem_stepTimeTakes"
         android:layout_width="wrap_content"
