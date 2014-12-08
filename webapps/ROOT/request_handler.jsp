@@ -12,7 +12,7 @@
    final String NO_TIME = "0";
    final String NO_NAME = "no name";
    final String NO_TITLE = "no title";
-   final String NO_DESC = "no desc";
+   final String NO_DESC = "no description";
    final String NO_QTY = "no qty";
    
    //response field declarations: the login id is mandatory for all activities 

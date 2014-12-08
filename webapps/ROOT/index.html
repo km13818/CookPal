@@ -13,7 +13,7 @@
       <div class="row">
          <div class="large-8 columns text-center">
             <fieldset>
-             <legend>Perform Table Options</legend>
+             <legend>Retrieve/Delete</legend>
                <form method="POST" action="dbaccess.jsp">
                <div class="row">
                   <div class="large-6 columns">
@@ -58,22 +58,27 @@
 					</form>
 			</fieldset>
 			</div>
+         <div class="row">
+            <fieldset>
+                  <legend>Generate a Recipe!</legend>
+                  <form method="POST" action="recipegen.jsp">
+						Account ID:
+					    <input type="text" value="" name="acc" placeholder="account id" required>  
+						<input type="submit" value="Generate!" class="button">
+                  </form>
+               </fieldset>
+         </div>
 		 </div>
          <div class="row">
             <div class="large-12 columns">
-				<div class="large-6 columns">
-				<fieldset>
-				<button onclick="myQuery()" class="secondary button">Preview Query</button>
+				<fieldset><legend>Preview Query</legend>
+				<button onclick="myQuery()" class="secondary button">Go</button>
 				<p>
 				   <b id="op-name"></b> * FROM <b id="table-name"></b> WHERE
 				   <b id="c1col"></b> = "<b id="c1var"></b>" AND
 				   <b id="c2col"></b> = "<b id="c2var"></b>"  
 				</p>
 				</fieldset>
-				</div>
-				<div class="large-6 columns">
-
-				</div>
             </div>
          </div>
       </div>

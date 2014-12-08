@@ -25,9 +25,12 @@
 
 	String [] ingredients = {"oyster", "banana", "rice", "protein powder", "broccoli", "steak", "flour", "lime juice",
 							"cheese", "beans", "peaches", "parsley", "lentils", "ham", "scallion", "mango"};
-	String [] qty = {"3 oz", "4 lbs", "1 cup", "3 tablespoon", "8 dozen", "2 gallons", "1 pint", "5 pieces"};
-
-	
+	String [] qty = {"3 oz", "4 lbs", "1 cup", "3 tablespoon", "8 dozen", "2 liters", "1 pint", "5 fluid oz"};
+   String [] lastStep = {"serve and enjoy and remember to always look both ways before crossing the street.",
+                         "take your knife and chop the onions or you're banished forever. enjoy!",
+                         "go eat and please do not feed the dogs chocolate.",
+                         "do not underestimate the power of food. you are now hungry. go eat.",
+                         "enjoy your meal and have a cookalicious time!"};
 	//random fields 
 	int randomIngredientCountMax = (int)((Math.random()*4)+1);
 	int l = 16;
@@ -57,14 +60,19 @@
 		<h3><%=ingredientQty.get(i)%> of <%=ingredient.get(i)%></h3>
 		<%
 	}
+   %><h2>your steps</h2><%
 	int ci2 = (int)(Math.random()*8);
+   int last = (int)(Math.random()*5);
 	String rins = ingredients[ci2];
 	instructionTitle.add("prep the " + rins);
 	instructionDesc.add("lay out the " + rins + ". Don't die");
 	instructionTitle.add("cook the " + rins);
 	instructionDesc.add("shove " + rins + " in the oven. Be happy");
 	instructionTitle.add("serve");
-	instructionDesc.add("serve and enjoy and remember to always look both ways before crossing the street.");
+	instructionDesc.add(lastStep[last]);
+   for(int i = 0; i < instructionDesc.size(); i++) {
+      %><h3><%=instructionDesc.get(i)%></h3><%
+   }
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
