@@ -18,12 +18,12 @@
     <ImageButton
         android:id="@+id/start_assistant_button"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:src="@drawable/start_assistant_button"
+        android:background="@drawable/view_border_green"
+        android:onClick="startAssistantClicked"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
-        android:onClick="startAssistantClicked"/>
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
