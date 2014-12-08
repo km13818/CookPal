@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1."
-        android:id="@+id/add_recipe_ingredients_step"
+        android:id="@+id/edit_recipe_ingredients_step"
         android:textColor="@color/white"
         android:password="false"
         android:textAppearance="?android:attr/textAppearanceMedium"/>
@@ -48,7 +48,7 @@
     <ImageButton
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:id="@+id/add_recipe_ingredients_delete"
+        android:id="@+id/edit_recipe_ingredients_delete"
         android:src="@drawable/delete_icon"
         android:layout_gravity="center_vertical"
         android:background="@android:color/transparent"
