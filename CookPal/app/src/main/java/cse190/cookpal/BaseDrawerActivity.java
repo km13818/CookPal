@@ -175,15 +175,15 @@ public class BaseDrawerActivity extends FragmentActivity {
 
                 Session.setActiveSession(null);
                 intent = new Intent(this, AccountActivity.class);
-                break;
+                startActivity(intent);
+                finish();
             default:
                 break;
         }
 
         if (intent != null) {
             startActivity(intent);
-
-            if (!(this instanceof RecipeList)) {
+            if(intent.getComponent().getShortClassName().equals("AccountActivity")){
                 finish();
             }
         }
