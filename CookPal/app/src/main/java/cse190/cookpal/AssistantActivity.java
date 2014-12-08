@@ -8,6 +8,8 @@ import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -240,8 +242,16 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     // Methods to show only the current layout and hide everything else so they aren't clickable
     // Note: View parameter is needed as a placeholder for button onClick event in XML layout files
     public void displayStepList(View view) {
+        View v = findViewById(R.id.assistant_stepListLayout);
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_in_bottom);
+        v.startAnimation(anim);
         stepListLayout.setVisibility(View.VISIBLE);
+
+        View v2 = findViewById(R.id.assistant_currStep);
+        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_out_top);
+        v2.startAnimation(anim2);
         currStepLayout.setVisibility(View.GONE);
+
         stepPreviewLayout.setVisibility(View.GONE);
 
         updateETCView();
@@ -256,8 +266,16 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     public void displayCurrStep(View view) {
+        View v = findViewById(R.id.assistant_stepListLayout);
+        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_out_bottom);
+        v.startAnimation(anim);
         stepListLayout.setVisibility(View.GONE);
+
+        View v2 = findViewById(R.id.assistant_currStep);
+        Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.abc_slide_in_top);
+        v2.startAnimation(anim2);
         currStepLayout.setVisibility(View.VISIBLE);
+        
         stepPreviewLayout.setVisibility(View.GONE);
 
         updateETCView();
