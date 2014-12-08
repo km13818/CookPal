@@ -1,8 +1,10 @@
 package cse190.cookpal;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import com.google.android.gms.analytics.GoogleAnalytics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class RecipeActivity extends BaseDrawerActivity implements
@@ -120,6 +123,29 @@ public class RecipeActivity extends BaseDrawerActivity implements
                 startActivity(intent);
                 return true;
             case R.id.delete_recipe:
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setMessage("Delete this recipe?")
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                HttpUtil httpUtil = new HttpUtil();
+                                HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
+                                deleteRecipeParams.put("r_name", currentRecipe.getRecipeName());
+                                deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
+                                deleteRecipeParams.put("filter", "delete_recipe");
+                                httpUtil.makeHttpPost(deleteRecipeParams);
+                                Intent intent = new Intent(RecipeActivity.this, RecipeList.class);
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
                 return true;
             case R.id.add_recipe:
                 Intent i = new Intent(this, AddRecipeActivity.class);
