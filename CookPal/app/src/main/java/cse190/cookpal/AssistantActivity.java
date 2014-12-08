@@ -25,6 +25,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     // TODO: Fix icon for button on action bar to exit back to AssistantRecipeListActivity
     // TODO: Don't display nextStep button on last step --> maybe replace with finish button?
     // TODO: Add up/down caret on the ETC/step list to denote whether the list is up or down
+    // TODO: make voice say initial step
 
     // Layouts
     private RelativeLayout currStepLayout;
