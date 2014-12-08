@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -21,12 +22,10 @@ import java.util.Locale;
 
 public class AssistantActivity extends BaseDrawerActivity implements PausableCountdownTimer.TimerHandler {
 
-    // TODO: Add button on action bar to exit back to AssistantRecipeListActivity
-    // TODO: Pass in recipe data from AssistantRecipeListActivity or RecipeActivity
-    // TODO: Fix 'add time' and 'pause/resume' timer functionality
+    // TODO: Fix icon for button on action bar to exit back to AssistantRecipeListActivity
     // TODO: Don't display nextStep button on last step --> maybe replace with finish button?
-    // TODO: calculate ETC...or just replace with 'step list'
     // TODO: Add up/down caret on the ETC/step list to denote whether the list is up or down
+    // TODO: make voice say initial step
 
     // Layouts
     private RelativeLayout currStepLayout;
@@ -37,6 +36,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private TextView stepNumView;
     private TextView stepTitleView;
     private TextView stepDescriptView;
+    // Timer views
+    private TextView timerDisplayView;
+    private ImageButton playPauseButton;
 
     // Step list view
     private ListView stepListView;
@@ -45,10 +47,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private TextView stepPreviewNumView;
     private TextView stepPreviewTitleView;
     private TextView stepPreviewDescriptView;
-
-    // Timer views
-    private TextView timerDisplayView;
-    private ImageButton playPauseButton;
+    private TextView stepPreviewTimerDisplayView;
 
     private ListAdapter stepListAdapter;
 
@@ -60,7 +59,11 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
     private PausableCountdownTimer timer;
 
+    private Button stepListIsDownButton;
+    private Button stepListIsUpButton;
+
     private final int ONE_SECOND_IN_MILLISECONDS = 1000;
+    private final String NOT_APPLICABLE = "n/a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,21 +105,18 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         stepPreviewNumView = (TextView) findViewById(R.id.assistant_stepPreviewNumber);
         stepPreviewTitleView = (TextView) findViewById(R.id.assistant_stepPreviewTitle);
         stepPreviewDescriptView = (TextView) findViewById(R.id.assistant_stepPreviewDescription);
+        stepPreviewTimerDisplayView = (TextView) findViewById(R.id.assistant_timerPreviewDisplay);
         timerDisplayView = (TextView) findViewById(R.id.assistant_timerDisplay);
         playPauseButton = (ImageButton) findViewById(R.id.assistant_playPauseButton);
+        stepListIsDownButton = (Button) findViewById(R.id.assistant_stepListIsDownButton);
+        stepListIsUpButton = (Button) findViewById(R.id.assistant_stepListIsUpButton);
 
         // Recipe creation
-        //TODO: pull in recipe class from Intent.getIntent()? something like that.
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
-        if(currRecipe == null){  //if it came from RecipeActivity
-            currRecipe = RecipeActivity.getCurrentRecipe();
-        }
 
         if(null != currRecipe.getStepList()) {
             Step firstStep = currRecipe.getStepList().get(0);
-            setCurrStep(firstStep);
-
-            createTimer(firstStep);
+            setCurrStepAndTimer(firstStep);
         }
 
         // Text-to-speech tester
@@ -129,7 +129,10 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         });
 
         // Set the step information
-        setCurrStepViewData(currStep);
+        changeCurrStepView();
+
+        // Update the time-to-completion text
+        updateETCView();
 
         // Bind the step list adapter
         stepListAdapter = new AssistantStepListAdapter(this,
@@ -146,6 +149,13 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
                 stepPreviewNumView.setText(String.valueOf(clickedStep.getStepNumber()));
                 stepPreviewTitleView.setText(clickedStep.getTitle());
                 stepPreviewDescriptView.setText(clickedStep.getDescription());
+                // stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
+
+                if(clickedStep.getTimeInMilliseconds() == 0) {
+                    stepPreviewTimerDisplayView.setText(NOT_APPLICABLE);
+                } else {
+                    stepPreviewTimerDisplayView.setText( PausableCountdownTimer.formattedTime(clickedStep.getTimeInMilliseconds()) );
+                }
 
                 // Save the clicked step data to be accessed if the user chooses to skip there
                 stepPreviewLayout.setTag(clickedStep);
@@ -203,47 +213,71 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     public void moveToNextStep(View view) {
-        int currStepIdx = currStep.getStepNumber();
+        // Note: step starts at 1, not 0.
+        int currStepIdx = currStep.getStepNumber() - 1;
         ArrayList<Step> stepList = currRecipe.getStepList();
 
         // If next step exists, move to it and update the view
         if(++currStepIdx < stepList.size()) {
-            // currStep = stepList.get(currStepIdx);
-            setCurrStep(stepList.get(currStepIdx));
-            changeCurrStepView(view);
+            setCurrStepAndTimer(stepList.get(currStepIdx));
+            changeCurrStepView();
         }
     }
 
     public void skipToStep(View view) {
         // Receive the step data that the user skipped to (set in the step list click listener)
-        setCurrStep((Step) stepPreviewLayout.getTag());
-        changeCurrStepView(view);
-    }
-
-    private void setCurrStepViewData(Step currStep) {
-        stepNumView.setText(currStep.getStepNumber() + "");
-        stepTitleView.setText(currStep.getTitle());
-        stepDescriptView.setText(currStep.getDescription());
+        setCurrStepAndTimer((Step) stepPreviewLayout.getTag());
+        changeCurrStepView();
     }
 
     // Methods to show only the current layout and hide everything else so they aren't clickable
+    // Note: View parameter is needed as a placeholder for button onClick event in XML layout files
     public void displayStepList(View view) {
         stepListLayout.setVisibility(View.VISIBLE);
         currStepLayout.setVisibility(View.GONE);
         stepPreviewLayout.setVisibility(View.GONE);
+
+        updateETCView();
     }
 
     public void displayStepPreview(View view) {
         stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.GONE);
         stepPreviewLayout.setVisibility(View.VISIBLE);
+
+        updateETCView();
     }
 
     public void displayCurrStep(View view) {
         stepListLayout.setVisibility(View.GONE);
         currStepLayout.setVisibility(View.VISIBLE);
         stepPreviewLayout.setVisibility(View.GONE);
+
+        updateETCView();
     }
+
+    // Updates the estimated time til completion and toggles the view
+    private void updateETCView() {
+        // TODO: calculate ETC with system time
+        // Calendar calendar = GregorianCalendar.getInstance();
+        // calendar.add(Calendar.MILLISECOND, millisLeftInRecipe());
+
+        boolean listIsUp;
+        if(stepListLayout.getVisibility() == View.GONE) {
+            listIsUp = false;
+        } else {
+            listIsUp = true;
+        }
+
+        String remainingTime = PausableCountdownTimer.formattedTime(millisLeftInRecipe());
+
+        if(listIsUp) {
+            stepListIsUpButton.setText("hide steps. ETC: " + remainingTime);
+        } else {
+            stepListIsDownButton.setText("show steps. ETC: " + remainingTime);
+        }
+    }
+
     @Override
     public void onPause(){
         if(assistantSpeaker != null){
@@ -256,13 +290,17 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private void speakStepInfo(Step step) {
         String speech = "Step " + step.getStepNumber() + ". " + step.getTitle() + ", " + step.getDescription();
 
-        assistantSpeaker.speak(speech,TextToSpeech.QUEUE_FLUSH,null);
+        assistantSpeaker.speak(speech, TextToSpeech.QUEUE_FLUSH, null);
     }
 
-    private void changeCurrStepView(View view) {
-        // Set data and display the new view
-        setCurrStepViewData(currStep);
-        displayCurrStep(view);
+    private void changeCurrStepView() {
+        // Set data for the new currStep view and display it
+        stepNumView.setText(currStep.getStepNumber() + "");
+        stepTitleView.setText(currStep.getTitle());
+        stepDescriptView.setText(currStep.getDescription());
+
+        // Note: view parameter needed as placeholder. Just pass in null
+        displayCurrStep(null);
 
         // Say the step information once the view is moved
         speakStepInfo(currStep);
@@ -276,15 +314,15 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
 
             // Highlight the currStep. Note: Must happen after unhighlighting for 1st step case
             if(listItemStepNum == currStep.getStepNumber()) {
-                updateStepListItemColors(v, R.color.orange, R.color.light_orange, R.color.orange);
+                updateStepListItemColors(v, R.color.orange, R.color.light_orange, getResources().getColor(R.color.orange));
             } else {
                 // Unhighlight other steps
-                updateStepListItemColors(v, R.color.grey, R.color.light_grey, R.color.grey);
+                updateStepListItemColors(v, R.color.grey, R.color.light_grey, getResources().getColor(R.color.grey));
             }
         }
     }
 
-    private void updateStepListItemColors(View v, int numColor, int titleColor, int timeColor) {
+    public static void updateStepListItemColors(View v, int numColor, int titleColor, int timeColor) {
         TextView stepNumView = (TextView) v.findViewById(R.id.stepListItem_stepNum);
         TextView stepTitleView = (TextView) v.findViewById(R.id.stepListItem_stepTitle);
         TextView stepTimeView = (TextView) v.findViewById(R.id.stepListItem_stepTimeTakes);
@@ -292,16 +330,22 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         // Populate the step preview with data from this clicked step
         stepNumView.setBackgroundResource(numColor);
         stepTitleView.setBackgroundResource(titleColor);
-        stepTimeView.setTextColor(getResources().getColor(timeColor));
+        stepTimeView.setTextColor(timeColor);
     }
 
-    private void setCurrStep(Step newCurrStep) {
+    private void setCurrStepAndTimer(Step newCurrStep) {
         this.currStep = newCurrStep;
 
         if(timer != null) {
             timer.cancel();
         }
+
         createTimer(newCurrStep);
+
+        // Explicitly set view if no time because onTick() updates it, but it won't be called
+        if(newCurrStep.getTimeInMilliseconds() == 0) {
+            timerDisplayView.setText(NOT_APPLICABLE);
+        }
     }
 
     // Timer functions and button click handlers
@@ -328,11 +372,13 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     public void onTick(long millisUntilFinished) {
         // Find the view and update with the new time --> happens every second
         updateTimerView();
+        updateETCView();
     }
 
     @Override
     public void onFinish() {
         updateTimerView();
+        updateETCView();
     }
 
     private void updateTimerView() {
@@ -344,7 +390,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     private long millisLeftInRecipe() {
         long millis = timer.getTimeRemaining();
         ArrayList<Step> steps = currRecipe.getStepList();
-        for (Step s : steps.subList(currStep.getStepNumber()-1, steps.size())) {
+        for (Step s : steps.subList(currStep.getStepNumber(), steps.size())) {
             millis += s.getHours()*3600000 + s.getMinutes()*60000;
         }
         return millis;

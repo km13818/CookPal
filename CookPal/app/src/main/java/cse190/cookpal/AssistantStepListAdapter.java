@@ -38,5 +38,13 @@ public class AssistantStepListAdapter extends StepListAdapter {
         if(stepTimeView != null) {
             stepTimeView.setText(currIterStep.getTime());
         }
+
+        // Highlight the first step
+        if(currIterStep.getStepNumber() == 1) {
+            AssistantActivity.updateStepListItemColors(
+                    currView,
+                    R.color.orange, R.color.light_orange,
+                    getContext().getResources().getColor(R.color.orange));;
+        }
     }
 }

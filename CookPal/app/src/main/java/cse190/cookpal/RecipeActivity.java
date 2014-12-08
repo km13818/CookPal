@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -83,6 +84,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
         Intent intent = getIntent();
         currentRecipe = (Recipe)intent.getSerializableExtra("recipe");
 
+
     }
 
     public static Context getContext(){
@@ -148,8 +150,9 @@ public class RecipeActivity extends BaseDrawerActivity implements
                 alertDialog.show();
 
                 return true;
-            case R.id.add_recipe:
-                Intent i = new Intent(this, AddRecipeActivity.class);
+            case R.id.edit_recipe:
+                Intent i = new Intent(this, EditRecipeActivity.class);
+                i.putExtra("recipe", (Serializable) getCurrentRecipe());
                 startActivity(i);
             default:
                 return super.onOptionsItemSelected(item);
@@ -178,6 +181,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
 
     public void startAssistantClicked(View view){
         Intent intent = new Intent(RecipeActivity.getContext(), AssistantActivity.class);
+        intent.putExtra("recipe",currentRecipe);
         startActivity(intent);
     }
 }

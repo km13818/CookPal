@@ -12,8 +12,6 @@ public class Recipe implements Serializable {
     private ArrayList<Step> stepList;
     private ArrayList<Ingredients> ingredientList;
 
-    //TODO: hold recipe image
-
     public Recipe(String name, String image, ArrayList<Step> stepList, ArrayList<Ingredients> ingredientList) {
         this.recipeName = name;
         this.imgUrl = image;

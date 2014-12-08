@@ -11,8 +11,8 @@
         android:title="delete_recipe"
         android:showAsAction="ifRoom" />
 
-    <item android:id="@+id/add_recipe"
+    <item android:id="@+id/edit_recipe"
         android:icon="@drawable/edit_icon"
-        android:title="add_recipe"
+        android:title="edit_recipe"
         android:showAsAction="ifRoom"/>
 </menu>

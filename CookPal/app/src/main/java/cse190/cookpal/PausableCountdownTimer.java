@@ -124,9 +124,13 @@ public class PausableCountdownTimer {
     }
 
     public String formatTimeRemaining() {
-        long hours = (timeRemaining/1000)/3600;
-        long minutes = ((timeRemaining/1000)/60)%60;
-        long seconds = (timeRemaining/1000)%60;
+        return formattedTime(timeRemaining);
+    }
+
+    public static String formattedTime(long timeToFormat) {
+        long hours = (timeToFormat/1000)/3600;
+        long minutes = ((timeToFormat/1000)/60)%60;
+        long seconds = (timeToFormat/1000)%60;
 
         String hourStr, minStr, secStr;
 
