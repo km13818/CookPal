@@ -230,11 +230,13 @@ public class EditRecipeActivity extends BaseDrawerActivity {
             @Override
             public void onClick(View v) {
                 //delete
+                /*
                 HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
                 deleteRecipeParams.put("r_name", currentRecipe.getRecipeName());
                 deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
                 deleteRecipeParams.put("filter", "delete_recipe");
                 httpUtil.makeHttpPost(deleteRecipeParams);
+                */
            /*     try {
                     Thread.sleep(20000);                 //1000 milliseconds is one second.
                 } catch(InterruptedException ex) {
@@ -248,8 +250,9 @@ public class EditRecipeActivity extends BaseDrawerActivity {
                 //insert recipe
                 HashMap<String,String> insertRecipeParams = new HashMap<String,String>();
                 insertRecipeParams.put("r_name", newRecipeName);
+                insertRecipeParams.put("r_name_curr", currentRecipe.getRecipeName());
                 insertRecipeParams.put("fb_id", AccountActivity.getFbId());
-                insertRecipeParams.put("filter", "insert_recipe");
+                insertRecipeParams.put("filter", "update_recipe");
                 insertRecipeParams.put("cookbook_type", "private");
                 insertRecipeParams.put("image_url", newImageUrl);
                 httpUtil.makeHttpPost(insertRecipeParams);

@@ -60,7 +60,7 @@ public class CookPalApp extends Application {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.drawable.placeholder)
                 .showImageOnFail(R.drawable.placeholder)
-                .showImageOnLoading(R.drawable.placeholder)
+                .showImageOnLoading(R.drawable.loading)
                 .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).defaultDisplayImageOptions(options).build();
         ImageLoader.getInstance().init(config);
