@@ -120,8 +120,6 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         if(null != currRecipe.getStepList()) {
             Step firstStep = currRecipe.getStepList().get(0);
             setCurrStepAndTimer(firstStep);
-
-            createTimer(firstStep);
         }
 
         // Text-to-speech tester
@@ -338,7 +336,13 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         if(timer != null) {
             timer.cancel();
         }
+
         createTimer(newCurrStep);
+
+        // Explicitly set view if no time because onTick() updates it, but it won't be called
+        if(newCurrStep.getTimeInMilliseconds() == 0) {
+            timerDisplayView.setText("n/a");
+        }
     }
 
     // Timer functions and button click handlers
