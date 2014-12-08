@@ -46,6 +46,7 @@ import java.util.Iterator;
 
 public class RecipeList extends BaseDrawerActivity {
     private static final String TAG = "RecipeList";
+    private boolean checked = false;
 
     //TODO: potentially refactor. not sure if it's a good idea to have data structures as global vars in activity
     HttpUtil httpUtil = new HttpUtil();
@@ -138,63 +139,32 @@ public class RecipeList extends BaseDrawerActivity {
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
-        /*deleteConfirmText = new TextView(this);
-        deleteConfirmButton = new Button(this);
-        thisLayout = new LinearLayout(this);
-
-        deleteConfirmText.setText("Confirm delete?");
-        deleteConfirmButton.setText("OK");*/
-
-        /*deleteConfirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ListView recipeList = (ListView) findViewById(R.id.recipeListView);
-
-                //TODO: instead of having global variable of checkboxes, just findElementById (more organized)
-                //checkBoxes has all checkboxes + junk at end. very very hacky
-                for(int i = 0; i < checkBoxes.size(); i++) {
-                    String recipeName = (String)checkBoxes.get(i).getText();
-                    Log.d(TAG, recipeName);
-
-                    if(checkBoxes.get(i).isChecked() && RecipeList.this.recipeList.contains(checkBoxes.get(i).getText())) {
-
-                        //test code
-                        //TODO: currently because checkBoxes is hacky, will delete checked recipes multiple times. should fix this
-                        HashMap<String,String> deleteRecipeParams = new HashMap<String,String>();
-                        deleteRecipeParams.put("r_name", recipeName);
-                        deleteRecipeParams.put("fb_id", AccountActivity.getFbId());
-                        deleteRecipeParams.put("filter", "delete_recipe");
-                        httpUtil.makeHttpPost(deleteRecipeParams);
-
-                    }
-                }
-                deleteConfirmWindow.dismiss();
-
-                onRestart();
-            }
-        });
-        thisLayout.addView(deleteConfirmText);
-        thisLayout.addView(deleteConfirmButton);*/
-
-        /*deleteGroceryListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteConfirmWindow = new PopupWindow(thisLayout, LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-                deleteConfirmWindow.showAtLocation(thisLayout, Gravity.CENTER,50, 50);
-                deleteConfirmWindow.showAsDropDown(deleteGroceryListButton);
-
-
-            }
-        });*/
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.recipelist_activity_menu, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        /*MenuItem deleteItem = menu.findItem(R.id.deleteGroceryListButton);
+        if (checked == true) {
+            deleteItem.setVisible(true);
+        } else {
+            deleteItem.setVisible(false);
+        }*/
+
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        MenuItem deleteItem = menu.findItem(R.id.deleteGroceryListButton);
+        deleteItem.setVisible(checked);
+
+        return true;
     }
 
     @Override
@@ -663,5 +633,17 @@ public class RecipeList extends BaseDrawerActivity {
     public void addRecipeClicked(MenuItem menuItem) {
         Intent intent = new Intent(this, AddRecipeActivity.class);
         startActivity(intent);
+    }
+
+    public void checkSelected(View view) {
+        for (int i = 0; i < checkBoxes.size(); i++) {
+            if (checkBoxes.get(i).isChecked()) {
+                checked = true;
+                break;
+            } else {
+                checked = false;
+            }
+        }
+        invalidateOptionsMenu();
     }
 }
