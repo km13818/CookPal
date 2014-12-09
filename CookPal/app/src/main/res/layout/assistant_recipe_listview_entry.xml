@@ -9,7 +9,7 @@
         android:layout_height="180dp"
         android:id="@+id/assistantRecipeEntryImageView"
         android:scaleType="fitXY"
-        android:alpha=".7"
+        android:alpha=".8"
         />
     <RelativeLayout
         android:layout_width="match_parent"
