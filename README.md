@@ -10,3 +10,6 @@ Ziqi (Tom) Cao
 Tim Chi
 Kevin Ma
 Connor Brew
+
+App code under /CookPal
+Server code under /webapps/ROOT
