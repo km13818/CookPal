@@ -25,7 +25,7 @@ public class ShareActivity extends BaseDrawerActivity {
         uiHelper.onCreate(savedInstanceState);
 
         FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
-                .setLink("https://developers.facebook.com/android")
+                .setLink("https://www.youtube.com/watch?v=yyWfJd4hDQk&feature=youtu.be")
                 .build();
         uiHelper.trackPendingDialogCall(shareDialog.present());
 
