@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/overview_recipe_name"
         android:gravity="center"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:textColor="@color/white"
