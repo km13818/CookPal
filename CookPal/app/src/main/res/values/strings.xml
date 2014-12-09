@@ -39,15 +39,15 @@
     <string name="text1">testing one two three</string>
     <string name="write">Write Text</string>
     <string name="title_activity_share_">share</string>
-    <string name="title_activity_recipe">Recipe</string>
+    <string name="title_activity_recipe">RECIPE</string>
     <string name="activity_edit_recipe">EDIT RECIPE</string>
     <!-- Assistant Strings -->
     <string name="etc">ETC</string>
     <string name="timeLeft">time left</string>
     <!-- Note: dummy text is replaced by AssistantActivity.java. Needed just to see rendering preview -->
-    <string name="dummyStepDescrip">dummy description shouldnt show up</string>
-    <string name="dummyStepTitle">dummytitle shouldnt show up</string>
-    <string name="dummyStepNum">69</string>
-    <string name="dummyTimeLeft">3hr30min</string>
+    <string name="dummyStepDescrip">No instructions found for this recipe</string>
+    <string name="dummyStepTitle">No instructions found</string>
+    <string name="dummyStepNum">0</string>
+    <string name="dummyTimeLeft">0hr0min</string>
 
 </resources>

@@ -122,7 +122,7 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
         // Recipe creation
         currRecipe = (Recipe)previousRecipeActivityIntent.getSerializableExtra("recipe");
 
-        if(null != currRecipe.getStepList()) {
+        if(null != currRecipe.getStepList() && currRecipe.getStepList().size() != 0) {
             Step firstStep = currRecipe.getStepList().get(0);
             setCurrStepAndTimer(firstStep);
         }
@@ -335,6 +335,10 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     private void changeCurrStepView_highlightStep_speakStep() {
+        if(currStep == null) {
+            return;
+        }
+
         // Set data for the new currStep view and display it
         stepNumView.setText(currStep.getStepNumber() + "");
         stepTitleView.setText(currStep.getTitle());
@@ -441,6 +445,9 @@ public class AssistantActivity extends BaseDrawerActivity implements PausableCou
     }
 
     private long millisLeftInRecipe() {
+        if(timer == null) {
+            return 0;
+        }
         long millis = timer.getTimeRemaining();
         ArrayList<Step> steps = currRecipe.getStepList();
         for (Step s : steps.subList(currStep.getStepNumber(), steps.size())) {

@@ -28,7 +28,7 @@ public class RecipeActivity extends BaseDrawerActivity implements
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
-    private String[] tabs = {"Overview", "Ingredients", "Directions"};
+    private String[] tabs = {"Overview", "Ingredients", "Instructions"};
 
     public static ArrayList<Ingredients> ingredientList;
     private static Context mContext;
